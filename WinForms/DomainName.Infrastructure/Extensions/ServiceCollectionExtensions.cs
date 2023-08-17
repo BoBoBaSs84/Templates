@@ -17,7 +17,7 @@ internal static class ServiceCollectionExtensions
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	internal static ServiceCollection AddLoggerService(this ServiceCollection services)
+	internal static IServiceCollection AddLoggerService(this IServiceCollection services)
 	{
 		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 		

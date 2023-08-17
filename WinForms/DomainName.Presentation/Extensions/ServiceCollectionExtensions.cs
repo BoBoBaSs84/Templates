@@ -15,7 +15,7 @@ internal static class ServiceCollectionExtensions
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	internal static ServiceCollection AddForms(this ServiceCollection services)
+	internal static IServiceCollection AddForms(this IServiceCollection services)
 	{
 		services.TryAddSingleton<MainForm>();
 

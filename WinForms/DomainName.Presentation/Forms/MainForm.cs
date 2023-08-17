@@ -1,4 +1,6 @@
-﻿namespace DomainName.Presentation.Forms;
+﻿using FormsApplication = System.Windows.Forms.Application;
+
+namespace DomainName.Presentation.Forms;
 
 public partial class MainForm : Form
 {
@@ -8,5 +10,5 @@ public partial class MainForm : Form
 	}
 
 	private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-		=> System.Windows.Forms.Application.Exit();
+		=> FormsApplication.Exit();
 }

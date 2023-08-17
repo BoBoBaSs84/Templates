@@ -14,7 +14,7 @@ public static class DependencyInjection
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	public static ServiceCollection AddPresentationServices(this ServiceCollection services)
+	public static IServiceCollection AddPresentationServices(this IServiceCollection services)
 	{
 		_ = services.AddForms();
 
