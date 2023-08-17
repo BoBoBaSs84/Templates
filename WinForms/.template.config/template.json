@@ -1,0 +1,38 @@
+{
+	"$schema": "http://json.schemastore.org/template",
+	"author": "BoBoBaSs84",
+	"classifications": [
+		"Common",
+		"WinForms"
+	],
+	"name": "BB84 - Windows Forms App",
+	"description": "The Windows Forms App Template (.Net 6.0). Unit test project not included.",
+	"identity": "BB84.Net.Windows.Forms.App.6",
+	"groupIdentity": "BB84.Net.Windows.Forms",
+	"shortName": "bb84-winforms-net6",
+	"tags": {
+		"language": "C#",
+		"type": "project"
+	},
+	"sourceName": "DomainName",
+	"preferNameDirectory": true,
+	"sources": [
+		{
+			"source": "./",
+			"target": "./",
+			"exclude": [
+				"README.md",
+				"**/[Bb]in/**",
+				"**/[Oo]bj/**",
+				".template.config/**/*",
+				".vs/**/*",
+				"**/*.filelist",
+				"**/*.user",
+				"**/*.lock.json",
+				"**/.git/**",
+				"*.nuspec",
+				"**/node_modules/**"
+			]
+		}
+	]
+}
