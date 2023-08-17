@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\DomainName.Infrastructure\DomainName.Infrastructure.csproj" />
+		<ProjectReference Include="..\DomainName.Presentation\DomainName.Presentation.csproj" />
+	</ItemGroup>
+
+</Project>
