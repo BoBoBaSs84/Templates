@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainName", "DomainName\DomainName.csproj", "{400323FB-DD9F-4D56-A8E7-6D6BC3EA4353}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainName.Application", "DomainName.Application\DomainName.Application.csproj", "{5F11D459-A3EE-4AAA-9CAF-772B4BE90D20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainName.Domain", "DomainName.Domain\DomainName.Domain.csproj", "{D25BEBCD-48C0-4CD9-8BB6-734E1CA5D412}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainName.Infrastructure", "DomainName.Infrastructure\DomainName.Infrastructure.csproj", "{D0A833DF-CF29-411A-8795-6996B46AAF82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainName.Presentation", "DomainName.Presentation\DomainName.Presentation.csproj", "{C8A4C89D-19FE-497F-95A0-5F287D3DE11A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{986925A3-9AAF-41B1-8352-5D2AB2132D90}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{400323FB-DD9F-4D56-A8E7-6D6BC3EA4353}.Debug|x64.ActiveCfg = Debug|x64
+		{400323FB-DD9F-4D56-A8E7-6D6BC3EA4353}.Debug|x64.Build.0 = Debug|x64
+		{400323FB-DD9F-4D56-A8E7-6D6BC3EA4353}.Release|x64.ActiveCfg = Release|x64
+		{400323FB-DD9F-4D56-A8E7-6D6BC3EA4353}.Release|x64.Build.0 = Release|x64
+		{5F11D459-A3EE-4AAA-9CAF-772B4BE90D20}.Debug|x64.ActiveCfg = Debug|x64
+		{5F11D459-A3EE-4AAA-9CAF-772B4BE90D20}.Debug|x64.Build.0 = Debug|x64
+		{5F11D459-A3EE-4AAA-9CAF-772B4BE90D20}.Release|x64.ActiveCfg = Release|x64
+		{5F11D459-A3EE-4AAA-9CAF-772B4BE90D20}.Release|x64.Build.0 = Release|x64
+		{D25BEBCD-48C0-4CD9-8BB6-734E1CA5D412}.Debug|x64.ActiveCfg = Debug|x64
+		{D25BEBCD-48C0-4CD9-8BB6-734E1CA5D412}.Debug|x64.Build.0 = Debug|x64
+		{D25BEBCD-48C0-4CD9-8BB6-734E1CA5D412}.Release|x64.ActiveCfg = Release|x64
+		{D25BEBCD-48C0-4CD9-8BB6-734E1CA5D412}.Release|x64.Build.0 = Release|x64
+		{D0A833DF-CF29-411A-8795-6996B46AAF82}.Debug|x64.ActiveCfg = Debug|x64
+		{D0A833DF-CF29-411A-8795-6996B46AAF82}.Debug|x64.Build.0 = Debug|x64
+		{D0A833DF-CF29-411A-8795-6996B46AAF82}.Release|x64.ActiveCfg = Release|x64
+		{D0A833DF-CF29-411A-8795-6996B46AAF82}.Release|x64.Build.0 = Release|x64
+		{C8A4C89D-19FE-497F-95A0-5F287D3DE11A}.Debug|x64.ActiveCfg = Debug|x64
+		{C8A4C89D-19FE-497F-95A0-5F287D3DE11A}.Debug|x64.Build.0 = Debug|x64
+		{C8A4C89D-19FE-497F-95A0-5F287D3DE11A}.Release|x64.ActiveCfg = Release|x64
+		{C8A4C89D-19FE-497F-95A0-5F287D3DE11A}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B43CC51-B023-4212-99F1-FDC593156335}
+	EndGlobalSection
+EndGlobal
