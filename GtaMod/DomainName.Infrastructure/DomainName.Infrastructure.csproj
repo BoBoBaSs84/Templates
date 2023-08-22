@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+	  <Platforms>x64</Platforms>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />
+	</ItemGroup>
+
+</Project>
