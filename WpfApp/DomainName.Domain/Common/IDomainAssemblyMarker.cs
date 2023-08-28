@@ -3,5 +3,5 @@
 /// <summary>
 /// The assembly marker interface.
 /// </summary>
-public interface IDomainNameDomainAssemblyMarker
+public interface IDomainAssemblyMarker
 { }
