@@ -23,8 +23,7 @@ internal static class ServiceCollectionExtensions
 		
 		services.AddLogging(config =>
 		{
-			config.AddDebug();
-			config.AddConsole();
+			config.AddEventLog();
 #if DEBUG
 			config.SetMinimumLevel(LogLevel.Debug);
 #else
