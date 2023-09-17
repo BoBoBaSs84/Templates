@@ -20,11 +20,10 @@ internal static class ServiceCollectionExtensions
 	internal static IServiceCollection AddLoggerService(this IServiceCollection services)
 	{
 		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
-		
+
 		services.AddLogging(config =>
 		{
-			config.AddDebug();
-			config.AddConsole();
+			config.AddEventLog();
 #if DEBUG
 			config.SetMinimumLevel(LogLevel.Debug);
 #else
