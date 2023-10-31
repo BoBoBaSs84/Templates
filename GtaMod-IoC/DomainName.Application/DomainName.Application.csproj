@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+	  <Platforms>x64</Platforms>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\DomainName.Domain\DomainName.Domain.csproj" />
+	</ItemGroup>
+
+</Project>
