@@ -10,23 +10,19 @@ namespace DomainName.Infrastructure.Services;
 /// </summary>
 internal sealed class LoggerService : ILoggerService
 {
-	private static readonly Lazy<LoggerService> Service = new(() => new());
-	private readonly string _baseDirectory;
-	private readonly string _logFileName;
+	private static readonly Lazy<LoggerService> LazyService = new(() => new());
+	private readonly string _logFilePath;
 
 	/// <summary>
 	/// Initializes a instance of the logger service class.
 	/// </summary>
 	private LoggerService()
-	{
-		_baseDirectory = AppContext.BaseDirectory;
-		_logFileName = "DomainName.log";
-	}
+		=> _logFilePath = Path.Combine(Environment.CurrentDirectory, $"{nameof(DomainName)}.log");
 
 	/// <summary>
 	/// The singleton instance of the logger service.
 	/// </summary>
-	internal static readonly LoggerService Instance = Service.Value;
+	internal static readonly ILoggerService Instance = LazyService.Value;
 
 	public void Critical(string message, [CallerMemberName] string callerName = "")
 		=> LogToFile("FTL", callerName, message);
@@ -51,8 +47,7 @@ internal sealed class LoggerService : ILoggerService
 	/// <param name="message">The logger message itself.</param>
 	private void LogToFile(string type, string caller, string message)
 	{
-		string path = Path.Combine(_baseDirectory, _logFileName);
 		string content = $"{DateTime.Now:yyyy-MM-ddTHH:mm:ss.fff}\t[{type}]\t<{caller}> - {message}{Environment.NewLine}";
-		File.AppendAllText(path, content, Encoding.UTF8);
+		File.AppendAllText(_logFilePath, content, Encoding.UTF8);
 	}
 }
