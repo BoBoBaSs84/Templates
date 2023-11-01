@@ -12,7 +12,7 @@ namespace DomainName;
 public sealed class StartUp : Script
 {
 	private readonly ILoggerService _logger;
-	private readonly Presentation.Menus.MainMenu _mainMenu = new("Main Menu", "The main menu of Nuclei.");
+	private readonly Presentation.Menus.MainMenu _mainMenu = new("Main Menu", "The fancy main menu.");
 
 	/// <summary>
 	/// Initializes a instance of the main class.

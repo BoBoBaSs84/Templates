@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
-	  <PackageReference Include="LemonUI.SHVDN3" Version="1.10.0" ExcludeAssets="runtime" />
+	  <PackageReference Include="LemonUI.SHVDN3" Version="1.10.0" />
 	</ItemGroup>
 
 	<ItemGroup>
