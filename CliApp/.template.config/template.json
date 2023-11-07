@@ -1,0 +1,38 @@
+{
+	"$schema": "http://json.schemastore.org/template",
+	"author": "BoBoBaSs84",
+	"classifications": [
+		"Common",
+		"Console"
+	],
+	"name": "BB84 - Command line console application.",
+	"description": "The command line console application template (Net6.0). Unit test projects not included.",
+	"identity": "BB84.Net.Console.Cli",
+	"groupIdentity": "BB84.Net.Console",
+	"shortName": "bb84-console-cli",
+	"tags": {
+		"language": "C#",
+		"type": "project"
+	},
+	"sourceName": "DomainName",
+	"preferNameDirectory": true,
+	"sources": [
+		{
+			"source": "./",
+			"target": "./",
+			"exclude": [
+				"README.md",
+				"**/[Bb]in/**",
+				"**/[Oo]bj/**",
+				".template.config/**/*",
+				".vs/**/*",
+				"**/*.filelist",
+				"**/*.user",
+				"**/*.lock.json",
+				"**/.git/**",
+				"*.nuspec",
+				"**/node_modules/**"
+			]
+		}
+	]
+}
