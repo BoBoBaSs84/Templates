@@ -13,7 +13,7 @@ namespace DomainName.Infrastructure.Extensions;
 internal static class ServiceCollectionExtensions
 {
 	/// <summary>
-	/// Adds the logger service to the service collection.
+	/// Registers the logger service to the service collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
@@ -27,7 +27,7 @@ internal static class ServiceCollectionExtensions
 #if DEBUG
 			config.SetMinimumLevel(LogLevel.Debug);
 #else
-			config.SetMinimumLevel(LogLevel.Error);
+			config.SetMinimumLevel(LogLevel.Warning);
 #endif
 		});
 

@@ -11,15 +11,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainName.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainName.Presentation", "DomainName.Presentation\DomainName.Presentation.csproj", "{117EA927-48AE-4802-A2CE-0988788FA66E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73B67721-5EFA-4BA3-9927-FC4F4B9D7192}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainName", "DomainName\DomainName.csproj", "{F507F08A-EE6E-46E5-9523-3B8738949927}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4D2251FF-C4D0-4D61-A9F1-0F96FB3ED8F4}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
+		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainName", "DomainName\DomainName.csproj", "{F507F08A-EE6E-46E5-9523-3B8738949927}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

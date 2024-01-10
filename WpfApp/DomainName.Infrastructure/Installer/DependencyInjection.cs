@@ -10,7 +10,7 @@ namespace DomainName.Infrastructure.Installer;
 public static class DependencyInjection
 {
 	/// <summary>
-	/// Adds the infrastructure services to the service collection.
+	/// Registers the infrastructure services to the service collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>

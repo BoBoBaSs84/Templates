@@ -1,11 +1,12 @@
 ﻿using System.Windows;
-using System.Windows.Threading;
 
 using DomainName.Application.Interfaces.Infrastructure.Services;
+using DomainName.Application.Installer;
 using DomainName.Infrastructure.Installer;
 using DomainName.Presentation.Installer;
-using DomainName.Presentation.Windows;
+using DomainName.Presentation.Views;
 
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -33,44 +34,37 @@ public partial class App : WinApplication
 	public App()
 	{
 		_host = CreateHostBuilder().Build();
-		_loggerService = GetService<ILoggerService<App>>();
+		_loggerService = _host.Services.GetRequiredService<ILoggerService<App>>();
 
-		DispatcherUnhandledException += OnUnhandledException;
+		DispatcherUnhandledException += (s, e) => OnUnhandledException(e.Exception);
 	}
-
-	/// <summary>
-	/// The <see cref="GetService{T}"/> method should the requested registered service.
-	/// </summary>
-	/// <typeparam name="T">The requested service.</typeparam>
-	/// <returns>The registered service.</returns>
-	/// <exception cref="ArgumentException">If a service is not registered.</exception>
-	public static T GetService<T>() where T : class =>
-		(Current as App)!._host.Services.GetService(typeof(T)) is not T service
-		? throw new ArgumentException($"{typeof(T)} needs to be registered.")
-		: service;
 
 	private async void Application_Startup(object sender, StartupEventArgs e)
 	{
-		_loggerService.Log(LogInformation, "Apllication starting...");
+		_loggerService.Log(LogInformation, "Application starting...");
+
 		await _host.StartAsync().ConfigureAwait(false);
-		MainWindow mainWindow = GetService<MainWindow>();
-		mainWindow.Show();
+
+		MainView mainView = _host.Services.GetRequiredService<MainView>();
+		mainView.Show();
 	}
 
 	private async void Application_Exit(object sender, ExitEventArgs e)
 	{
-		_loggerService.Log(LogInformation, "Apllication exiting...");
+		_loggerService.Log(LogInformation, "Application exiting...");
+
 		using (_host)
 			await _host.StopAsync(TimeSpan.FromSeconds(5)).ConfigureAwait(false);
 	}
 
-	private void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs args)
-		=> _loggerService.Log(LogCritical, args.Exception);
+	private void OnUnhandledException(Exception exception)
+		=> _loggerService.Log(LogCritical, exception);
 
 	private static IHostBuilder CreateHostBuilder()
 		=> Host.CreateDefaultBuilder()
 		.ConfigureServices((context, services) =>
 		{
+			_ = services.AddApplicationServices();
 			_ = services.AddInfrastructureServices();
 			_ = services.AddPresentationServices();
 		});

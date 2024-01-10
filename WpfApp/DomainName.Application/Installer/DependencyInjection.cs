@@ -1,25 +1,26 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-using DomainName.Presentation.Extensions;
+using DomainName.Application.Extensions;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DomainName.Presentation.Installer;
+namespace DomainName.Application.Installer;
 
 /// <summary>
-/// The presentation dependency injection class.
+/// The application dependency injection class.
 /// </summary>
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here.")]
 public static class DependencyInjection
 {
 	/// <summary>
-	/// Registers the presentation services to the service collection.
+	/// Registers the application services to the service collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	public static IServiceCollection AddPresentationServices(this IServiceCollection services)
+	public static IServiceCollection AddApplicationServices(this IServiceCollection services)
 	{
-		services.RegisterViews();
+		services.RegisterViewModels();
+		services.RegisterNavigationService();
 
 		return services;
 	}
