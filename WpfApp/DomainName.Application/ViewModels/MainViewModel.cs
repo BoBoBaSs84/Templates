@@ -14,21 +14,27 @@ public sealed class MainViewModel(INavigationService navigationService) : BaseVi
 {
 	private IRelayCommand? _aboutCommand;
 	private IRelayCommand? _exitCommand;
+	private string _statusBarInfo = string.Empty;
 
 	/// <summary>
 	/// The navigation service instance.
 	/// </summary>
-	public INavigationService NavigationService
+	public INavigationService NavigationService => navigationService;
+
+	/// <summary>
+	/// The status bar information.
+	/// </summary>
+	public string StatusBarInfo
 	{
-		get => navigationService;
-		set => SetProperty(ref navigationService, value);
+		get => _statusBarInfo;
+		private set => SetProperty(ref _statusBarInfo, value);
 	}
 
 	/// <summary>
 	/// The command to show the about window.
 	/// </summary>
 	public IRelayCommand AboutCommand
-		=> _aboutCommand ??= new RelayCommand(x => Environment.Exit(1));
+		=> _aboutCommand ??= new RelayCommand(x => StatusBarInfo = "About was clicked");
 
 	/// <summary>
 	/// The command to exit the application.
