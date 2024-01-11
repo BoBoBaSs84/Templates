@@ -6,10 +6,10 @@
 		"WPF"
 	],
 	"name": "BB84 - WPF Application",
-	"description": "The WPF Application Template (.Net 6.0). Unit test project not included.",
-	"identity": "BB84.Wpf.Application.6",
+	"description": "The WPF Application Template (.Net 8.0). Unit test project not included.",
+	"identity": "BB84.Wpf.Application.8",
 	"groupIdentity": "BB84.Wpf.Application",
-	"shortName": "bb84-wpf-net6",
+	"shortName": "bb84-wpf-net8",
 	"tags": {
 		"language": "C#",
 		"type": "project"
