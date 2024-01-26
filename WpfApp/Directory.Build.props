@@ -23,8 +23,7 @@
 		<GeneratedAssemblyInfoFile>Properties\AssemblyInfo.cs</GeneratedAssemblyInfoFile>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>latest</LangVersion>
-		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-		<NeutralLanguage>en-US</NeutralLanguage>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>		
 		<Nullable>enable</Nullable>
 		<TargetFramework>net8.0-windows</TargetFramework>
 	</PropertyGroup>
@@ -39,6 +38,7 @@
 		<Company>https://github.com/BoBoBaSs84</Company>
 		<Copyright>Copyright © $(VersionMajor) BoBoBaSs84</Copyright>
 		<Product>DomainName</Product>
+		<NeutralLanguage>en-US</NeutralLanguage>
 		<Title>$(AssemblyName)</Title>
 	</PropertyGroup>
 

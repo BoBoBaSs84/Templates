@@ -3,6 +3,7 @@
 	<ItemGroup>
 		<PackageReference Include="BB84.Extensions" />
 		<PackageReference Include="BB84.Notifications" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
 	</ItemGroup>
 
 </Project>

@@ -17,7 +17,7 @@ public static class DependencyInjection
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+	public static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
 	{
 		services.RegisterViewModels();
 		services.RegisterNavigationService();

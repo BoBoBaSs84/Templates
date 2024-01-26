@@ -1,10 +1,8 @@
 ﻿using System.Windows;
 
 using DomainName.Application.Interfaces.Infrastructure.Services;
-using DomainName.Application.Installer;
-using DomainName.Infrastructure.Installer;
-using DomainName.Presentation.Installer;
-using DomainName.Presentation.Views;
+using DomainName.Extensions;
+using DomainName.Presentation.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -45,8 +43,8 @@ public partial class App : WinApplication
 
 		await _host.StartAsync().ConfigureAwait(false);
 
-		MainView mainView = _host.Services.GetRequiredService<MainView>();
-		mainView.Show();
+		MainWindow mainWindow = _host.Services.GetRequiredService<MainWindow>();
+		mainWindow.Show();
 	}
 
 	private async void Application_Exit(object sender, ExitEventArgs e)
@@ -62,10 +60,6 @@ public partial class App : WinApplication
 
 	private static IHostBuilder CreateHostBuilder()
 		=> Host.CreateDefaultBuilder()
-		.ConfigureServices((context, services) =>
-		{
-			_ = services.AddApplicationServices();
-			_ = services.AddInfrastructureServices();
-			_ = services.AddPresentationServices();
-		});
+		.ConfigureServices(services
+			=> services.RegisterServices());
 }
