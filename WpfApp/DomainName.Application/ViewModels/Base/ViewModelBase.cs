@@ -3,7 +3,7 @@
 namespace DomainName.Application.ViewModels.Base;
 
 /// <summary>
-/// The base view model class.
+/// The view model base class.
 /// </summary>
-public abstract class BaseViewModel : NotificationObject
+public abstract class ViewModelBase : NotificationObject
 { }

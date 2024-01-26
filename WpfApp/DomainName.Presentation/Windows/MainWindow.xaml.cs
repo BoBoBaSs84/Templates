@@ -2,18 +2,18 @@
 
 using DomainName.Application.ViewModels;
 
-namespace DomainName.Presentation.Views;
+namespace DomainName.Presentation.Windows;
 
 /// <summary>
-/// Interaction logic for MainView.xaml
+/// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class MainView : Window
+public partial class MainWindow : Window
 {
 	/// <summary>
-	/// Initializes an instance of the <see cref="MainView"/> class.
+	/// Initializes an instance of the <see cref="MainWindow"/> class.
 	/// </summary>
 	/// <param name="viewModel">The view model instance to use.</param>
-	public MainView(MainViewModel viewModel)
+	public MainWindow(MainViewModel viewModel)
 	{
 		DataContext = viewModel;
 		InitializeComponent();

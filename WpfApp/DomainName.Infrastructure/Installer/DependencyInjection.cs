@@ -14,9 +14,9 @@ public static class DependencyInjection
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
+	public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services)
 	{
-		services.AddLoggerService();
+		_ = services.AddLoggerService();
 
 		return services;
 	}

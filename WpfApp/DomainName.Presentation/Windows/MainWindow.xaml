@@ -1,4 +1,4 @@
-﻿<Window x:Class="DomainName.Presentation.Views.MainView"
+﻿<Window x:Class="DomainName.Presentation.Windows.MainWindow"
 				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -62,8 +62,6 @@
 				</MenuItem>
 			</MenuItem>
 		</Menu>
-		<StatusBar DockPanel.Dock="Bottom">
-			<StatusBarItem Content="{Binding StatusBarInfo}" />
-		</StatusBar>
+		<ContentControl Content="{Binding NavigationService.CurrentView}" />
 	</DockPanel>
 </Window>

@@ -20,7 +20,7 @@ internal static class ServiceCollectionExtensions
 	internal static IServiceCollection AddLoggerService(this IServiceCollection services)
 	{
 		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
-		
+
 		services.AddLogging(config =>
 		{
 			config.AddEventLog();

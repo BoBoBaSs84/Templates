@@ -20,6 +20,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterViewModels(this IServiceCollection services)
 	{
+		services.TryAddSingleton<AboutViewModel>();
 		services.TryAddSingleton<MainViewModel>();
 
 		return services;
@@ -34,8 +35,8 @@ internal static class ServiceCollectionExtensions
 	{
 		services.TryAddSingleton<INavigationService, NavigationService>();
 
-		services.TryAddSingleton<Func<Type, BaseViewModel>>(serviceProvider
-			=> viewModelType => (BaseViewModel)serviceProvider.GetRequiredService(viewModelType));
+		services.TryAddSingleton<Func<Type, ViewModelBase>>(serviceProvider
+			=> viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
 
 		return services;
 	}
