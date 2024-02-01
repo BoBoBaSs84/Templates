@@ -8,7 +8,7 @@
 	],
 	"name": "BB84 - WPF EF Core Application",
 	"description": "The WPF Entity Framework Core Application Template (.Net 8.0). Unit test project not included.",
-	"identity": "BB84.Wpf.Application.8",
+	"identity": "BB84.Wpf.EFC.Application.8",
 	"groupIdentity": "BB84.Wpf.Application",
 	"shortName": "bb84-wpf-efc-net8",
 	"tags": {
