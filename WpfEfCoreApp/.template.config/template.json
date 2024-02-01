@@ -1,0 +1,39 @@
+{
+	"$schema": "http://json.schemastore.org/template",
+	"author": "BoBoBaSs84",
+	"classifications": [
+		"Common",
+		"WPF",
+		"EF"
+	],
+	"name": "BB84 - WPF EF Core Application",
+	"description": "The WPF Entity Framework Core Application Template (.Net 8.0). Unit test project not included.",
+	"identity": "BB84.Wpf.Application.8",
+	"groupIdentity": "BB84.Wpf.Application",
+	"shortName": "bb84-wpf-efc-net8",
+	"tags": {
+		"language": "C#",
+		"type": "project"
+	},
+	"sourceName": "DomainName",
+	"preferNameDirectory": true,
+	"sources": [
+		{
+			"source": "./",
+			"target": "./",
+			"exclude": [
+				"README.md",
+				"**/[Bb]in/**",
+				"**/[Oo]bj/**",
+				".template.config/**/*",
+				".vs/**/*",
+				"**/*.filelist",
+				"**/*.user",
+				"**/*.lock.json",
+				"**/.git/**",
+				"*.nuspec",
+				"**/node_modules/**"
+			]
+		}
+	]
+}
