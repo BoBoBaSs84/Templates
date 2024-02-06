@@ -37,7 +37,7 @@
 		<Authors>BoBoBaSs84</Authors>
 		<Company>https://github.com/BoBoBaSs84</Company>
 		<Copyright>Copyright © $(VersionMajor) BoBoBaSs84</Copyright>
-		<Product>BB84.FileManager</Product>
+		<Product>DomainName</Product>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<Title>$(AssemblyName)</Title>
 	</PropertyGroup>

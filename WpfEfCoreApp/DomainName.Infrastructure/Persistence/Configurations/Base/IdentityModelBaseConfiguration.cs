@@ -20,8 +20,12 @@ internal abstract class IdentityModelBaseConfiguration<T> : IEntityTypeConfigura
 		builder.HasKey(e => e.Id)
 			.IsClustered(false);
 
+		builder.Property(e => e.Id)
+			.ValueGeneratedOnAdd();
+
 		builder.Property(e => e.Timestamp)
-			.IsConcurrencyToken();
+			.IsConcurrencyToken()
+			.IsRowVersion();
 
 		builder.Property(e => e.CreatedBy)
 			.IsRequired()

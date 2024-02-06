@@ -3,8 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 using DomainName.Domain.Interfaces.Models.Base;
 
-using Microsoft.EntityFrameworkCore;
-
 namespace DomainName.Domain.Models.Base;
 
 /// <summary>
@@ -12,25 +10,42 @@ namespace DomainName.Domain.Models.Base;
 /// </summary>
 public abstract class DataModelBase : ModelBase, IDataModelBase
 {
+	private Guid _id = default!;
+	private byte[] _timestamp = default!;
+	private string _createdBy = string.Empty;
+	private string? _modifiedBy;
+
 	/// <inheritdoc/>
 	[Key, Column(Order = 1)]
-	[Comment("The primary key of the table.")]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-	public Guid Id { get; private set; } = default!;
+	public Guid Id
+	{
+		get => _id;
+		private set => SetProperty(ref _id, value);
+	}
 
 	/// <inheritdoc/>
 	[Timestamp, Column(Order = 2)]
-	[Comment("The current timestamp or row version.")]
 	[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-	public byte[] Timestamp { get; private set; } = default!;
+	public byte[] Timestamp
+	{
+		get => _timestamp;
+		private set => _timestamp = value;
+	}
 
 	/// <inheritdoc/>
-	[MaxLength(256), Column(Order = 3)]
-	[Comment("The creator of the data row.")]
-	public string CreatedBy { get; set; } = string.Empty;
+	[MaxLength(128), Column(Order = 3)]
+	public string CreatedBy
+	{
+		get => _createdBy;
+		set => _createdBy = value;
+	}
 
 	/// <inheritdoc/>
-	[MaxLength(256), Column(Order = 4)]
-	[Comment("The last modifier of the data row.")]
-	public string? ModifiedBy { get; set; }
+	[MaxLength(128), Column(Order = 4)]
+	public string? ModifiedBy
+	{
+		get => _modifiedBy;
+		set => _modifiedBy = value;
+	}
 }

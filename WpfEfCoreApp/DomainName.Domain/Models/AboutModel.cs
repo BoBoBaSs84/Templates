@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 
+using DomainName.Domain.Interfaces.Models;
 using DomainName.Domain.Models.Base;
 
 namespace DomainName.Domain.Models;
@@ -7,7 +8,7 @@ namespace DomainName.Domain.Models;
 /// <summary>
 /// The about model.
 /// </summary>
-public sealed class AboutModel : ModelBase
+public sealed class AboutModel : ModelBase, IAboutModel
 {
 	private readonly FileVersionInfo _fileVersionInfo;
 
@@ -25,28 +26,18 @@ public sealed class AboutModel : ModelBase
 		Copyright = _fileVersionInfo.LegalCopyright;
 	}
 
-	/// <summary>
-	/// The title of the application.
-	/// </summary>
+	/// <inheritdoc/>
 	public string? Title { get; }
 
-	/// <summary>
-	/// The version of the application.
-	/// </summary>
+	/// <inheritdoc/>
 	public string? Version { get; }
 
-	/// <summary>
-	/// The comments of the application.
-	/// </summary>
+	/// <inheritdoc/>
 	public string? Comments { get; }
 
-	/// <summary>
-	/// The company of the application.
-	/// </summary>
+	/// <inheritdoc/>
 	public string? Company { get; }
 
-	/// <summary>
-	/// The copyright of the application.
-	/// </summary>
+	/// <inheritdoc/>
 	public string? Copyright { get; }
 }

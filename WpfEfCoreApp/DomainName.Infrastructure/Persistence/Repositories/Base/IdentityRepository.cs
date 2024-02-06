@@ -20,48 +20,32 @@ internal abstract class IdentityRepository<T> : GenericRepository<T>, IIdentityR
 
 	public T? GetById(Guid id, bool ignoreQueryFilters = false, bool trackChanges = false)
 	{
-		IQueryable<T> query = !trackChanges ? _dbSet.AsNoTracking() : _dbSet;
-
-		query = query.Where(x => x.Id.Equals(id));
-
-		if (ignoreQueryFilters)
-			query = query.IgnoreQueryFilters();
+		IQueryable<T> query =
+			PrepareQuery(x => x.Id.Equals(id), ignoreQueryFilters: ignoreQueryFilters, trackChanges: trackChanges);
 
 		return query.SingleOrDefault();
 	}
 
 	public async Task<T?> GetByIdAsync(Guid id, bool ignoreQueryFilters = false, bool trackChanges = false, CancellationToken cancellationToken = default)
 	{
-		IQueryable<T> query = !trackChanges ? _dbSet.AsNoTracking() : _dbSet;
-
-		query = query.Where(x => x.Id.Equals(id));
-
-		if (ignoreQueryFilters)
-			query = query.IgnoreQueryFilters();
+		IQueryable<T> query =
+			PrepareQuery(x => x.Id.Equals(id), ignoreQueryFilters: ignoreQueryFilters, trackChanges: trackChanges);
 
 		return await query.SingleOrDefaultAsync(cancellationToken);
 	}
 
 	public IEnumerable<T> GetByIds(IEnumerable<Guid> ids, bool ignoreQueryFilters = false, bool trackChanges = false)
 	{
-		IQueryable<T> query = !trackChanges ? _dbSet.AsNoTracking() : _dbSet;
-
-		query = query.Where(x => ids.Contains(x.Id));
-
-		if (ignoreQueryFilters)
-			query = query.IgnoreQueryFilters();
+		IQueryable<T> query =
+			PrepareQuery(x => ids.Contains(x.Id), ignoreQueryFilters: ignoreQueryFilters, trackChanges: trackChanges);
 
 		return query.ToList();
 	}
 
 	public async Task<IEnumerable<T>> GetByIdsAsync(IEnumerable<Guid> ids, bool ignoreQueryFilters = false, bool trackChanges = false, CancellationToken cancellationToken = default)
 	{
-		IQueryable<T> query = !trackChanges ? _dbSet.AsNoTracking() : _dbSet;
-
-		query = query.Where(x => ids.Contains(x.Id));
-
-		if (ignoreQueryFilters)
-			query = query.IgnoreQueryFilters();
+		IQueryable<T> query =
+			PrepareQuery(x => ids.Contains(x.Id), ignoreQueryFilters: ignoreQueryFilters, trackChanges: trackChanges);
 
 		return await query.ToListAsync(cancellationToken);
 	}

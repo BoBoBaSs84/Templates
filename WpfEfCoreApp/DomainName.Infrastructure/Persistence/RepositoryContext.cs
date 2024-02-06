@@ -1,4 +1,6 @@
-﻿using DomainName.Application.Interfaces.Infrastructure.Services;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using DomainName.Application.Interfaces.Infrastructure.Services;
 using DomainName.Infrastructure.Common;
 using DomainName.Infrastructure.Persistence.Interceptors;
 
@@ -13,6 +15,7 @@ namespace DomainName.Infrastructure.Persistence;
 /// <param name="options">The context options to use.</param>
 /// <param name="changesInterceptor">The save changes interceptor to use.</param>
 /// <param name="loggerService">The logger service instance to use.</param>
+[SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, context configuration.")]
 public sealed partial class RepositoryContext(DbContextOptions<RepositoryContext> options, CustomSaveChangesInterceptor changesInterceptor, ILoggerService<RepositoryContext> loggerService) : DbContext(options)
 {
 	private readonly CustomSaveChangesInterceptor _changesInterceptor = changesInterceptor;
@@ -30,7 +33,7 @@ public sealed partial class RepositoryContext(DbContextOptions<RepositoryContext
 	{
 		base.OnModelCreating(modelBuilder);
 
-		_ = modelBuilder.ApplyConfigurationsFromAssembly(typeof(IInfrastructureAssemblyMarker).Assembly);
+		modelBuilder.ApplyConfigurationsFromAssembly(typeof(IInfrastructureAssemblyMarker).Assembly);
 	}
 
 	/// <inheritdoc/>

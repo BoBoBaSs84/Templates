@@ -214,7 +214,7 @@ internal abstract class GenericRepository<T> : IGenericRepository<T> where T : c
 		return Task.CompletedTask;
 	}
 
-	private IQueryable<T> PrepareQuery(
+	protected IQueryable<T> PrepareQuery(
 		Expression<Func<T, bool>>? expression = null,
 		Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
 		bool ignoreQueryFilters = false,

@@ -1,5 +1,5 @@
 ﻿using DomainName.Application.ViewModels.Base;
-using DomainName.Domain.Models;
+using DomainName.Domain.Interfaces.Models;
 
 namespace DomainName.Application.ViewModels;
 
@@ -7,10 +7,10 @@ namespace DomainName.Application.ViewModels;
 /// The about view model class.
 /// </summary>
 /// <param name="model">The model instance to use.</param>
-public sealed class AboutViewModel(AboutModel model) : ViewModelBase
+public sealed class AboutViewModel(IAboutModel model) : ViewModelBase
 {
 	/// <summary>
 	/// The model instance to use.
 	/// </summary>
-	public AboutModel Model => model;
+	public IAboutModel Model => model;
 }
