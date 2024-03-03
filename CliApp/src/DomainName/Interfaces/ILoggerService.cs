@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace DomainName.Application.Interfaces.Infrastructure.Services;
+namespace DomainName.Interfaces;
 
 /// <summary>
 /// The logger service interface.
 /// </summary>
-/// <typeparam name="T"></typeparam>
+/// <typeparam name="T">The type to work with.</typeparam>
 public interface ILoggerService<T> where T : class
 {
 	/// <summary>
@@ -50,8 +50,7 @@ public interface ILoggerService<T> where T : class
 	/// <param name="param2">Parameter 2</param>
 	/// <param name="param3">Parameter 3</param>
 	/// <param name="exception">Exception (optional)</param>
-	void Log<T1, T2, T3>(Action<ILogger, T1, T2, T3, Exception?> del, T1 param1, T2 param2, T3 param3,
-		Exception? exception = null);
+	void Log<T1, T2, T3>(Action<ILogger, T1, T2, T3, Exception?> del, T1 param1, T2 param2, T3 param3, Exception? exception = null);
 
 	/// <summary>
 	/// Logs a message with the help of a delegate
@@ -66,7 +65,8 @@ public interface ILoggerService<T> where T : class
 	/// <param name="param2">Parameter 2</param>
 	/// <param name="param3">Parameter 3</param>
 	/// <param name="param4">Parameter 4</param>
-	void Log<T1, T2, T3, T4>(Action<ILogger, T1, T2, T3, T4, Exception?> del, T1 param1, T2 param2, T3 param3, T4 param4);
+	/// <param name="exception">Exception (optional)</param>
+	void Log<T1, T2, T3, T4>(Action<ILogger, T1, T2, T3, T4, Exception?> del, T1 param1, T2 param2, T3 param3, T4 param4, Exception? exception = null);
 
 	/// <summary>
 	/// Logs a message with the help of a delegate
@@ -83,7 +83,8 @@ public interface ILoggerService<T> where T : class
 	/// <param name="param3">Parameter 3</param>
 	/// <param name="param4">Parameter 4</param>
 	/// <param name="param5">Parameter 5</param>
-	void Log<T1, T2, T3, T4, T5>(Action<ILogger, T1, T2, T3, T4, T5, Exception?> del, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5);
+	/// <param name="exception">Exception (optional)</param>
+	void Log<T1, T2, T3, T4, T5>(Action<ILogger, T1, T2, T3, T4, T5, Exception?> del, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, Exception? exception = null);
 
 	/// <summary>
 	/// Logs a message with the help of a delegate
@@ -102,5 +103,6 @@ public interface ILoggerService<T> where T : class
 	/// <param name="param4">Parameter 4</param>
 	/// <param name="param5">Parameter 5</param>
 	/// <param name="param6">Parameter 6</param>
-	void Log<T1, T2, T3, T4, T5, T6>(Action<ILogger, T1, T2, T3, T4, T5, T6, Exception?> del, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6);
+	/// <param name="exception">Exception (optional)</param>
+	void Log<T1, T2, T3, T4, T5, T6>(Action<ILogger, T1, T2, T3, T4, T5, T6, Exception?> del, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6, Exception? exception = null);
 }
