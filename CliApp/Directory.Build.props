@@ -1,45 +1,50 @@
 <Project>
 
-	<PropertyGroup>
+	<PropertyGroup Label="VersionData">
 		<VersionMajor>$([System.DateTime]::UtcNow.Year)</VersionMajor>
 		<VersionMinor>$([System.DateTime]::UtcNow.Month)</VersionMinor>
 		<VersionPatch>$([System.DateTime]::UtcNow.Day)</VersionPatch>
 		<VersionRevision>$([System.DateTime]::UtcNow.TimeOfDay.TotalMinutes.ToString("0"))</VersionRevision>
 		<VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch).$(VersionRevision)</VersionPrefix>
-		<VersionSuffix Condition="'$(Configuration)'=='Debug'">Development</VersionSuffix>
+		<VersionSuffix Condition="$(Configuration.Equals('Debug'))">Development</VersionSuffix>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+	<PropertyGroup Label="ProjectData">
+		<AllowUnsafeBlocks>False</AllowUnsafeBlocks>
 		<AnalysisLevel>latest</AnalysisLevel>
-		<AnalysisMode>recommended</AnalysisMode>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-		<DebugType>full</DebugType>
-		<Deterministic>true</Deterministic>
-		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<!--<AssemblyOriginatorKeyFile>..\..\PublicKey.snk</AssemblyOriginatorKeyFile>-->
+		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+		<DebugType>none</DebugType>
+		<Deterministic>True</Deterministic>
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 		<GeneratedAssemblyInfoFile>Properties\AssemblyInfo.cs</GeneratedAssemblyInfoFile>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>latest</LangVersion>
-		<NeutralLanguage>en-US</NeutralLanguage>
 		<Nullable>enable</Nullable>
-		<TargetFramework>net6.0</TargetFramework>
-		<Platforms>x64;AnyCPU;x86</Platforms>
+		<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+		<!--<SignAssembly>true</SignAssembly>-->
+		<TargetFramework>net8.0</TargetFramework>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)'=='Release'">
-		<DebugType>none</DebugType>
-		<GenerateDocumentationFile>false</GenerateDocumentationFile>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))">
+	<PropertyGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))" Label="MetaData">
 		<Authors>BoBoBaSs84</Authors>
 		<Company>https://github.com/BoBoBaSs84</Company>
 		<Copyright>Copyright © $(VersionMajor) BoBoBaSs84</Copyright>
-		<Product>DomainName</Product>
+		<Description>...</Description>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<Product>$(AssemblyName)</Product>
 		<Title>$(AssemblyName)</Title>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/BoBoBaSs84/$(Product)</RepositoryUrl>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(Configuration.Equals('Debug'))">
+		<DebugType>full</DebugType>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
@@ -49,7 +54,13 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))">
-		<InternalsVisibleTo Include="$(AssemblyName).Tests" />
+		<InternalsVisibleTo Include="$(AssemblyName)Tests" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
+		<Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+		<Using Include="System.Diagnostics" />
+		<Using Include="System.Diagnostics.CodeAnalysis" />
 	</ItemGroup>
 
 	<ItemGroup>

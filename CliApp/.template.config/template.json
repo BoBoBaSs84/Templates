@@ -6,7 +6,7 @@
 		"Console"
 	],
 	"name": "BB84 - Command line console application.",
-	"description": "The command line console application template (Net6.0). Unit test projects not included.",
+	"description": "The command line console application template (Net8.0). Unit test project included.",
 	"identity": "BB84.Net.Console.Cli",
 	"groupIdentity": "BB84.Net.Console",
 	"shortName": "bb84-console-cli",
