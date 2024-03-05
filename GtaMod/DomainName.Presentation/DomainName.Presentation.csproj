@@ -1,11 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
 	<ItemGroup>
-	  <PackageReference Include="LemonUI.SHVDN3" Version="2.0.0" />
+		<PackageReference Include="LemonUI.SHVDN3" />
 	</ItemGroup>
-
 	<ItemGroup>
-	  <ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />
+		<ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />
 	</ItemGroup>
-
 </Project>

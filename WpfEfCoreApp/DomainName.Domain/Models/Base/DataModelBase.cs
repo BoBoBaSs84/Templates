@@ -30,7 +30,7 @@ public abstract class DataModelBase : ModelBase, IDataModelBase
 	public byte[] Timestamp
 	{
 		get => _timestamp;
-		private set => _timestamp = value;
+		private set => SetProperty(ref _timestamp, value);
 	}
 
 	/// <inheritdoc/>
@@ -38,7 +38,7 @@ public abstract class DataModelBase : ModelBase, IDataModelBase
 	public string CreatedBy
 	{
 		get => _createdBy;
-		set => _createdBy = value;
+		set => SetProperty(ref _createdBy, value);
 	}
 
 	/// <inheritdoc/>
@@ -46,6 +46,6 @@ public abstract class DataModelBase : ModelBase, IDataModelBase
 	public string? ModifiedBy
 	{
 		get => _modifiedBy;
-		set => _modifiedBy = value;
+		set => SetProperty(ref _modifiedBy, value);
 	}
 }
