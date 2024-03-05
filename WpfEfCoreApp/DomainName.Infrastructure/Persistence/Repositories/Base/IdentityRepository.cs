@@ -9,15 +9,9 @@ namespace DomainName.Infrastructure.Persistence.Repositories.Base;
 /// The identity repository class.
 /// </summary>
 /// <typeparam name="T">The type to work with.</typeparam>
-internal abstract class IdentityRepository<T> : GenericRepository<T>, IIdentityRepository<T> where T : DataModelBase
+/// <inheritdoc/>
+internal abstract class IdentityRepository<T>(DbContext dbContext) : GenericRepository<T>(dbContext), IIdentityRepository<T> where T : DataModelBase
 {
-	/// <summary>
-	/// Initializes an instance of <see cref="IdentityRepository{T}"/> class.
-	/// </summary>
-	/// <inheritdoc/>
-	protected IdentityRepository(DbContext dbContext) : base(dbContext)
-	{ }
-
 	public T? GetById(Guid id, bool ignoreQueryFilters = false, bool trackChanges = false)
 	{
 		IQueryable<T> query =
@@ -39,7 +33,7 @@ internal abstract class IdentityRepository<T> : GenericRepository<T>, IIdentityR
 		IQueryable<T> query =
 			PrepareQuery(x => ids.Contains(x.Id), ignoreQueryFilters: ignoreQueryFilters, trackChanges: trackChanges);
 
-		return query.ToList();
+		return [.. query];
 	}
 
 	public async Task<IEnumerable<T>> GetByIdsAsync(IEnumerable<Guid> ids, bool ignoreQueryFilters = false, bool trackChanges = false, CancellationToken cancellationToken = default)
