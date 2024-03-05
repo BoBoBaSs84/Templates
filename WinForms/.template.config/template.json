@@ -6,10 +6,10 @@
 		"WinForms"
 	],
 	"name": "BB84 - Windows Forms App",
-	"description": "The Windows Forms App Template (.Net 6.0). Unit test project not included.",
-	"identity": "BB84.Net.Windows.Forms.App.6",
+	"description": "The Windows Forms App Template (.Net 8.0). Unit test project not included.",
+	"identity": "BB84.Net.Windows.Forms.App.8",
 	"groupIdentity": "BB84.Net.Windows.Forms",
-	"shortName": "bb84-winforms-net6",
+	"shortName": "bb84-winforms-net8",
 	"tags": {
 		"language": "C#",
 		"type": "project"
