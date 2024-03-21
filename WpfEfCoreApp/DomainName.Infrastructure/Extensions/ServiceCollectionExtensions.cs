@@ -25,6 +25,7 @@ internal static class ServiceCollectionExtensions
 	/// Registers the logger service to the service collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
+	/// <param name="environment">The host environment to use.</param>
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterLoggerService(this IServiceCollection services, IHostEnvironment environment)
 	{
@@ -32,12 +33,14 @@ internal static class ServiceCollectionExtensions
 
 		services.AddLogging(config =>
 		{
+			config.ClearProviders();
 			config.AddEventLog(config => config.SourceName = environment.ApplicationName);
-#if DEBUG
-			config.SetMinimumLevel(LogLevel.Debug);
-#else
-			config.SetMinimumLevel(LogLevel.Warning);
-#endif
+
+			if (environment.IsDevelopment())
+				config.SetMinimumLevel(LogLevel.Debug);
+
+			if (environment.IsProduction())
+				config.SetMinimumLevel(LogLevel.Warning);
 		});
 
 		return services;
@@ -60,8 +63,8 @@ internal static class ServiceCollectionExtensions
 	/// Registers the repository contex to the service collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
-	/// <param name="configuration">The current configuration.</param>
-	/// <param name="environment">The current hosting environment.</param>
+	/// <param name="configuration">The current configuration instance to use.</param>
+	/// <param name="environment">The  host environment instance to use.</param>
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterRepositoryContext(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
 	{
