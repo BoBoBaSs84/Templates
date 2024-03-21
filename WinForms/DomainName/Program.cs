@@ -33,7 +33,7 @@ internal sealed class Program
 
 		s_serviceProvider = host.Services;
 		s_logger = GetService<ILoggerService<Program>>();
-		AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
+		AppDomain.CurrentDomain.UnhandledException += (s, e) => OnUnhandledException(e.ExceptionObject as Exception);
 
 		s_logger.Log(LogInformation, "Starting application..");
 
@@ -49,16 +49,9 @@ internal sealed class Program
 		: service;
 
 	private static IHostBuilder CreateDefaultBuilder()
-		=> Host.CreateDefaultBuilder()
-		.ConfigureServices((context, services) =>
-		{
-			_ = services.AddInfrastructureServices();
-			_ = services.AddPresentationServices();
-		});
+		=> Host.CreateDefaultBuilder().ConfigureServices((context, services)
+			=> services.AddInfrastructureServices(context.HostingEnvironment).AddPresentationServices());
 
-	private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs args)
-	{
-		Exception? ex = args.ExceptionObject as Exception;
-		s_logger.Log(LogCritical, ex);
-	}
+	private static void OnUnhandledException(Exception? exception)
+		=> s_logger.Log(LogCritical, exception);
 }

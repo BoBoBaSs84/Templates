@@ -1,20 +1,19 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
+using DomainName.Interfaces;
+using DomainName.Services;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
-using DomainName.Interfaces;
-
-using DomainName.Services;
 
 namespace DomainName.Extensions;
 
 /// <summary>
 /// The service collection extensions class.
 /// </summary>
-[SuppressMessage("Style", "IDE0058", Justification = "Not relevant here.")]
+[SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, dependency injection.")]
 internal static class ServiceCollectionExtensions
 {
 	/// <summary>
@@ -37,14 +36,16 @@ internal static class ServiceCollectionExtensions
 	{
 		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 
-		services.AddLogging(configure =>
+		services.AddLogging(config =>
 		{
-			configure.AddEventLog(settings => settings.SourceName = environment.ApplicationName);
-#if DEBUG
-			configure.SetMinimumLevel(LogLevel.Debug);
-#else
-			configure.SetMinimumLevel(LogLevel.Warning);
-#endif
+			config.ClearProviders();
+			config.AddEventLog(config => config.SourceName = environment.ApplicationName);
+
+			if (environment.IsDevelopment())
+				config.SetMinimumLevel(LogLevel.Debug);
+
+			if (environment.IsProduction())
+				config.SetMinimumLevel(LogLevel.Warning);
 		});
 
 		return services;

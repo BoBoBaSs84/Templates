@@ -18,6 +18,8 @@ public static class DependencyInjection
 	/// Registers the infrastructure services to the service collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
+	/// <param name="configuration">The current configuration instance to use.</param>
+	/// <param name="environment">The  host environment instance to use.</param>
 	/// <returns>The enriched service collection.</returns>
 	public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
 	{

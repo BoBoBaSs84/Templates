@@ -32,6 +32,7 @@ public partial class App : WinApplication
 	public App()
 	{
 		_host = CreateHostBuilder().Build();
+
 		_loggerService = _host.Services.GetRequiredService<ILoggerService<App>>();
 
 		DispatcherUnhandledException += (s, e) => OnUnhandledException(e.Exception);
@@ -59,7 +60,6 @@ public partial class App : WinApplication
 		=> _loggerService.Log(LogCritical, exception);
 
 	private static IHostBuilder CreateHostBuilder()
-		=> Host.CreateDefaultBuilder()
-		.ConfigureServices(services
-			=> services.RegisterServices());
+		=> Host.CreateDefaultBuilder().ConfigureServices((context, services)
+			=> services.RegisterServices(context.HostingEnvironment));
 }
