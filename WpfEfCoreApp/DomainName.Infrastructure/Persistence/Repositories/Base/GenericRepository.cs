@@ -10,7 +10,7 @@ namespace DomainName.Infrastructure.Persistence.Repositories.Base;
 /// <summary>
 /// The generic repository class.
 /// </summary>
-/// <typeparam name="T">The type to work with.</typeparam>
+/// <typeparam name="T">The entity type to work with.</typeparam>
 /// <remarks>
 /// Any context that inherits from <see cref="DbContext"/> should work.
 /// </remarks>
@@ -33,17 +33,34 @@ internal abstract class GenericRepository<T>(DbContext dbContext) : IGenericRepo
 	public async Task CreateAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default)
 		=> await _dbSet.AddRangeAsync(entities, cancellationToken);
 
-	public int Count(Expression<Func<T, bool>>? expression = null, Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
-		bool ignoreQueryFilters = false)
+	public int Count(
+		Expression<Func<T, bool>>? expression = null,
+		Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
+		bool ignoreQueryFilters = false
+		)
 	{
-		IQueryable<T> query = PrepareQuery(expression, queryFilter, ignoreQueryFilters);
+		IQueryable<T> query = PrepareQuery(
+			expression: expression,
+			queryFilter: queryFilter,
+			ignoreQueryFilters: ignoreQueryFilters
+			);
+
 		return query.Count();
 	}
 
-	public async Task<int> CountAsync(Expression<Func<T, bool>>? expression = null, Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
-		bool ignoreQueryFilters = false, CancellationToken cancellationToken = default)
+	public async Task<int> CountAsync(
+		Expression<Func<T, bool>>? expression = null,
+		Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
+		bool ignoreQueryFilters = false,
+		CancellationToken cancellationToken = default
+		)
 	{
-		IQueryable<T> query = PrepareQuery(expression, queryFilter, ignoreQueryFilters);
+		IQueryable<T> query = PrepareQuery(
+			expression: expression,
+			queryFilter: queryFilter,
+			ignoreQueryFilters: ignoreQueryFilters
+			);
+
 		return await query.CountAsync(cancellationToken);
 	}
 
@@ -68,38 +85,61 @@ internal abstract class GenericRepository<T>(DbContext dbContext) : IGenericRepo
 	public IEnumerable<T> GetAll(bool ignoreQueryFilters = false, bool trackChanges = false)
 	{
 		IQueryable<T> query = PrepareQuery(
-			ignoreQueryFilters: ignoreQueryFilters, trackChanges: trackChanges
+			ignoreQueryFilters: ignoreQueryFilters,
+			trackChanges: trackChanges
 			);
 
 		return [.. query];
 	}
 
-	public async Task<IEnumerable<T>> GetAllAsync(bool ignoreQueryFilters = false, bool trackChanges = false,
-		CancellationToken cancellationToken = default)
+	public async Task<IEnumerable<T>> GetAllAsync(
+		bool ignoreQueryFilters = false,
+		bool trackChanges = false,
+		CancellationToken cancellationToken = default
+		)
 	{
 		IQueryable<T> query = PrepareQuery(
-			ignoreQueryFilters: ignoreQueryFilters, trackChanges: trackChanges
+			ignoreQueryFilters: ignoreQueryFilters,
+			trackChanges: trackChanges
 			);
 
 		return await query.ToListAsync(cancellationToken);
 	}
 
-	public T? GetByCondition(Expression<Func<T, bool>> expression, Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
-		bool ignoreQueryFilters = false, bool trackChanges = false, params string[] includeProperties)
+	public T? GetByCondition(
+		Expression<Func<T, bool>> expression,
+		Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
+		bool ignoreQueryFilters = false,
+		bool trackChanges = false,
+		params string[] includeProperties
+		)
 	{
-		IQueryable<T> query = PrepareQuery(expression, queryFilter, ignoreQueryFilters,
-			trackChanges: trackChanges, includeProperties: includeProperties
+		IQueryable<T> query = PrepareQuery(
+			expression: expression,
+			queryFilter: queryFilter,
+			ignoreQueryFilters: ignoreQueryFilters,
+			trackChanges: trackChanges,
+			includeProperties: includeProperties
 			);
 
 		return query.SingleOrDefault();
 	}
 
-	public async Task<T?> GetByConditionAsync(Expression<Func<T, bool>> expression, Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
-		bool ignoreQueryFilters = false, bool trackChanges = false, CancellationToken cancellationToken = default,
-		params string[] includeProperties)
+	public async Task<T?> GetByConditionAsync(
+		Expression<Func<T, bool>> expression,
+		Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
+		bool ignoreQueryFilters = false,
+		bool trackChanges = false,
+		CancellationToken cancellationToken = default,
+		params string[] includeProperties
+		)
 	{
-		IQueryable<T> query = PrepareQuery(expression, queryFilter, ignoreQueryFilters,
-			trackChanges: trackChanges, includeProperties: includeProperties
+		IQueryable<T> query = PrepareQuery(
+			expression: expression,
+			queryFilter: queryFilter,
+			ignoreQueryFilters: ignoreQueryFilters,
+			trackChanges: trackChanges,
+			includeProperties: includeProperties
 			);
 
 		return await query.SingleOrDefaultAsync(cancellationToken);
@@ -116,7 +156,14 @@ internal abstract class GenericRepository<T>(DbContext dbContext) : IGenericRepo
 		params string[] includeProperties)
 	{
 		IQueryable<T> query = PrepareQuery(
-			expression, queryFilter, ignoreQueryFilters, orderBy, take, skip, trackChanges, includeProperties
+			expression: expression,
+			queryFilter: queryFilter,
+			ignoreQueryFilters: ignoreQueryFilters,
+			orderBy: orderBy,
+			take: take,
+			skip: skip,
+			trackChanges: trackChanges,
+			includeProperties: includeProperties
 			);
 
 		return [.. query];
@@ -134,21 +181,34 @@ internal abstract class GenericRepository<T>(DbContext dbContext) : IGenericRepo
 		params string[] includeProperties)
 	{
 		IQueryable<T> query = PrepareQuery(
-			expression, queryFilter, ignoreQueryFilters, orderBy, take, skip, trackChanges, includeProperties
+			expression: expression,
+			queryFilter: queryFilter,
+			ignoreQueryFilters: ignoreQueryFilters,
+			orderBy: orderBy,
+			take: take,
+			skip: skip,
+			trackChanges: trackChanges,
+			includeProperties: includeProperties
 			);
 
 		return await query.ToListAsync(cancellationToken);
 	}
 
-	public int TotalCount(bool ignoreQueryFilters = false)
+	public int Count(bool ignoreQueryFilters = false)
 	{
-		IQueryable<T> query = PrepareQuery(ignoreQueryFilters: ignoreQueryFilters);
+		IQueryable<T> query = PrepareQuery(
+			ignoreQueryFilters: ignoreQueryFilters
+			);
+
 		return query.Count();
 	}
 
-	public async Task<int> TotalCountAsync(bool ignoreQueryFilters = false, CancellationToken cancellationToken = default)
+	public async Task<int> CountAsync(bool ignoreQueryFilters = false, CancellationToken cancellationToken = default)
 	{
-		IQueryable<T> query = PrepareQuery(ignoreQueryFilters: ignoreQueryFilters);
+		IQueryable<T> query = PrepareQuery(
+			ignoreQueryFilters: ignoreQueryFilters
+			);
+
 		return await query.CountAsync(cancellationToken);
 	}
 

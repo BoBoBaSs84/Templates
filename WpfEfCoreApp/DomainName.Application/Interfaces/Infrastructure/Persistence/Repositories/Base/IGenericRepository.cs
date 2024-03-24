@@ -8,13 +8,13 @@ namespace DomainName.Application.Interfaces.Infrastructure.Persistence.Repositor
 public interface IGenericRepository<T> where T : class
 {
 	/// <summary>
-	/// Creates an entity of type <typeparamref name="T"/>.
+	/// Creates an entity.
 	/// </summary>
 	/// <param name="entity">The entity to create.</param>
 	void Create(T entity);
 
 	/// <summary>
-	/// Creates an entity of type <typeparamref name="T"/>.
+	/// Creates an entity.
 	/// </summary>
 	/// <param name="entity">The entity to create.</param>
 	/// <param name="cancellationToken">The cancellation token to cancel the request.</param>
@@ -22,13 +22,13 @@ public interface IGenericRepository<T> where T : class
 	Task CreateAsync(T entity, CancellationToken cancellationToken = default);
 
 	/// <summary>
-	/// Creates multiple entities of type <typeparamref name="T"/>.
+	/// Creates multiple entities.
 	/// </summary>
 	/// <param name="entities">The entities to create.</param>
 	void Create(IEnumerable<T> entities);
 
 	/// <summary>
-	/// Creates multiple entities of type <typeparamref name="T"/>.
+	/// Creates multiple entities.
 	/// </summary>
 	/// <param name="entities">The entities to create.</param>
 	/// <param name="cancellationToken">The cancellation token to cancel the request.</param>
@@ -36,38 +36,47 @@ public interface IGenericRepository<T> where T : class
 	Task CreateAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 
 	/// <summary>
-	/// Deletes an entity of type <typeparamref name="T"/>.
+	/// Deletes an entity.
 	/// </summary>
 	/// <param name="entity">The entity to delete.</param>
 	void Delete(T entity);
 
 	/// <summary>
-	/// Deletes an entity of type <typeparamref name="T"/>.
+	/// Deletes an entity.
 	/// </summary>
 	/// <param name="entity">The entity to delete.</param>
 	/// <returns><see cref="Task"/></returns>
 	Task DeleteAsync(T entity);
 
 	/// <summary>
-	/// Deletes multiple entities of type <typeparamref name="T"/>.
+	/// Deletes multiple entities.
 	/// </summary>
 	/// <param name="entities">The entities to delete.</param>
 	void Delete(IEnumerable<T> entities);
 
 	/// <summary>
-	/// Deletes multiple entities of type <typeparamref name="T"/>.
+	/// Deletes multiple entities.
 	/// </summary>
 	/// <param name="entities">The entities to delete.</param>
 	/// <returns><see cref="Task"/></returns>
 	Task DeleteAsync(IEnumerable<T> entities);
 
 	/// <summary>
-	/// Returns the number of entities of type <typeparamref name="T"/> based on the given criteria.
+	/// Returns the number of all entities.
+	/// </summary>
+	/// <param name="ignoreQueryFilters">Should model-level entity query filters be applied?</param>
+	/// <returns>The number of all entities.</returns>
+	int Count(
+		bool ignoreQueryFilters = false
+		);
+
+	/// <summary>
+	/// Returns the number of entities based on the given expression.
 	/// </summary>
 	/// <param name="expression">The condition the entities must fulfill to be counted.</param>
 	/// <param name="queryFilter">The function used to filter the entities.</param>
 	/// <param name="ignoreQueryFilters">Should model-level entity query filters be applied?</param>
-	/// <returns>The number of entities in dependence to the expression.</returns>
+	/// <returns>The number of entities.</returns>
 	int Count(
 		Expression<Func<T, bool>>? expression = null,
 		Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
@@ -75,13 +84,24 @@ public interface IGenericRepository<T> where T : class
 		);
 
 	/// <summary>
-	/// Returns the number of entities of type <typeparamref name="T"/> based on the given criteria.
+	/// Returns the number of all entities.
+	/// </summary>
+	/// <param name="ignoreQueryFilters">Should model-level entity query filters be applied?</param>
+	/// <param name="cancellationToken">The cancellation token to cancel the request.</param>
+	/// <returns>The number of all entities.</returns>
+	Task<int> CountAsync(
+		bool ignoreQueryFilters = false,
+		CancellationToken cancellationToken = default
+		);
+
+	/// <summary>
+	/// Returns the number of entities based on the given expression.
 	/// </summary>
 	/// <param name="expression">The condition the entities must fulfill to be counted.</param>
 	/// <param name="queryFilter">The function used to filter the entities.</param>
 	/// <param name="ignoreQueryFilters">Should model-level entity query filters be applied?</param>
 	/// <param name="cancellationToken">The cancellation token to cancel the request.</param>
-	/// <returns>The number of entities in dependence to the expression.</returns>
+	/// <returns>The number of entities.</returns>
 	Task<int> CountAsync(
 		Expression<Func<T, bool>>? expression = null,
 		Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
@@ -90,23 +110,23 @@ public interface IGenericRepository<T> where T : class
 		);
 
 	/// <summary>
-	/// Returns all entries of the <typeparamref name="T"/> entity.
+	/// Returns all entities.
 	/// </summary>
-	/// <param name="ignoreQueryFilters"></param>
-	/// <param name="trackChanges"></param>
-	/// <returns></returns>
+	/// <param name="ignoreQueryFilters">Should model-level entity query filters be applied?</param>
+	/// <param name="trackChanges">Should the fetched entries be tracked?</param>
+	/// <returns>A collection of all entities.</returns>
 	IEnumerable<T> GetAll(
 		bool ignoreQueryFilters = false,
 		bool trackChanges = false
 		);
 
 	/// <summary>
-	/// Returns all entries of the <typeparamref name="T"/> entity.
+	/// Returns all entities.
 	/// </summary>
 	/// <param name="ignoreQueryFilters">Should model-level entity query filters be applied?</param>
 	/// <param name="trackChanges">Should the fetched entries be tracked?</param>
 	/// <param name="cancellationToken">The cancellation token to cancel the request.</param>
-	/// <returns>A list of entries.</returns>
+	/// <returns>A collection of all entities.</returns>
 	Task<IEnumerable<T>> GetAllAsync(
 		bool ignoreQueryFilters = false,
 		bool trackChanges = false,
@@ -114,7 +134,7 @@ public interface IGenericRepository<T> where T : class
 		);
 
 	/// <summary>
-	/// Returns a collection of <typeparamref name="T"/> entities based on the specified criteria.
+	/// Returns a collection of entities based on the specified expression.
 	/// </summary>
 	/// <param name="expression">The condition the entities must fulfill to be returned.</param>
 	/// <param name="queryFilter">The function used to filter the entities.</param>
@@ -137,7 +157,7 @@ public interface IGenericRepository<T> where T : class
 		);
 
 	/// <summary>
-	/// Returns a collection of <typeparamref name="T"/> entities based on the specified criteria.
+	/// Returns a collection of entities based on the specified expression.
 	/// </summary>
 	/// <param name="expression">The condition the entities must fulfill to be returned.</param>
 	/// <param name="queryFilter">The function used to filter the entities.</param>
@@ -162,14 +182,14 @@ public interface IGenericRepository<T> where T : class
 		);
 
 	/// <summary>
-	/// Returns an entity of type <typeparamref name="T"/> by a certain condition.
+	/// Returns an entity based on the specified expression.
 	/// </summary>
 	/// <param name="expression">The search condition.</param>
 	/// <param name="queryFilter">The function used to filter the entities.</param>
 	/// <param name="ignoreQueryFilters">Should model-level entity query filters be applied?</param>
 	/// <param name="trackChanges">Should the fetched entity be tracked?</param>
 	/// <param name="includeProperties">Any other navigation properties to include when returning the entity.</param>
-	/// <returns>One entry of an entity.</returns>
+	/// <returns>The entity based on the specified expression or <see langword="null"/>.</returns>
 	T? GetByCondition(
 		Expression<Func<T, bool>> expression,
 		Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
@@ -179,7 +199,7 @@ public interface IGenericRepository<T> where T : class
 		);
 
 	/// <summary>
-	/// Returns an entity of type <typeparamref name="T"/> by a certain condition.
+	/// Returns an entity based on the specified expression.
 	/// </summary>
 	/// <param name="expression">The search condition.</param>
 	/// <param name="queryFilter">The function used to filter the entities.</param>
@@ -187,7 +207,7 @@ public interface IGenericRepository<T> where T : class
 	/// <param name="trackChanges">Should the fetched entity be tracked?</param>
 	/// <param name="cancellationToken">The cancellation token to cancel the request.</param>
 	/// <param name="includeProperties">Any other navigation properties to include when returning the entity.</param>
-	/// <returns>One entry of an entity.</returns>
+	/// <returns>The entity based on the specified expression or <see langword="null"/>.</returns>
 	Task<T?> GetByConditionAsync(
 		Expression<Func<T, bool>> expression,
 		Func<IQueryable<T>, IQueryable<T>>? queryFilter = null,
@@ -198,46 +218,26 @@ public interface IGenericRepository<T> where T : class
 		);
 
 	/// <summary>
-	/// Returns the number of all entities of type <typeparamref name="T"/>.
-	/// </summary>
-	/// <param name="ignoreQueryFilters">Should model-level entity query filters be applied?</param>
-	/// <returns>The number of all entities.</returns>
-	int TotalCount(
-		bool ignoreQueryFilters = false
-		);
-
-	/// <summary>
-	/// Returns the number of all entities of type <typeparamref name="T"/>.
-	/// </summary>
-	/// <param name="ignoreQueryFilters">Should model-level entity query filters be applied?</param>
-	/// <param name="cancellationToken">The cancellation token to cancel the request.</param>
-	/// <returns>The number of all entities.</returns>
-	Task<int> TotalCountAsync(
-		bool ignoreQueryFilters = false,
-		CancellationToken cancellationToken = default
-		);
-
-	/// <summary>
-	/// Updates an entity of type <typeparamref name="T"/>.
+	/// Updates an entity.
 	/// </summary>
 	/// <param name="entity">The entity to update.</param>
 	void Update(T entity);
 
 	/// <summary>
-	/// Updates an entity of type <typeparamref name="T"/>.
+	/// Updates an entity.
 	/// </summary>
 	/// <param name="entity">The entity to update.</param>
 	/// <returns><see cref="Task"/></returns>
 	Task UpdateAsync(T entity);
 
 	/// <summary>
-	/// Updates multiple entities of type <typeparamref name="T"/>.
+	/// Updates multiple entities.
 	/// </summary>
 	/// <param name="entities">The entities to update.</param>
 	void Update(IEnumerable<T> entities);
 
 	/// <summary>
-	/// Updates multiple entities of type <typeparamref name="T"/>.
+	/// Updates multiple entities.
 	/// </summary>
 	/// <param name="entities">The entities to update.</param>
 	/// <returns><see cref="Task"/></returns>
