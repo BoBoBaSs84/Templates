@@ -1,7 +1,7 @@
 <Project>
   <ItemGroup>
     <PackageVersion Include="BB84.Extensions" Version="2.2.0" />
-    <PackageVersion Include="BB84.Notifications" Version="2.1.1" />
+    <PackageVersion Include="BB84.Notifications" Version="3.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
