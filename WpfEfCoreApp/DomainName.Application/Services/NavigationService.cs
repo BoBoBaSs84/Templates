@@ -9,7 +9,7 @@ namespace DomainName.Application.Services;
 /// The navigation service class.
 /// </summary>
 /// <param name="viewModelFactory">The view model factory to use.</param>
-internal sealed class NavigationService(Func<Type, ViewModelBase> viewModelFactory) : NotificationObject, INavigationService
+internal sealed class NavigationService(Func<Type, ViewModelBase> viewModelFactory) : NotifiableObject, INavigationService
 {
 	private ViewModelBase _currentView = default!;
 
