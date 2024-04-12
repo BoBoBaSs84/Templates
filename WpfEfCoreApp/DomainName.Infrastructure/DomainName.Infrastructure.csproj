@@ -5,7 +5,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+		<PackageReference Include="BB84.EntityFrameworkCore.Repositories" />
+		<PackageReference Include="BB84.EntityFrameworkCore.Repositories.SqlServer" />
 	</ItemGroup>
 
 	<ItemGroup>

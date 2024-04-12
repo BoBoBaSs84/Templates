@@ -1,5 +1,6 @@
-﻿using DomainName.Application.Interfaces.Application.Services;
-using DomainName.Domain.Models.Base;
+﻿using BB84.EntityFrameworkCore.Models.Abstractions.Components;
+
+using DomainName.Application.Interfaces.Application.Services;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -34,7 +35,7 @@ public sealed class CustomSaveChangesInterceptor(IUserService userService) : Sav
 		if (context is null)
 			return;
 
-		foreach (EntityEntry<DataModelBase> entry in context.ChangeTracker.Entries<DataModelBase>())
+		foreach (EntityEntry<IAudited> entry in context.ChangeTracker.Entries<IAudited>())
 		{
 			if (entry.State is EntityState.Deleted or EntityState.Modified)
 				entry.Entity.ModifiedBy = _userService.User;
