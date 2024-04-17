@@ -5,5 +5,5 @@ namespace DomainName.Domain.Interfaces.Models.Base;
 /// <summary>
 /// The model base interface.
 /// </summary>
-public interface IModelBase : IValidatableObject
+public interface IModelBase : INotifiableObject
 { }

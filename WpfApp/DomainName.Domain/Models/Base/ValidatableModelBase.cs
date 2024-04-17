@@ -3,7 +3,7 @@
 namespace DomainName.Domain.Models.Base;
 
 /// <summary>
-/// The model base class.
+/// The validatable model base class.
 /// </summary>
-public abstract class ModelBase : NotifiableObject
+public abstract class ValidatableModelBase : ValidatableObject
 { }

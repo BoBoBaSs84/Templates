@@ -22,7 +22,7 @@ internal static class ServiceCollectionExtensions
 	/// <param name="services">The service collection to enrich.</param>
 	/// <param name="environment">The host environment to use.</param>
 	/// <returns>The enriched service collection.</returns>
-	internal static IServiceCollection AddLoggerService(this IServiceCollection services, IHostEnvironment environment)
+	internal static IServiceCollection RegisterLoggerService(this IServiceCollection services, IHostEnvironment environment)
 	{
 		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 
