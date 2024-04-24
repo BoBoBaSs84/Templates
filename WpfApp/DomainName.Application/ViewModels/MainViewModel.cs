@@ -1,5 +1,5 @@
-﻿using BB84.Notifications;
-using BB84.Notifications.Interfaces;
+﻿using BB84.Notifications.Commands;
+using BB84.Notifications.Interfaces.Commands;
 
 using DomainName.Application.Interfaces.Application.Services;
 using DomainName.Application.ViewModels.Base;
@@ -12,8 +12,8 @@ namespace DomainName.Application.ViewModels;
 /// <param name="navigationService">The navigation service instance to use.</param>
 public sealed class MainViewModel(INavigationService navigationService) : ViewModelBase
 {
-	private IRelayCommand? _aboutCommand;
-	private IRelayCommand? _exitCommand;
+	private IActionCommand? _aboutCommand;
+	private IActionCommand? _exitCommand;
 
 	/// <summary>
 	/// The navigation service instance.
@@ -23,12 +23,12 @@ public sealed class MainViewModel(INavigationService navigationService) : ViewMo
 	/// <summary>
 	/// The command to show the about window.
 	/// </summary>
-	public IRelayCommand AboutCommand
-		=> _aboutCommand ??= new RelayCommand(NavigationService.NavigateTo<AboutViewModel>);
+	public IActionCommand AboutCommand
+		=> _aboutCommand ??= new ActionCommand(NavigationService.NavigateTo<AboutViewModel>);
 
 	/// <summary>
 	/// The command to exit the application.
 	/// </summary>
-	public IRelayCommand ExitCommand
-		=> _exitCommand ??= new RelayCommand(() => Environment.Exit(0));
+	public IActionCommand ExitCommand
+		=> _exitCommand ??= new ActionCommand(() => Environment.Exit(0));
 }
