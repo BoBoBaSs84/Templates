@@ -1,8 +1,11 @@
 <Project>
-  <ItemGroup>
-    <PackageVersion Include="BB84.Extensions" Version="2.3.421" />
-    <PackageVersion Include="BB84.Notifications" Version="3.2.520" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-  </ItemGroup>
+	<PropertyGroup>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageVersion Include="BB84.Extensions" Version="2.3.421" />
+		<PackageVersion Include="BB84.Notifications" Version="3.2.520" />
+		<PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+		<PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+	</ItemGroup>
 </Project>

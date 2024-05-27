@@ -1,13 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
 	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
 		<OutputType>WinExe</OutputType>
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
-
 	<ItemGroup>
 		<ProjectReference Include="..\DomainName.Infrastructure\DomainName.Infrastructure.csproj" />
 		<ProjectReference Include="..\DomainName.Presentation\DomainName.Presentation.csproj" />
 	</ItemGroup>
-
 </Project>

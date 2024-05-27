@@ -1,15 +1,16 @@
 <Project>
 
-	<PropertyGroup>
-		<VersionMajor>$([System.DateTime]::UtcNow.Year)</VersionMajor>
-		<VersionMinor>$([System.DateTime]::UtcNow.Month)</VersionMinor>
+	<PropertyGroup Label="Versioning">
+		<VersionMajor>1</VersionMajor>
+		<VersionMinor>0</VersionMinor>
 		<VersionPatch>$([System.DateTime]::UtcNow.Day)</VersionPatch>
 		<VersionRevision>$([System.DateTime]::UtcNow.TimeOfDay.TotalMinutes.ToString("0"))</VersionRevision>
 		<VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch).$(VersionRevision)</VersionPrefix>
 		<VersionSuffix Condition="'$(Configuration)'=='Debug'">Development</VersionSuffix>
+		<FileVersion>$(VersionMajor).$(VersionMinor).$(VersionPatch)</FileVersion>
 	</PropertyGroup>
 
-	<PropertyGroup>
+	<PropertyGroup Label="Technical">
 		<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
 		<AnalysisLevel>latest</AnalysisLevel>
 		<AnalysisMode>recommended</AnalysisMode>
@@ -22,10 +23,10 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratedAssemblyInfoFile>Properties\AssemblyInfo.cs</GeneratedAssemblyInfoFile>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<LangVersion>latest</LangVersion>
-		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>		
+		<LangVersion>latest</LangVersion>		
 		<Nullable>enable</Nullable>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<TargetFramework>net8.0</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -33,12 +34,12 @@
 		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))">
+	<PropertyGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))" Label="MetaData">
 		<Authors>BoBoBaSs84</Authors>
 		<Company>https://github.com/BoBoBaSs84</Company>
-		<Copyright>Copyright © $(VersionMajor) BoBoBaSs84</Copyright>
-		<Product>DomainName</Product>
-		<NeutralLanguage>en-US</NeutralLanguage>
+		<Copyright>Copyright © $([System.DateTime]::UtcNow.Year) BoBoBaSs84</Copyright>
+		<Description>...</Description>
+		<Product>DomainName</Product>		
 		<Title>$(AssemblyName)</Title>
 	</PropertyGroup>
 
