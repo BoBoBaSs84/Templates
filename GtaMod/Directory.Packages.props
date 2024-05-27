@@ -1,9 +1,9 @@
 <Project>
-	<PropertyGroup>
-		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageVersion Include="ScriptHookVDotNet3" Version="3.6.0" />
-		<PackageVersion Include="LemonUI.SHVDN3" Version="2.0.0" />
-	</ItemGroup>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="ScriptHookVDotNet3" Version="3.6.0" />
+    <PackageVersion Include="LemonUI.SHVDN3" Version="2.1.1" />
+  </ItemGroup>
 </Project>

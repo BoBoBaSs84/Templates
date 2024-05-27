@@ -20,8 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
 		Directory.Packages.props = Directory.Packages.props
-		global.json = global.json
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F6368244-C3B2-44B9-9E06-652FF57A3A21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +53,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{400323FB-DD9F-4D56-A8E7-6D6BC3EA4353} = {F6368244-C3B2-44B9-9E06-652FF57A3A21}
+		{5F11D459-A3EE-4AAA-9CAF-772B4BE90D20} = {F6368244-C3B2-44B9-9E06-652FF57A3A21}
+		{D25BEBCD-48C0-4CD9-8BB6-734E1CA5D412} = {F6368244-C3B2-44B9-9E06-652FF57A3A21}
+		{D0A833DF-CF29-411A-8795-6996B46AAF82} = {F6368244-C3B2-44B9-9E06-652FF57A3A21}
+		{C8A4C89D-19FE-497F-95A0-5F287D3DE11A} = {F6368244-C3B2-44B9-9E06-652FF57A3A21}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B43CC51-B023-4212-99F1-FDC593156335}
