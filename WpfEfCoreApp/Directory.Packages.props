@@ -8,7 +8,7 @@
     <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="1.1.602" />
     <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.SqlServer" Version="1.1.602" />
     <PackageVersion Include="BB84.Extensions" Version="2.3.421" />
-    <PackageVersion Include="BB84.Notifications" Version="3.3.606" />
+    <PackageVersion Include="BB84.Notifications" Version="3.3.616" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
