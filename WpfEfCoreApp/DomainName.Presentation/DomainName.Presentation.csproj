@@ -1,11 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	
 	<PropertyGroup>
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
+	
 	<ItemGroup>
 		<ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />
 	</ItemGroup>
+	
 	<ItemGroup>
 		<Resource Include="Assets\Icons\File_New.ico" />
 		<Resource Include="Assets\Icons\File_Open.ico" />
@@ -16,4 +19,5 @@
 		<Resource Include="Assets\Icons\Help_News.ico" />
 		<Resource Include="Assets\Icons\Help_Update.ico" />
 	</ItemGroup>
+
 </Project>

@@ -7,11 +7,7 @@ namespace DomainName.Application.Services;
 /// </summary>
 internal sealed class UserService : IUserService
 {
-	/// <summary>
-	/// Initializes an instance of <see cref="UserService"/> class.
-	/// </summary>
-	public UserService()
-		=> User = string.Concat(Environment.MachineName, "\\", Environment.UserName);
-
-	public string User { get; }
+	public string Domain => $"{Environment.UserDomainName}";
+	public string Machine => $"{Environment.MachineName}";
+	public string User => $"{Environment.UserName}";
 }

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.Versioning;
 
-using DomainName.Domain.Interfaces.Models;
 using DomainName.Domain.Models.Base;
 
 namespace DomainName.Domain.Models;
@@ -8,36 +9,74 @@ namespace DomainName.Domain.Models;
 /// <summary>
 /// The about model.
 /// </summary>
-public sealed class AboutModel : ModelBase, IAboutModel
+public sealed class AboutModel : ModelBase
 {
-	private readonly FileVersionInfo _fileVersionInfo;
-
 	/// <summary>
 	/// Initializes an instance of <see cref="AboutModel"/> class.
 	/// </summary>
 	public AboutModel()
 	{
-		_fileVersionInfo = FileVersionInfo.GetVersionInfo(typeof(AboutModel).Assembly.Location);
+		Assembly assembly = Assembly.GetExecutingAssembly();
+		FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
 
-		Title = _fileVersionInfo.ProductName;
-		Version = _fileVersionInfo.FileVersion;
-		Comments = _fileVersionInfo.Comments;
-		Company = _fileVersionInfo.CompanyName;
-		Copyright = _fileVersionInfo.LegalCopyright;
+		Title = fileVersionInfo.ProductName;
+		Version = fileVersionInfo.FileVersion;
+		Comments = fileVersionInfo.Comments;
+		Company = fileVersionInfo.CompanyName;
+		Copyright = fileVersionInfo.LegalCopyright;
+		FrameworkName = GetFrameworkName(assembly);
+		Repository = GetRepositoryLocation(assembly);
 	}
 
-	/// <inheritdoc/>
+	/// <summary>
+	/// The title of the application.
+	/// </summary>
 	public string? Title { get; }
 
-	/// <inheritdoc/>
+	/// <summary>
+	/// The version of the application.
+	/// </summary>
 	public string? Version { get; }
 
-	/// <inheritdoc/>
+	/// <summary>
+	/// The comments of the application.
+	/// </summary>
 	public string? Comments { get; }
 
-	/// <inheritdoc/>
+	/// <summary>
+	/// The company of the application.
+	/// </summary>
 	public string? Company { get; }
 
-	/// <inheritdoc/>
+	/// <summary>
+	/// The copyright of the application.
+	/// </summary>
 	public string? Copyright { get; }
+
+	/// <summary>
+	/// The name of the .NET version with which the assembly was compiled.
+	/// </summary>
+	public string? FrameworkName { get; }
+
+	/// <summary>
+	/// The repository location of the application.
+	/// </summary>
+	public string? Repository { get; }
+
+	private static string? GetFrameworkName(Assembly assembly)
+	{
+		TargetFrameworkAttribute? targetFramework = assembly
+			.GetCustomAttributes(typeof(TargetFrameworkAttribute), false)
+			.SingleOrDefault() as TargetFrameworkAttribute;
+
+		return targetFramework is not null ? targetFramework.FrameworkName : default;
+	}
+
+	private static string? GetRepositoryLocation(Assembly assembly)
+	{
+		IEnumerable<AssemblyMetadataAttribute>? assemblyMetadata = assembly
+			.GetCustomAttributes(typeof(AssemblyMetadataAttribute), false) as IEnumerable<AssemblyMetadataAttribute>;
+
+		return assemblyMetadata?.Where(x => x.Key == "RepositoryUrl").Select(x => x.Value).SingleOrDefault();
+	}
 }

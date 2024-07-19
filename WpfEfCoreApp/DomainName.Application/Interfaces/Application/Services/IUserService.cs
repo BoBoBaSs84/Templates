@@ -6,6 +6,16 @@
 public interface IUserService
 {
 	/// <summary>
+	/// The current user's domain.
+	/// </summary>
+	string Domain { get; }
+
+	/// <summary>
+	/// The current user's machine.
+	/// </summary>
+	string Machine { get; }
+
+	/// <summary>
 	/// The current application user.
 	/// </summary>
 	string User { get; }
