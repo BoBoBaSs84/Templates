@@ -3,11 +3,11 @@
 	<PropertyGroup Label="Versioning">
 		<VersionMajor>1</VersionMajor>
 		<VersionMinor>0</VersionMinor>
-		<VersionPatch>$([System.DateTime]::UtcNow.Day)</VersionPatch>
+		<VersionPatch>$([System.DateTime]::UtcNow.ToString("MMdd"))</VersionPatch>
 		<VersionRevision>$([System.DateTime]::UtcNow.TimeOfDay.TotalMinutes.ToString("0"))</VersionRevision>
 		<VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch).$(VersionRevision)</VersionPrefix>
-		<VersionSuffix Condition="'$(Configuration)'=='Debug'">Development</VersionSuffix>
 		<FileVersion>$(VersionMajor).$(VersionMinor).$(VersionPatch)</FileVersion>
+		<VersionSuffix Condition="'$(Configuration)'=='Debug'">Development</VersionSuffix>
 	</PropertyGroup>
 
 	<PropertyGroup Label="Technical">
@@ -35,11 +35,14 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))" Label="MetaData">
-		<Authors>BoBoBaSs84</Authors>
-		<Company>https://github.com/BoBoBaSs84</Company>
-		<Copyright>Copyright © $([System.DateTime]::UtcNow.Year) BoBoBaSs84</Copyright>
+		<Author>BoBoBaSs84</Author>
+		<Authors>$(Author)</Authors>
+		<Company>https://github.com/$(Author)</Company>
+		<Copyright>Copyright © $([System.DateTime]::UtcNow.Year) $(Author)</Copyright>
 		<Description>...</Description>
 		<Product>DomainName</Product>		
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/$(Author)/$(Product)</RepositoryUrl>		
 		<Title>$(AssemblyName)</Title>
 	</PropertyGroup>
 
@@ -51,7 +54,14 @@
 
 	<ItemGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))">
 		<InternalsVisibleTo Include="$(AssemblyName).Tests" />
+		<InternalsVisibleTo Include="DynamicProxyGenAssembly2"/>
 	</ItemGroup>
+
+	<ItemGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
+		<Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+		<Using Include="System.Diagnostics" />
+		<Using Include="System.Diagnostics.CodeAnalysis" />
+	</ItemGroup>	
 
 	<ItemGroup>
 		<Folder Include="Properties\" />

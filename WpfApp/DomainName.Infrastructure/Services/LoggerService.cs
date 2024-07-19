@@ -1,4 +1,6 @@
-﻿using DomainName.Application.Interfaces.Infrastructure.Services;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using DomainName.Application.Interfaces.Infrastructure.Services;
 
 using Microsoft.Extensions.Logging;
 
@@ -11,6 +13,7 @@ namespace DomainName.Infrastructure.Services;
 /// Implements the <see cref="ILoggerService{T}"/> interface.
 /// </remarks>
 /// <typeparam name="T">The type to work with.</typeparam>
+[ExcludeFromCodeCoverage(Justification = "Microsoft.Extensions.Logging Wrapper")]
 internal sealed class LoggerService<T>(ILogger<T> logger) : ILoggerService<T> where T : class
 {
 	/// <inheritdoc/>
