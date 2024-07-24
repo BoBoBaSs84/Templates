@@ -10,11 +10,11 @@ public partial interface IRepositoryService
 	/// </summary>
 	/// <param name="cancellationToken">The cancellation token.</param>
 	/// <returns>From the commit affected changes.</returns>
-	Task<int> CommitChangesAsync(CancellationToken cancellationToken = default);
+	Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
 	/// <summary>
 	/// Commits all the changes to the database context.
 	/// </summary>
 	/// <returns>From the commit affected changes.</returns>
-	int CommitChanges();
+	int SaveChanges();
 }

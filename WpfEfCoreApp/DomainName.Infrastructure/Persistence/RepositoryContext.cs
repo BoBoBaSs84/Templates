@@ -1,7 +1,9 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Data;
+using System.Diagnostics.CodeAnalysis;
 
 using DomainName.Application.Interfaces.Infrastructure.Services;
 using DomainName.Infrastructure.Common;
+using DomainName.Infrastructure.Interfaces.Persistence;
 using DomainName.Infrastructure.Persistence.Interceptors;
 
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +18,7 @@ namespace DomainName.Infrastructure.Persistence;
 /// <param name="changesInterceptor">The save changes interceptor to use.</param>
 /// <param name="loggerService">The logger service instance to use.</param>
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, context configuration.")]
-public sealed partial class RepositoryContext(DbContextOptions<RepositoryContext> options, CustomSaveChangesInterceptor changesInterceptor, ILoggerService<RepositoryContext> loggerService) : DbContext(options)
+public sealed partial class RepositoryContext(DbContextOptions<RepositoryContext> options, CustomSaveChangesInterceptor changesInterceptor, ILoggerService<RepositoryContext> loggerService) : DbContext(options), IRepositoryContext
 {
 	private readonly CustomSaveChangesInterceptor _changesInterceptor = changesInterceptor;
 	private readonly ILoggerService<RepositoryContext> _loggerService = loggerService;
@@ -44,7 +46,7 @@ public sealed partial class RepositoryContext(DbContextOptions<RepositoryContext
 		{
 			result = await base.SaveChangesAsync(cancellationToken);
 		}
-		catch (Exception ex)
+		catch (DBConcurrencyException ex)
 		{
 			_loggerService.Log(LogException, ex);
 		}
@@ -59,7 +61,7 @@ public sealed partial class RepositoryContext(DbContextOptions<RepositoryContext
 		{
 			result = base.SaveChanges();
 		}
-		catch (Exception ex)
+		catch (DBConcurrencyException ex)
 		{
 			_loggerService.Log(LogException, ex);
 		}

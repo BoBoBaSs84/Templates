@@ -2,6 +2,7 @@
 
 using DomainName.Application.Interfaces.Infrastructure.Services;
 using DomainName.Infrastructure.Common;
+using DomainName.Infrastructure.Interfaces.Persistence;
 using DomainName.Infrastructure.Persistence;
 using DomainName.Infrastructure.Persistence.Interceptors;
 using DomainName.Infrastructure.Services;
@@ -34,7 +35,7 @@ internal static class ServiceCollectionExtensions
 		services.AddLogging(config =>
 		{
 			config.ClearProviders();
-			
+
 			if (environment.IsDevelopment())
 			{
 				config.SetMinimumLevel(LogLevel.Debug);
@@ -73,7 +74,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterRepositoryContext(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
 	{
-		services.AddDbContext<RepositoryContext>(options =>
+		services.AddDbContext<IRepositoryContext, RepositoryContext>(options =>
 		{
 			options.UseSqlServer(configuration.GetConnectionString("SqlServerConnection"), options =>
 			{

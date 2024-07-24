@@ -6,8 +6,6 @@ namespace DomainName.Infrastructure.Persistence;
 
 public sealed partial class RepositoryContext
 {
-	/// <summary>
-	/// The example model record set.
-	/// </summary>
+	/// <inheritdoc />
 	public DbSet<ExampleModel> Examples { get; set; }
 }
