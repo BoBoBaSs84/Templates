@@ -1,5 +1,5 @@
-﻿using DomainName.Application.Interfaces.Infrastructure.Services;
-using DomainName.Infrastructure.Interfaces.Persistence;
+﻿using DomainName.Application.Interfaces.Infrastructure.Persistence;
+using DomainName.Application.Interfaces.Infrastructure.Services;
 
 namespace DomainName.Infrastructure.Services;
 

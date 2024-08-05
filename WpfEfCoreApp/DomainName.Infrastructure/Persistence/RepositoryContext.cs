@@ -1,9 +1,9 @@
 ﻿using System.Data;
 using System.Diagnostics.CodeAnalysis;
 
+using DomainName.Application.Interfaces.Infrastructure.Persistence;
 using DomainName.Application.Interfaces.Infrastructure.Services;
 using DomainName.Infrastructure.Common;
-using DomainName.Infrastructure.Interfaces.Persistence;
 using DomainName.Infrastructure.Persistence.Interceptors;
 
 using Microsoft.EntityFrameworkCore;

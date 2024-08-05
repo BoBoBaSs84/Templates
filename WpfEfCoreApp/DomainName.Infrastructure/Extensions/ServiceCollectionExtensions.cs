@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
+using DomainName.Application.Interfaces.Infrastructure.Persistence;
 using DomainName.Application.Interfaces.Infrastructure.Services;
 using DomainName.Infrastructure.Common;
-using DomainName.Infrastructure.Interfaces.Persistence;
 using DomainName.Infrastructure.Persistence;
 using DomainName.Infrastructure.Persistence.Interceptors;
 using DomainName.Infrastructure.Services;

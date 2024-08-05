@@ -4,7 +4,7 @@ using DomainName.Domain.Models;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace DomainName.Infrastructure.Interfaces.Persistence;
+namespace DomainName.Application.Interfaces.Infrastructure.Persistence;
 
 /// <summary>
 /// The interface for the repository context.
