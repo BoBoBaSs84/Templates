@@ -1,4 +1,6 @@
-﻿using DomainName.Presentation.Controls;
+﻿using DomainName.Application.Interfaces.Presentation.Services;
+using DomainName.Presentation.Controls;
+using DomainName.Presentation.Services;
 using DomainName.Presentation.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +33,18 @@ internal static class ServiceCollectionExtensions
 	internal static IServiceCollection RegisterWindows(this IServiceCollection services)
 	{
 		services.TryAddSingleton<MainWindow>();
+
+		return services;
+	}
+
+	/// <summary>
+	/// Registers the required presentation services to the service collection.
+	/// </summary>
+	/// <param name="services">The service collection to enrich.</param>
+	/// <returns>The enriched service collection.</returns>
+	internal static IServiceCollection RegisterServices(this IServiceCollection services)
+	{
+		services.TryAddSingleton<INotificationService, NotificationService>();
 
 		return services;
 	}
