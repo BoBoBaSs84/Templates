@@ -10,14 +10,14 @@ namespace DomainName.Presentation.Services;
 internal sealed class NotificationService : INotificationService
 {
 	public void SendError(string message)
-		=> Send(message, MessageBoxImage.Error);
+		=> Send(message, "Error", MessageBoxImage.Error);
 
 	public void SendInformation(string message)
-		=> Send(message, MessageBoxImage.Information);
+		=> Send(message, "Information", MessageBoxImage.Information);
 
 	public void SendWarning(string message)
-		=> Send(message, MessageBoxImage.Warning);
+		=> Send(message, "Warning", MessageBoxImage.Warning);
 
-	private static void Send(string message, MessageBoxImage icon)
-		=> MessageBox.Show(message, $"{icon}", MessageBoxButton.OK, icon);
+	private static void Send(string message, string captition, MessageBoxImage icon)
+		=> MessageBox.Show(message, captition, MessageBoxButton.OK, icon);
 }
