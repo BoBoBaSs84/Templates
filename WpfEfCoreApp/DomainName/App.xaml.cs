@@ -59,6 +59,11 @@ public partial class App : WinApplication
 		=> _loggerService.Log(LogCritical, exception);
 
 	private static IHostBuilder CreateHostBuilder()
-		=> Host.CreateDefaultBuilder().ConfigureServices((context, services)
-			=> services.RegisterServices(context.Configuration, context.HostingEnvironment));
+	{
+		IHostBuilder hostBuilder = Host.CreateDefaultBuilder()
+			.RegisterAppSettingsConfiguration()
+			.ConfigureServices((context, services) => services.RegisterServices(context.Configuration, context.HostingEnvironment));
+
+		return hostBuilder;
+	}
 }
