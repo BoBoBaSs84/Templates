@@ -1,4 +1,6 @@
-﻿using DomainName.Application.Interfaces.Application.Services;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using DomainName.Application.Interfaces.Application.Services;
 using DomainName.Application.Services;
 using DomainName.Application.ViewModels;
 using DomainName.Application.ViewModels.Base;
@@ -11,23 +13,26 @@ namespace DomainName.Application.Extensions;
 /// <summary>
 /// The service collection extensions class.
 /// </summary>
+[SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, dependency injection.")]
 internal static class ServiceCollectionExtensions
 {
 	/// <summary>
-	/// Registers the required view models to the service collection.
+	/// Registers the required application options and settings to the <paramref name="services"/> collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	internal static IServiceCollection RegisterViewModels(this IServiceCollection services)
+	internal static IServiceCollection RegisterApplicationOptions(this IServiceCollection services)
 	{
-		services.TryAddSingleton<AboutViewModel>();
-		services.TryAddSingleton<MainViewModel>();
+		//services.AddOptions<AppSettings>()
+		//	.BindConfiguration(nameof(AppSettings))
+		//	.ValidateDataAnnotations()
+		//	.ValidateOnStart();
 
 		return services;
 	}
 
 	/// <summary>
-	/// Registers the required navigation service to the service collection.
+	/// Registers the required navigation service to the <paramref name="services"/> collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
@@ -37,6 +42,19 @@ internal static class ServiceCollectionExtensions
 
 		services.TryAddSingleton<Func<Type, ViewModelBase>>(serviceProvider
 			=> viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
+
+		return services;
+	}
+
+	/// <summary>
+	/// Registers the required view models to the <paramref name="services"/> collection.
+	/// </summary>
+	/// <param name="services">The service collection to enrich.</param>
+	/// <returns>The enriched service collection.</returns>
+	internal static IServiceCollection RegisterViewModels(this IServiceCollection services)
+	{
+		services.TryAddSingleton<AboutViewModel>();
+		services.TryAddSingleton<MainViewModel>();
 
 		return services;
 	}

@@ -23,9 +23,9 @@ public static class DependencyInjection
 	/// <returns>The enriched service collection.</returns>
 	public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
 	{
-		services.RegisterLoggerService(environment);
-		services.RegisterRepositoryContext(configuration, environment);
-		services.RegisterScopedServices();
+		services.RegisterLoggerService(environment)
+			.RegisterRepositoryContext(configuration, environment)
+			.RegisterScopedServices();
 
 		return services;
 	}

@@ -2,7 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0-windows</TargetFramework>
-		<OutputType>WinExe</OutputType>
+		<OutputType Condition="$(Configuration.Equals('Release'))">WinExe</OutputType>
+		<OutputType Condition="$(Configuration.Equals('Debug'))">Exe</OutputType>
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
 

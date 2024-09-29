@@ -2,6 +2,7 @@
 
 using DomainName.Application.Interfaces.Infrastructure.Persistence;
 using DomainName.Application.Interfaces.Infrastructure.Services;
+using DomainName.Application.Options;
 using DomainName.Infrastructure.Common;
 using DomainName.Infrastructure.Persistence;
 using DomainName.Infrastructure.Persistence.Interceptors;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace DomainName.Infrastructure.Extensions;
 
@@ -74,11 +76,14 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterRepositoryContext(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
 	{
+		MigrationSettings settings = services.BuildServiceProvider()
+			.GetRequiredService<IOptions<MigrationSettings>>().Value;
+
 		services.AddDbContext<IRepositoryContext, RepositoryContext>(options =>
 		{
 			options.UseSqlServer(configuration.GetConnectionString("SqlServerConnection"), options =>
 			{
-				options.MigrationsHistoryTable("Migration", "private");
+				options.MigrationsHistoryTable(settings.TableName, settings.TableSchema);
 				options.MigrationsAssembly(typeof(IInfrastructureAssemblyMarker).Assembly.FullName);
 			});
 

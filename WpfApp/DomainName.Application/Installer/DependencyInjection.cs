@@ -13,14 +13,15 @@ namespace DomainName.Application.Installer;
 public static class DependencyInjection
 {
 	/// <summary>
-	/// Registers the application services to the service collection.
+	/// Registers the application services to the <paramref name="services"/> collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
 	public static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
 	{
-		services.RegisterViewModels();
-		services.RegisterNavigationService();
+		services.RegisterApplicationOptions()
+			.RegisterNavigationService()
+			.RegisterViewModels();
 
 		return services;
 	}
