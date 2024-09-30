@@ -1,4 +1,6 @@
-﻿using DomainName.Presentation.Forms;
+﻿using DomainName.Application.Interfaces.Presentation.Services;
+using DomainName.Presentation.Forms;
+using DomainName.Presentation.Services;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -11,13 +13,25 @@ namespace DomainName.Presentation.Extensions;
 internal static class ServiceCollectionExtensions
 {
 	/// <summary>
-	/// Adds the windows forms to the service collection.
+	/// Registers the required windows forms to the <paramref name="services"/> collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	internal static IServiceCollection AddForms(this IServiceCollection services)
+	internal static IServiceCollection RegisterForms(this IServiceCollection services)
 	{
 		services.TryAddSingleton<MainForm>();
+
+		return services;
+	}
+
+	/// <summary>
+	/// Registers the required services to the <paramref name="services"/> collection.
+	/// </summary>
+	/// <param name="services">The service collection to enrich.</param>
+	/// <returns>The enriched service collection.</returns>
+	internal static IServiceCollection RegisterServices(this IServiceCollection services)
+	{
+		services.TryAddSingleton<INotificationService, NotificationService>();
 
 		return services;
 	}

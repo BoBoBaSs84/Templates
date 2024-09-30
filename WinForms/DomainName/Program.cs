@@ -1,7 +1,6 @@
 ﻿using DomainName.Application.Interfaces.Infrastructure.Services;
-using DomainName.Infrastructure.Installer;
+using DomainName.Extensions;
 using DomainName.Presentation.Forms;
-using DomainName.Presentation.Installer;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,8 +12,8 @@ namespace DomainName;
 
 internal sealed class Program
 {
+	private static IHost s_host = default!;
 	private static ILoggerService<Program> s_logger = default!;
-	private static IServiceProvider s_serviceProvider = default!;
 
 	private static readonly Action<ILogger, string, Exception?> LogInformation =
 		LoggerMessage.Define<string>(LogLevel.Information, 0, "{Information}");
@@ -29,29 +28,30 @@ internal sealed class Program
 	internal static void Main()
 	{
 		ApplicationConfiguration.Initialize();
-		IHost host = CreateDefaultBuilder().Build();
 
-		s_serviceProvider = host.Services;
-		s_logger = GetService<ILoggerService<Program>>();
+		s_host = CreateDefaultBuilder().Build();
+		s_logger = s_host.Services.GetRequiredService<ILoggerService<Program>>();
+
 		AppDomain.CurrentDomain.UnhandledException += (s, e) => OnUnhandledException(e.ExceptionObject as Exception);
 
-		s_logger.Log(LogInformation, "Starting application..");
+		s_logger.Log(LogInformation, "Application starting..");
+		s_host.Start();
 
-		MainForm mainForm = GetService<MainForm>();
+		MainForm mainForm = s_host.Services.GetRequiredService<MainForm>();
 		FormsApplication.Run(mainForm);
 
-		s_logger.Log(LogInformation, "Quiting application..");
+		s_logger.Log(LogInformation, "Application exiting..");
 	}
-
-	public static T GetService<T>()
-		=> s_serviceProvider.GetRequiredService(typeof(T)) is not T service
-		? throw new ArgumentException($"{typeof(T)} needs to be a registered service.")
-		: service;
-
-	private static IHostBuilder CreateDefaultBuilder()
-		=> Host.CreateDefaultBuilder().ConfigureServices((context, services)
-			=> services.AddInfrastructureServices(context.HostingEnvironment).AddPresentationServices());
 
 	private static void OnUnhandledException(Exception? exception)
 		=> s_logger.Log(LogCritical, exception);
+
+	private static IHostBuilder CreateDefaultBuilder()
+	{
+		IHostBuilder hostBuilder = Host.CreateDefaultBuilder()
+			.RegisterAppSettingsConfiguration()
+			.ConfigureServices((context, services) => services.RegisterServices(context.HostingEnvironment));
+
+		return hostBuilder;
+	}
 }

@@ -14,14 +14,14 @@ namespace DomainName.Infrastructure.Installer;
 public static class DependencyInjection
 {
 	/// <summary>
-	/// Adds the infrastructure services to the service collection.
+	/// Registers the infrastructure services to the <paramref name="services"/> collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <param name="environment">The host environment instance to use.</param>
 	/// <returns>The enriched service collection.</returns>
-	public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IHostEnvironment environment)
+	public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services, IHostEnvironment environment)
 	{
-		services.AddLoggerService(environment);
+		services.RegisterLoggerService(environment);
 
 		return services;
 	}

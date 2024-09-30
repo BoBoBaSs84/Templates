@@ -1,4 +1,6 @@
-﻿using DomainName.Presentation.Extensions;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using DomainName.Presentation.Extensions;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,16 +9,18 @@ namespace DomainName.Presentation.Installer;
 /// <summary>
 /// The presentation dependency injection class.
 /// </summary>
+[SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, dependency injection.")]
 public static class DependencyInjection
 {
 	/// <summary>
-	/// Adds the presentation services to the service collection.
+	/// Registers the presentation services to the <paramref name="services"/> collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	public static IServiceCollection AddPresentationServices(this IServiceCollection services)
+	public static IServiceCollection RegisterPresentationServices(this IServiceCollection services)
 	{
-		_ = services.AddForms();
+		services.RegisterForms()
+			.RegisterServices();
 
 		return services;
 	}

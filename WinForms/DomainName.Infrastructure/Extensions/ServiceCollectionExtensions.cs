@@ -22,20 +22,25 @@ internal static class ServiceCollectionExtensions
 	/// <param name="services">The service collection to enrich.</param>
 	/// <param name="environment">The host environment instance to use.</param>
 	/// <returns>The enriched service collection.</returns>
-	internal static IServiceCollection AddLoggerService(this IServiceCollection services, IHostEnvironment environment)
+	internal static IServiceCollection RegisterLoggerService(this IServiceCollection services, IHostEnvironment environment)
 	{
 		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 
 		services.AddLogging(config =>
 		{
 			config.ClearProviders();
-			config.AddEventLog(config => config.SourceName = environment.ApplicationName);
 
 			if (environment.IsDevelopment())
+			{
 				config.SetMinimumLevel(LogLevel.Debug);
+				config.AddConsole();
+			}
 
 			if (environment.IsProduction())
+			{
 				config.SetMinimumLevel(LogLevel.Warning);
+				config.AddEventLog(config => config.SourceName = environment.ApplicationName);
+			}
 		});
 
 		return services;
