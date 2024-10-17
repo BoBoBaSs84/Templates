@@ -3,10 +3,10 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="BB84.EntityFrameworkCore.Models" Version="2.5.1012" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories" Version="2.5.1012" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="2.5.1012" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.SqlServer" Version="2.5.1012" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Models" Version="2.6.1015" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories" Version="2.6.1015" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="2.6.1015" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.SqlServer" Version="2.6.1015" />
     <PackageVersion Include="BB84.Extensions" Version="2.7.1012" />
     <PackageVersion Include="BB84.Notifications" Version="3.5.916" />
     <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
