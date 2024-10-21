@@ -1,5 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />
   </ItemGroup>
 </Project>
