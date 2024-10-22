@@ -31,6 +31,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
+		services.TryAddTransient<ICurrentUserService, CurrentUserService>();
 		services.TryAddSingleton<INotificationService, NotificationService>();
 
 		return services;

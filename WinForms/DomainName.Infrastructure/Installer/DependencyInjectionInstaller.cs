@@ -8,10 +8,10 @@ using Microsoft.Extensions.Hosting;
 namespace DomainName.Infrastructure.Installer;
 
 /// <summary>
-/// The infrastructure dependency injection class.
+/// The infrastructure dependency injection installer class.
 /// </summary>
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, dependency injection.")]
-public static class DependencyInjection
+public static class DependencyInjectionInstaller
 {
 	/// <summary>
 	/// Registers the infrastructure services to the <paramref name="services"/> collection.

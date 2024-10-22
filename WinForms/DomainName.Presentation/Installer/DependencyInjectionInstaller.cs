@@ -7,10 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 namespace DomainName.Presentation.Installer;
 
 /// <summary>
-/// The presentation dependency injection class.
+/// The presentation dependency injection installer class.
 /// </summary>
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, dependency injection.")]
-public static class DependencyInjection
+public static class DependencyInjectionInstaller
 {
 	/// <summary>
 	/// Registers the presentation services to the <paramref name="services"/> collection.
