@@ -18,9 +18,9 @@ namespace DomainName.Infrastructure.Persistence;
 /// <param name="changesInterceptor">The save changes interceptor to use.</param>
 /// <param name="loggerService">The logger service instance to use.</param>
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, context configuration.")]
-public sealed partial class RepositoryContext(DbContextOptions<RepositoryContext> options, CustomSaveChangesInterceptor changesInterceptor, ILoggerService<RepositoryContext> loggerService) : DbContext(options), IRepositoryContext
+public sealed partial class RepositoryContext(DbContextOptions<RepositoryContext> options, UserAuditSaveChangesInterceptor changesInterceptor, ILoggerService<RepositoryContext> loggerService) : DbContext(options), IRepositoryContext
 {
-	private readonly CustomSaveChangesInterceptor _changesInterceptor = changesInterceptor;
+	private readonly UserAuditSaveChangesInterceptor _changesInterceptor = changesInterceptor;
 	private readonly ILoggerService<RepositoryContext> _loggerService = loggerService;
 
 	private static readonly Action<ILogger, Exception?> LogException =

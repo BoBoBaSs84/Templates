@@ -1,11 +1,11 @@
-﻿using DomainName.Domain.Models.Base;
+﻿using DomainName.Domain.Entities.Base;
 
-namespace DomainName.Domain.Models;
+namespace DomainName.Domain.Entities;
 
 /// <summary>
-/// The example model class.
+/// The example entity class.
 /// </summary>
-public sealed class ExampleModel : DataModelBase
+public sealed class ExampleEntity : EntityBase
 {
 	/// <inheritdoc/>
 	public string FirstName { get; set; } = default!;

@@ -3,7 +3,7 @@
 [TestClass]
 public abstract class ApplicationTestBase
 {
-	private static TestContext? s_context;
+	private static TestContext s_context = default!;
 
 	[AssemblyInitialize]
 	public static void AssemblyInitialize(TestContext context)

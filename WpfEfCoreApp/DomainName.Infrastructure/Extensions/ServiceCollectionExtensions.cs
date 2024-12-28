@@ -61,7 +61,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterScopedServices(this IServiceCollection services)
 	{
-		services.TryAddScoped<CustomSaveChangesInterceptor>();
+		services.TryAddScoped<UserAuditSaveChangesInterceptor>();
 		services.TryAddScoped<IRepositoryService, RepositoryService>();
 
 		return services;

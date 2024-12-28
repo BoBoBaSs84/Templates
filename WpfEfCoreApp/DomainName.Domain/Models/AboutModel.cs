@@ -7,7 +7,7 @@ using DomainName.Domain.Models.Base;
 namespace DomainName.Domain.Models;
 
 /// <summary>
-/// The about model.
+/// The about model class.
 /// </summary>
 public sealed class AboutModel : ModelBase
 {

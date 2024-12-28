@@ -1,4 +1,4 @@
-﻿using BB84.EntityFrameworkCore.Models.Abstractions.Components;
+﻿using BB84.EntityFrameworkCore.Entities.Abstractions.Components;
 
 using DomainName.Application.Interfaces.Application.Services;
 
@@ -9,39 +9,43 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 namespace DomainName.Infrastructure.Persistence.Interceptors;
 
 /// <summary>
-/// The custom save changes interceptor class.
+/// The user audit save changes interceptor.
 /// </summary>
 /// <param name="userService">The user service instance to use.</param>
-public sealed class CustomSaveChangesInterceptor(IUserService userService) : SaveChangesInterceptor
+public sealed class UserAuditSaveChangesInterceptor(IUserService userService) : SaveChangesInterceptor
 {
 	private readonly IUserService _userService = userService;
 
 	/// <inheritdoc/>
 	public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
 	{
-		Intercept(eventData.Context);
+		InterceptEntities(eventData.Context);
 		return base.SavingChanges(eventData, result);
 	}
 
 	/// <inheritdoc/>
 	public override ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
 	{
-		Intercept(eventData.Context);
+		InterceptEntities(eventData.Context);
 		return base.SavingChangesAsync(eventData, result, cancellationToken);
 	}
 
-	private void Intercept(DbContext? context)
+	private void InterceptEntities(DbContext? context)
 	{
-		if (context is null)
-			return;
-
-		foreach (EntityEntry<IAudited> entry in context.ChangeTracker.Entries<IAudited>())
+		if (context is not null)
 		{
-			if (entry.State is EntityState.Deleted or EntityState.Modified)
-				entry.Entity.ModifiedBy = _userService.User;
-
-			if (entry.State is EntityState.Added)
-				entry.Entity.CreatedBy = _userService.User;
+			foreach (EntityEntry<IUserAudited> entityEntry in context.ChangeTracker.Entries<IUserAudited>())
+			{
+				switch (entityEntry.State)
+				{
+					case EntityState.Modified:
+						entityEntry.Entity.Editor = _userService.User;
+						break;
+					case EntityState.Added:
+						entityEntry.Entity.Creator = _userService.User;
+						break;
+				}
+			}
 		}
 	}
 }

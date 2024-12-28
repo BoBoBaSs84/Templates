@@ -1,6 +1,6 @@
 ﻿using BB84.EntityFrameworkCore.Repositories.Abstractions;
 
-using DomainName.Domain.Models;
+using DomainName.Domain.Entities;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -14,5 +14,5 @@ public interface IRepositoryContext : IDbContext
 	/// <summary>
 	/// The example model record set.
 	/// </summary>
-	DbSet<ExampleModel> Examples { get; set; }
+	DbSet<ExampleEntity> Examples { get; set; }
 }

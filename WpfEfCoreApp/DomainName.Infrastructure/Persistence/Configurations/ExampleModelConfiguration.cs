@@ -2,7 +2,7 @@
 
 using BB84.EntityFrameworkCore.Repositories.SqlServer.Configurations;
 
-using DomainName.Domain.Models;
+using DomainName.Domain.Entities;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -14,9 +14,9 @@ namespace DomainName.Infrastructure.Persistence.Configurations;
 /// </summary>
 /// <inheritdoc/>
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, entity type configuration.")]
-internal sealed class ExampleModelConfiguration : AuditedConfiguration<ExampleModel>
+internal sealed class ExampleModelConfiguration : AuditedConfiguration<ExampleEntity>
 {
-	public override void Configure(EntityTypeBuilder<ExampleModel> builder)
+	public override void Configure(EntityTypeBuilder<ExampleEntity> builder)
 	{
 		base.Configure(builder);
 
