@@ -3,6 +3,9 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
+    <PackageVersion Include="BB84.Extensions" Version="2.11.322" />
+    <PackageVersion Include="BB84.Notifications" Version="3.6.322" />
+    <PackageVersion Include="BB84.WinForms.Extensions" Version="2.11.322" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.3" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="9.0.3" />

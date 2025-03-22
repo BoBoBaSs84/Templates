@@ -21,7 +21,8 @@ public static class DependencyInjectionInstaller
 	{
 		services.RegisterHttpClients()
 			.RegisterProviders()
-			.RegisterServices();
+			.RegisterServices()
+			.RegisterViewModels();
 
 		return services;
 	}

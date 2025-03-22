@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DomainName.Application.Common;
+﻿namespace DomainName.Application.Common;
 
 /// <summary>
 /// The application constants class.
@@ -18,5 +12,6 @@ internal static class Constants
 	{
 		public const string WikipediaClient = "Wikipedia";
 		public const string WikipediaBaseUri = "https://en.wikipedia.org";
+		public const string MediaTypeJson = "application/json";
 	}
 }

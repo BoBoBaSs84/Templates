@@ -1,9 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
+using BB84.Extensions;
+
 using DomainName.Application.Interfaces.Application.Providers;
 using DomainName.Application.Interfaces.Application.Services;
 using DomainName.Application.Providers;
 using DomainName.Application.Services;
+using DomainName.Application.ViewModels;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -26,12 +29,10 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterHttpClients(this IServiceCollection services)
 	{
-		services.AddHttpClient(nameof(ApplicationConstants.HttpClient.WikipediaClient), client =>
-		{
-			client.BaseAddress = new Uri(ApplicationConstants.HttpClient.WikipediaBaseUri);
-			client.Timeout = new(0, 0, 15);
-			client.DefaultRequestHeaders.Clear();
-		});
+		services.AddHttpClient(nameof(ApplicationConstants.HttpClient.WikipediaClient), client
+			=> client.WithBaseAdress(ApplicationConstants.HttpClient.WikipediaBaseUri)
+				.WithMediaType(ApplicationConstants.HttpClient.MediaTypeJson)
+				.WithTimeout(TimeSpan.FromSeconds(15)));
 
 		return services;
 	}
@@ -56,6 +57,18 @@ internal static class ServiceCollectionExtensions
 	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
 		services.TryAddSingleton<IWebService, WebService>();
+
+		return services;
+	}
+
+	/// <summary>
+	/// Registers the required view models to the service collection.
+	/// </summary>
+	/// <param name="services">The service collection to enrich.</param>
+	/// <returns>The enriched service collection.</returns>
+	internal static IServiceCollection RegisterViewModels(this IServiceCollection services)
+	{
+		services.TryAddSingleton<MainViewModel>();
 
 		return services;
 	}

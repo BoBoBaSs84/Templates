@@ -59,8 +59,11 @@ partial class MainForm
 		searchToolStripMenuItem = new ToolStripMenuItem();
 		toolStripSeparator5 = new ToolStripSeparator();
 		aboutToolStripMenuItem = new ToolStripMenuItem();
-		statusStrip1 = new StatusStrip();
+		MainStatusStrip = new StatusStrip();
+		NameTextBox = new TextBox();
+		AgeNumericUpDown = new NumericUpDown();
 		menuStrip1.SuspendLayout();
+		((System.ComponentModel.ISupportInitialize)AgeNumericUpDown).BeginInit();
 		SuspendLayout();
 		// 
 		// menuStrip1
@@ -271,27 +274,44 @@ partial class MainForm
 		aboutToolStripMenuItem.Size = new Size(185, 34);
 		aboutToolStripMenuItem.Text = "&About...";
 		// 
-		// statusStrip1
+		// MainStatusStrip
 		// 
-		statusStrip1.ImageScalingSize = new Size(24, 24);
-		statusStrip1.Location = new Point(0, 716);
-		statusStrip1.Name = "statusStrip1";
-		statusStrip1.Size = new Size(1258, 28);
-		statusStrip1.TabIndex = 2;
-		statusStrip1.Text = "statusStrip1";
+		MainStatusStrip.ImageScalingSize = new Size(24, 24);
+		MainStatusStrip.Location = new Point(0, 722);
+		MainStatusStrip.Name = "MainStatusStrip";
+		MainStatusStrip.Size = new Size(1258, 22);
+		MainStatusStrip.TabIndex = 2;
+		MainStatusStrip.Text = "statusStrip1";
+		// 
+		// NameTextBox
+		// 
+		NameTextBox.Location = new Point(454, 224);
+		NameTextBox.Name = "NameTextBox";
+		NameTextBox.Size = new Size(150, 31);
+		NameTextBox.TabIndex = 3;
+		// 
+		// AgeNumericUpDown
+		// 
+		AgeNumericUpDown.Location = new Point(559, 325);
+		AgeNumericUpDown.Name = "AgeNumericUpDown";
+		AgeNumericUpDown.Size = new Size(180, 31);
+		AgeNumericUpDown.TabIndex = 4;
 		// 
 		// MainForm
 		// 
 		AutoScaleDimensions = new SizeF(10F, 25F);
 		AutoScaleMode = AutoScaleMode.Font;
 		ClientSize = new Size(1258, 744);
-		Controls.Add(statusStrip1);
+		Controls.Add(AgeNumericUpDown);
+		Controls.Add(NameTextBox);
+		Controls.Add(MainStatusStrip);
 		Controls.Add(menuStrip1);
 		MainMenuStrip = menuStrip1;
 		Name = "MainForm";
 		Text = "MainForm";
 		menuStrip1.ResumeLayout(false);
 		menuStrip1.PerformLayout();
+		((System.ComponentModel.ISupportInitialize)AgeNumericUpDown).EndInit();
 		ResumeLayout(false);
 		PerformLayout();
 	}
@@ -328,5 +348,7 @@ partial class MainForm
 	private ToolStripMenuItem searchToolStripMenuItem;
 	private ToolStripSeparator toolStripSeparator5;
 	private ToolStripMenuItem aboutToolStripMenuItem;
-	private StatusStrip statusStrip1;
+	private StatusStrip MainStatusStrip;
+	private TextBox NameTextBox;
+	private NumericUpDown AgeNumericUpDown;
 }
