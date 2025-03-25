@@ -2,4 +2,7 @@
   <ItemGroup>
     <PackageReference Include="BB84.Notifications" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
 </Project>

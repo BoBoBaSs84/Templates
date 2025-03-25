@@ -1,6 +1,4 @@
-﻿using BB84.WinForms.Extensions;
-
-using DomainName.Application.Interfaces.Presentation.Services;
+﻿using DomainName.Application.Interfaces.Presentation.Services;
 using DomainName.Application.ViewModels;
 
 using FormsApplication = System.Windows.Forms.Application;
@@ -12,35 +10,44 @@ namespace DomainName.Presentation.Forms;
 /// </summary>
 public partial class MainForm : Form
 {
-	private readonly ICurrentUserService _currentUserService;
-	private readonly INotificationService _notificationService;
+	private readonly INavigationService _navigationService;
 	private readonly MainViewModel _mainViewModel;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="MainForm"/> class.
 	/// </summary>
-	/// <param name="currentUserService">The current user service instance to use.</param>
-	/// <param name="notificationService">The notification service instance to use.</param>
+	/// <param name="navigationService">The navigation service instance to use.</param>
 	/// <param name="mainViewModel">The main view model instance to use.</param>
-	public MainForm(ICurrentUserService currentUserService, INotificationService notificationService, MainViewModel mainViewModel)
+	public MainForm(INavigationService navigationService, MainViewModel mainViewModel)
 	{
 		InitializeComponent();
 
-		_currentUserService = currentUserService;
-		_notificationService = notificationService;
+		_navigationService = navigationService;
 		_mainViewModel = mainViewModel;
 
-		NameTextBox.WithTextBinding(_mainViewModel.Model, nameof(_mainViewModel.Model.Name))
-			.WithEnabledBinding(_mainViewModel, nameof(_mainViewModel.CanChangeName));
+		_navigationService.PropertyChanging += (s, e) => OnCurrentFormChanging();
+		_navigationService.PropertyChanged += (s, e) => OnCurrentFormChanged();
 
-		AgeNumericUpDown.WithValueBinding(_mainViewModel.Model, nameof(_mainViewModel.Model.Age));
-
-		MainStatusStrip.Items.Add(new ToolStripStatusLabel($"User: {_currentUserService.UserDomainName}\\{_currentUserService.UserName}"));
+		MainStatusStrip.Items.Add(new ToolStripStatusLabel($"User: {_mainViewModel.User}"));
 	}
 
-	private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+	private void OnCurrentFormChanged()
 	{
-		_notificationService.SendInformation($"Bye, {_currentUserService.UserName}");
-		FormsApplication.Exit();
+		if (_navigationService.CurrentForm is not null)
+			MainPanel.Controls.Add(_navigationService.CurrentForm);
 	}
+
+	private void OnCurrentFormChanging()
+	{
+		if (_navigationService.CurrentForm is not null)
+			MainPanel.Controls.Remove(_navigationService.CurrentForm);
+	}
+
+	private void ExitToolStripMenuItem_Click(object sender, EventArgs e) => FormsApplication.Exit();
+
+	private void FirstToolStripMenuItem_Click(object sender, EventArgs e) => _navigationService.NavigateTo<FirstForm>();
+
+	private void SecondToolStripMenuItem_Click(object sender, EventArgs e) => _navigationService.NavigateTo<SecondForm>();
+
+	private void ThirdToolStripMenuItem_Click(object sender, EventArgs e) => _navigationService.NavigateTo<ThirdForm>();
 }

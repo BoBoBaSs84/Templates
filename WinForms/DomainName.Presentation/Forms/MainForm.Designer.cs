@@ -40,7 +40,7 @@ partial class MainForm
 		printToolStripMenuItem = new ToolStripMenuItem();
 		printPreviewToolStripMenuItem = new ToolStripMenuItem();
 		toolStripSeparator2 = new ToolStripSeparator();
-		exitToolStripMenuItem = new ToolStripMenuItem();
+		ExitToolStripMenuItem = new ToolStripMenuItem();
 		editToolStripMenuItem = new ToolStripMenuItem();
 		undoToolStripMenuItem = new ToolStripMenuItem();
 		redoToolStripMenuItem = new ToolStripMenuItem();
@@ -59,17 +59,19 @@ partial class MainForm
 		searchToolStripMenuItem = new ToolStripMenuItem();
 		toolStripSeparator5 = new ToolStripSeparator();
 		aboutToolStripMenuItem = new ToolStripMenuItem();
+		formsToolStripMenuItem = new ToolStripMenuItem();
+		FirstToolStripMenuItem = new ToolStripMenuItem();
+		SecondToolStripMenuItem = new ToolStripMenuItem();
+		ThirdToolStripMenuItem = new ToolStripMenuItem();
 		MainStatusStrip = new StatusStrip();
-		NameTextBox = new TextBox();
-		AgeNumericUpDown = new NumericUpDown();
+		MainPanel = new Panel();
 		menuStrip1.SuspendLayout();
-		((System.ComponentModel.ISupportInitialize)AgeNumericUpDown).BeginInit();
 		SuspendLayout();
 		// 
 		// menuStrip1
 		// 
 		menuStrip1.ImageScalingSize = new Size(24, 24);
-		menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, toolsToolStripMenuItem, helpToolStripMenuItem });
+		menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, toolsToolStripMenuItem, helpToolStripMenuItem, formsToolStripMenuItem });
 		menuStrip1.Location = new Point(0, 0);
 		menuStrip1.Name = "menuStrip1";
 		menuStrip1.Size = new Size(1258, 33);
@@ -78,7 +80,7 @@ partial class MainForm
 		// 
 		// fileToolStripMenuItem
 		// 
-		fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, toolStripSeparator, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator1, printToolStripMenuItem, printPreviewToolStripMenuItem, toolStripSeparator2, exitToolStripMenuItem });
+		fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, toolStripSeparator, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator1, printToolStripMenuItem, printPreviewToolStripMenuItem, toolStripSeparator2, ExitToolStripMenuItem });
 		fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 		fileToolStripMenuItem.Size = new Size(54, 29);
 		fileToolStripMenuItem.Text = "&File";
@@ -148,12 +150,12 @@ partial class MainForm
 		toolStripSeparator2.Name = "toolStripSeparator2";
 		toolStripSeparator2.Size = new Size(220, 6);
 		// 
-		// exitToolStripMenuItem
+		// ExitToolStripMenuItem
 		// 
-		exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-		exitToolStripMenuItem.Size = new Size(223, 34);
-		exitToolStripMenuItem.Text = "E&xit";
-		exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+		ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+		ExitToolStripMenuItem.Size = new Size(223, 34);
+		ExitToolStripMenuItem.Text = "E&xit";
+		ExitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
 		// 
 		// editToolStripMenuItem
 		// 
@@ -274,6 +276,34 @@ partial class MainForm
 		aboutToolStripMenuItem.Size = new Size(185, 34);
 		aboutToolStripMenuItem.Text = "&About...";
 		// 
+		// formsToolStripMenuItem
+		// 
+		formsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { FirstToolStripMenuItem, SecondToolStripMenuItem, ThirdToolStripMenuItem });
+		formsToolStripMenuItem.Name = "formsToolStripMenuItem";
+		formsToolStripMenuItem.Size = new Size(78, 29);
+		formsToolStripMenuItem.Text = "Forms";
+		// 
+		// FirstToolStripMenuItem
+		// 
+		FirstToolStripMenuItem.Name = "FirstToolStripMenuItem";
+		FirstToolStripMenuItem.Size = new Size(173, 34);
+		FirstToolStripMenuItem.Text = "First";
+		FirstToolStripMenuItem.Click += FirstToolStripMenuItem_Click;
+		// 
+		// SecondToolStripMenuItem
+		// 
+		SecondToolStripMenuItem.Name = "SecondToolStripMenuItem";
+		SecondToolStripMenuItem.Size = new Size(173, 34);
+		SecondToolStripMenuItem.Text = "Second";
+		SecondToolStripMenuItem.Click += SecondToolStripMenuItem_Click;
+		// 
+		// ThirdToolStripMenuItem
+		// 
+		ThirdToolStripMenuItem.Name = "ThirdToolStripMenuItem";
+		ThirdToolStripMenuItem.Size = new Size(173, 34);
+		ThirdToolStripMenuItem.Text = "Third";
+		ThirdToolStripMenuItem.Click += ThirdToolStripMenuItem_Click;
+		// 
 		// MainStatusStrip
 		// 
 		MainStatusStrip.ImageScalingSize = new Size(24, 24);
@@ -283,27 +313,20 @@ partial class MainForm
 		MainStatusStrip.TabIndex = 2;
 		MainStatusStrip.Text = "statusStrip1";
 		// 
-		// NameTextBox
+		// MainPanel
 		// 
-		NameTextBox.Location = new Point(454, 224);
-		NameTextBox.Name = "NameTextBox";
-		NameTextBox.Size = new Size(150, 31);
-		NameTextBox.TabIndex = 3;
-		// 
-		// AgeNumericUpDown
-		// 
-		AgeNumericUpDown.Location = new Point(559, 325);
-		AgeNumericUpDown.Name = "AgeNumericUpDown";
-		AgeNumericUpDown.Size = new Size(180, 31);
-		AgeNumericUpDown.TabIndex = 4;
+		MainPanel.Dock = DockStyle.Fill;
+		MainPanel.Location = new Point(0, 33);
+		MainPanel.Name = "MainPanel";
+		MainPanel.Size = new Size(1258, 689);
+		MainPanel.TabIndex = 3;
 		// 
 		// MainForm
 		// 
 		AutoScaleDimensions = new SizeF(10F, 25F);
 		AutoScaleMode = AutoScaleMode.Font;
 		ClientSize = new Size(1258, 744);
-		Controls.Add(AgeNumericUpDown);
-		Controls.Add(NameTextBox);
+		Controls.Add(MainPanel);
 		Controls.Add(MainStatusStrip);
 		Controls.Add(menuStrip1);
 		MainMenuStrip = menuStrip1;
@@ -311,7 +334,6 @@ partial class MainForm
 		Text = "MainForm";
 		menuStrip1.ResumeLayout(false);
 		menuStrip1.PerformLayout();
-		((System.ComponentModel.ISupportInitialize)AgeNumericUpDown).EndInit();
 		ResumeLayout(false);
 		PerformLayout();
 	}
@@ -329,7 +351,7 @@ partial class MainForm
 	private ToolStripMenuItem printToolStripMenuItem;
 	private ToolStripMenuItem printPreviewToolStripMenuItem;
 	private ToolStripSeparator toolStripSeparator2;
-	private ToolStripMenuItem exitToolStripMenuItem;
+	private ToolStripMenuItem ExitToolStripMenuItem;
 	private ToolStripMenuItem editToolStripMenuItem;
 	private ToolStripMenuItem undoToolStripMenuItem;
 	private ToolStripMenuItem redoToolStripMenuItem;
@@ -349,6 +371,9 @@ partial class MainForm
 	private ToolStripSeparator toolStripSeparator5;
 	private ToolStripMenuItem aboutToolStripMenuItem;
 	private StatusStrip MainStatusStrip;
-	private TextBox NameTextBox;
-	private NumericUpDown AgeNumericUpDown;
+	private Panel MainPanel;
+	private ToolStripMenuItem formsToolStripMenuItem;
+	private ToolStripMenuItem FirstToolStripMenuItem;
+	private ToolStripMenuItem SecondToolStripMenuItem;
+	private ToolStripMenuItem ThirdToolStripMenuItem;
 }

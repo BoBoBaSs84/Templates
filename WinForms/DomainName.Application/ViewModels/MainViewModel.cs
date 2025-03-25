@@ -1,37 +1,17 @@
 ﻿using BB84.Notifications;
 
-using DomainName.Domain.Models;
+using DomainName.Application.Interfaces.Presentation.Services;
 
 namespace DomainName.Application.ViewModels;
 
 /// <summary>
 /// Represents the main view model of the application.
 /// </summary>
-public sealed class MainViewModel : NotifiableObject
+/// <param name="currentUserService">The current user service instance to use.</param>
+public sealed class MainViewModel(ICurrentUserService currentUserService) : NotifiableObject
 {
 	/// <summary>
-	/// Initializes a new instance of the <see cref="MainViewModel"/> class.
+	/// The current user.
 	/// </summary>
-	public MainViewModel()
-	{
-		Model = new();
-
-		Model.PropertyChanged += (s, e) => OnModelPropertyChanged(e.PropertyName);
-	}
-
-	/// <summary>
-	/// The main model of the application.
-	/// </summary>
-	public MainModel Model { get; }
-
-	/// <summary>
-	/// Indicates whether the user can change the name.
-	/// </summary>
-	public bool CanChangeName => Model.Age <= 18;
-
-	private void OnModelPropertyChanged(string? propertyName)
-	{
-		if (propertyName is nameof(Model.Age))
-			RaisePropertyChanged(nameof(CanChangeName));
-	}
+	public string User => $"{currentUserService.UserDomainName}\\{currentUserService.UserName}@{currentUserService.MachineName}";
 }

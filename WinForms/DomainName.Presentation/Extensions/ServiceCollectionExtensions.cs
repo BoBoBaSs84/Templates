@@ -21,6 +21,10 @@ internal static class ServiceCollectionExtensions
 	{
 		services.TryAddSingleton<MainForm>();
 
+		services.TryAddTransient<FirstForm>();
+		services.TryAddTransient<SecondForm>();
+		services.TryAddTransient<ThirdForm>();
+
 		return services;
 	}
 

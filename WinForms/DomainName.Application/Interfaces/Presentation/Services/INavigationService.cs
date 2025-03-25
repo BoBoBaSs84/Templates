@@ -1,9 +1,11 @@
-﻿namespace DomainName.Application.Interfaces.Presentation.Services;
+﻿using BB84.Notifications.Interfaces;
+
+namespace DomainName.Application.Interfaces.Presentation.Services;
 
 /// <summary>
 /// The interface for the navigation service.
 /// </summary>
-public interface INavigationService
+public interface INavigationService : INotifiableObject
 {
 	/// <summary>
 	/// The currently form that has been navigated to.
