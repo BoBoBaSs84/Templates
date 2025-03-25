@@ -32,7 +32,21 @@ internal static class ServiceCollectionExtensions
 	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
 		services.TryAddTransient<ICurrentUserService, CurrentUserService>();
+		services.TryAddSingleton<INavigationService, NavigationService>();
 		services.TryAddSingleton<INotificationService, NotificationService>();
+
+		return services;
+	}
+
+	/// <summary>
+	/// Registers the required factories to the <paramref name="services"/> collection.
+	/// </summary>
+	/// <param name="services">The service collection to enrich.</param>
+	/// <returns>The enriched service collection.</returns>
+	internal static IServiceCollection RegisterFactories(this IServiceCollection services)
+	{
+		services.TryAddSingleton<Func<Type, Form>>(serviceProvider
+			=> type => (Form)serviceProvider.GetRequiredService(type));
 
 		return services;
 	}

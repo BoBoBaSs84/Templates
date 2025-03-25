@@ -20,6 +20,7 @@ public static class DependencyInjectionInstaller
 	public static IServiceCollection RegisterPresentationServices(this IServiceCollection services)
 	{
 		services.RegisterForms()
+			.RegisterFactories()
 			.RegisterServices();
 
 		return services;
