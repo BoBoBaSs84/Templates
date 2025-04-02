@@ -13,5 +13,5 @@ public sealed class MainViewModel(ICurrentUserService currentUserService) : Noti
 	/// <summary>
 	/// The current user.
 	/// </summary>
-	public string User => $"{currentUserService.UserDomainName}\\{currentUserService.UserName}@{currentUserService.MachineName}";
+	public string User => $"{currentUserService.UserDomain}\\{currentUserService.UserName}@{currentUserService.MachineName}";
 }

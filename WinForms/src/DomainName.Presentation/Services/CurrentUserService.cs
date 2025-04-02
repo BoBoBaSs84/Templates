@@ -11,7 +11,7 @@ internal sealed class CurrentUserService : ICurrentUserService
 	public string UserName => Environment.UserName;
 
 	/// <inheritdoc/>
-	public string UserDomainName => Environment.UserDomainName;
+	public string UserDomain => Environment.UserDomainName;
 
 	/// <inheritdoc/>
 	public string MachineName => Environment.MachineName;

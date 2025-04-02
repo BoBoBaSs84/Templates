@@ -13,7 +13,7 @@ public interface ICurrentUserService
 	/// <summary>
 	/// The current user domain name.
 	/// </summary>
-	string UserDomainName {  get; }
+	string UserDomain {  get; }
 
 	/// <summary>
 	/// The current user machine name.

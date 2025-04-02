@@ -1,4 +1,6 @@
-﻿using DomainName.Application.Interfaces.Presentation.Services;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using DomainName.Application.Interfaces.Presentation.Services;
 using DomainName.Presentation.Forms;
 using DomainName.Presentation.Services;
 
@@ -10,6 +12,7 @@ namespace DomainName.Presentation.Extensions;
 /// <summary>
 /// The presentation service collection extensions.
 /// </summary>
+[ExcludeFromCodeCoverage(Justification = "Dependency injection helper.")]
 internal static class ServiceCollectionExtensions
 {
 	/// <summary>

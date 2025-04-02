@@ -21,7 +21,6 @@
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<GeneratedAssemblyInfoFile>Properties\AssemblyInfo.cs</GeneratedAssemblyInfoFile>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>latest</LangVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
@@ -51,10 +50,6 @@
 
 	<ItemGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))">
 		<InternalsVisibleTo Include="$(AssemblyName).Tests" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Properties\" />
 	</ItemGroup>
 
 </Project>

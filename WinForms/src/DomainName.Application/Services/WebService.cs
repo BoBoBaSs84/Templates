@@ -14,7 +14,7 @@ namespace DomainName.Application.Services;
 /// <param name="httpClientFactory">The http client factory instance to use.</param>
 /// <param name="loggerService">The logger service instance to use.</param>
 /// <param name="notificationService">The notification service instance to use.</param>
-internal sealed class WebService(IHttpClientFactory httpClientFactory, ILoggerService<WebService> loggerService, INotificationService notificationService) : IWebService
+public sealed class WebService(IHttpClientFactory httpClientFactory, ILoggerService<WebService> loggerService, INotificationService notificationService) : IWebService
 {
 	private static readonly Action<ILogger, Exception?> LogException =
 		LoggerMessage.Define(LogLevel.Error, 0, "Exception occured.");
