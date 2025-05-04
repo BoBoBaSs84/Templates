@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DomainName.Application.Installer;
 
-using DomainName.Application.Installer;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DomainName.Application.Tests.Installer;
 
@@ -12,10 +12,10 @@ public sealed class DependencyInjectionTests : ApplicationTestBase
 	[TestCategory("DependencyInjection")]
 	public void RegisterApplicationServicesTest()
 	{
-		IServiceCollection services = new ServiceCollection();
+		ServiceCollection services = new();
 
 		services.RegisterApplicationServices();
 
-		Assert.AreEqual(5, services.Count);
+		Assert.AreEqual(15, services.Count);
 	}
 }

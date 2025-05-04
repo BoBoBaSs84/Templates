@@ -19,11 +19,11 @@ public class DependencyInjectionTests : InfrastructureTestBase
 		Mock<IConfiguration> config = new Mock<IConfiguration>().SetupAllProperties();
 		Mock<IHostEnvironment> env = new Mock<IHostEnvironment>().SetupAllProperties();
 		env.Setup(x => x.EnvironmentName).Returns("Development");
-		IServiceCollection services = new ServiceCollection();
+		ServiceCollection services = new();
 
 		services.RegisterInfrastructureServices(config.Object, env.Object);
 
-		Assert.AreEqual(30, services.Count);
+		Assert.AreEqual(32, services.Count);
 	}
 
 	[TestMethod]
@@ -33,10 +33,10 @@ public class DependencyInjectionTests : InfrastructureTestBase
 		Mock<IConfiguration> config = new Mock<IConfiguration>().SetupAllProperties();
 		Mock<IHostEnvironment> env = new Mock<IHostEnvironment>().SetupAllProperties();
 		env.Setup(x => x.EnvironmentName).Returns("Production");
-		IServiceCollection services = new ServiceCollection();
+		ServiceCollection services = new();
 
 		services.RegisterInfrastructureServices(config.Object, env.Object);
 
-		Assert.AreEqual(18, services.Count);
+		Assert.AreEqual(20, services.Count);
 	}
 }
