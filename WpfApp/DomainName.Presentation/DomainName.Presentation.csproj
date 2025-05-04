@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0-windows</TargetFramework>
-		<UseWPF>true</UseWPF>
+		<UseWPF>True</UseWPF>
 	</PropertyGroup>
 
 	<ItemGroup>

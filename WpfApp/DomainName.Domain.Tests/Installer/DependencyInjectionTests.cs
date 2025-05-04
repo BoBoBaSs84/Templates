@@ -12,7 +12,7 @@ public sealed class DependencyInjectionTests : DomainTestBase
 	[TestCategory("DependencyInjection")]
 	public void RegisterDomainServicesTest()
 	{
-		IServiceCollection services = new ServiceCollection();
+		ServiceCollection services = new();
 
 		services.RegisterDomainServices();
 
