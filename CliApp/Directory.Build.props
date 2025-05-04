@@ -13,22 +13,19 @@
 	<PropertyGroup Label="ProjectData">
 		<AllowUnsafeBlocks>False</AllowUnsafeBlocks>
 		<AnalysisLevel>latest</AnalysisLevel>
-		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-		<!--<AssemblyOriginatorKeyFile>..\..\PublicKey.snk</AssemblyOriginatorKeyFile>-->
+		<AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
 		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
-		<DebugType>none</DebugType>
+		<DebugType>full</DebugType>
 		<Deterministic>True</Deterministic>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
-		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-		<GenerateDocumentationFile>false</GenerateDocumentationFile>
-		<GeneratedAssemblyInfoFile>Properties\AssemblyInfo.cs</GeneratedAssemblyInfoFile>
+		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>latest</LangVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<Nullable>enable</Nullable>
 		<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
 		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
-		<!--<SignAssembly>true</SignAssembly>-->
 		<TargetFramework>net8.0</TargetFramework>
 	</PropertyGroup>
 
@@ -37,19 +34,19 @@
 		<Company>https://github.com/BoBoBaSs84</Company>
 		<Copyright>Copyright © $([System.DateTime]::UtcNow.Year) BoBoBaSs84</Copyright>
 		<Description>...</Description>		
-		<Product>Domain</Product>
+		<Product>DomainName</Product>
 		<Title>$(AssemblyName)</Title>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="$(Configuration.Equals('Debug'))">
-		<DebugType>full</DebugType>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<PropertyGroup Condition="$(Configuration.Equals('Release'))">
+		<DebugType>none</DebugType>
+		<GenerateDocumentationFile>False</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
-		<IsPackable>false</IsPackable>
-		<IsTestProject>true</IsTestProject>
-		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+		<IsPackable>False</IsPackable>
+		<IsTestProject>True</IsTestProject>
+		<GenerateDocumentationFile>False</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))">
@@ -60,10 +57,6 @@
 		<Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
 		<Using Include="System.Diagnostics" />
 		<Using Include="System.Diagnostics.CodeAnalysis" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Properties\" />
 	</ItemGroup>
 
 </Project>
