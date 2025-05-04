@@ -22,7 +22,7 @@ internal sealed class LoggerService : ILoggerService
 	/// <summary>
 	/// The singleton instance of the logger service.
 	/// </summary>
-	internal static readonly ILoggerService Instance = LazyService.Value;
+	internal static ILoggerService Instance => LazyService.Value;
 
 	public void Critical(string message, [CallerMemberName] string callerName = "")
 		=> LogToFile("FTL", callerName, message);

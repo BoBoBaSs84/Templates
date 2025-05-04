@@ -13,5 +13,5 @@ public sealed class Processables : Script
 	/// Initializes a instance of the processables class.
 	/// </summary>
 	public Processables()
-		=> Tick += (s, e) => MenuBase.Processables.Process();
+		=> Tick += (s, e) => BaseMenu.MenuPool.Process();
 }
