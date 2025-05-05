@@ -40,6 +40,8 @@
 		<Description>...</Description>
 		<Product>DomainName</Product>
 		<Title>$(AssemblyName)</Title>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>http://www.github.com/BoBoBaSs84/DomainName</RepositoryUrl>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">

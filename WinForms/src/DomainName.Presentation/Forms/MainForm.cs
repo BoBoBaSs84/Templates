@@ -1,6 +1,8 @@
 ﻿using DomainName.Application.Interfaces.Presentation.Services;
 using DomainName.Application.ViewModels;
 
+using Microsoft.Extensions.DependencyInjection;
+
 using FormsApplication = System.Windows.Forms.Application;
 
 namespace DomainName.Presentation.Forms;
@@ -12,23 +14,26 @@ public partial class MainForm : Form
 {
 	private readonly INavigationService _navigationService;
 	private readonly MainViewModel _mainViewModel;
+	private readonly IServiceProvider _serviceProvider;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="MainForm"/> class.
 	/// </summary>
 	/// <param name="navigationService">The navigation service instance to use.</param>
 	/// <param name="mainViewModel">The main view model instance to use.</param>
-	public MainForm(INavigationService navigationService, MainViewModel mainViewModel)
+	/// <param name="serviceProvider">The service provider instance to use.</param>
+	public MainForm(INavigationService navigationService, MainViewModel mainViewModel, IServiceProvider serviceProvider)
 	{
 		InitializeComponent();
 
 		_navigationService = navigationService;
 		_mainViewModel = mainViewModel;
+		_serviceProvider = serviceProvider;
 
 		_navigationService.PropertyChanging += (s, e) => OnCurrentFormChanging();
 		_navigationService.PropertyChanged += (s, e) => OnCurrentFormChanged();
 
-		MainStatusStrip.Items.Add(new ToolStripStatusLabel($"User: {_mainViewModel.User}"));
+		MainStatusStrip.Items.Add(new ToolStripStatusLabel($"User: {_mainViewModel.CurrentUser}"));
 	}
 
 	private void OnCurrentFormChanged()
@@ -50,4 +55,10 @@ public partial class MainForm : Form
 	private void SecondToolStripMenuItem_Click(object sender, EventArgs e) => _navigationService.NavigateTo<SecondForm>();
 
 	private void ThirdToolStripMenuItem_Click(object sender, EventArgs e) => _navigationService.NavigateTo<ThirdForm>();
+
+	private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+	{
+		AboutForm aboutForm = _serviceProvider.GetRequiredService<AboutForm>();
+		aboutForm.ShowDialog(this);
+	}
 }

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
 using DomainName.Application.Installer;
+using DomainName.Domain.Installer;
 using DomainName.Infrastructure.Installer;
 using DomainName.Presentation.Installer;
 
@@ -24,6 +25,7 @@ internal static class ServiceCollectionExtensions
 	internal static IServiceCollection RegisterServices(this IServiceCollection services, IHostEnvironment environment)
 	{
 		services.RegisterApplicationServices()
+			.RegisterDomainServices()
 			.RegisterInfrastructureServices(environment)
 			.RegisterPresentationServices();
 

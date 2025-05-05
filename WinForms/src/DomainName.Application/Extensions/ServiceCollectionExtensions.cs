@@ -16,7 +16,7 @@ using ApplicationConstants = DomainName.Application.Common.Constants;
 namespace DomainName.Application.Extensions;
 
 /// <summary>
-/// The service collection extensions class.
+/// The application service collection extensions class.
 /// </summary>
 [ExcludeFromCodeCoverage(Justification = "Dependency injection helper.")]
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, dependency injection.")]
@@ -68,6 +68,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterViewModels(this IServiceCollection services)
 	{
+		services.TryAddSingleton<AboutViewModel>();
 		services.TryAddSingleton<MainViewModel>();
 
 		return services;

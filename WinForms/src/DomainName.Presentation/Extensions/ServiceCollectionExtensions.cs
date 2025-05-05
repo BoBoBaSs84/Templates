@@ -22,6 +22,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterForms(this IServiceCollection services)
 	{
+		services.TryAddSingleton<AboutForm>();
 		services.TryAddSingleton<MainForm>();
 
 		services.TryAddTransient<FirstForm>();

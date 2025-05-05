@@ -1,6 +1,5 @@
-﻿using BB84.Notifications;
-
-using DomainName.Application.Interfaces.Presentation.Services;
+﻿using DomainName.Application.Interfaces.Presentation.Services;
+using DomainName.Application.ViewModels.Base;
 
 namespace DomainName.Application.ViewModels;
 
@@ -8,10 +7,10 @@ namespace DomainName.Application.ViewModels;
 /// Represents the main view model of the application.
 /// </summary>
 /// <param name="currentUserService">The current user service instance to use.</param>
-public sealed class MainViewModel(ICurrentUserService currentUserService) : NotifiableObject
+public sealed class MainViewModel(ICurrentUserService currentUserService) : ViewModelBase
 {
 	/// <summary>
 	/// The current user.
 	/// </summary>
-	public string User => $"{currentUserService.UserDomain}\\{currentUserService.UserName}@{currentUserService.MachineName}";
+	public string CurrentUser => $"{currentUserService.UserDomain}\\{currentUserService.UserName}@{currentUserService.MachineName}";
 }

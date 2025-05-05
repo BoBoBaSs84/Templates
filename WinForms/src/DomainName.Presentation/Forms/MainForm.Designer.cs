@@ -58,7 +58,7 @@ partial class MainForm
 		indexToolStripMenuItem = new ToolStripMenuItem();
 		searchToolStripMenuItem = new ToolStripMenuItem();
 		toolStripSeparator5 = new ToolStripSeparator();
-		aboutToolStripMenuItem = new ToolStripMenuItem();
+		AboutToolStripMenuItem = new ToolStripMenuItem();
 		formsToolStripMenuItem = new ToolStripMenuItem();
 		FirstToolStripMenuItem = new ToolStripMenuItem();
 		SecondToolStripMenuItem = new ToolStripMenuItem();
@@ -242,7 +242,7 @@ partial class MainForm
 		// 
 		// helpToolStripMenuItem
 		// 
-		helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contentsToolStripMenuItem, indexToolStripMenuItem, searchToolStripMenuItem, toolStripSeparator5, aboutToolStripMenuItem });
+		helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contentsToolStripMenuItem, indexToolStripMenuItem, searchToolStripMenuItem, toolStripSeparator5, AboutToolStripMenuItem });
 		helpToolStripMenuItem.Name = "helpToolStripMenuItem";
 		helpToolStripMenuItem.Size = new Size(65, 29);
 		helpToolStripMenuItem.Text = "&Help";
@@ -250,31 +250,32 @@ partial class MainForm
 		// contentsToolStripMenuItem
 		// 
 		contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-		contentsToolStripMenuItem.Size = new Size(185, 34);
+		contentsToolStripMenuItem.Size = new Size(270, 34);
 		contentsToolStripMenuItem.Text = "&Contents";
 		// 
 		// indexToolStripMenuItem
 		// 
 		indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-		indexToolStripMenuItem.Size = new Size(185, 34);
+		indexToolStripMenuItem.Size = new Size(270, 34);
 		indexToolStripMenuItem.Text = "&Index";
 		// 
 		// searchToolStripMenuItem
 		// 
 		searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-		searchToolStripMenuItem.Size = new Size(185, 34);
+		searchToolStripMenuItem.Size = new Size(270, 34);
 		searchToolStripMenuItem.Text = "&Search";
 		// 
 		// toolStripSeparator5
 		// 
 		toolStripSeparator5.Name = "toolStripSeparator5";
-		toolStripSeparator5.Size = new Size(182, 6);
+		toolStripSeparator5.Size = new Size(267, 6);
 		// 
-		// aboutToolStripMenuItem
+		// AboutToolStripMenuItem
 		// 
-		aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-		aboutToolStripMenuItem.Size = new Size(185, 34);
-		aboutToolStripMenuItem.Text = "&About...";
+		AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
+		AboutToolStripMenuItem.Size = new Size(270, 34);
+		AboutToolStripMenuItem.Text = "&About...";
+		AboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
 		// 
 		// formsToolStripMenuItem
 		// 
@@ -369,7 +370,7 @@ partial class MainForm
 	private ToolStripMenuItem indexToolStripMenuItem;
 	private ToolStripMenuItem searchToolStripMenuItem;
 	private ToolStripSeparator toolStripSeparator5;
-	private ToolStripMenuItem aboutToolStripMenuItem;
+	private ToolStripMenuItem AboutToolStripMenuItem;
 	private StatusStrip MainStatusStrip;
 	private Panel MainPanel;
 	private ToolStripMenuItem formsToolStripMenuItem;
