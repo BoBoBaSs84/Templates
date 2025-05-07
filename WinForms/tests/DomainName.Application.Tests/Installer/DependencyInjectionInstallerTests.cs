@@ -15,6 +15,6 @@ public class DependencyInjectionInstallerTests
 
 		services.RegisterApplicationServices();
 
-		Assert.AreEqual(30, services.Count);
+		Assert.AreEqual(3, services.Count);
 	}
 }

@@ -1,6 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
+using BB84.Extensions;
+
 using DomainName.Application.Interfaces.Infrastructure.Services;
+using DomainName.Infrastructure.Common;
 using DomainName.Infrastructure.Services;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -31,17 +34,38 @@ internal static class ServiceCollectionExtensions
 			config.ClearProviders();
 
 			if (environment.IsDevelopment())
-			{
-				config.SetMinimumLevel(LogLevel.Debug);
 				config.AddConsole();
-			}
 
 			if (environment.IsProduction())
-			{
-				config.SetMinimumLevel(LogLevel.Warning);
 				config.AddEventLog(config => config.SourceName = environment.ApplicationName);
-			}
 		});
+
+		return services;
+	}
+
+	/// <summary>
+	/// Registers the named http clients to the service collection.
+	/// </summary>
+	/// <param name="services">The service collection to enrich.</param>
+	/// <returns>The enriched service collection.</returns>
+	internal static IServiceCollection RegisterHttpClients(this IServiceCollection services)
+	{
+		services.AddHttpClient(Constants.WikiClient.Name, configureClient =>
+			configureClient.WithBaseAdress(Constants.WikiClient.BaseUrl)
+				.WithMediaType(Constants.WikiClient.MediaType)
+				.WithTimeout(TimeSpan.FromSeconds(15)));
+
+		return services;
+	}
+
+	/// <summary>
+	/// Registers the required infrastructure services to the service collection.
+	/// </summary>
+	/// <param name="services">The service collection to enrich.</param>
+	/// <returns>The enriched service collection.</returns>
+	internal static IServiceCollection RegisterServices(this IServiceCollection services)
+	{
+		services.TryAddSingleton<IWebService, WebService>();
 
 		return services;
 	}

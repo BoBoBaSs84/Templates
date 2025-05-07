@@ -19,8 +19,7 @@ public static class DependencyInjectionInstaller
 	/// <returns>The same service collection instance, so that multiple calls can be chained.</returns>
 	public static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
 	{
-		services.RegisterHttpClients()
-			.RegisterProviders()
+		services.RegisterProviders()
 			.RegisterServices()
 			.RegisterViewModels();
 

@@ -1,12 +1,11 @@
-﻿using DomainName.Application.Interfaces.Application.Services;
-using DomainName.Application.Interfaces.Infrastructure.Services;
+﻿using DomainName.Application.Interfaces.Infrastructure.Services;
 using DomainName.Application.Interfaces.Presentation.Services;
 
 using Microsoft.Extensions.Logging;
 
-using ApplicationConstants = DomainName.Application.Common.Constants;
+using ApplicationConstants = DomainName.Infrastructure.Common.Constants;
 
-namespace DomainName.Application.Services;
+namespace DomainName.Infrastructure.Services;
 
 /// <summary>
 /// The web service class.
@@ -23,7 +22,7 @@ internal sealed class WebService(IHttpClientFactory httpClientFactory, ILoggerSe
 	{
 		try
 		{
-			HttpClient httpClient = httpClientFactory.CreateClient(ApplicationConstants.HttpClient.WikipediaClient);
+			HttpClient httpClient = httpClientFactory.CreateClient(ApplicationConstants.WikiClient.Name);
 			string requestUri = @"/w/api.php?action=query&prop=revisions&format=json&rvprop=content&rvsection=0&titles=pizza";
 			using HttpResponseMessage responseMessage = await httpClient.GetAsync(requestUri, cancellationToken)
 				.ConfigureAwait(false);
