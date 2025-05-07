@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-using DomainName.Domain.Models;
+﻿using DomainName.Domain.Models;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -10,7 +8,6 @@ namespace DomainName.Domain.Extensions;
 /// <summary>
 /// The domain service collection extensions class.
 /// </summary>
-[ExcludeFromCodeCoverage(Justification = "Dependency injection helper.")]
 internal static class ServiceCollectionExtensions
 {
 	/// <summary>

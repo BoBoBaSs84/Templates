@@ -9,7 +9,6 @@ namespace DomainName.Domain.Installer;
 /// <summary>
 /// The domain dependency injection installer class.
 /// </summary>
-[ExcludeFromCodeCoverage(Justification = "Dependency injection installler.")]
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here.")]
 public static class DependencyInjectionInstaller
 {
