@@ -18,7 +18,6 @@ namespace DomainName.Application.Extensions;
 /// <summary>
 /// The application service collection extensions class.
 /// </summary>
-[ExcludeFromCodeCoverage(Justification = "Dependency injection helper.")]
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, dependency injection.")]
 internal static class ServiceCollectionExtensions
 {
