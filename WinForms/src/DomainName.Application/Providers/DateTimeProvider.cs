@@ -5,17 +5,14 @@ using DomainName.Application.Abstractions.Application.Providers;
 namespace DomainName.Application.Providers;
 
 /// <summary>
-/// The date time provider class.
+/// The implementation for the date time provider contract.
 /// </summary>
-[ExcludeFromCodeCoverage(Justification = "Wrapper class.")]
+[ExcludeFromCodeCoverage(Justification = "This class is a simple wrapper around the System.DateTime class.")]
 internal sealed class DateTimeProvider : IDateTimeProvider
 {
-	/// <inheritdoc/>
 	public DateTime Now => DateTime.Now;
 
-	/// <inheritdoc/>
 	public TimeSpan TimeOfDay => DateTime.Now.TimeOfDay;
 
-	/// <inheritdoc/>
 	public DateTime Today => DateTime.Today;
 }

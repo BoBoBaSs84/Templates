@@ -2,8 +2,10 @@
 
 using BB84.Extensions;
 
+using DomainName.Application.Abstractions.Infrastructure.Providers;
 using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Infrastructure.Common;
+using DomainName.Infrastructure.Providers;
 using DomainName.Infrastructure.Services;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -54,6 +56,19 @@ internal static class ServiceCollectionExtensions
 			configureClient.WithBaseAdress(Constants.WikiClient.BaseUrl)
 				.WithMediaType(Constants.WikiClient.MediaType)
 				.WithTimeout(TimeSpan.FromSeconds(15)));
+
+		return services;
+	}
+
+	/// <summary>
+	/// Registers the required infrastructure providers to the service collection.
+	/// </summary>
+	/// <param name="services">The service collection to enrich.</param>
+	/// <returns>The enriched service collection.</returns>
+	internal static IServiceCollection RegisterProviders(this IServiceCollection services)
+	{
+		services.TryAddSingleton<IDirectoryProvider, DirectoryProvider>();
+		services.TryAddSingleton<IFileProvider, FileProvider>();
 
 		return services;
 	}

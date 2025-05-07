@@ -1,22 +1,19 @@
 ﻿namespace DomainName.Application.Abstractions.Application.Providers;
 
 /// <summary>
-/// The interface for the date time provider.
+/// This interface defines a contract for date time provider.
 /// </summary>
+/// <remarks>
+/// Serves as an abstraction for the <see cref="DateTime"/> properties.
+/// </remarks>
 public interface IDateTimeProvider
 {
-	/// <summary>
-	/// The current date time.
-	/// </summary>
+	/// <inheritdoc cref="DateTime.Now"/>
 	public DateTime Now { get; }
 
-	/// <summary>
-	/// The current time.
-	/// </summary>
+	/// <inheritdoc cref="DateTime.TimeOfDay"/>
 	public TimeSpan TimeOfDay { get; }
 
-	/// <summary>
-	/// The current date.
-	/// </summary>
+	/// <inheritdoc cref="DateTime.Today"/>
 	public DateTime Today { get; }
 }
