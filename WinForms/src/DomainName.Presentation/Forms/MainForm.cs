@@ -26,6 +26,8 @@ public partial class MainForm : Form
 	{
 		InitializeComponent();
 
+		Text = $"{mainViewModel.ApplicationName} - {mainViewModel.EnvironmentName}";
+
 		_navigationService = navigationService;
 		_mainViewModel = mainViewModel;
 		_serviceProvider = serviceProvider;
