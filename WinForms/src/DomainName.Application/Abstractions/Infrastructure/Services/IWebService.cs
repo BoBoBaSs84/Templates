@@ -1,4 +1,4 @@
-﻿namespace DomainName.Application.Interfaces.Infrastructure.Services;
+﻿namespace DomainName.Application.Abstractions.Infrastructure.Services;
 
 /// <summary>
 /// The interface for the web service.

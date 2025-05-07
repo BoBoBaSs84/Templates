@@ -1,4 +1,4 @@
-﻿using DomainName.Application.Interfaces.Infrastructure.Services;
+﻿using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Extensions;
 using DomainName.Presentation.Forms;
 

@@ -2,7 +2,7 @@
 
 using BB84.Extensions;
 
-using DomainName.Application.Interfaces.Infrastructure.Services;
+using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Infrastructure.Common;
 using DomainName.Infrastructure.Services;
 

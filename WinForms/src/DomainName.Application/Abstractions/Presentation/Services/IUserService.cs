@@ -1,4 +1,4 @@
-﻿namespace DomainName.Application.Interfaces.Presentation.Services;
+﻿namespace DomainName.Application.Abstractions.Presentation.Services;
 
 /// <summary>
 /// The interface for the user service.

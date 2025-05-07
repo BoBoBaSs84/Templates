@@ -1,4 +1,4 @@
-﻿using DomainName.Application.Interfaces.Presentation.Services;
+﻿using DomainName.Application.Abstractions.Presentation.Services;
 using DomainName.Application.ViewModels.Base;
 
 using Microsoft.Extensions.Hosting;
