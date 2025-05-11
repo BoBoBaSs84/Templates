@@ -15,12 +15,12 @@ public partial class AboutForm : Form
 	{
 		InitializeComponent();
 
-		TitleLabelValue.Text = viewModel.Model.Title;
-		VersionLabelValue.Text = viewModel.Model.Version;
-		CompanyLabelValue.Text = viewModel.Model.Company;
-		CopyrightLabelValue.Text = viewModel.Model.Copyright;
-		FrameworkLabelValue.Text = viewModel.Model.FrameworkName;
-		RepositoryLabelValue.Text = viewModel.Model.Repository;
-		DescriptionLabelValue.Text = viewModel.Model.Comments;
+		titleLabelValue.Text = viewModel.Model.Title;
+		versionLabelValue.Text = viewModel.Model.Version;
+		companyLabelValue.Text = viewModel.Model.Company;
+		copyrightLabelValue.Text = viewModel.Model.Copyright;
+		frameworkLabelValue.Text = viewModel.Model.FrameworkName;
+		repositoryLabelValue.Text = viewModel.Model.Repository;
+		descriptionLabelValue.Text = viewModel.Model.Comments;
 	}
 }

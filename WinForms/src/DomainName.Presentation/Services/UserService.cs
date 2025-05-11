@@ -1,10 +1,13 @@
-﻿using DomainName.Application.Abstractions.Presentation.Services;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using DomainName.Application.Abstractions.Presentation.Services;
 
 namespace DomainName.Presentation.Services;
 
 /// <summary>
 /// The user service implementation.
 /// </summary>
+[ExcludeFromCodeCoverage]
 internal sealed class UserService : IUserService
 {
 	/// <inheritdoc/>
