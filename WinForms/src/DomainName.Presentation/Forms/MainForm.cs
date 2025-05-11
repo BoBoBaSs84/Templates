@@ -3,7 +3,7 @@ using DomainName.Application.ViewModels;
 
 using Microsoft.Extensions.DependencyInjection;
 
-using FormsApplication = System.Windows.Forms.Application;
+using WinFormsApp = System.Windows.Forms.Application;
 
 namespace DomainName.Presentation.Forms;
 
@@ -35,22 +35,22 @@ public partial class MainForm : Form
 		_navigationService.PropertyChanging += (s, e) => OnCurrentFormChanging();
 		_navigationService.PropertyChanged += (s, e) => OnCurrentFormChanged();
 
-		MainStatusStrip.Items.Add(new ToolStripStatusLabel($"User: {_mainViewModel.CurrentUser}"));
+		mainStatusStrip.Items.Add(new ToolStripStatusLabel($"User: {_mainViewModel.CurrentUser}"));
 	}
 
 	private void OnCurrentFormChanged()
 	{
 		if (_navigationService.CurrentForm is not null)
-			MainPanel.Controls.Add(_navigationService.CurrentForm);
+			mainPanel.Controls.Add(_navigationService.CurrentForm);
 	}
 
 	private void OnCurrentFormChanging()
 	{
 		if (_navigationService.CurrentForm is not null)
-			MainPanel.Controls.Remove(_navigationService.CurrentForm);
+			mainPanel.Controls.Remove(_navigationService.CurrentForm);
 	}
 
-	private void ExitToolStripMenuItem_Click(object sender, EventArgs e) => FormsApplication.Exit();
+	private void ExitToolStripMenuItem_Click(object sender, EventArgs e) => WinFormsApp.Exit();
 
 	private void FirstToolStripMenuItem_Click(object sender, EventArgs e) => _navigationService.NavigateTo<FirstForm>();
 

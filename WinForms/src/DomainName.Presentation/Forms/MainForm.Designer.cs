@@ -63,8 +63,8 @@ partial class MainForm
 		FirstToolStripMenuItem = new ToolStripMenuItem();
 		SecondToolStripMenuItem = new ToolStripMenuItem();
 		ThirdToolStripMenuItem = new ToolStripMenuItem();
-		MainStatusStrip = new StatusStrip();
-		MainPanel = new Panel();
+		mainStatusStrip = new StatusStrip();
+		mainPanel = new Panel();
 		menuStrip1.SuspendLayout();
 		SuspendLayout();
 		// 
@@ -307,28 +307,28 @@ partial class MainForm
 		// 
 		// MainStatusStrip
 		// 
-		MainStatusStrip.ImageScalingSize = new Size(24, 24);
-		MainStatusStrip.Location = new Point(0, 722);
-		MainStatusStrip.Name = "MainStatusStrip";
-		MainStatusStrip.Size = new Size(1258, 22);
-		MainStatusStrip.TabIndex = 2;
-		MainStatusStrip.Text = "statusStrip1";
+		mainStatusStrip.ImageScalingSize = new Size(24, 24);
+		mainStatusStrip.Location = new Point(0, 722);
+		mainStatusStrip.Name = "MainStatusStrip";
+		mainStatusStrip.Size = new Size(1258, 22);
+		mainStatusStrip.TabIndex = 2;
+		mainStatusStrip.Text = "statusStrip1";
 		// 
 		// MainPanel
 		// 
-		MainPanel.Dock = DockStyle.Fill;
-		MainPanel.Location = new Point(0, 33);
-		MainPanel.Name = "MainPanel";
-		MainPanel.Size = new Size(1258, 689);
-		MainPanel.TabIndex = 3;
+		mainPanel.Dock = DockStyle.Fill;
+		mainPanel.Location = new Point(0, 33);
+		mainPanel.Name = "MainPanel";
+		mainPanel.Size = new Size(1258, 689);
+		mainPanel.TabIndex = 3;
 		// 
 		// MainForm
 		// 
 		AutoScaleDimensions = new SizeF(10F, 25F);
 		AutoScaleMode = AutoScaleMode.Font;
 		ClientSize = new Size(1258, 744);
-		Controls.Add(MainPanel);
-		Controls.Add(MainStatusStrip);
+		Controls.Add(mainPanel);
+		Controls.Add(mainStatusStrip);
 		Controls.Add(menuStrip1);
 		MainMenuStrip = menuStrip1;
 		Name = "MainForm";
@@ -371,8 +371,8 @@ partial class MainForm
 	private ToolStripMenuItem searchToolStripMenuItem;
 	private ToolStripSeparator toolStripSeparator5;
 	private ToolStripMenuItem AboutToolStripMenuItem;
-	private StatusStrip MainStatusStrip;
-	private Panel MainPanel;
+	private StatusStrip mainStatusStrip;
+	private Panel mainPanel;
 	private ToolStripMenuItem formsToolStripMenuItem;
 	private ToolStripMenuItem FirstToolStripMenuItem;
 	private ToolStripMenuItem SecondToolStripMenuItem;

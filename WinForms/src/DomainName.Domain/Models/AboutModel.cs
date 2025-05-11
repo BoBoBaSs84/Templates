@@ -9,7 +9,7 @@ namespace DomainName.Domain.Models;
 /// <summary>
 /// Represents the model for the about page.
 /// </summary>
-public class AboutModel : ModelBase
+public sealed class AboutModel : ModelBase
 {
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AboutModel"/> class.

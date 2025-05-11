@@ -6,8 +6,6 @@ using DomainName.Presentation.Forms;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using Moq;
-
 namespace DomainName.Presentation.Tests.Forms;
 
 [TestClass]
@@ -16,9 +14,8 @@ public sealed class AboutFormTests : UnitTestBase
 	[TestMethod]
 	public void ConstructorShouldSetFieldsCorrectly()
 	{
-		Mock<AboutModel> modelMock = new Mock<AboutModel>()
-			.SetupAllProperties();
-		AboutViewModel viewModel = new(modelMock.Object);
+		AboutModel model = new();
+		AboutViewModel viewModel = new(model);
 
 		using AboutForm form = new(viewModel);
 
