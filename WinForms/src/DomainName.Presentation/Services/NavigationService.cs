@@ -10,7 +10,7 @@ namespace DomainName.Presentation.Services;
 internal sealed class NavigationService : NotifiableObject, INavigationService
 {
 	private readonly Func<Type, Form> _formFactory;
-	private Form _currentForm = default!;
+	private Form? _currentForm;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="NavigationService"/> class.
@@ -24,7 +24,7 @@ internal sealed class NavigationService : NotifiableObject, INavigationService
 		PropertyChanged += (s, e) => OnCurrentFormChanged();
 	}
 
-	public Form CurrentForm
+	public Form? CurrentForm
 	{
 		get => _currentForm;
 		private set => SetProperty(ref _currentForm, value);

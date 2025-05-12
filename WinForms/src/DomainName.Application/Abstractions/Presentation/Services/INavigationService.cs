@@ -10,7 +10,7 @@ public interface INavigationService : INotifiableObject
 	/// <summary>
 	/// The currently form that has been navigated to.
 	/// </summary>
-	public Form CurrentForm { get; }
+	public Form? CurrentForm { get; }
 
 	/// <summary>
 	/// Navigates to the provided form.
