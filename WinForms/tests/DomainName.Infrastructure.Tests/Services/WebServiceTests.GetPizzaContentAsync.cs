@@ -23,7 +23,7 @@ public sealed partial class WebServiceTests
 
 		Assert.IsNotNull(result);
 		_loggerServiceMock.Verify(x => x.Log(It.IsAny<Action<ILogger, Exception?>>(), It.IsAny<Exception?>()), Times.Once);
-		_notificationServiceMock.Verify(x => x.SendError(It.IsAny<string>()), Times.Once);
+		_notificationServiceMock.Verify(x => x.ShowError(It.IsAny<string>()), Times.Once);
 	}
 
 	[TestMethod]
@@ -38,7 +38,7 @@ public sealed partial class WebServiceTests
 
 		Assert.IsNotNull(result);
 		_loggerServiceMock.Verify(x => x.Log(It.IsAny<Action<ILogger, Exception?>>(), It.IsAny<Exception?>()), Times.Once);
-		_notificationServiceMock.Verify(x => x.SendError(It.IsAny<string>()), Times.Once);
+		_notificationServiceMock.Verify(x => x.ShowError(It.IsAny<string>()), Times.Once);
 	}
 
 	[TestMethod]
@@ -54,6 +54,6 @@ public sealed partial class WebServiceTests
 		
 		Assert.AreEqual(content, result);
 		_loggerServiceMock.Verify(x => x.Log(It.IsAny<Action<ILogger, Exception?>>(), It.IsAny<Exception?>()), Times.Never);
-		_notificationServiceMock.Verify(x => x.SendError(It.IsAny<string>()), Times.Never);
+		_notificationServiceMock.Verify(x => x.ShowError(It.IsAny<string>()), Times.Never);
 	}
 }

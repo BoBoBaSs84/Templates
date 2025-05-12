@@ -37,7 +37,7 @@ internal sealed class WebService(IHttpClientFactory httpClientFactory, ILoggerSe
 		catch (Exception ex)
 		{
 			loggerService.Log(LogException, ex);
-			notificationService.SendError(ex.Message);
+			notificationService.ShowError(ex.Message);
 			return string.Empty;
 		}
 	}
