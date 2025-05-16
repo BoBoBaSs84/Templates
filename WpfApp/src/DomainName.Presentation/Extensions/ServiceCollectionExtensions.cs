@@ -45,6 +45,7 @@ internal static class ServiceCollectionExtensions
 	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
 		services.TryAddSingleton<INotificationService, NotificationService>();
+		services.TryAddSingleton<IUserService, UserService>();
 
 		return services;
 	}
