@@ -1,4 +1,4 @@
-﻿using DomainName.Application.Interfaces.Presentation.Services;
+﻿using DomainName.Application.Abstractions.Presentation.Services;
 using DomainName.Presentation.Controls;
 using DomainName.Presentation.Services;
 using DomainName.Presentation.Windows;

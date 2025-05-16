@@ -1,7 +1,7 @@
 ﻿using BB84.Notifications.Commands;
 using BB84.Notifications.Interfaces.Commands;
 
-using DomainName.Application.Interfaces.Application.Services;
+using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.ViewModels.Base;
 
 namespace DomainName.Application.ViewModels;

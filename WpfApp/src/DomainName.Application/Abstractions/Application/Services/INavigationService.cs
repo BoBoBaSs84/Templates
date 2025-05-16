@@ -1,6 +1,6 @@
 ﻿using DomainName.Application.ViewModels.Base;
 
-namespace DomainName.Application.Interfaces.Application.Services;
+namespace DomainName.Application.Abstractions.Application.Services;
 
 /// <summary>
 /// The navgigation service interface.

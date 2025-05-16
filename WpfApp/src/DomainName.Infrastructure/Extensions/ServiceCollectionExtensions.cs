@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-using DomainName.Application.Interfaces.Infrastructure.Services;
+using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Infrastructure.Services;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +20,7 @@ internal static class ServiceCollectionExtensions
 	/// Registers the logger service to the service collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
-	/// <param name="environment">The host environment to use.</param>
+	/// <param name="environment">The host environment instance to use.</param>
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterLoggerService(this IServiceCollection services, IHostEnvironment environment)
 	{
@@ -31,18 +31,24 @@ internal static class ServiceCollectionExtensions
 			config.ClearProviders();
 
 			if (environment.IsDevelopment())
-			{
-				config.SetMinimumLevel(LogLevel.Debug);
 				config.AddConsole();
-			}
 
 			if (environment.IsProduction())
-			{
-				config.SetMinimumLevel(LogLevel.Warning);
 				config.AddEventLog(config => config.SourceName = environment.ApplicationName);
-			}
-
 		});
+
+		return services;
+	}
+
+	/// <summary>
+	/// Registers the required infrastructure services to the service collection.
+	/// </summary>
+	/// <param name="services">The service collection to enrich.</param>
+	/// <returns>The enriched service collection.</returns>
+	internal static IServiceCollection RegisterServices(this IServiceCollection services)
+	{
+		services.TryAddSingleton<IProviderService, ProviderService>();
+		services.TryAddSingleton<IWebService, WebService>();
 
 		return services;
 	}

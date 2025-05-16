@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace DomainName.Application.Interfaces.Infrastructure.Services;
+namespace DomainName.Application.Abstractions.Infrastructure.Services;
 
 /// <summary>
 /// The logger service interface.
@@ -12,19 +12,19 @@ public interface ILoggerService<T> where T : class
 	/// Logs a message with the help of a delegate
 	/// </summary>
 	/// <remarks>Delegate must be defined like this: <b>LoggerMessage.Define(LogLevel, EventId, "test")</b></remarks>
-	/// <param name="del">Delegate which performs the logging</param>
+	/// <param name="loggingDelegate">Delegate which performs the logging</param>
 	/// <param name="exception">Exception (optional)</param>
-	void Log(Action<ILogger, Exception?> del, Exception? exception = null);
+	void Log(Action<ILogger, Exception?> loggingDelegate, Exception? exception = null);
 
 	/// <summary>
 	/// Logs a message with the help of a delegate
 	/// </summary>
 	/// <remarks>Delegate must be defined like this: <b>LoggerMessage.Define{T}(LogLevel, EventId, "test {param}")</b></remarks>
 	/// <typeparam name="T1">Type of parameter of the string template</typeparam>
-	/// <param name="del">Delegate which performs the logging</param>
+	/// <param name="loggingDelegate">Delegate which performs the logging</param>
 	/// <param name="param">Parameter</param>
 	/// <param name="exception">Exception (optional)</param>
-	void Log<T1>(Action<ILogger, T1, Exception?> del, T1 param, Exception? exception = null);
+	void Log<T1>(Action<ILogger, T1, Exception?> loggingDelegate, T1 param, Exception? exception = null);
 
 	/// <summary>
 	/// Logs a message with the help of a delegate
@@ -32,11 +32,11 @@ public interface ILoggerService<T> where T : class
 	/// <remarks>Delegate must be defined like this: <b>LoggerMessage.Define{T1, T2}(LogLevel, EventId, "test {param1} {param2}")</b></remarks>
 	/// <typeparam name="T1">Type of parameter 1 of the string template</typeparam>
 	/// <typeparam name="T2">Type of parameter 2 of the string template</typeparam>
-	/// <param name="del">Delegate which performs the logging</param>
+	/// <param name="loggingDelegate">Delegate which performs the logging</param>
 	/// <param name="param1">Parameter 1</param>
 	/// <param name="param2">Parameter 2</param>
 	/// <param name="exception">Exception (optional)</param>
-	void Log<T1, T2>(Action<ILogger, T1, T2, Exception?> del, T1 param1, T2 param2, Exception? exception = null);
+	void Log<T1, T2>(Action<ILogger, T1, T2, Exception?> loggingDelegate, T1 param1, T2 param2, Exception? exception = null);
 
 	/// <summary>
 	/// Logs a message with the help of a delegate
@@ -45,12 +45,12 @@ public interface ILoggerService<T> where T : class
 	/// <typeparam name="T1">Type of parameter 1 of the string template</typeparam>
 	/// <typeparam name="T2">Type of parameter 2 of the string template</typeparam>
 	/// <typeparam name="T3">Type of parameter 3 of the string template</typeparam>
-	/// <param name="del">Delegate which performs the logging</param>
+	/// <param name="loggingDelegate">Delegate which performs the logging</param>
 	/// <param name="param1">Parameter 1</param>
 	/// <param name="param2">Parameter 2</param>
 	/// <param name="param3">Parameter 3</param>
 	/// <param name="exception">Exception (optional)</param>
-	void Log<T1, T2, T3>(Action<ILogger, T1, T2, T3, Exception?> del, T1 param1, T2 param2, T3 param3,
+	void Log<T1, T2, T3>(Action<ILogger, T1, T2, T3, Exception?> loggingDelegate, T1 param1, T2 param2, T3 param3,
 		Exception? exception = null);
 
 	/// <summary>
@@ -61,12 +61,12 @@ public interface ILoggerService<T> where T : class
 	/// <typeparam name="T2">Type of parameter 2 of the string template</typeparam>
 	/// <typeparam name="T3">Type of parameter 3 of the string template</typeparam>
 	/// <typeparam name="T4">Type of parameter 4 of the string template</typeparam>
-	/// <param name="del">Delegate which performs the logging</param>
+	/// <param name="loggingDelegate">Delegate which performs the logging</param>
 	/// <param name="param1">Parameter 1</param>
 	/// <param name="param2">Parameter 2</param>
 	/// <param name="param3">Parameter 3</param>
 	/// <param name="param4">Parameter 4</param>
-	void Log<T1, T2, T3, T4>(Action<ILogger, T1, T2, T3, T4, Exception?> del, T1 param1, T2 param2, T3 param3, T4 param4);
+	void Log<T1, T2, T3, T4>(Action<ILogger, T1, T2, T3, T4, Exception?> loggingDelegate, T1 param1, T2 param2, T3 param3, T4 param4);
 
 	/// <summary>
 	/// Logs a message with the help of a delegate
@@ -77,13 +77,13 @@ public interface ILoggerService<T> where T : class
 	/// <typeparam name="T3">Type of parameter 3 of the string template</typeparam>
 	/// <typeparam name="T4">Type of parameter 4 of the string template</typeparam>
 	/// <typeparam name="T5">Type of parameter 5 of the string template</typeparam>
-	/// <param name="del">Delegate which performs the logging</param>
+	/// <param name="loggingDelegate">Delegate which performs the logging</param>
 	/// <param name="param1">Parameter 1</param>
 	/// <param name="param2">Parameter 2</param>
 	/// <param name="param3">Parameter 3</param>
 	/// <param name="param4">Parameter 4</param>
 	/// <param name="param5">Parameter 5</param>
-	void Log<T1, T2, T3, T4, T5>(Action<ILogger, T1, T2, T3, T4, T5, Exception?> del, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5);
+	void Log<T1, T2, T3, T4, T5>(Action<ILogger, T1, T2, T3, T4, T5, Exception?> loggingDelegate, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5);
 
 	/// <summary>
 	/// Logs a message with the help of a delegate
@@ -95,12 +95,12 @@ public interface ILoggerService<T> where T : class
 	/// <typeparam name="T4">Type of parameter 4 of the string template</typeparam>
 	/// <typeparam name="T5">Type of parameter 5 of the string template</typeparam>
 	/// <typeparam name="T6">Type of parameter 6 of the string template</typeparam>
-	/// <param name="del">Delegate which performs the logging</param>
+	/// <param name="loggingDelegate">Delegate which performs the logging</param>
 	/// <param name="param1">Parameter 1</param>
 	/// <param name="param2">Parameter 2</param>
 	/// <param name="param3">Parameter 3</param>
 	/// <param name="param4">Parameter 4</param>
 	/// <param name="param5">Parameter 5</param>
 	/// <param name="param6">Parameter 6</param>
-	void Log<T1, T2, T3, T4, T5, T6>(Action<ILogger, T1, T2, T3, T4, T5, T6, Exception?> del, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6);
+	void Log<T1, T2, T3, T4, T5, T6>(Action<ILogger, T1, T2, T3, T4, T5, T6, Exception?> loggingDelegate, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6);
 }

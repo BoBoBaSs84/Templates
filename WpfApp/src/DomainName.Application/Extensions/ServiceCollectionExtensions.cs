@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-using DomainName.Application.Interfaces.Application.Services;
+using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Services;
 using DomainName.Application.ViewModels;
 using DomainName.Application.ViewModels.Base;

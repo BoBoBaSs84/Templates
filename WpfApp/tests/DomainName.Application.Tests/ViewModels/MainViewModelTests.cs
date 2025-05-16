@@ -1,4 +1,4 @@
-﻿using DomainName.Application.Interfaces.Application.Services;
+﻿using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.ViewModels;
 
 using Moq;

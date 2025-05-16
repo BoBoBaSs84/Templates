@@ -4,6 +4,6 @@
 		<PackageReference Include="MSTest" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomainName.Domain\DomainName.Domain.csproj" />
+    <ProjectReference Include="..\..\src\DomainName.Domain\DomainName.Domain.csproj" />
   </ItemGroup>
 </Project>
