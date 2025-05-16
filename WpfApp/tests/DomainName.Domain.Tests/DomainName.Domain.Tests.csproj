@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+		<PackageReference Include="Moq" />
+		<PackageReference Include="MSTest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DomainName.Domain\DomainName.Domain.csproj" />
+  </ItemGroup>
+</Project>
