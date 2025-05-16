@@ -67,6 +67,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterProviders(this IServiceCollection services)
 	{
+		services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
 		services.TryAddSingleton<IDirectoryProvider, DirectoryProvider>();
 		services.TryAddSingleton<IFileProvider, FileProvider>();
 

@@ -1,7 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-using DomainName.Application.Abstractions.Application.Providers;
-using DomainName.Application.Providers;
 using DomainName.Application.ViewModels;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -15,18 +13,6 @@ namespace DomainName.Application.Extensions;
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, dependency injection.")]
 internal static class ServiceCollectionExtensions
 {
-	/// <summary>
-	/// Registers the required application providers to the service collection.
-	/// </summary>
-	/// <param name="services">The service collection to enrich.</param>
-	/// <returns>The enriched service collection.</returns>
-	internal static IServiceCollection RegisterProviders(this IServiceCollection services)
-	{
-		services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
-
-		return services;
-	}
-
 	/// <summary>
 	/// Registers the required application services to the service collection.
 	/// </summary>
