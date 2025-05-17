@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-using DomainName.Application.Installer;
-using DomainName.Domain.Installer;
-using DomainName.Infrastructure.Installer;
+using DomainName.Application.Installers;
+using DomainName.Domain.Installers;
+using DomainName.Infrastructure.Installers;
 using DomainName.Presentation.Installer;
 
 using Microsoft.Extensions.DependencyInjection;

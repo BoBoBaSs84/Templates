@@ -1,21 +1,20 @@
 ﻿using DomainName.Application.ViewModels;
 using DomainName.Domain.Models;
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace DomainName.Application.Tests.ViewModels;
 
 [TestClass]
-public sealed class AboutViewModelTests : ApplicationTestBase
+public sealed class AboutViewModelTests
 {
 	[TestMethod]
-	[TestCategory("Constructor")]
-	public void AboutViewModelTest()
+	public void ConstructorShouldSetPropertiesCorrect()
 	{
-		AboutViewModel? viewModel;
 		AboutModel model = new();
-		
-		viewModel = new(model);
 
-		Assert.IsNotNull(viewModel);
+		AboutViewModel viewModel = new(model);
+
 		Assert.AreEqual(model, viewModel.Model);
 	}
 }

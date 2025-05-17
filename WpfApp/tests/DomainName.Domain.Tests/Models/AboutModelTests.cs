@@ -1,17 +1,18 @@
 ﻿using DomainName.Domain.Models;
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace DomainName.Domain.Tests.Models;
 
 [TestClass]
-public sealed class AboutModelTests : DomainTestBase
+public sealed class AboutModelTests
 {
 	[TestMethod]
-	[TestCategory("Constructor")]
-	public void AboutModelTest()
+	public void AboutModelConstructorTest()
 	{
 		AboutModel? model;
 
-		model = new();
+		model = new AboutModel();
 
 		Assert.IsNotNull(model);
 		Assert.IsNotNull(model.Title);

@@ -5,13 +5,13 @@ using DomainName.Infrastructure.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace DomainName.Infrastructure.Installer;
+namespace DomainName.Infrastructure.Installers;
 
 /// <summary>
 /// The infrastructure dependency injection class.
 /// </summary>
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, dependency injection.")]
-public static class DependencyInjection
+public static class DependencyInjectionInstaller
 {
 	/// <summary>
 	/// Registers the infrastructure services to the service collection.

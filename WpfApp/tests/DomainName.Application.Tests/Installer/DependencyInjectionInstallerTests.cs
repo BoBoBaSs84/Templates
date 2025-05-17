@@ -1,15 +1,13 @@
-﻿using DomainName.Application.Installer;
+﻿using DomainName.Application.Installers;
 
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DomainName.Application.Tests.Installer;
 
 [TestClass]
-[SuppressMessage("Style", "IDE0058", Justification = "Not relevant here, unit test.")]
-public sealed class DependencyInjectionTests : ApplicationTestBase
+public sealed class DependencyInjectionInstallerTests : ApplicationTestBase
 {
 	[TestMethod]
-	[TestCategory("DependencyInjection")]
 	public void RegisterApplicationServicesTest()
 	{
 		ServiceCollection services = new();

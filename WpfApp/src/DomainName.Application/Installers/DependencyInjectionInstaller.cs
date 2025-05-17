@@ -4,13 +4,13 @@ using DomainName.Application.Extensions;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DomainName.Application.Installer;
+namespace DomainName.Application.Installers;
 
 /// <summary>
 /// The application dependency injection class.
 /// </summary>
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here.")]
-public static class DependencyInjection
+public static class DependencyInjectionInstaller
 {
 	/// <summary>
 	/// Registers the application services to the <paramref name="services"/> collection.

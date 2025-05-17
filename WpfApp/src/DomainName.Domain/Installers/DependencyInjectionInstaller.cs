@@ -4,13 +4,13 @@ using DomainName.Domain.Extensions;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DomainName.Domain.Installer;
+namespace DomainName.Domain.Installers;
 
 /// <summary>
 /// The domain dependency injection class.
 /// </summary>
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here.")]
-public static class DependencyInjection
+public static class DependencyInjectionInstaller
 {
 	/// <summary>
 	/// Registers the domain services to the service collection.
