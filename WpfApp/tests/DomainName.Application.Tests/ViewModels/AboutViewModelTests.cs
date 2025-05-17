@@ -1,8 +1,6 @@
 ﻿using DomainName.Application.ViewModels;
 using DomainName.Domain.Models;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace DomainName.Application.Tests.ViewModels;
 
 [TestClass]

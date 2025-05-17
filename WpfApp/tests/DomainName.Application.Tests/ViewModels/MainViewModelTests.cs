@@ -2,7 +2,6 @@
 
 using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Presentation.Services;
-using DomainName.Application.Services;
 using DomainName.Application.ViewModels;
 
 using Microsoft.Extensions.Hosting;
