@@ -22,6 +22,7 @@ public static class DependencyInjectionInstaller
 	public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services, IHostEnvironment environment)
 	{
 		services.RegisterLoggerService(environment)
+			.RegisterHttpClients()
 			.RegisterServices();
 
 		return services;

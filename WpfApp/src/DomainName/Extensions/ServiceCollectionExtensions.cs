@@ -3,7 +3,7 @@
 using DomainName.Application.Installers;
 using DomainName.Domain.Installers;
 using DomainName.Infrastructure.Installers;
-using DomainName.Presentation.Installer;
+using DomainName.Presentation.Installers;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

@@ -4,13 +4,13 @@ using DomainName.Presentation.Extensions;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DomainName.Presentation.Installer;
+namespace DomainName.Presentation.Installers;
 
 /// <summary>
 /// The presentation dependency injection class.
 /// </summary>
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here.")]
-public static class DependencyInjection
+public static class DependencyInjectionInstaller
 {
 	/// <summary>
 	/// Registers the presentation services to the service collection.

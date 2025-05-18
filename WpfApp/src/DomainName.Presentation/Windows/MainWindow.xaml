@@ -6,7 +6,6 @@
 				xmlns:vm="clr-namespace:DomainName.Application.ViewModels;assembly=DomainName.Application"
 				mc:Ignorable="d"
 				d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
-				Title="MainWindow"
 				ShowInTaskbar="True"
 				Height="720"
 				Width="1280">
@@ -63,5 +62,8 @@
 			</MenuItem>
 		</Menu>
 		<ContentControl Content="{Binding NavigationService.CurrentView}" />
+		<StatusBar DockPanel.Dock="Bottom">
+			<StatusBarItem Content="{Binding CurrentUser}" />
+		</StatusBar>
 	</DockPanel>
 </Window>

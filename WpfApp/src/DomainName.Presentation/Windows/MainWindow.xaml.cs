@@ -15,7 +15,8 @@ public partial class MainWindow : Window
 	/// <param name="viewModel">The view model instance to use.</param>
 	public MainWindow(MainViewModel viewModel)
 	{
-		DataContext = viewModel;
 		InitializeComponent();
+		DataContext = viewModel;
+		Title = $"{viewModel.ApplicationName} - {viewModel.EnvironmentName}";
 	}
 }
