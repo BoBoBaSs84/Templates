@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace DomainName.Presentation.Tests;
 
-public abstract class UnitTestBase
+public abstract class PresentationTestBase
 {
 	protected static object? GetNonPublicField(Form form, string fieldName)
 	{

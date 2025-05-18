@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DomainName.Presentation.Tests.Forms;
 
 [TestClass]
-public sealed class AboutFormTests : UnitTestBase
+public sealed class AboutFormTests : PresentationTestBase
 {
 	[TestMethod]
 	public void ConstructorShouldSetFieldsCorrectly()
