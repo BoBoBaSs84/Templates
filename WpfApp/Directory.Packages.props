@@ -1,12 +1,11 @@
 <Project>
-  <PropertyGroup>
-    <ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
+	<PropertyGroup>
+		<ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
 		<CentralPackageTransitivePinningEnabled>True</CentralPackageTransitivePinningEnabled>
-  </PropertyGroup>
+	</PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="BB84.Extensions" Version="2.11.409" />
     <PackageVersion Include="BB84.Notifications" Version="3.6.409" />
-    <PackageVersion Include="BB84.WinForms.Extensions" Version="2.11.409" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.5" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.5" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.5" />

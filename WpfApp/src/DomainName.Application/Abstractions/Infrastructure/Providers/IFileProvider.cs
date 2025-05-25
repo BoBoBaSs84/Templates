@@ -1,4 +1,6 @@
-﻿namespace DomainName.Application.Abstractions.Infrastructure.Providers;
+﻿using System.IO;
+
+namespace DomainName.Application.Abstractions.Infrastructure.Providers;
 
 /// <summary>
 /// This interface defines a contract for file provider.

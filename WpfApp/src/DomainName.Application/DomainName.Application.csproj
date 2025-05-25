@@ -3,7 +3,6 @@
 		<UseWPF>True</UseWPF>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="BB84.Extensions" />
 		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
 	</ItemGroup>
 	<ItemGroup>
