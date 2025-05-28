@@ -12,10 +12,13 @@ internal sealed class ProviderService : IProviderService
 	private readonly Lazy<IDateTimeProvider> _dateTimeProvider = new(() => new DateTimeProvider());
 	private readonly Lazy<IDirectoryProvider> _directoryProvider = new(() => new DirectoryProvider());
 	private readonly Lazy<IFileProvider> _fileProvider = new(() => new FileProvider());
+	private readonly Lazy<IPathProvider> _pathProvider = new(() => new PathProvider());
 
 	public IDateTimeProvider DateTime => _dateTimeProvider.Value;
 
 	public IDirectoryProvider Directory => _directoryProvider.Value;
 
 	public IFileProvider File => _fileProvider.Value;
+
+	public IPathProvider Path => _pathProvider.Value;
 }

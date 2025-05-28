@@ -21,4 +21,9 @@ public interface IProviderService
 	/// The provider for accessing file operations.
 	/// </summary>
 	IFileProvider File { get; }
+
+	/// <summary>
+	/// The provider for accessing path operations.
+	/// </summary>
+	IPathProvider Path { get; }
 }
