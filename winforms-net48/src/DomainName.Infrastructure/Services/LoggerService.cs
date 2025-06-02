@@ -11,7 +11,7 @@ namespace DomainName.Infrastructure.Services;
 /// </summary>
 /// <param name="logger">The logger instance to use.</param>
 /// <typeparam name="T">The type of the logger service.</typeparam>
-[ExcludeFromCodeCoverage(Justification = "This is a wrapper class.")]
+[ExcludeFromCodeCoverage]
 internal sealed class LoggerService<T>(ILogger<T> logger) : ILoggerService<T> where T : class
 {
 	/// <inheritdoc/>

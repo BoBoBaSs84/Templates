@@ -27,7 +27,8 @@ internal sealed class Program
 	[STAThread]
 	internal static void Main()
 	{
-		ApplicationConfiguration.Initialize();
+		FormsApplication.EnableVisualStyles();
+		FormsApplication.SetCompatibleTextRenderingDefault(false);
 
 		s_host = CreateDefaultBuilder().Build();
 		s_logger = s_host.Services.GetRequiredService<ILoggerService<Program>>();

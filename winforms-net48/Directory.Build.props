@@ -53,6 +53,7 @@
 	<ItemGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))">
 		<InternalsVisibleTo Include="$(AssemblyName).Tests" />
 		<InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+		<Reference Include="System.Net.Http" />
 	</ItemGroup>
 
 </Project>

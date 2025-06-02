@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace DomainName.Application.Abstractions.Infrastructure.Providers;
+﻿namespace DomainName.Application.Abstractions.Infrastructure.Providers;
 
 /// <summary>
 /// This interface defines a contract for path provider.
@@ -12,9 +10,6 @@ public interface IPathProvider
 {
 	/// <inheritdoc cref="Path.Combine(string[])"/>
 	string Combine(params string[] paths);
-
-	/// <inheritdoc cref="Path.Exists(string?)"/>
-	bool Exists([NotNullWhen(true)] string? path);
 
 	/// <inheritdoc cref="Path.GetDirectoryName(string?)"/>
 	string? GetDirectoryName(string? path);
@@ -31,17 +26,11 @@ public interface IPathProvider
 	/// <inheritdoc cref="Path.GetFullPath(string?)"/>
 	string GetFullPath(string path);
 
-	/// <inheritdoc cref="Path.GetFullPath(string, string)"/>
-	string GetFullPath(string path, string basePath);
-
 	/// <inheritdoc cref="Path.GetPathRoot(string?)"/>
 	string? GetPathRoot(string? path);
 
 	/// <inheritdoc cref="Path.GetRandomFileName()"/>
 	string GetRandomFileName();
-
-	/// <inheritdoc cref="Path.GetRelativePath(string, string)"/>
-	string GetRelativePath(string relativeTo, string path);
 
 	/// <inheritdoc cref="Path.GetTempFileName()"/>
 	string GetTempFileName();
@@ -50,14 +39,8 @@ public interface IPathProvider
 	string GetTempPath();
 
 	/// <inheritdoc cref="Path.HasExtension(string?)"/>
-	bool HasExtension([NotNullWhen(true)] string? path);
-
-	/// <inheritdoc cref="Path.IsPathFullyQualified(string?)"/>
-	bool IsPathFullyQualified(string path);
+	bool HasExtension(string? path);
 
 	/// <inheritdoc cref="Path.IsPathRooted(string?)"/>
-	bool IsPathRooted([NotNullWhen(true)] string? path);
-
-	/// <inheritdoc cref="Path.TrimEndingDirectorySeparator(string)"/>
-	string TrimEndingDirectorySeparator(string path);
+	bool IsPathRooted(string? path);
 }

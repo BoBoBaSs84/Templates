@@ -29,7 +29,7 @@ internal sealed class WebService(IHttpClientFactory httpClientFactory, ILoggerSe
 
 			_ = responseMessage.EnsureSuccessStatusCode();
 
-			string jsonContent = await responseMessage.Content.ReadAsStringAsync(cancellationToken)
+			string jsonContent = await responseMessage.Content.ReadAsStringAsync()
 				.ConfigureAwait(false);
 
 			return jsonContent;

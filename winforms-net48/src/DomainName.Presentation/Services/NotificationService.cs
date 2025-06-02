@@ -7,7 +7,7 @@ namespace DomainName.Presentation.Services;
 /// <summary>
 /// The notification service class.
 /// </summary>
-[ExcludeFromCodeCoverage(Justification = "This class is just an abstraction for the MessageBox.")]
+[ExcludeFromCodeCoverage]
 internal sealed class NotificationService : INotificationService
 {
 	public void ShowError(string message)

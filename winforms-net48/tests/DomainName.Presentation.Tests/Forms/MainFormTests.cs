@@ -24,7 +24,7 @@ public sealed class MainFormTests
 		_navigationServiceMock = new();
 		_serviceProviderMock = new();
 		
-		using MainForm form = new(_navigationServiceMock.Object, viewModel, _serviceProviderMock.Object);
+		MainForm form = new(_navigationServiceMock.Object, viewModel, _serviceProviderMock.Object);
 
 		Assert.AreEqual($"{viewModel.ApplicationName} - {viewModel.EnvironmentName}", form.Text);
 	}

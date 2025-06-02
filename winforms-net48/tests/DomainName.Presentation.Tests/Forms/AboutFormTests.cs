@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-using DomainName.Application.ViewModels;
+﻿using DomainName.Application.ViewModels;
 using DomainName.Domain.Models;
 using DomainName.Presentation.Forms;
 
@@ -17,7 +15,7 @@ public sealed class AboutFormTests : PresentationTestBase
 		AboutModel model = new();
 		AboutViewModel viewModel = new(model);
 
-		using AboutForm form = new(viewModel);
+		AboutForm form = new(viewModel);
 
 		Assert.AreEqual(viewModel.Model.Title, ((Label)GetNonPublicField(form, "titleLabelValue")).Text);
 		Assert.AreEqual(viewModel.Model.Version, ((Label)GetNonPublicField(form, "versionLabelValue")).Text);

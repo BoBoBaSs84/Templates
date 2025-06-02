@@ -8,7 +8,7 @@ namespace DomainName.Infrastructure.Providers;
 /// The implementation for the date time provider contract.
 /// </summary>
 /// <inheritdoc cref="IDateTimeProvider"/>
-[ExcludeFromCodeCoverage(Justification = "This class is a simple wrapper around the System.DateTime class.")]
+[ExcludeFromCodeCoverage]
 internal sealed class DateTimeProvider : IDateTimeProvider
 {
 	public DateTime Now => DateTime.Now;

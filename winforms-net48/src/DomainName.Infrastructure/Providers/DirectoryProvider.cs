@@ -8,7 +8,7 @@ namespace DomainName.Infrastructure.Providers;
 /// The implementation for the directory provider contract.
 /// </summary>
 /// <inheritdoc cref="IDirectoryProvider"/>
-[ExcludeFromCodeCoverage(Justification = "This class is a simple wrapper around the System.IO.Directory class.")]
+[ExcludeFromCodeCoverage]
 internal sealed class DirectoryProvider : IDirectoryProvider
 {
 	public void CreateDirectory(string path)

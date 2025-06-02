@@ -1,5 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup />
+  <PropertyGroup>
+		<UseWindowsForms>True</UseWindowsForms>
+	</PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Moq" />
     <PackageReference Include="MSTest" />
