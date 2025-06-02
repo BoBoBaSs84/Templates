@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+		<UseWindowsForms>True</UseWindowsForms>
+	</PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Moq" />
+    <PackageReference Include="MSTest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DomainName.Presentation\DomainName.Presentation.csproj" />
+  </ItemGroup>
+</Project>
