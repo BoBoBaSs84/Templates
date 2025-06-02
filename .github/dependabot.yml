@@ -8,7 +8,7 @@ updates:
   - package-ecosystem: "nuget"
     directory: "/CliApp"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     reviewers:
       - "BoBoBaSs84"
     assignees:
@@ -23,10 +23,11 @@ updates:
       microsoft-extensions-dependencies:
         patterns:
           - "Microsoft.Extensions*"
+  
   - package-ecosystem: "nuget"
     directory: "/GtaMod"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     reviewers:
       - "BoBoBaSs84"
     assignees:
@@ -41,46 +42,11 @@ updates:
       microsoft-extensions-dependencies:
         patterns:
           - "Microsoft.Extensions*"
+  
   - package-ecosystem: "nuget"
-    directory: "/WinForms"
+    directory: "/winforms-net8"
     schedule:
-      interval: "weekly"
-    reviewers:
-      - "BoBoBaSs84"
-    assignees:
-      - "BoBoBaSs84"
-    groups:
-      bb84-dependencies:
-        patterns:
-          - "BB84*"    
-      mstest-dependencies:
-        patterns:
-          - "MSTest*"
-      microsoft-extensions-dependencies:
-        patterns:
-          - "Microsoft.Extensions*"
-  - package-ecosystem: "nuget"
-    directory: "/WpfApp"
-    schedule:
-      interval: "weekly"
-    reviewers:
-      - "BoBoBaSs84"
-    assignees:
-      - "BoBoBaSs84"
-    groups:
-      bb84-dependencies:
-        patterns:
-          - "BB84*"    
-      mstest-dependencies:
-        patterns:
-          - "MSTest*"
-      microsoft-extensions-dependencies:
-        patterns:
-          - "Microsoft.Extensions*"
-  - package-ecosystem: "nuget"
-    directory: "/WpfEfCoreApp"
-    schedule:
-      interval: "weekly"
+      interval: "daily"
     reviewers:
       - "BoBoBaSs84"
     assignees:
@@ -96,11 +62,59 @@ updates:
         patterns:
           - "Microsoft.Extensions*"
 
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: "nuget"
+    directory: "/winforms-net48"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     reviewers:
       - "BoBoBaSs84"
     assignees:
       - "BoBoBaSs84"
+    groups:
+      bb84-dependencies:
+        patterns:
+          - "BB84*"    
+      mstest-dependencies:
+        patterns:
+          - "MSTest*"
+      microsoft-extensions-dependencies:
+        patterns:
+          - "Microsoft.Extensions*"
+  
+  - package-ecosystem: "nuget"
+    directory: "/wpf-net8"
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "BoBoBaSs84"
+    assignees:
+      - "BoBoBaSs84"
+    groups:
+      bb84-dependencies:
+        patterns:
+          - "BB84*"    
+      mstest-dependencies:
+        patterns:
+          - "MSTest*"
+      microsoft-extensions-dependencies:
+        patterns:
+          - "Microsoft.Extensions*"
+  
+  - package-ecosystem: "nuget"
+    directory: "/wpf-ef-net8"
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "BoBoBaSs84"
+    assignees:
+      - "BoBoBaSs84"
+    groups:
+      bb84-dependencies:
+        patterns:
+          - "BB84*"    
+      mstest-dependencies:
+        patterns:
+          - "MSTest*"
+      microsoft-extensions-dependencies:
+        patterns:
+          - "Microsoft.Extensions*"
