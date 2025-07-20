@@ -59,6 +59,7 @@ public partial class TodoForm : Form
 
 			todoListTitleTextBox.WithTextBinding(_viewModel.SelectedList, nameof(_viewModel.SelectedList.Title));
 			todoListDescriptionTextBox.WithTextBinding(_viewModel.SelectedList, nameof(_viewModel.SelectedList.Description));
+			_viewModel.LoadItems();
 
 			return;
 		}
@@ -135,10 +136,7 @@ public partial class TodoForm : Form
 	}
 
 	private void todoListsDataGridView_SelectionChanged(object sender, EventArgs e)
-	{
-		_viewModel.SelectedList = todoListsDataGridView.CurrentRow.DataBoundItem as TodoList;
-		_viewModel.LoadItems();
-	}
+		=> _viewModel.SelectedList = todoListsDataGridView.CurrentRow.DataBoundItem as TodoList;
 
 	private void todoItemsDataGridView_SelectionChanged(object sender, EventArgs e)
 		=> _viewModel.SelectedItem = todoItemsDataGridView.CurrentRow.DataBoundItem as TodoItem;
