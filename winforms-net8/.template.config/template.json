@@ -2,13 +2,13 @@
 	"$schema": "http://json.schemastore.org/template",
 	"author": "BoBoBaSs84",
 	"classifications": [
-		"Common",
+		"Windows",
 		"WinForms"
 	],
-	"name": "BB84 - Windows Forms App",
-	"description": "The Windows Forms App Template (.Net 8.0). Unit test project are included and the project is structured into concentric layers, resembling the layers of an onion",
-	"identity": "BB84.Net.Windows.Forms.App.8",
-	"groupIdentity": "BB84.Net.Windows.Forms",
+	"name": "BB84 - Windows Forms Application",
+	"description": "The Windows Forms Application Template (.Net 8.0). Unit test project are included and the project is structured into concentric layers, resembling the layers of an onion",
+	"identity": "BB84.Windows.Forms.Application.Net8",
+	"groupIdentity": "BB84.Windows.Forms",
 	"shortName": "bb84-winforms-net8",
 	"tags": {
 		"language": "C#",
