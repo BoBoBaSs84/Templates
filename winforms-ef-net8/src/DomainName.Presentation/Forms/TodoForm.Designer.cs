@@ -39,6 +39,7 @@ partial class TodoForm
 		todoListDescriptionLabel = new Label();
 		todoListTitleLabel = new Label();
 		todoListTitleTextBox = new TextBox();
+		todoListColorButton = new Button();
 		todoItemGroupBox = new GroupBox();
 		tableLayoutPanel3 = new TableLayoutPanel();
 		todoItemDescriptionTextBox = new TextBox();
@@ -56,17 +57,26 @@ partial class TodoForm
 		todoListsDataGridView = new DataGridView();
 		idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 		titleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+		descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+		colorDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 		todoListAddButton = new Button();
 		todoListDeleteButton = new Button();
+		todoListSaveButton = new Button();
 		todoItemsGroupBox = new GroupBox();
 		tableLayoutPanel5 = new TableLayoutPanel();
 		todoItemsDataGridView = new DataGridView();
 		idDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
 		titleDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+		descriptionDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+		priorityDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+		isCompletedDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+		colorDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+		itemsBindingSource = new BindingSource(components);
 		todoItemAddButton = new Button();
 		todoItemDeleteButton = new Button();
-		todoListColorButton = new Button();
-		todoListSaveButton = new Button();
+		todoListBindingSource2 = new BindingSource(components);
+		todoListBindingSource3 = new BindingSource(components);
+		todoListBindingSource1 = new BindingSource(components);
 		((System.ComponentModel.ISupportInitialize)todoListBindingSource).BeginInit();
 		((System.ComponentModel.ISupportInitialize)todoItemBindingSource).BeginInit();
 		tableLayoutPanel1.SuspendLayout();
@@ -80,6 +90,10 @@ partial class TodoForm
 		todoItemsGroupBox.SuspendLayout();
 		tableLayoutPanel5.SuspendLayout();
 		((System.ComponentModel.ISupportInitialize)todoItemsDataGridView).BeginInit();
+		((System.ComponentModel.ISupportInitialize)itemsBindingSource).BeginInit();
+		((System.ComponentModel.ISupportInitialize)todoListBindingSource2).BeginInit();
+		((System.ComponentModel.ISupportInitialize)todoListBindingSource3).BeginInit();
+		((System.ComponentModel.ISupportInitialize)todoListBindingSource1).BeginInit();
 		SuspendLayout();
 		// 
 		// todoListBindingSource
@@ -190,6 +204,17 @@ partial class TodoForm
 		todoListTitleTextBox.Name = "todoListTitleTextBox";
 		todoListTitleTextBox.Size = new Size(310, 31);
 		todoListTitleTextBox.TabIndex = 6;
+		// 
+		// todoListColorButton
+		// 
+		todoListColorButton.Anchor = AnchorStyles.Left;
+		todoListColorButton.Location = new Point(115, 77);
+		todoListColorButton.Name = "todoListColorButton";
+		todoListColorButton.Size = new Size(100, 34);
+		todoListColorButton.TabIndex = 8;
+		todoListColorButton.Text = "Choose";
+		todoListColorButton.UseVisualStyleBackColor = true;
+		todoListColorButton.Click += todoListColorButton_Click;
 		// 
 		// todoItemGroupBox
 		// 
@@ -360,9 +385,10 @@ partial class TodoForm
 		// 
 		todoListsDataGridView.AllowUserToAddRows = false;
 		todoListsDataGridView.AllowUserToDeleteRows = false;
+		todoListsDataGridView.AllowUserToOrderColumns = true;
 		todoListsDataGridView.AutoGenerateColumns = false;
 		todoListsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-		todoListsDataGridView.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, titleDataGridViewTextBoxColumn });
+		todoListsDataGridView.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, titleDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, colorDataGridViewTextBoxColumn });
 		tableLayoutPanel4.SetColumnSpan(todoListsDataGridView, 3);
 		todoListsDataGridView.DataSource = todoListBindingSource;
 		todoListsDataGridView.Dock = DockStyle.Fill;
@@ -392,6 +418,24 @@ partial class TodoForm
 		titleDataGridViewTextBoxColumn.ReadOnly = true;
 		titleDataGridViewTextBoxColumn.Width = 150;
 		// 
+		// descriptionDataGridViewTextBoxColumn
+		// 
+		descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+		descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+		descriptionDataGridViewTextBoxColumn.MinimumWidth = 8;
+		descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+		descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+		descriptionDataGridViewTextBoxColumn.Width = 150;
+		// 
+		// colorDataGridViewTextBoxColumn
+		// 
+		colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
+		colorDataGridViewTextBoxColumn.HeaderText = "Color";
+		colorDataGridViewTextBoxColumn.MinimumWidth = 8;
+		colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+		colorDataGridViewTextBoxColumn.ReadOnly = true;
+		colorDataGridViewTextBoxColumn.Width = 150;
+		// 
 		// todoListAddButton
 		// 
 		todoListAddButton.Location = new Point(3, 171);
@@ -410,6 +454,16 @@ partial class TodoForm
 		todoListDeleteButton.TabIndex = 3;
 		todoListDeleteButton.Text = "Delete";
 		todoListDeleteButton.UseVisualStyleBackColor = true;
+		// 
+		// todoListSaveButton
+		// 
+		todoListSaveButton.Location = new Point(239, 171);
+		todoListSaveButton.Name = "todoListSaveButton";
+		todoListSaveButton.Size = new Size(112, 34);
+		todoListSaveButton.TabIndex = 4;
+		todoListSaveButton.Text = "Save";
+		todoListSaveButton.UseVisualStyleBackColor = true;
+		todoListSaveButton.Click += todoListSaveButton_Click;
 		// 
 		// todoItemsGroupBox
 		// 
@@ -444,11 +498,12 @@ partial class TodoForm
 		// 
 		todoItemsDataGridView.AllowUserToAddRows = false;
 		todoItemsDataGridView.AllowUserToDeleteRows = false;
+		todoItemsDataGridView.AllowUserToOrderColumns = true;
 		todoItemsDataGridView.AutoGenerateColumns = false;
 		todoItemsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-		todoItemsDataGridView.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn1, titleDataGridViewTextBoxColumn1 });
+		todoItemsDataGridView.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn1, titleDataGridViewTextBoxColumn1, descriptionDataGridViewTextBoxColumn1, priorityDataGridViewTextBoxColumn, isCompletedDataGridViewCheckBoxColumn, colorDataGridViewTextBoxColumn1 });
 		tableLayoutPanel5.SetColumnSpan(todoItemsDataGridView, 3);
-		todoItemsDataGridView.DataSource = todoItemBindingSource;
+		todoItemsDataGridView.DataSource = itemsBindingSource;
 		todoItemsDataGridView.Dock = DockStyle.Fill;
 		todoItemsDataGridView.Location = new Point(3, 3);
 		todoItemsDataGridView.Name = "todoItemsDataGridView";
@@ -476,6 +531,47 @@ partial class TodoForm
 		titleDataGridViewTextBoxColumn1.ReadOnly = true;
 		titleDataGridViewTextBoxColumn1.Width = 150;
 		// 
+		// descriptionDataGridViewTextBoxColumn1
+		// 
+		descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
+		descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
+		descriptionDataGridViewTextBoxColumn1.MinimumWidth = 8;
+		descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
+		descriptionDataGridViewTextBoxColumn1.ReadOnly = true;
+		descriptionDataGridViewTextBoxColumn1.Width = 150;
+		// 
+		// priorityDataGridViewTextBoxColumn
+		// 
+		priorityDataGridViewTextBoxColumn.DataPropertyName = "Priority";
+		priorityDataGridViewTextBoxColumn.HeaderText = "Priority";
+		priorityDataGridViewTextBoxColumn.MinimumWidth = 8;
+		priorityDataGridViewTextBoxColumn.Name = "priorityDataGridViewTextBoxColumn";
+		priorityDataGridViewTextBoxColumn.ReadOnly = true;
+		priorityDataGridViewTextBoxColumn.Width = 150;
+		// 
+		// isCompletedDataGridViewCheckBoxColumn
+		// 
+		isCompletedDataGridViewCheckBoxColumn.DataPropertyName = "IsCompleted";
+		isCompletedDataGridViewCheckBoxColumn.HeaderText = "IsCompleted";
+		isCompletedDataGridViewCheckBoxColumn.MinimumWidth = 8;
+		isCompletedDataGridViewCheckBoxColumn.Name = "isCompletedDataGridViewCheckBoxColumn";
+		isCompletedDataGridViewCheckBoxColumn.ReadOnly = true;
+		isCompletedDataGridViewCheckBoxColumn.Width = 150;
+		// 
+		// colorDataGridViewTextBoxColumn1
+		// 
+		colorDataGridViewTextBoxColumn1.DataPropertyName = "Color";
+		colorDataGridViewTextBoxColumn1.HeaderText = "Color";
+		colorDataGridViewTextBoxColumn1.MinimumWidth = 8;
+		colorDataGridViewTextBoxColumn1.Name = "colorDataGridViewTextBoxColumn1";
+		colorDataGridViewTextBoxColumn1.ReadOnly = true;
+		colorDataGridViewTextBoxColumn1.Width = 150;
+		// 
+		// itemsBindingSource
+		// 
+		itemsBindingSource.DataMember = "Items";
+		itemsBindingSource.DataSource = todoListBindingSource;
+		// 
 		// todoItemAddButton
 		// 
 		todoItemAddButton.Location = new Point(3, 171);
@@ -495,26 +591,17 @@ partial class TodoForm
 		todoItemDeleteButton.Text = "Delete";
 		todoItemDeleteButton.UseVisualStyleBackColor = true;
 		// 
-		// todoListColorButton
+		// todoListBindingSource2
 		// 
-		todoListColorButton.Anchor = AnchorStyles.Left;
-		todoListColorButton.Location = new Point(115, 77);
-		todoListColorButton.Name = "todoListColorButton";
-		todoListColorButton.Size = new Size(100, 34);
-		todoListColorButton.TabIndex = 8;
-		todoListColorButton.Text = "Choose";
-		todoListColorButton.UseVisualStyleBackColor = true;
-		todoListColorButton.Click += todoListColorButton_Click;
+		todoListBindingSource2.DataSource = typeof(Domain.Entities.TodoList);
 		// 
-		// todoListSaveButton
+		// todoListBindingSource3
 		// 
-		todoListSaveButton.Location = new Point(239, 171);
-		todoListSaveButton.Name = "todoListSaveButton";
-		todoListSaveButton.Size = new Size(112, 34);
-		todoListSaveButton.TabIndex = 4;
-		todoListSaveButton.Text = "Save";
-		todoListSaveButton.UseVisualStyleBackColor = true;
-		todoListSaveButton.Click += todoListSaveButton_Click;
+		todoListBindingSource3.DataSource = typeof(Domain.Entities.TodoList);
+		// 
+		// todoListBindingSource1
+		// 
+		todoListBindingSource1.DataSource = typeof(Domain.Entities.TodoList);
 		// 
 		// TodoForm
 		// 
@@ -539,6 +626,10 @@ partial class TodoForm
 		todoItemsGroupBox.ResumeLayout(false);
 		tableLayoutPanel5.ResumeLayout(false);
 		((System.ComponentModel.ISupportInitialize)todoItemsDataGridView).EndInit();
+		((System.ComponentModel.ISupportInitialize)itemsBindingSource).EndInit();
+		((System.ComponentModel.ISupportInitialize)todoListBindingSource2).EndInit();
+		((System.ComponentModel.ISupportInitialize)todoListBindingSource3).EndInit();
+		((System.ComponentModel.ISupportInitialize)todoListBindingSource1).EndInit();
 		ResumeLayout(false);
 	}
 
@@ -569,16 +660,26 @@ partial class TodoForm
 	private Button todoItemColorButton;
 	private TableLayoutPanel tableLayoutPanel4;
 	private DataGridView todoListsDataGridView;
-	private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-	private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
 	private Button todoListAddButton;
 	private Button todoListDeleteButton;
 	private TableLayoutPanel tableLayoutPanel5;
 	private DataGridView todoItemsDataGridView;
-	private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-	private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn1;
 	private Button todoItemAddButton;
 	private Button todoItemDeleteButton;
 	private Button todoListColorButton;
 	private Button todoListSaveButton;
+	private BindingSource todoListBindingSource1;
+	private BindingSource todoListBindingSource2;
+	private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+	private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+	private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+	private DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn;
+	private BindingSource todoListBindingSource3;
+	private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+	private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn1;
+	private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
+	private DataGridViewTextBoxColumn priorityDataGridViewTextBoxColumn;
+	private DataGridViewCheckBoxColumn isCompletedDataGridViewCheckBoxColumn;
+	private DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn1;
+	private BindingSource itemsBindingSource;
 }

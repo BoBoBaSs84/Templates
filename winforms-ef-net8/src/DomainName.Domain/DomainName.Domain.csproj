@@ -2,6 +2,7 @@
   <ItemGroup>
     <PackageReference Include="BB84.EntityFrameworkCore.Entities.Abstractions" />
     <PackageReference Include="BB84.Notifications" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
   </ItemGroup>
 </Project>

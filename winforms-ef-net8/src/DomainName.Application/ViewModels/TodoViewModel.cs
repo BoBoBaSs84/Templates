@@ -44,11 +44,6 @@ public sealed class TodoViewModel(IDatabaseContext databaseContext, INotificatio
 	public bool IsListSelected => SelectedList is not null;
 
 	/// <summary>
-	/// Represents the collection of todo items in the selected todo list.
-	/// </summary>
-	public BindingList<TodoItem> Items { get; private set; } = [];
-
-	/// <summary>
 	/// Represents the collection of todo item priorities available in the application.
 	/// </summary>
 	public IEnumerable<TodoPriority> Priorities { get; } = TodoPriority.None.GetValues();
@@ -75,8 +70,16 @@ public sealed class TodoViewModel(IDatabaseContext databaseContext, INotificatio
 	{
 		try
 		{
-			databaseContext.TodoLists.Load();
-			Lists = databaseContext.TodoLists.Local.ToBindingList();
+			List<TodoList> lists = [.. databaseContext.TodoLists
+				.AsNoTracking()
+				.Include(x=>x.Items)];
+
+			Lists.Clear();
+
+			foreach (var list in lists)
+				Lists.Add(list);
+
+			SelectedList = Lists.FirstOrDefault();
 		}
 		catch (Exception ex)
 		{
@@ -85,48 +88,30 @@ public sealed class TodoViewModel(IDatabaseContext databaseContext, INotificatio
 	}
 
 	/// <summary>
-	/// Retrieves the todo items for the selected todo list from the database and populates the Items collection.
-	/// </summary>
-	public void LoadItems()
-	{
-		if (SelectedList is null)
-			return;
-
-		try
-		{
-			databaseContext.TodoItems
-				.Where(item => item.ListId == SelectedList.Id)
-				.Load();
-			
-			Items = databaseContext.TodoItems.Local
-				.ToBindingList();
-			
-			SelectedItem = Items.FirstOrDefault();
-		}
-		catch (Exception ex)
-		{
-			notificationService.ShowError($"Failed to load todo items: {ex.Message}");
-		}
-	}
-
-	/// <summary>
 	/// Saves any changes made to the todo lists or items in the database.
 	/// </summary>
 	public void SaveChanges()
 	{
-		bool hasChanges = databaseContext.ChangeTracker.HasChanges();
-
-		if (!hasChanges)
-			return;
-
-		DialogResult answer = notificationService.ShowQuestion("You have unsaved changes. Do you want to save them?");
-
-		if (answer != DialogResult.Yes)
-			return;
-
 		try
 		{
-			databaseContext.SaveChanges();
+			foreach (var list in Lists)
+			{
+				TodoList? dbList = databaseContext.TodoLists
+					.AsNoTracking()
+					.Include(x => x.Items)
+					.SingleOrDefault(x => x.Id == list.Id);
+
+				if (dbList is null)
+				{
+					databaseContext.TodoLists.Add(list);
+				}
+				else
+				{
+					databaseContext.TodoLists.Update(list);
+					databaseContext.SaveChanges();
+				}
+			}
+
 			notificationService.ShowInformation("Changes saved successfully.");
 		}
 		catch (Exception ex)

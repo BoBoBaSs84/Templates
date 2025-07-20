@@ -25,7 +25,6 @@ internal abstract class EntityBaseConfiguration<TEntity> : IEntityTypeConfigurat
 
 		builder.Property(e => e.Timestamp)
 			.HasColumnOrder(2)
-			.IsRowVersion()
 			.HasDefaultValueSql("CURRENT_TIMESTAMP");
 
 		builder.Ignore(i => i.IsValid)

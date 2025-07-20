@@ -26,9 +26,15 @@ public partial class TodoForm : Form
 		todoItemGroupBox.DataBindings.Add(nameof(todoItemGroupBox.Enabled), _viewModel, nameof(_viewModel.IsItemSelected), true, DataSourceUpdateMode.OnPropertyChanged);
 
 		todoListBindingSource.DataSource = _viewModel.Lists;
-		todoItemBindingSource.DataSource = _viewModel.Items;
 
 		FormClosing += (s, e) => _viewModel.SaveChanges();
+	}
+
+	/// <inheritdoc/>
+	protected override void OnLoad(EventArgs e)
+	{
+		base.OnLoad(e);
+		_viewModel.LoadLists();
 	}
 
 	private void OnViewModelPropertyChanging(string? propertyName)
@@ -37,16 +43,13 @@ public partial class TodoForm : Form
 		{
 			todoListTitleTextBox.DataBindings.Clear();
 			todoListDescriptionTextBox.DataBindings.Clear();
-			return;
 		}
-
-		if (propertyName is nameof(_viewModel.SelectedItem))
+		else if (propertyName is nameof(_viewModel.SelectedItem))
 		{
 			todoItemTitleTextBox.DataBindings.Clear();
 			todoItemDescriptionTextBox.DataBindings.Clear();
 			todoItemPriorityComboBox.DataBindings.Clear();
 			todoItemIsCompletedCheckBox.DataBindings.Clear();
-			return;
 		}
 	}
 
@@ -59,12 +62,10 @@ public partial class TodoForm : Form
 
 			todoListTitleTextBox.WithTextBinding(_viewModel.SelectedList, nameof(_viewModel.SelectedList.Title));
 			todoListDescriptionTextBox.WithTextBinding(_viewModel.SelectedList, nameof(_viewModel.SelectedList.Description));
-			_viewModel.LoadItems();
-
-			return;
+			todoItemBindingSource.DataSource = _viewModel.SelectedList.Items;
+			_viewModel.SelectedItem = _viewModel.SelectedList.Items.FirstOrDefault();
 		}
-
-		if (propertyName is nameof(_viewModel.SelectedItem))
+		else if (propertyName is nameof(_viewModel.SelectedItem))
 		{
 			if (_viewModel.SelectedItem is null)
 				return;
@@ -72,10 +73,9 @@ public partial class TodoForm : Form
 			todoItemTitleTextBox.WithTextBinding(_viewModel.SelectedItem, nameof(_viewModel.SelectedItem.Title));
 			todoItemDescriptionTextBox.WithTextBinding(_viewModel.SelectedItem, nameof(_viewModel.SelectedItem.Description));
 			todoItemPriorityComboBox.WithDataSource(_viewModel.Priorities)
+				.WithSelectedItemBinding(_viewModel.SelectedItem, nameof(_viewModel.SelectedItem.Priority))
 				.WithSelectedValueBinding(_viewModel.SelectedItem, nameof(_viewModel.SelectedItem.Priority));
 			todoItemIsCompletedCheckBox.WithCheckedBinding(_viewModel.SelectedItem, nameof(_viewModel.SelectedItem.IsCompleted));
-
-			return;
 		}
 	}
 
@@ -132,14 +132,26 @@ public partial class TodoForm : Form
 			List = _viewModel.SelectedList
 		};
 
-		_viewModel.Items.Add(item);
+		_viewModel.SelectedList.Items.Add(item);
 	}
 
 	private void todoListsDataGridView_SelectionChanged(object sender, EventArgs e)
-		=> _viewModel.SelectedList = todoListsDataGridView.CurrentRow.DataBoundItem as TodoList;
+	{
+		if (todoListsDataGridView.SelectedRows.Count == 1)
+		{
+			TodoList? selectedList = todoListsDataGridView.SelectedRows[0].DataBoundItem as TodoList;
+			_viewModel.SelectedList = selectedList;
+		}
+	}
 
 	private void todoItemsDataGridView_SelectionChanged(object sender, EventArgs e)
-		=> _viewModel.SelectedItem = todoItemsDataGridView.CurrentRow.DataBoundItem as TodoItem;
+	{
+		if (todoItemsDataGridView.SelectedRows.Count == 1)
+		{
+			TodoItem? selectedItem = todoItemsDataGridView.SelectedRows[0].DataBoundItem as TodoItem;
+			_viewModel.SelectedItem = selectedItem;
+		}
+	}
 
 	private void todoListSaveButton_Click(object sender, EventArgs e)
 		=> _viewModel.SaveChanges();
