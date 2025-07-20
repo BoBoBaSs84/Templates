@@ -24,9 +24,9 @@ internal abstract class EntityBaseConfiguration<TEntity> : IEntityTypeConfigurat
 			.ValueGeneratedOnAdd();
 
 		builder.Property(e => e.Timestamp)
-			.IsConcurrencyToken()
 			.HasColumnOrder(2)
-			.ValueGeneratedOnAddOrUpdate();
+			.IsRowVersion()
+			.HasDefaultValueSql("CURRENT_TIMESTAMP");
 
 		builder.Ignore(i => i.IsValid)
 			.Ignore(i => i.HasErrors);

@@ -12,8 +12,8 @@ namespace DomainName.Infrastructure.Persistence;
 /// <param name="dbContextOptions">The options to configure the database context.</param>
 internal sealed class DatabaseContext(DbContextOptions<DatabaseContext> dbContextOptions) : DbContext(dbContextOptions), IDatabaseContext
 {
-	public DbSet<TodoList> TodoLists { get; } = default!;
-	public DbSet<TodoItem> TodoItems { get; } = default!;
+	public DbSet<TodoList> TodoLists { get; set; } = default!;
+	public DbSet<TodoItem> TodoItems { get; set; } = default!;
 
 	/// <inheritdoc/>
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
