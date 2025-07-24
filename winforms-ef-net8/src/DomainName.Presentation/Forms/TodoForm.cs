@@ -72,8 +72,8 @@ public partial class TodoForm : Form
 
 			todoItemTitleTextBox.WithTextBinding(_viewModel.SelectedItem, nameof(_viewModel.SelectedItem.Title));
 			todoItemDescriptionTextBox.WithTextBinding(_viewModel.SelectedItem, nameof(_viewModel.SelectedItem.Description));
-			todoItemPriorityComboBox.WithDataSource(_viewModel.Priorities)
-				.WithSelectedItemBinding(_viewModel.SelectedItem, nameof(_viewModel.SelectedItem.Priority))
+			todoItemPriorityComboBox.WithDataSourceBinding(_viewModel.Priorities);
+			todoItemPriorityComboBox.WithSelectedItemBinding(_viewModel.SelectedItem, nameof(_viewModel.SelectedItem.Priority))
 				.WithSelectedValueBinding(_viewModel.SelectedItem, nameof(_viewModel.SelectedItem.Priority));
 			todoItemIsCompletedCheckBox.WithCheckedBinding(_viewModel.SelectedItem, nameof(_viewModel.SelectedItem.IsCompleted));
 		}
