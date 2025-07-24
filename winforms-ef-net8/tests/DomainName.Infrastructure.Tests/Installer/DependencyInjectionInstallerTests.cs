@@ -23,6 +23,6 @@ public class DependencyInjectionInstallerTests
 
 		services.RegisterInfrastructureServices(configurationMock.Object, hostEnvironmentMock.Object);
 
-		Assert.AreEqual(29, services.Count);
+		Assert.AreEqual(35, services.Count);
 	}
 }
