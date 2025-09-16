@@ -3,12 +3,12 @@
     <ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="BB84.EntityFrameworkCore.Entities.Abstractions" Version="3.1.617" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories" Version="3.1.617" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="3.1.617" />
-    <PackageVersion Include="BB84.Extensions" Version="3.0.722" />
-    <PackageVersion Include="BB84.Notifications" Version="3.6.531" />
-    <PackageVersion Include="BB84.WinForms.Extensions" Version="3.0.722" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Entities.Abstractions" Version="4.0.916" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories" Version="4.0.916" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="4.0.916" />
+    <PackageVersion Include="BB84.Extensions" Version="3.1.916" />
+    <PackageVersion Include="BB84.Notifications" Version="3.6.904" />
+    <PackageVersion Include="BB84.WinForms.Extensions" Version="3.1.916" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.9" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.9" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.9" />
