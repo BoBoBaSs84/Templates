@@ -6,9 +6,9 @@
     <PackageVersion Include="BB84.EntityFrameworkCore.Entities.Abstractions" Version="4.0.916" />
     <PackageVersion Include="BB84.EntityFrameworkCore.Repositories" Version="4.0.916" />
     <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="4.0.916" />
-    <PackageVersion Include="BB84.Extensions" Version="3.1.916" />
+    <PackageVersion Include="BB84.Extensions" Version="3.2.930" />
     <PackageVersion Include="BB84.Notifications" Version="3.6.904" />
-    <PackageVersion Include="BB84.WinForms.Extensions" Version="3.1.916" />
+    <PackageVersion Include="BB84.WinForms.Extensions" Version="3.2.930" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.9" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.9" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.9" />
@@ -18,6 +18,6 @@
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="9.0.9" />
     <PackageVersion Include="Microsoft.Extensions.Logging.EventLog" Version="9.0.9" />
     <PackageVersion Include="Moq" Version="4.20.72" />
-    <PackageVersion Include="MSTest" Version="3.10.4" />
+    <PackageVersion Include="MSTest" Version="3.11.0" />
   </ItemGroup>
 </Project>
