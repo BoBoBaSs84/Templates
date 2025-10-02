@@ -8,9 +8,9 @@
 	],
 	"name": "BB84 - Windows Forms EF Core Application",
 	"description": "The Windows Forms Entity Framework Core App Template (.Net 8.0). Unit test project are included and the project is structured into concentric layers, resembling the layers of an onion",
-	"identity": "BB84.Windows.Forms.EF.Application.Net8",
+	"identity": "BB84.Windows.Forms.Application.Net8.EF",
 	"groupIdentity": "BB84.Windows.Forms",
-	"shortName": "bb84-winforms-ef-net8",
+	"shortName": "bb84-winforms-net8-ef",
 	"tags": {
 		"language": "C#",
 		"type": "project"
