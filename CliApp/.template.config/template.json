@@ -12,7 +12,9 @@
 	"shortName": "bb84-console-cli",
 	"tags": {
 		"language": "C#",
-		"type": "project"
+		"type": "project",
+		"platform": "net8.0",
+		"framework": "windows"
 	},
 	"sourceName": "DomainName",
 	"preferNameDirectory": true,
