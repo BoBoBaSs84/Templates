@@ -2,7 +2,6 @@
 	"$schema": "http://json.schemastore.org/template",
 	"author": "BoBoBaSs84",
 	"classifications": [
-		"CSharp",
 		"Desktop",
 		"Windows",
 		"XAML"
@@ -10,7 +9,6 @@
 	"name": "BB84 - WPF Application",
 	"description": "The WPF Application Template (.Net 8.0). Unit test project are included and the project is structured into concentric layers, resembling the layers of an onion",
 	"identity": "BB84.WPF.App.Net8",
-	"groupIdentity": "BB84.WPF.App",
 	"shortName": "bb84-wpf-net8",
 	"tags": {
 		"language": "C#",
