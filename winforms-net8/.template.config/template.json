@@ -3,8 +3,8 @@
 	"author": "BoBoBaSs84",
 	"classifications": [
 		"CSharp",
-		"Windows",
-		"WinForms"
+		"Desktop",
+		"Windows"
 	],
 	"name": "BB84 - WinForms Application .Net8",
 	"description": "The Windows Forms Application Template (.Net 8.0). Unit test project are included and the project is structured into concentric layers, resembling the layers of an onion",
@@ -13,7 +13,9 @@
 	"shortName": "bb84-winforms-net8",
 	"tags": {
 		"language": "C#",
-		"type": "project"
+		"type": "project",
+		"platform": "net8.0",
+		"framework": "windows"
 	},
 	"sourceName": "DomainName",
 	"preferNameDirectory": true,

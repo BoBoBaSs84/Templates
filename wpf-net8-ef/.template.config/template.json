@@ -2,9 +2,11 @@
 	"$schema": "http://json.schemastore.org/template",
 	"author": "BoBoBaSs84",
 	"classifications": [
+		"CSharp",
+		"Desktop",
 		"EFCore",
 		"Windows",
-		"WPF"
+		"XAML"
 	],
 	"name": "BB84 - WPF EF Core Application",
 	"description": "The WPF Entity Framework Core App Template (.Net 8.0). Unit test project are included and the project is structured into concentric layers, resembling the layers of an onion",
@@ -13,7 +15,9 @@
 	"shortName": "bb84-wpf-net8-ef",
 	"tags": {
 		"language": "C#",
-		"type": "project"
+		"type": "project",
+		"platform": "net8.0",
+		"framework": "windows"
 	},
 	"sourceName": "DomainName",
 	"preferNameDirectory": true,

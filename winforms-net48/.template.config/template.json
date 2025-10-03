@@ -3,9 +3,9 @@
 	"author": "BoBoBaSs84",
 	"classifications": [
 		"CSharp",
+		"Desktop",
 		"EFCore",
-		"Windows",
-		"WinForms"
+		"Windows"
 	],
 	"name": "BB84 - WinForms EF Core Application .Net48",
 	"description": "The Windows Forms Entity Framework Core App Template (.Net 4.8). Unit test project are included and the project is structured into concentric layers, resembling the layers of an onion",
@@ -14,7 +14,9 @@
 	"shortName": "bb84-winforms-net48-ef",
 	"tags": {
 		"language": "C#",
-		"type": "project"
+		"type": "project",
+		"platform": "net48",
+		"framework": "windows"
 	},
 	"sourceName": "DomainName",
 	"preferNameDirectory": true,
