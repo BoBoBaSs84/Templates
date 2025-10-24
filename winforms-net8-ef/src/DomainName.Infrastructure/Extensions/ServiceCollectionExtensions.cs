@@ -9,6 +9,7 @@ using DomainName.Infrastructure.Persistence;
 using DomainName.Infrastructure.Services;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -38,7 +39,13 @@ internal static class ServiceCollectionExtensions
 			{
 				options.MigrationsAssembly(typeof(IInfrastructureAssemblyMarker).Assembly.FullName);
 				options.CommandTimeout(15);
+			})
+			.ConfigureWarnings(warnings =>
+			{
+				warnings.Ignore(CoreEventId.InvalidIncludePathError);
+				warnings.Log([(RelationalEventId.CommandExecuted, LogLevel.Debug)]);
 			});
+
 
 			if (environment.IsDevelopment())
 			{
@@ -67,15 +74,21 @@ internal static class ServiceCollectionExtensions
 	{
 		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 
-		services.AddLogging(config =>
+		services.AddLogging(builder =>
 		{
-			config.ClearProviders();
+			builder.ClearProviders();
 
 			if (environment.IsDevelopment())
-				config.AddConsole();
+			{
+				builder.SetMinimumLevel(LogLevel.Debug);
+				builder.AddConsole();
+			}
 
 			if (environment.IsProduction())
-				config.AddEventLog(config => config.SourceName = environment.ApplicationName);
+			{
+				builder.SetMinimumLevel(LogLevel.Warning);
+				builder.AddEventLog(settings => settings.SourceName = environment.ApplicationName);
+			}
 		});
 
 		return services;

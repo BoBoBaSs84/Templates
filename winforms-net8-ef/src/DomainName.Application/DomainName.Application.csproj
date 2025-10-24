@@ -1,13 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	
 	<PropertyGroup>
 		<UseWindowsForms>True</UseWindowsForms>
 	</PropertyGroup>
+	
 	<ItemGroup>
 		<PackageReference Include="BB84.EntityFrameworkCore.Repositories.Abstractions" />
 		<PackageReference Include="BB84.Extensions" />
 		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
 	</ItemGroup>
+	
 	<ItemGroup>
 		<ProjectReference Include="..\DomainName.Domain\DomainName.Domain.csproj" />
 	</ItemGroup>
+
 </Project>
