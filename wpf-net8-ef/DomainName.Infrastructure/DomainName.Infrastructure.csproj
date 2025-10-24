@@ -1,5 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+	<PropertyGroup>
+		<NoWarn>$(NoWarn);CA1416</NoWarn>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />
 	</ItemGroup>

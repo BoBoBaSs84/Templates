@@ -39,10 +39,10 @@ public sealed class UserAuditSaveChangesInterceptor(IUserService userService) : 
 				switch (entityEntry.State)
 				{
 					case EntityState.Modified:
-						entityEntry.Entity.Editor = _userService.User;
+						entityEntry.Entity.EditedBy = _userService.User;
 						break;
 					case EntityState.Added:
-						entityEntry.Entity.Creator = _userService.User;
+						entityEntry.Entity.CreatedBy = _userService.User;
 						break;
 				}
 			}
