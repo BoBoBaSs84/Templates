@@ -10,7 +10,7 @@ public abstract class EntityBase : ValidatableObject, IIdentityEntity
 {
 	/// <inheritdoc/>
 	public Guid Id { get; set; } = default!;
-	
+
 	/// <inheritdoc/>
 	public byte[] Timestamp { get; } = default!;
 }

@@ -76,7 +76,7 @@ public sealed class TodoViewModel(IDatabaseContext databaseContext, INotificatio
 
 			Lists.Clear();
 
-			foreach (var list in lists)
+			foreach (TodoList list in lists)
 				Lists.Add(list);
 
 			SelectedList = Lists.FirstOrDefault();
@@ -94,7 +94,7 @@ public sealed class TodoViewModel(IDatabaseContext databaseContext, INotificatio
 	{
 		try
 		{
-			foreach (var list in Lists)
+			foreach (TodoList list in Lists)
 			{
 				TodoList? dbList = databaseContext.TodoLists
 					.AsNoTracking()

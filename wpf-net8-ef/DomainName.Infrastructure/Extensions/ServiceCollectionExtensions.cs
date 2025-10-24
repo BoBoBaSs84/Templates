@@ -9,6 +9,7 @@ using DomainName.Infrastructure.Persistence.Interceptors;
 using DomainName.Infrastructure.Services;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -34,20 +35,20 @@ internal static class ServiceCollectionExtensions
 	{
 		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 
-		services.AddLogging(config =>
+		services.AddLogging(builder =>
 		{
-			config.ClearProviders();
+			builder.ClearProviders();
 
 			if (environment.IsDevelopment())
 			{
-				config.SetMinimumLevel(LogLevel.Debug);
-				config.AddConsole();
+				builder.SetMinimumLevel(LogLevel.Debug);
+				builder.AddConsole();
 			}
 
 			if (environment.IsProduction())
 			{
-				config.SetMinimumLevel(LogLevel.Warning);
-				config.AddEventLog(config => config.SourceName = environment.ApplicationName);
+				builder.SetMinimumLevel(LogLevel.Warning);
+				builder.AddEventLog(settings => settings.SourceName = environment.ApplicationName);
 			}
 		});
 
@@ -85,6 +86,11 @@ internal static class ServiceCollectionExtensions
 			{
 				options.MigrationsHistoryTable(settings.TableName, settings.TableSchema);
 				options.MigrationsAssembly(typeof(IInfrastructureAssemblyMarker).Assembly.FullName);
+			})
+			.ConfigureWarnings(warnings =>
+			{
+				warnings.Ignore(CoreEventId.InvalidIncludePathError);
+				warnings.Log([(RelationalEventId.CommandExecuted, LogLevel.Debug)]);
 			});
 
 			if (environment.IsDevelopment())

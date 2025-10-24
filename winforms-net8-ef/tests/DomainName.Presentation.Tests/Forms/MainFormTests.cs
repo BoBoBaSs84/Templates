@@ -3,7 +3,6 @@ using DomainName.Application.ViewModels;
 using DomainName.Presentation.Forms;
 
 using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Moq;
 
@@ -23,7 +22,7 @@ public sealed class MainFormTests
 		MainViewModel viewModel = GetMainViewModel();
 		_navigationServiceMock = new();
 		_serviceProviderMock = new();
-		
+
 		using MainForm form = new(_navigationServiceMock.Object, viewModel, _serviceProviderMock.Object);
 
 		Assert.AreEqual($"{viewModel.ApplicationName} - {viewModel.EnvironmentName}", form.Text);
