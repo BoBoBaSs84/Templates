@@ -29,15 +29,21 @@ internal static class ServiceCollectionExtensions
 	{
 		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 
-		services.AddLogging(config =>
+		services.AddLogging(builder =>
 		{
-			config.ClearProviders();
+			builder.ClearProviders();
 
 			if (environment.IsDevelopment())
-				config.AddConsole();
+			{
+				builder.SetMinimumLevel(LogLevel.Debug);
+				builder.AddConsole();
+			}
 
 			if (environment.IsProduction())
-				config.AddEventLog(config => config.SourceName = environment.ApplicationName);
+			{
+				builder.SetMinimumLevel(LogLevel.Warning);
+				builder.AddEventLog(settings => settings.SourceName = environment.ApplicationName);
+			}
 		});
 
 		return services;
