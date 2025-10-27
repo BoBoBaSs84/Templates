@@ -5,7 +5,7 @@
   <ItemGroup>
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.10" />
     <PackageVersion Include="MSTest" Version="4.0.1" />
-    <PackageVersion Include="Spectre.Console" Version="0.52.0" />
-    <PackageVersion Include="Spectre.Console.Cli" Version="0.52.0" />
+    <PackageVersion Include="Spectre.Console" Version="0.53.0" />
+    <PackageVersion Include="Spectre.Console.Cli" Version="0.53.0" />
   </ItemGroup>
 </Project>
