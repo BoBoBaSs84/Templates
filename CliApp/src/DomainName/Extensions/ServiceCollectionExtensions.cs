@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-using DomainName.Interfaces;
+using DomainName.Abstractions.Services;
 using DomainName.Services;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -26,7 +26,7 @@ internal static class ServiceCollectionExtensions
 	{
 		services.RegisterLoggerService(environment);
 
-		services.AddSingleton<WeatherForecastService>();
+		services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
 
 		return services;
 	}
@@ -36,16 +36,21 @@ internal static class ServiceCollectionExtensions
 	{
 		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 
-		services.AddLogging(config =>
+		services.AddLogging(builder =>
 		{
-			config.ClearProviders();
-			config.AddEventLog(config => config.SourceName = environment.ApplicationName);
+			builder.ClearProviders();
 
 			if (environment.IsDevelopment())
-				config.SetMinimumLevel(LogLevel.Debug);
+			{
+				builder.SetMinimumLevel(LogLevel.Debug);
+				builder.AddConsole();
+			}
 
 			if (environment.IsProduction())
-				config.SetMinimumLevel(LogLevel.Warning);
+			{
+				builder.SetMinimumLevel(LogLevel.Warning);
+				builder.AddEventLog(settings => settings.SourceName = environment.ApplicationName);
+			}
 		});
 
 		return services;
