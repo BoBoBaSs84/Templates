@@ -1,9 +1,9 @@
 using System.Reflection;
 
-using Microsoft.Extensions.Hosting;
-
 using DomainName.Common;
 using DomainName.Extensions;
+
+using Microsoft.Extensions.Hosting;
 
 using Spectre.Console;
 using Spectre.Console.Cli;

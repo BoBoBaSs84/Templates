@@ -1,41 +1,35 @@
 using System.Diagnostics.CodeAnalysis;
 
-using Microsoft.Extensions.Configuration;
-
+using DomainName.Abstractions.Services;
 using DomainName.Enumerators;
 using DomainName.Models;
-using DomainName.Services;
 using DomainName.Settings;
+
+using Microsoft.Extensions.Configuration;
 
 using Spectre.Console;
 using Spectre.Console.Cli;
 
 namespace DomainName.Commands;
 
-public class WeatherForecastCommand : Command<WeatherForecastSettings>
+/// <summary>
+/// Represents the command to display weather forecasts.
+/// </summary>
+/// <param name="configuration">The application configuration.</param>
+/// <param name="weatherForecastService">The weather forecast service.</param>
+public class WeatherForecastCommand(IConfiguration configuration, IWeatherForecastService weatherForecastService) : Command<WeatherForecastSettings>
 {
-	private readonly IConfiguration _configuration;
-
-	private readonly WeatherForecastService _weatherForecastService;
-
-	public WeatherForecastCommand(IConfiguration configuration, WeatherForecastService weatherForecastService)
+	/// <inheritdoc/>
+	public override int Execute([NotNull] CommandContext context, [NotNull] WeatherForecastSettings settings, CancellationToken cancellationToken)
 	{
-		_configuration = configuration;
-		_weatherForecastService = weatherForecastService;
-	}
+		TemperatureUnit unit = settings.Unit ?? configuration.GetValue<TemperatureUnit>("Unit");
 
-	public override int Execute([NotNull] CommandContext context, [NotNull] WeatherForecastSettings settings)
-	{
-		TemperatureUnit unit = settings.Unit ??
-									 _configuration.GetValue<TemperatureUnit>("Unit");
+		IEnumerable<WeatherForecast> forecasts = weatherForecastService.GetForecasts(settings.Count);
 
-		IEnumerable<WeatherForecast> forecasts = _weatherForecastService.GetForecasts(settings.Count);
-
-		Table table = new();
-
-		_ = table.AddColumn("Date");
-		_ = table.AddColumn("Temp");
-		_ = table.AddColumn("Summary");
+		Table table = new Table()
+			.AddColumn("Date")
+			.AddColumn("Temp")
+			.AddColumn("Summary");
 
 		foreach (WeatherForecast forecast in forecasts)
 		{

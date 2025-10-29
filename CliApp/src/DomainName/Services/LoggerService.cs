@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-using Microsoft.Extensions.Logging;
+using DomainName.Abstractions.Services;
 
-using DomainName.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace DomainName.Services;
 
