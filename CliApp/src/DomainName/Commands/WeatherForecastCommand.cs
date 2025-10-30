@@ -17,7 +17,7 @@ namespace DomainName.Commands;
 /// </summary>
 /// <param name="configuration">The application configuration.</param>
 /// <param name="weatherForecastService">The weather forecast service.</param>
-public class WeatherForecastCommand(IConfiguration configuration, IWeatherForecastService weatherForecastService) : Command<WeatherForecastSettings>
+public sealed class WeatherForecastCommand(IConfiguration configuration, IWeatherForecastService weatherForecastService) : Command<WeatherForecastSettings>
 {
 	/// <inheritdoc/>
 	public override int Execute([NotNull] CommandContext context, [NotNull] WeatherForecastSettings settings, CancellationToken cancellationToken)

@@ -3,7 +3,7 @@ namespace DomainName.Models;
 /// <summary>
 /// Represents a weather forecast.
 /// </summary>
-public class WeatherForecast
+public sealed class WeatherForecast
 {
 	/// <summary>
 	/// Gets or sets the date of the forecast.

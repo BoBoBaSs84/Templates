@@ -21,7 +21,9 @@ internal static class ServiceCollectionExtensions
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <param name="environment">The host environment instance to use.</param>
-	/// <returns>The enriched service collection.</returns>	
+	/// <returns>
+	/// The same <see cref="IServiceCollection"/> instance so that multiple calls can be chained.
+	/// </returns>	
 	internal static IServiceCollection RegisterServices(this IServiceCollection services, IHostEnvironment environment)
 	{
 		services.RegisterLoggerService(environment);
@@ -31,6 +33,14 @@ internal static class ServiceCollectionExtensions
 		return services;
 	}
 
+	/// <summary>
+	/// Registers the logger service.
+	/// </summary>
+	/// <param name="services">The service collection to enrich.</param>
+	/// <param name="environment">The host environment instance to use.</param>
+	/// <returns>
+	/// The same <see cref="IServiceCollection"/> instance so that multiple calls can be chained.
+	/// </returns>	
 	[SuppressMessage("Interoperability", "CA1416", Justification = "Validate platform compatibility done.")]
 	private static IServiceCollection RegisterLoggerService(this IServiceCollection services, IHostEnvironment environment)
 	{

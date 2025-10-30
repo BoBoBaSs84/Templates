@@ -9,7 +9,7 @@ namespace DomainName.Settings;
 /// <summary>
 /// Represents the settings for the weather forecast command.
 /// </summary>
-public class WeatherForecastSettings : CommandSettings
+public sealed class WeatherForecastSettings : CommandSettings
 {
 	/// <summary>
 	/// Gets or sets the number of weather forecasts to display.
