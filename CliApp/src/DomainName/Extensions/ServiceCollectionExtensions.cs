@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
 using DomainName.Abstractions.Services;
+using DomainName.Options;
 using DomainName.Services;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,8 @@ internal static class ServiceCollectionExtensions
 	internal static IServiceCollection RegisterServices(this IServiceCollection services, IHostEnvironment environment)
 	{
 		services.RegisterLoggerService(environment);
+
+		WeatherForecastOption.Bind(services);
 
 		services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
 

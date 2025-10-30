@@ -1,16 +1,17 @@
 {
-	"profiles": {
-		"DomainName.Development": {
-			"commandName": "Project",
-			"environmentVariables": {
-				"DOTNET_ENVIROMENT": "Development"
-			}
-		},
-		"DomainName.Production": {
-			"commandName": "Project",
-			"environmentVariables": {
-				"DOTNET_ENVIROMENT": "Production"
-			}
-		}
-	}
+  "profiles": {
+    "DomainName.Development": {
+      "commandName": "Project",
+      "commandLineArgs": "forecasts 25",
+      "environmentVariables": {
+        "DOTNET_ENVIROMENT": "Development"
+      }
+    },
+    "DomainName.Production": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIROMENT": "Production"
+      }
+    }
+  }
 }

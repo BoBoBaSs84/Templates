@@ -3,9 +3,10 @@ using System.Diagnostics.CodeAnalysis;
 using DomainName.Abstractions.Services;
 using DomainName.Enumerators;
 using DomainName.Models;
+using DomainName.Options;
 using DomainName.Settings;
 
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 using Spectre.Console;
 using Spectre.Console.Cli;
@@ -15,14 +16,14 @@ namespace DomainName.Commands;
 /// <summary>
 /// Represents the command to display weather forecasts.
 /// </summary>
-/// <param name="configuration">The application configuration.</param>
-/// <param name="weatherForecastService">The weather forecast service.</param>
-public sealed class WeatherForecastCommand(IConfiguration configuration, IWeatherForecastService weatherForecastService) : Command<WeatherForecastSettings>
+/// <param name="options">The weather forecast options to use.</param>
+/// <param name="weatherForecastService">The weather forecast service to use.</param>
+public sealed class WeatherForecastCommand(IOptions<WeatherForecastOption> options, IWeatherForecastService weatherForecastService) : Command<WeatherForecastSettings>
 {
 	/// <inheritdoc/>
 	public override int Execute([NotNull] CommandContext context, [NotNull] WeatherForecastSettings settings, CancellationToken cancellationToken)
 	{
-		TemperatureUnit unit = settings.Unit ?? configuration.GetValue<TemperatureUnit>("Unit");
+		TemperatureUnit unit = settings.Unit ?? options.Value.Unit;
 
 		IEnumerable<WeatherForecast> forecasts = weatherForecastService.GetForecasts(settings.Count);
 
