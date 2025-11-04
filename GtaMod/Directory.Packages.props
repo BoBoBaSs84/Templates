@@ -3,6 +3,8 @@
     <ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.10" />
     <PackageVersion Include="ScriptHookVDotNet3" Version="3.6.0" />
     <PackageVersion Include="LemonUI.SHVDN3" Version="2.2.0" />
   </ItemGroup>

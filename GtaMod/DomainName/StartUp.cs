@@ -1,8 +1,13 @@
-﻿using DomainName.Application.Interfaces.Infrastructure.Services;
-using DomainName.Infrastructure.Factories;
-using DomainName.Presentation.Menus;
+﻿using DomainName.Application.Abstractions.Application.Services;
+using DomainName.Application.Abstractions.Infrastructure.Services;
+using DomainName.Application.Installers;
+using DomainName.Domain.Events.System;
+using DomainName.Infrastructure.Installers;
+using DomainName.Presentation.Installers;
 
 using GTA;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DomainName;
 
@@ -12,37 +17,41 @@ namespace DomainName;
 [ScriptAttributes(Author = "BoBoBaSs84", SupportURL = "https://github.com/BoBoBaSs84")]
 public sealed class StartUp : Script
 {
-	private readonly ILoggerService _logger;
-	private readonly ModMenu _modMenu;
+	private readonly IServiceProvider _serviceProvider;
+	private readonly ILoggerService _loggerService;
+	private readonly IEventService _eventService;
 
 	/// <summary>
-	/// Initializes a instance of the main class.
+	/// Initializes a new instance of the <see cref="StartUp"/> class.
 	/// </summary>
 	public StartUp()
 	{
-		_logger = InfrastructureFactory.GetLoggerService();
-		_modMenu = new("Mod Menu", "The fancy mod menu.");
+		_serviceProvider = CreateServiceProvider();
+		_loggerService = _serviceProvider.GetRequiredService<ILoggerService>();
+		_eventService = _serviceProvider.GetRequiredService<IEventService>();
 
-		Tick += OnTick;
-		Aborted += OnAborted;
-		KeyDown += OnKeyDown;
-		KeyUp += OnKeyUp;
+		Interval = 10;
 
-		_logger.Information("Starting DomainName ..");
+		Tick += (s, e) => _eventService.Publish(new TickEvent($"{s}"));
+		Aborted += (s, e) => _eventService.Publish(new AbortedEvent($"{s}"));
+		KeyDown += (s, e) => _eventService.Publish(new KeyDownEvent($"{s}", e.KeyData));
+		KeyUp += (s, e) => _eventService.Publish(new KeyUpEvent($"{s}", e.KeyData));
+
+		_eventService.Subscribe<TickEvent>(e => _loggerService.Debug($"Tick event received: {e.Source}"));
+		_eventService.Subscribe<AbortedEvent>(e => _loggerService.Debug($"Aborted event received: {e.Source}"));
 	}
 
-	private void OnAborted(object sender, EventArgs e)
-	{ }
-
-	private void OnTick(object sender, EventArgs e)
-	{ }
-
-	private void OnKeyUp(object sender, KeyEventArgs e)
+	/// <summary>
+	/// Creates the service provider.
+	/// </summary>
+	/// <returns>The service provider.</returns>
+	private static ServiceProvider CreateServiceProvider()
 	{
-		if (e.KeyCode == Keys.F10)
-			_modMenu.Visible = !_modMenu.Visible;
-	}
+		IServiceCollection services = new ServiceCollection()
+			.AddApplicationServices()
+			.AddInfrastructureServices()
+			.AddPresentationServices();
 
-	private void OnKeyDown(object sender, KeyEventArgs e)
-	{ }
+		return services.BuildServiceProvider();
+	}
 }

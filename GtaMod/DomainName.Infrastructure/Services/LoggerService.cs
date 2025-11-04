@@ -1,28 +1,22 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text;
 
-using DomainName.Application.Interfaces.Infrastructure.Services;
+using DomainName.Application.Abstractions.Infrastructure.Services;
 
 namespace DomainName.Infrastructure.Services;
 
 /// <summary>
-/// The logger service class.
+/// Represents the logger service implementation.
 /// </summary>
 internal sealed class LoggerService : ILoggerService
 {
-	private static readonly Lazy<LoggerService> LazyService = new(() => new());
 	private readonly string _logFilePath;
 
 	/// <summary>
-	/// Initializes a instance of the logger service class.
+	/// Initializes a new instance of the <see cref="LoggerService"/> class.
 	/// </summary>
-	private LoggerService()
+	public LoggerService()
 		=> _logFilePath = Path.Combine(Environment.CurrentDirectory, $"{nameof(DomainName)}.log");
-
-	/// <summary>
-	/// The singleton instance of the logger service.
-	/// </summary>
-	internal static ILoggerService Instance => LazyService.Value;
 
 	public void Critical(string message, [CallerMemberName] string callerName = "")
 		=> LogToFile("FTL", callerName, message);
@@ -40,7 +34,7 @@ internal sealed class LoggerService : ILoggerService
 		=> LogToFile("WRN", callerName, message);
 
 	/// <summary>
-	/// Lofs the message content to the log file.
+	/// Logs the message content to the log file.
 	/// </summary>
 	/// <param name="type">The logger message type.</param>
 	/// <param name="caller">The logger message caller.</param>

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace DomainName.Application.Interfaces.Infrastructure.Services;
+namespace DomainName.Application.Abstractions.Infrastructure.Services;
 
 /// <summary>
 /// The logger service interface.

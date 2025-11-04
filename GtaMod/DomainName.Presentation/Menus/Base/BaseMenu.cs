@@ -10,12 +10,10 @@ namespace DomainName.Presentation.Menus.Base;
 /// </summary>
 public abstract class BaseMenu : NativeMenu
 {
-	private static readonly Lazy<ObjectPool> LazyMenuPool = new(() => []);
-
 	/// <summary>
-	/// The pool of menus.
+	/// Gets the menu object pool.
 	/// </summary>
-	internal static ObjectPool MenuPool => LazyMenuPool.Value;
+	protected ObjectPool MenuPool { get; }
 
 	/// <summary>
 	///	Initializes a new instance of the <see cref="BaseMenu"/> class.
@@ -38,7 +36,7 @@ public abstract class BaseMenu : NativeMenu
 	/// <param name="subtitle">The name to display below the header.</param>
 	/// <param name="description">The description of the menu.</param>
 	protected BaseMenu(string title, string subtitle, string description) : base(title, subtitle, description)
-		=> MenuPool.Add(this);
+		=> MenuPool = [this];
 
 	/// <summary>
 	/// Adds a new item to the menu.
@@ -61,8 +59,8 @@ public abstract class BaseMenu : NativeMenu
 	protected NativeItem AddItem(string title, string description = "", Action? activated = null, Action? selected = null)
 	{
 		NativeItem item = new(title, description);
-		item.Activated += (sender, args) => activated?.Invoke();
-		item.Selected += (sender, args) => selected?.Invoke();
+		item.Activated += (s, e) => activated?.Invoke();
+		item.Selected += (s, e) => selected?.Invoke();
 		Add(item);
 		return item;
 	}
@@ -111,8 +109,8 @@ public abstract class BaseMenu : NativeMenu
 	protected NativeCheckboxItem AddCheckbox(string title, string description, bool defaultValue = false, Action<bool>? changed = null, Action? selected = null)
 	{
 		NativeCheckboxItem item = new(title, description, defaultValue);
-		item.CheckboxChanged += (sender, args) => changed?.Invoke(item.Checked);
-		item.Selected += (sender, args) => selected?.Invoke();
+		item.CheckboxChanged += (s, e) => changed?.Invoke(item.Checked);
+		item.Selected += (s, e) => selected?.Invoke();
 		Add(item);
 		return item;
 	}
@@ -126,7 +124,7 @@ public abstract class BaseMenu : NativeMenu
 	/// <param name="items">The items to add to the list.</param>
 	/// <returns>The added native list item.</returns>
 	protected NativeListItem<T> AddListItem<T>(string title, Action<T>? activated = null, params T[] items)
-		=> AddListItem(title, string.Empty, activated, null, items);
+		=> AddListItem(title, string.Empty, activated, null, null, items);
 
 	/// <summary>
 	/// Adds a new list item to the menu.
@@ -138,7 +136,7 @@ public abstract class BaseMenu : NativeMenu
 	/// <param name="items">The items to add to the list.</param>
 	/// <returns>The added native list item.</returns>
 	protected NativeListItem<T> AddListItem<T>(string title, Action<T>? activated = null, Action<T, int>? changed = null, params T[] items)
-		=> AddListItem(title, string.Empty, activated, changed, items);
+		=> AddListItem(title, string.Empty, activated, changed, null, items);
 
 	/// <summary>
 	/// Adds a new list item to the menu.
@@ -148,13 +146,15 @@ public abstract class BaseMenu : NativeMenu
 	/// <param name="description">The description when the item is selected.</param>
 	/// <param name="activated">The action to perform when the item is activated.</param>
 	/// <param name="changed">The action to perform when the selected item of the list changes.</param>
+	/// <param name="selected">The action to perform when the item is selected.</param>
 	/// <param name="items">The items array.</param>
 	/// <returns>The added native list item.</returns>
-	protected NativeListItem<T> AddListItem<T>(string title, string description, Action<T>? activated = null, Action<T, int>? changed = null, params T[] items)
+	protected NativeListItem<T> AddListItem<T>(string title, string description, Action<T>? activated = null, Action<T, int>? changed = null, Action? selected = null, params T[] items)
 	{
 		NativeListItem<T> item = new(title, description, items);
-		item.Activated += (sender, args) => activated?.Invoke(item.SelectedItem);
-		item.ItemChanged += (sender, args) => changed?.Invoke(item.SelectedItem, item.SelectedIndex);
+		item.Activated += (s, e) => activated?.Invoke(item.SelectedItem);
+		item.ItemChanged += (s, e) => changed?.Invoke(item.SelectedItem, item.SelectedIndex);
+		item.Selected += (s, e) => selected?.Invoke();
 		Add(item);
 		return item;
 	}

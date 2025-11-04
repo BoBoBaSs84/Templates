@@ -1,11 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	
 	<ItemGroup>
-		<PackageReference Include="LemonUI.SHVDN3" ExcludeAssets="runtime" />
-	</ItemGroup>
-	
-	<ItemGroup>
 		<ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />
+		<ProjectReference Include="..\DomainName.Infrastructure\DomainName.Infrastructure.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="LemonUI.SHVDN3" ExcludeAssets="runtime" />
 	</ItemGroup>
 
 </Project>
