@@ -1,5 +1,4 @@
 ﻿using DomainName.Application.Abstractions.Application.Services;
-using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Application.Installers;
 using DomainName.Domain.Events.System;
 using DomainName.Infrastructure.Installers;
@@ -18,7 +17,6 @@ namespace DomainName;
 public sealed class StartUp : Script
 {
 	private readonly IServiceProvider _serviceProvider;
-	private readonly ILoggerService _loggerService;
 	private readonly IEventService _eventService;
 
 	/// <summary>
@@ -27,7 +25,6 @@ public sealed class StartUp : Script
 	public StartUp()
 	{
 		_serviceProvider = CreateServiceProvider();
-		_loggerService = _serviceProvider.GetRequiredService<ILoggerService>();
 		_eventService = _serviceProvider.GetRequiredService<IEventService>();
 
 		Interval = 10;
@@ -36,9 +33,6 @@ public sealed class StartUp : Script
 		Aborted += (s, e) => _eventService.Publish(new AbortedEvent($"{s}"));
 		KeyDown += (s, e) => _eventService.Publish(new KeyDownEvent($"{s}", e.KeyData));
 		KeyUp += (s, e) => _eventService.Publish(new KeyUpEvent($"{s}", e.KeyData));
-
-		_eventService.Subscribe<TickEvent>(e => _loggerService.Debug($"Tick event received: {e.Source}"));
-		_eventService.Subscribe<AbortedEvent>(e => _loggerService.Debug($"Aborted event received: {e.Source}"));
 	}
 
 	/// <summary>

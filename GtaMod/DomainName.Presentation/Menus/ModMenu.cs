@@ -24,7 +24,7 @@ public sealed class ModMenu : BaseMenu
 
 	private void OnKeyUpEvent(KeyUpEvent @event)
 	{
-		if (@event.KeyData == Keys.F10)
+		if (@event.Keys == Keys.F10)
 			Visible = !Visible;
 	}
 

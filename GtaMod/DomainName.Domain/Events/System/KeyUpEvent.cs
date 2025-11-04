@@ -1,14 +1,16 @@
-﻿namespace DomainName.Domain.Events.System;
+﻿using DomainName.Domain.Events.Base;
+
+namespace DomainName.Domain.Events.System;
 
 /// <summary>
 /// Represents the event data for a key up event.
 /// </summary>
 /// <param name="source">The source of the event.</param>
 /// <param name="keyData">The key data associated with the event.</param>
-public sealed class KeyUpEvent(string source, Keys keyData) : KeyEventArgs(keyData)
+public sealed class KeyUpEvent(string source, Keys keyData) : EventBase(source)
 {
 	/// <summary>
-	/// Gets the sender of the event.
+	/// Gets the key data associated with the event.
 	/// </summary>
-	public string Sender => source;
+	public Keys Keys => keyData;
 }
