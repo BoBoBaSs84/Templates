@@ -53,6 +53,7 @@ partial class MainForm
 		toolsToolStripMenuItem = new ToolStripMenuItem();
 		customizeToolStripMenuItem = new ToolStripMenuItem();
 		optionsToolStripMenuItem = new ToolStripMenuItem();
+		todosToolStripMenuItem = new ToolStripMenuItem();
 		helpToolStripMenuItem = new ToolStripMenuItem();
 		contentsToolStripMenuItem = new ToolStripMenuItem();
 		indexToolStripMenuItem = new ToolStripMenuItem();
@@ -61,8 +62,10 @@ partial class MainForm
 		AboutToolStripMenuItem = new ToolStripMenuItem();
 		mainStatusStrip = new StatusStrip();
 		mainPanel = new Panel();
-		todosToolStripMenuItem = new ToolStripMenuItem();
+		mainToolStripProgressBar = new ToolStripProgressBar();
+		mainToolStripStatusLabel = new ToolStripStatusLabel();
 		menuStrip1.SuspendLayout();
+		mainStatusStrip.SuspendLayout();
 		SuspendLayout();
 		// 
 		// menuStrip1
@@ -228,14 +231,21 @@ partial class MainForm
 		// customizeToolStripMenuItem
 		// 
 		customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-		customizeToolStripMenuItem.Size = new Size(270, 34);
+		customizeToolStripMenuItem.Size = new Size(197, 34);
 		customizeToolStripMenuItem.Text = "&Customize";
 		// 
 		// optionsToolStripMenuItem
 		// 
 		optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-		optionsToolStripMenuItem.Size = new Size(270, 34);
+		optionsToolStripMenuItem.Size = new Size(197, 34);
 		optionsToolStripMenuItem.Text = "&Options";
+		// 
+		// todosToolStripMenuItem
+		// 
+		todosToolStripMenuItem.Name = "todosToolStripMenuItem";
+		todosToolStripMenuItem.Size = new Size(197, 34);
+		todosToolStripMenuItem.Text = "Todos";
+		todosToolStripMenuItem.Click += TodosToolStripMenuItem_Click;
 		// 
 		// helpToolStripMenuItem
 		// 
@@ -277,9 +287,10 @@ partial class MainForm
 		// mainStatusStrip
 		// 
 		mainStatusStrip.ImageScalingSize = new Size(24, 24);
-		mainStatusStrip.Location = new Point(0, 722);
+		mainStatusStrip.Items.AddRange(new ToolStripItem[] { mainToolStripProgressBar, mainToolStripStatusLabel });
+		mainStatusStrip.Location = new Point(0, 712);
 		mainStatusStrip.Name = "mainStatusStrip";
-		mainStatusStrip.Size = new Size(1258, 22);
+		mainStatusStrip.Size = new Size(1258, 32);
 		mainStatusStrip.TabIndex = 2;
 		mainStatusStrip.Text = "statusStrip1";
 		// 
@@ -288,15 +299,18 @@ partial class MainForm
 		mainPanel.Dock = DockStyle.Fill;
 		mainPanel.Location = new Point(0, 33);
 		mainPanel.Name = "mainPanel";
-		mainPanel.Size = new Size(1258, 689);
+		mainPanel.Size = new Size(1258, 679);
 		mainPanel.TabIndex = 3;
 		// 
-		// todosToolStripMenuItem
+		// mainToolStripProgressBar
 		// 
-		todosToolStripMenuItem.Name = "todosToolStripMenuItem";
-		todosToolStripMenuItem.Size = new Size(270, 34);
-		todosToolStripMenuItem.Text = "Todos";
-		todosToolStripMenuItem.Click += todosToolStripMenuItem_Click;
+		mainToolStripProgressBar.Name = "mainToolStripProgressBar";
+		mainToolStripProgressBar.Size = new Size(160, 24);
+		// 
+		// mainToolStripStatusLabel
+		// 
+		mainToolStripStatusLabel.Name = "mainToolStripStatusLabel";
+		mainToolStripStatusLabel.Size = new Size(0, 25);
 		// 
 		// MainForm
 		// 
@@ -311,6 +325,8 @@ partial class MainForm
 		Text = "MainForm";
 		menuStrip1.ResumeLayout(false);
 		menuStrip1.PerformLayout();
+		mainStatusStrip.ResumeLayout(false);
+		mainStatusStrip.PerformLayout();
 		ResumeLayout(false);
 		PerformLayout();
 	}
@@ -350,4 +366,6 @@ partial class MainForm
 	private StatusStrip mainStatusStrip;
 	private Panel mainPanel;
 	private ToolStripMenuItem todosToolStripMenuItem;
+	private ToolStripProgressBar mainToolStripProgressBar;
+	private ToolStripStatusLabel mainToolStripStatusLabel;
 }

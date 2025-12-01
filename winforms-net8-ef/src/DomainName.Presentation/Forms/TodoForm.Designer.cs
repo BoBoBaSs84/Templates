@@ -214,7 +214,7 @@ partial class TodoForm
 		todoListColorButton.TabIndex = 8;
 		todoListColorButton.Text = "Choose";
 		todoListColorButton.UseVisualStyleBackColor = true;
-		todoListColorButton.Click += todoListColorButton_Click;
+		todoListColorButton.Click += TodoListColorButton_Click;
 		// 
 		// todoItemGroupBox
 		// 
@@ -349,7 +349,7 @@ partial class TodoForm
 		todoItemColorButton.TabIndex = 13;
 		todoItemColorButton.Text = "Choose";
 		todoItemColorButton.UseVisualStyleBackColor = true;
-		todoItemColorButton.Click += todoItemColorButton_Click;
+		todoItemColorButton.Click += TodoItemColorButton_Click;
 		// 
 		// todoListsGroupBox
 		// 
@@ -398,7 +398,7 @@ partial class TodoForm
 		todoListsDataGridView.RowHeadersWidth = 62;
 		todoListsDataGridView.Size = new Size(428, 162);
 		todoListsDataGridView.TabIndex = 1;
-		todoListsDataGridView.SelectionChanged += todoListsDataGridView_SelectionChanged;
+		todoListsDataGridView.SelectionChanged += TodoListsDataGridView_SelectionChanged;
 		// 
 		// idDataGridViewTextBoxColumn
 		// 
@@ -444,7 +444,7 @@ partial class TodoForm
 		todoListAddButton.TabIndex = 2;
 		todoListAddButton.Text = "Add";
 		todoListAddButton.UseVisualStyleBackColor = true;
-		todoListAddButton.Click += todoListAddButton_Click;
+		todoListAddButton.Click += TodoListAddButton_Click;
 		// 
 		// todoListDeleteButton
 		// 
@@ -463,7 +463,7 @@ partial class TodoForm
 		todoListSaveButton.TabIndex = 4;
 		todoListSaveButton.Text = "Save";
 		todoListSaveButton.UseVisualStyleBackColor = true;
-		todoListSaveButton.Click += todoListSaveButton_Click;
+		todoListSaveButton.Click += TodoListSaveButton_Click;
 		// 
 		// todoItemsGroupBox
 		// 
@@ -511,7 +511,7 @@ partial class TodoForm
 		todoItemsDataGridView.RowHeadersWidth = 62;
 		todoItemsDataGridView.Size = new Size(428, 162);
 		todoItemsDataGridView.TabIndex = 1;
-		todoItemsDataGridView.SelectionChanged += todoItemsDataGridView_SelectionChanged;
+		todoItemsDataGridView.SelectionChanged += TodoItemsDataGridView_SelectionChanged;
 		// 
 		// idDataGridViewTextBoxColumn1
 		// 
@@ -580,7 +580,7 @@ partial class TodoForm
 		todoItemAddButton.TabIndex = 2;
 		todoItemAddButton.Text = "Add";
 		todoItemAddButton.UseVisualStyleBackColor = true;
-		todoItemAddButton.Click += todoItemAddButton_Click;
+		todoItemAddButton.Click += TodoItemAddButton_Click;
 		// 
 		// todoItemDeleteButton
 		// 

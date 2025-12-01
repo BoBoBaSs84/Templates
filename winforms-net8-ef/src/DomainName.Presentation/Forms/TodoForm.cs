@@ -1,7 +1,9 @@
 ﻿using BB84.WinForms.Extensions;
 
+using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.ViewModels;
 using DomainName.Domain.Entities;
+using DomainName.Domain.Events.Presentation;
 
 namespace DomainName.Presentation.Forms;
 
@@ -10,14 +12,18 @@ namespace DomainName.Presentation.Forms;
 /// </summary>
 public partial class TodoForm : Form
 {
+	private readonly IEventService _eventService;
 	private readonly TodoViewModel _viewModel;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="TodoForm"/> class.
 	/// </summary>
-	public TodoForm(TodoViewModel viewModel)
+	/// <param name="eventService">The event service instance to use.</param>
+	/// <param name="viewModel">The to-do view model instance to use.</param>
+	public TodoForm(IEventService eventService, TodoViewModel viewModel)
 	{
 		InitializeComponent();
+		_eventService = eventService;
 		_viewModel = viewModel;
 		_viewModel.PropertyChanging += (s, e) => OnViewModelPropertyChanging(e.PropertyName);
 		_viewModel.PropertyChanged += (s, e) => OnViewModelPropertyChanged(e.PropertyName);
@@ -28,6 +34,7 @@ public partial class TodoForm : Form
 		todoListBindingSource.DataSource = _viewModel.Lists;
 
 		FormClosing += (s, e) => _viewModel.SaveChanges();
+		_eventService.Publish(new StatusChangedEvent($"{nameof(TodoForm)} initialized.."));
 	}
 
 	/// <inheritdoc/>
@@ -79,7 +86,7 @@ public partial class TodoForm : Form
 		}
 	}
 
-	private void todoListColorButton_Click(object sender, EventArgs e)
+	private void TodoListColorButton_Click(object sender, EventArgs e)
 	{
 		if (_viewModel.SelectedList is null)
 			return;
@@ -95,7 +102,7 @@ public partial class TodoForm : Form
 			_viewModel.SelectedList.Color = colorDialog.Color;
 	}
 
-	private void todoItemColorButton_Click(object sender, EventArgs e)
+	private void TodoItemColorButton_Click(object sender, EventArgs e)
 	{
 		if (_viewModel.SelectedItem is null)
 			return;
@@ -111,7 +118,7 @@ public partial class TodoForm : Form
 			_viewModel.SelectedItem.Color = colorDialog.Color;
 	}
 
-	private void todoListAddButton_Click(object sender, EventArgs e)
+	private void TodoListAddButton_Click(object sender, EventArgs e)
 	{
 		TodoList list = new()
 		{
@@ -121,7 +128,7 @@ public partial class TodoForm : Form
 		_viewModel.Lists.Add(list);
 	}
 
-	private void todoItemAddButton_Click(object sender, EventArgs e)
+	private void TodoItemAddButton_Click(object sender, EventArgs e)
 	{
 		if (_viewModel.SelectedList is null)
 			return;
@@ -135,7 +142,7 @@ public partial class TodoForm : Form
 		_viewModel.SelectedList.Items.Add(item);
 	}
 
-	private void todoListsDataGridView_SelectionChanged(object sender, EventArgs e)
+	private void TodoListsDataGridView_SelectionChanged(object sender, EventArgs e)
 	{
 		if (todoListsDataGridView.SelectedRows.Count == 1)
 		{
@@ -144,7 +151,7 @@ public partial class TodoForm : Form
 		}
 	}
 
-	private void todoItemsDataGridView_SelectionChanged(object sender, EventArgs e)
+	private void TodoItemsDataGridView_SelectionChanged(object sender, EventArgs e)
 	{
 		if (todoItemsDataGridView.SelectedRows.Count == 1)
 		{
@@ -153,6 +160,6 @@ public partial class TodoForm : Form
 		}
 	}
 
-	private void todoListSaveButton_Click(object sender, EventArgs e)
+	private void TodoListSaveButton_Click(object sender, EventArgs e)
 		=> _viewModel.SaveChanges();
 }
