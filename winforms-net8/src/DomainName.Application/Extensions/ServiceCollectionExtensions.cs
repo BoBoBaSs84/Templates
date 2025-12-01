@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
+using DomainName.Application.Abstractions.Application.Services;
+using DomainName.Application.Services;
 using DomainName.Application.ViewModels;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +22,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
+		services.TryAddSingleton<IEventService, EventService>();
 
 		return services;
 	}
@@ -31,8 +34,8 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterViewModels(this IServiceCollection services)
 	{
-		services.TryAddSingleton<AboutViewModel>();
-		services.TryAddSingleton<MainViewModel>();
+		services.AddSingleton<AboutViewModel>();
+		services.AddSingleton<MainViewModel>();
 
 		return services;
 	}

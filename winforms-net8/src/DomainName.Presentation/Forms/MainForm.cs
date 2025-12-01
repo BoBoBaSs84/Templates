@@ -1,5 +1,7 @@
-﻿using DomainName.Application.Abstractions.Presentation.Services;
+﻿using DomainName.Application.Abstractions.Application.Services;
+using DomainName.Application.Abstractions.Presentation.Services;
 using DomainName.Application.ViewModels;
+using DomainName.Domain.Events.Presentation;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,29 +15,62 @@ namespace DomainName.Presentation.Forms;
 public partial class MainForm : Form
 {
 	private readonly INavigationService _navigationService;
-	private readonly MainViewModel _mainViewModel;
+	private readonly IEventService _eventService;
 	private readonly IServiceProvider _serviceProvider;
+	private readonly MainViewModel _mainViewModel;
+	private bool _statusChanged;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="MainForm"/> class.
 	/// </summary>
 	/// <param name="navigationService">The navigation service instance to use.</param>
-	/// <param name="mainViewModel">The main view model instance to use.</param>
 	/// <param name="serviceProvider">The service provider instance to use.</param>
-	public MainForm(INavigationService navigationService, MainViewModel mainViewModel, IServiceProvider serviceProvider)
+	/// <param name="eventService">The event service to publish and subscribe to events.</param>
+	/// <param name="mainViewModel">The main view model instance to use.</param>
+	public MainForm(
+		INavigationService navigationService,
+		IServiceProvider serviceProvider,
+		IEventService eventService,
+		MainViewModel mainViewModel)
 	{
 		InitializeComponent();
 
-		Text = $"{mainViewModel.ApplicationName} - {mainViewModel.EnvironmentName}";
+		Text = $"{mainViewModel.ApplicationName} - {mainViewModel.EnvironmentName} - {mainViewModel.CurrentUser}";
 
 		_navigationService = navigationService;
-		_mainViewModel = mainViewModel;
 		_serviceProvider = serviceProvider;
+		_eventService = eventService;
+		_mainViewModel = mainViewModel;
 
+		RegisterEvents();
+	}
+
+	private void RegisterEvents()
+	{
 		_navigationService.PropertyChanging += (s, e) => OnCurrentFormChanging();
 		_navigationService.PropertyChanged += (s, e) => OnCurrentFormChanged();
+		_eventService.Subscribe<StatusChangedEvent>(OnStatusChanged);
+		_eventService.Subscribe<ProgressChangedEvent>(OnProgressChanged);
+	}
 
-		mainStatusStrip.Items.Add(new ToolStripStatusLabel($"User: {_mainViewModel.CurrentUser}"));
+	private void OnProgressChanged(ProgressChangedEvent @event)
+	{
+		mainToolStripProgressBar.Minimum = @event.Minimum;
+		mainToolStripProgressBar.Maximum = @event.Maximum;
+		mainToolStripProgressBar.Value = @event.Value;
+	}
+
+	private void OnStatusChanged(StatusChangedEvent @event)
+	{
+		mainToolStripStatusLabel.Text = @event.Text;
+		Task.Run(() =>
+		{
+			_statusChanged = true;
+			Thread.Sleep(2000);
+			if (_statusChanged)
+				mainToolStripStatusLabel.Text = string.Empty;
+			_statusChanged = false;
+		}).ConfigureAwait(true);
 	}
 
 	private void OnCurrentFormChanged()
