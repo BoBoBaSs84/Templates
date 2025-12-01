@@ -28,31 +28,34 @@ partial class ThirdForm
 	/// </summary>
 	private void InitializeComponent()
 	{
-		ThirdFormLabel = new Label();
-		SuspendLayout();
-		// 
-		// ThirdFormLabel
-		// 
-		ThirdFormLabel.AutoSize = true;
-		ThirdFormLabel.Dock = DockStyle.Fill;
-		ThirdFormLabel.Location = new Point(0, 0);
-		ThirdFormLabel.Name = "ThirdFormLabel";
-		ThirdFormLabel.Size = new Size(59, 25);
-		ThirdFormLabel.TabIndex = 0;
-		ThirdFormLabel.Text = "label1";
-		ThirdFormLabel.TextAlign = ContentAlignment.MiddleCenter;
-		// 
-		// ThirdForm
-		// 
-		AutoScaleDimensions = new SizeF(10F, 25F);
-		AutoScaleMode = AutoScaleMode.Font;
-		ClientSize = new Size(800, 450);
-		Controls.Add(ThirdFormLabel);
-		Name = "ThirdForm";
-		StartPosition = FormStartPosition.CenterParent;
-		Text = "ThirdForm";
-		ResumeLayout(false);
-		PerformLayout();
+			this.ThirdFormLabel = new System.Windows.Forms.Label();
+			this.SuspendLayout();
+			// 
+			// ThirdFormLabel
+			// 
+			this.ThirdFormLabel.AutoSize = true;
+			this.ThirdFormLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ThirdFormLabel.Location = new System.Drawing.Point(0, 0);
+			this.ThirdFormLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.ThirdFormLabel.Name = "ThirdFormLabel";
+			this.ThirdFormLabel.Size = new System.Drawing.Size(44, 16);
+			this.ThirdFormLabel.TabIndex = 0;
+			this.ThirdFormLabel.Text = "label1";
+			this.ThirdFormLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// ThirdForm
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(640, 288);
+			this.Controls.Add(this.ThirdFormLabel);
+			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Name = "ThirdForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.Text = "ThirdForm";
+			this.ResumeLayout(false);
+			this.PerformLayout();
+
 	}
 
 	#endregion
