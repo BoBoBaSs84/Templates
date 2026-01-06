@@ -77,14 +77,14 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterRepositoryContext(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
 	{
-		MigrationSettings settings = services.BuildServiceProvider()
-			.GetRequiredService<IOptions<MigrationSettings>>().Value;
+		MigrationOptions migrationOption = services.BuildServiceProvider()
+			.GetRequiredService<IOptions<MigrationOptions>>().Value;
 
 		services.AddDbContext<IRepositoryContext, RepositoryContext>(options =>
 		{
 			options.UseSqlServer(configuration.GetConnectionString("SqlServerConnection"), options =>
 			{
-				options.MigrationsHistoryTable(settings.TableName, settings.TableSchema);
+				options.MigrationsHistoryTable(migrationOption.TableName, migrationOption.TableSchema);
 				options.MigrationsAssembly(typeof(IInfrastructureAssemblyMarker).Assembly.FullName);
 			})
 			.ConfigureWarnings(warnings =>

@@ -24,8 +24,8 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterApplicationOptions(this IServiceCollection services)
 	{
-		services.AddOptions<MigrationSettings>()
-			.BindConfiguration(nameof(MigrationSettings))
+		services.AddOptions<MigrationOptions>()
+			.BindConfiguration(nameof(MigrationOptions))
 			.ValidateDataAnnotations()
 			.ValidateOnStart();
 

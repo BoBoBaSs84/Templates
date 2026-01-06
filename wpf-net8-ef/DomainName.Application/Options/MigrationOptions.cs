@@ -5,7 +5,7 @@ namespace DomainName.Application.Options;
 /// <summary>
 /// The migration settings class.
 /// </summary>
-public sealed class MigrationSettings
+public sealed class MigrationOptions
 {
 	/// <summary>
 	/// The table schema for the migration table.
