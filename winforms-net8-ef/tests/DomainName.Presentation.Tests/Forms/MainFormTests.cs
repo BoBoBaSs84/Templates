@@ -1,4 +1,5 @@
-﻿using DomainName.Application.Abstractions.Presentation.Services;
+﻿using DomainName.Application.Abstractions.Application.Services;
+using DomainName.Application.Abstractions.Presentation.Services;
 using DomainName.Application.ViewModels;
 using DomainName.Presentation.Forms;
 
@@ -15,17 +16,19 @@ public sealed class MainFormTests
 	private Mock<IUserService> _userServiceMock = default!;
 	private Mock<INavigationService> _navigationServiceMock = default!;
 	private Mock<IServiceProvider> _serviceProviderMock = default!;
+	private Mock<IEventService> _eventServiceMock = default!;
 
 	[TestMethod]
 	public void ConstructorShouldSetFieldsCorrectly()
 	{
-		MainViewModel viewModel = GetMainViewModel();
+		MainViewModel mainViewModel = GetMainViewModel();
 		_navigationServiceMock = new();
 		_serviceProviderMock = new();
+		_eventServiceMock = new();
 
-		using MainForm form = new(_navigationServiceMock.Object, viewModel, _serviceProviderMock.Object);
+		using MainForm form = new(_navigationServiceMock.Object, _serviceProviderMock.Object, _eventServiceMock.Object, mainViewModel);
 
-		Assert.AreEqual($"{viewModel.ApplicationName} - {viewModel.EnvironmentName}", form.Text);
+		Assert.AreEqual($"{mainViewModel.ApplicationName} - {mainViewModel.EnvironmentName}", form.Text);
 	}
 
 	private MainViewModel GetMainViewModel()
