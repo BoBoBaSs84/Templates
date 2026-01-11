@@ -63,14 +63,20 @@ public partial class MainForm : Form
 	private void OnStatusChanged(StatusChangedEvent @event)
 	{
 		mainToolStripStatusLabel.Text = @event.Text;
-		Task.Run(() =>
+		_statusChanged = true;
+		
+		Task.Run(DelayedClearStatus)
+			.ConfigureAwait(true);
+	}
+
+	private void DelayedClearStatus()
+	{
+		Task.Delay(2000).Wait();
+		if (_statusChanged)
 		{
-			_statusChanged = true;
-			Thread.Sleep(2000);
-			if (_statusChanged)
-				mainToolStripStatusLabel.Text = string.Empty;
+			mainToolStripStatusLabel.Text = string.Empty;
 			_statusChanged = false;
-		}).ConfigureAwait(true);
+		}
 	}
 
 	private void OnCurrentFormChanged()
