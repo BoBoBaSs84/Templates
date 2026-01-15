@@ -1,0 +1,62 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Find all solutions
+      id: find-solutions
+      run: |
+        $solutions = Get-ChildItem -Path . -Filter "*.sln" -Recurse | Select-Object -ExpandProperty FullName
+        $solutionsJson = ConvertTo-Json -InputObject @($solutions) -Compress
+        Write-Host "solutions=$solutionsJson" >> $env:GITHUB_OUTPUT
+        Write-Host "Found solutions: $($solutions.Count)"
+        $solutions | ForEach-Object { Write-Host "  $_" }
+      shell: pwsh
+
+    - name: Restore all solutions
+      run: |
+        $solutions = '${{ steps.find-solutions.outputs.solutions }}' | ConvertFrom-Json
+        foreach ($solution in $solutions) {
+          Write-Host "Restoring: $solution"
+          dotnet restore $solution --verbosity minimal
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+        }
+      shell: pwsh
+    
+    - name: Build all solutions
+      run: |
+        $solutions = '${{ steps.find-solutions.outputs.solutions }}' | ConvertFrom-Json
+        foreach ($solution in $solutions) {
+          Write-Host "Building: $solution"
+          dotnet build $solution --no-restore --configuration release --verbosity minimal
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+        }
+      shell: pwsh
+    
+    - name: Test all solutions
+      run: |
+        $solutions = '${{ steps.find-solutions.outputs.solutions }}' | ConvertFrom-Json
+        foreach ($solution in $solutions) {
+          Write-Host "Testing: $solution"
+          dotnet test $solution --no-build --configuration release --verbosity minimal
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+        }
+      shell: pwsh
