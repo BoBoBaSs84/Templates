@@ -1,11 +1,19 @@
-﻿namespace DomainNameTests.WeatherForecasts;
+﻿using DomainName.Models;
+using DomainName.Services;
 
-[TestClass()]
-public class WeatherForecastServiceTests
+namespace DomainNameTests.WeatherForecasts;
+
+[TestClass]
+public sealed class WeatherForecastServiceTests
 {
-	[TestMethod()]
-	public void GetForecastsTest()
+	[TestMethod]
+	public void GetForecastsShouldReturnFiveResultsWhenFiveIsOmited()
 	{
-		Assert.Fail();
+		int expected = 5;
+		WeatherForecastService sut = new();
+
+		IEnumerable<WeatherForecast> result = sut.GetForecasts(expected);
+
+		Assert.HasCount(expected, result);
 	}
 }

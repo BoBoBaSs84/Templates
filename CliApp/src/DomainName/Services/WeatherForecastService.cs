@@ -6,13 +6,10 @@ namespace DomainName.Services;
 /// <summary>
 /// Represents a service for retrieving weather forecasts.
 /// </summary>
-/// <param name="loggerService">The logger instance for logging messages.</param>
-internal sealed class WeatherForecastService(ILoggerService<WeatherForecastService> loggerService) : IWeatherForecastService
+internal sealed class WeatherForecastService : IWeatherForecastService
 {
 	private static readonly Random Random = new(Guid.NewGuid().GetHashCode());
 	private static readonly string[] Summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"];
-
-	private readonly ILoggerService<WeatherForecastService> _loggerService = loggerService;
 
 	/// <summary>
 	/// Retrieves a collection of weather forecasts.

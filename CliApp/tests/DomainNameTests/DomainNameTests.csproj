@@ -1,7 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+	<PropertyGroup>
+		<IsTestProject>True</IsTestProject>
+	</PropertyGroup>
+
 	<ItemGroup>
 	  <PackageReference Include="MSTest" />
+		<PackageReference Include="Moq" />
 	</ItemGroup>
 
 	<ItemGroup>
