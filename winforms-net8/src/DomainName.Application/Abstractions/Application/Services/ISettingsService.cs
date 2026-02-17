@@ -16,10 +16,10 @@ public interface ISettingsService
 	Language GetLanguage();
 
 	/// <summary>
-	/// Retrieves the current loging level setting from the application's configuration,
+	/// Retrieves the current logging level setting from the application's configuration,
 	/// which determines the verbosity of logging output.
 	/// </summary>
-	/// <returns>The current loging level setting.</returns>
+	/// <returns>The current logging level setting.</returns>
 	LoggingLevel GetLogLevel();
 
 	/// <summary>
@@ -30,9 +30,9 @@ public interface ISettingsService
 	void SetLanguage(Language language);
 
 	/// <summary>
-	/// Sets the loging level preference in the application's configuration, which determines the verbosity
+	/// Sets the logging level preference in the application's configuration, which determines the verbosity
 	/// of logging output. 
 	/// </summary>
-	/// <param name="logLevel">The loging level to set as the current preference for the application.</param>
+	/// <param name="logLevel">The logging level to set as the current preference for the application.</param>
 	void SetLogLevel(LoggingLevel logLevel);
 }

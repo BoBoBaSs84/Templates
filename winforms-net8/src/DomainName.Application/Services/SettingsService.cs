@@ -15,7 +15,7 @@ internal sealed class SettingsService(IEventService eventService) : ISettingsSer
 {
 	private const string AppSettingsSection = "appSettings";
 	private const string LanguageSettingKey = "language";
-	private const string LogingLevelSettingKey = "logingLevel";
+	private const string LogLevelSettingKey = "logLevel";
 	private readonly Configuration _configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
 	public Language GetLanguage()
@@ -23,15 +23,15 @@ internal sealed class SettingsService(IEventService eventService) : ISettingsSer
 		string languageValue = _configuration.AppSettings.Settings[LanguageSettingKey].Value;
 		if (Enum.TryParse(languageValue, out Language language))
 			return language;
-		return Language.English; // Default language
+		return Language.English; // Default
 	}
 
 	public LoggingLevel GetLogLevel()
 	{
-		string logLevelValue = _configuration.AppSettings.Settings[LogingLevelSettingKey].Value;
+		string logLevelValue = _configuration.AppSettings.Settings[LogLevelSettingKey].Value;
 		if (Enum.TryParse(logLevelValue, out LoggingLevel logLevel))
 			return logLevel;
-		return LoggingLevel.Error; // Default log level
+		return LoggingLevel.Error; // Default
 	}
 
 	public void SetLanguage(Language language)
@@ -44,7 +44,7 @@ internal sealed class SettingsService(IEventService eventService) : ISettingsSer
 
 	public void SetLogLevel(LoggingLevel logLevel)
 	{
-		_configuration.AppSettings.Settings[LogingLevelSettingKey].Value = $"{logLevel}";
+		_configuration.AppSettings.Settings[LogLevelSettingKey].Value = $"{logLevel}";
 		_configuration.Save(ConfigurationSaveMode.Modified);
 		ConfigurationManager.RefreshSection(AppSettingsSection);
 		eventService.Publish(new LogLevelChangedEvent(logLevel));
