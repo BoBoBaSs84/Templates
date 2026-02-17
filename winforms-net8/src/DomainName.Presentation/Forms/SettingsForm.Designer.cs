@@ -1,6 +1,6 @@
 ﻿namespace DomainName.Presentation.Forms;
 
-partial class ThirdForm
+partial class SettingsForm
 {
 	/// <summary>
 	/// Required designer variable.
@@ -28,34 +28,27 @@ partial class ThirdForm
 	/// </summary>
 	private void InitializeComponent()
 	{
-		ThirdFormLabel = new Label();
+		components = new System.ComponentModel.Container();
+		settingsViewModelBindingSource = new BindingSource(components);
+		((System.ComponentModel.ISupportInitialize)settingsViewModelBindingSource).BeginInit();
 		SuspendLayout();
 		// 
-		// ThirdFormLabel
+		// settingsViewModelBindingSource
 		// 
-		ThirdFormLabel.AutoSize = true;
-		ThirdFormLabel.Dock = DockStyle.Fill;
-		ThirdFormLabel.Location = new Point(0, 0);
-		ThirdFormLabel.Name = "ThirdFormLabel";
-		ThirdFormLabel.Size = new Size(59, 25);
-		ThirdFormLabel.TabIndex = 0;
-		ThirdFormLabel.Text = "label1";
-		ThirdFormLabel.TextAlign = ContentAlignment.MiddleCenter;
+		settingsViewModelBindingSource.DataSource = typeof(Application.ViewModels.SettingsViewModel);
 		// 
-		// ThirdForm
+		// SettingsForm
 		// 
 		AutoScaleDimensions = new SizeF(10F, 25F);
 		AutoScaleMode = AutoScaleMode.Font;
 		ClientSize = new Size(800, 450);
-		Controls.Add(ThirdFormLabel);
-		Name = "ThirdForm";
-		StartPosition = FormStartPosition.CenterParent;
-		Text = "ThirdForm";
+		Name = "SettingsForm";
+		Text = "SettingsForm";
+		((System.ComponentModel.ISupportInitialize)settingsViewModelBindingSource).EndInit();
 		ResumeLayout(false);
-		PerformLayout();
 	}
 
 	#endregion
 
-	private Label ThirdFormLabel;
+	private BindingSource settingsViewModelBindingSource;
 }

@@ -28,6 +28,7 @@ partial class AboutForm
 	/// </summary>
 	private void InitializeComponent()
 	{
+		components = new System.ComponentModel.Container();
 		TableLayoutPanel = new TableLayoutPanel();
 		FrameworkLabel = new Label();
 		CopyrightLabel = new Label();
@@ -43,7 +44,9 @@ partial class AboutForm
 		repositoryLabelValue = new Label();
 		DescriptionLabel = new Label();
 		descriptionLabelValue = new Label();
+		aboutViewModelBindingSource = new BindingSource(components);
 		TableLayoutPanel.SuspendLayout();
+		((System.ComponentModel.ISupportInitialize)aboutViewModelBindingSource).BeginInit();
 		SuspendLayout();
 		// 
 		// TableLayoutPanel
@@ -151,68 +154,74 @@ partial class AboutForm
 		RepositoryLabel.TabIndex = 28;
 		RepositoryLabel.Text = "Repository:";
 		// 
-		// TitleLabelValue
+		// titleLabelValue
 		// 
 		titleLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		titleLabelValue.AutoSize = true;
+		titleLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Title", true, DataSourceUpdateMode.Never));
 		titleLabelValue.Location = new Point(459, 23);
 		titleLabelValue.Margin = new Padding(3);
-		titleLabelValue.Name = "TitleLabelValue";
+		titleLabelValue.Name = "titleLabelValue";
 		titleLabelValue.Size = new Size(318, 25);
 		titleLabelValue.TabIndex = 29;
 		titleLabelValue.Text = "TitleLabelValue";
 		// 
-		// VersionLabelValue
+		// versionLabelValue
 		// 
 		versionLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		versionLabelValue.AutoSize = true;
+		versionLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Version", true, DataSourceUpdateMode.Never));
 		versionLabelValue.Location = new Point(459, 54);
 		versionLabelValue.Margin = new Padding(3);
-		versionLabelValue.Name = "VersionLabelValue";
+		versionLabelValue.Name = "versionLabelValue";
 		versionLabelValue.Size = new Size(318, 25);
 		versionLabelValue.TabIndex = 30;
 		versionLabelValue.Text = "VersionLabelValue";
 		// 
-		// CompanyLabelValue
+		// companyLabelValue
 		// 
 		companyLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		companyLabelValue.AutoSize = true;
+		companyLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Company", true, DataSourceUpdateMode.Never));
 		companyLabelValue.Location = new Point(459, 85);
 		companyLabelValue.Margin = new Padding(3);
-		companyLabelValue.Name = "CompanyLabelValue";
+		companyLabelValue.Name = "companyLabelValue";
 		companyLabelValue.Size = new Size(318, 25);
 		companyLabelValue.TabIndex = 31;
 		companyLabelValue.Text = "CompanyLabelValue";
 		// 
-		// CopyrightLabelValue
+		// copyrightLabelValue
 		// 
 		copyrightLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		copyrightLabelValue.AutoSize = true;
+		copyrightLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Copyright", true, DataSourceUpdateMode.Never));
 		copyrightLabelValue.Location = new Point(459, 116);
 		copyrightLabelValue.Margin = new Padding(3);
-		copyrightLabelValue.Name = "CopyrightLabelValue";
+		copyrightLabelValue.Name = "copyrightLabelValue";
 		copyrightLabelValue.Size = new Size(318, 25);
 		copyrightLabelValue.TabIndex = 32;
 		copyrightLabelValue.Text = "CopyrightLabelValue";
 		// 
-		// FrameworkLabelValue
+		// frameworkLabelValue
 		// 
 		frameworkLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		frameworkLabelValue.AutoSize = true;
+		frameworkLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "FrameworkName", true, DataSourceUpdateMode.Never));
 		frameworkLabelValue.Location = new Point(459, 147);
 		frameworkLabelValue.Margin = new Padding(3);
-		frameworkLabelValue.Name = "FrameworkLabelValue";
+		frameworkLabelValue.Name = "frameworkLabelValue";
 		frameworkLabelValue.Size = new Size(318, 25);
 		frameworkLabelValue.TabIndex = 33;
 		frameworkLabelValue.Text = "FrameworkLabelValue";
 		// 
-		// RepositoryLabelValue
+		// repositoryLabelValue
 		// 
 		repositoryLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		repositoryLabelValue.AutoSize = true;
+		repositoryLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Repository", true, DataSourceUpdateMode.Never));
 		repositoryLabelValue.Location = new Point(459, 178);
 		repositoryLabelValue.Margin = new Padding(3);
-		repositoryLabelValue.Name = "RepositoryLabelValue";
+		repositoryLabelValue.Name = "repositoryLabelValue";
 		repositoryLabelValue.Size = new Size(318, 25);
 		repositoryLabelValue.TabIndex = 34;
 		repositoryLabelValue.Text = "RepositoryLabelValue";
@@ -228,16 +237,21 @@ partial class AboutForm
 		DescriptionLabel.TabIndex = 35;
 		DescriptionLabel.Text = "Description:";
 		// 
-		// DescriptionLabelValue
+		// descriptionLabelValue
 		// 
 		descriptionLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		descriptionLabelValue.AutoSize = true;
+		descriptionLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Comments", true, DataSourceUpdateMode.Never));
 		descriptionLabelValue.Location = new Point(459, 209);
 		descriptionLabelValue.Margin = new Padding(3);
-		descriptionLabelValue.Name = "DescriptionLabelValue";
+		descriptionLabelValue.Name = "descriptionLabelValue";
 		descriptionLabelValue.Size = new Size(318, 25);
 		descriptionLabelValue.TabIndex = 36;
 		descriptionLabelValue.Text = "DescriptionLabelValue";
+		// 
+		// aboutViewModelBindingSource
+		// 
+		aboutViewModelBindingSource.DataSource = typeof(Application.ViewModels.AboutViewModel);
 		// 
 		// AboutForm
 		// 
@@ -249,6 +263,7 @@ partial class AboutForm
 		Text = "AboutForm";
 		TableLayoutPanel.ResumeLayout(false);
 		TableLayoutPanel.PerformLayout();
+		((System.ComponentModel.ISupportInitialize)aboutViewModelBindingSource).EndInit();
 		ResumeLayout(false);
 	}
 
@@ -269,4 +284,5 @@ partial class AboutForm
 	private Label repositoryLabelValue;
 	private Label DescriptionLabel;
 	private Label descriptionLabelValue;
+	private BindingSource aboutViewModelBindingSource;
 }

@@ -1,4 +1,5 @@
 ﻿using DomainName.Application.ViewModels;
+using DomainName.Presentation.Properties;
 
 namespace DomainName.Presentation.Forms;
 
@@ -7,6 +8,8 @@ namespace DomainName.Presentation.Forms;
 /// </summary>
 public partial class AboutForm : Form
 {
+	private readonly AboutViewModel _aboutViewModel;
+
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AboutForm"/> class.
 	/// </summary>
@@ -15,12 +18,21 @@ public partial class AboutForm : Form
 	{
 		InitializeComponent();
 
-		titleLabelValue.Text = viewModel.Model.Title;
-		versionLabelValue.Text = viewModel.Model.Version;
-		companyLabelValue.Text = viewModel.Model.Company;
-		copyrightLabelValue.Text = viewModel.Model.Copyright;
-		frameworkLabelValue.Text = viewModel.Model.FrameworkName;
-		repositoryLabelValue.Text = viewModel.Model.Repository;
-		descriptionLabelValue.Text = viewModel.Model.Comments;
+		_aboutViewModel = viewModel;
+
+		SetupForm();
+	}
+
+	/// <inheritdoc/>
+	protected override void OnLoad(EventArgs e)
+	{
+		base.OnLoad(e);
+		aboutViewModelBindingSource.DataSource = _aboutViewModel;
+	}
+
+	private void SetupForm()
+	{
+		Text = "About ...";
+		Icon = Resources.About;
 	}
 }

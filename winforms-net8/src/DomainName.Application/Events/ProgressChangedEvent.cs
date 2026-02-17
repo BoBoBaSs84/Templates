@@ -1,6 +1,6 @@
 ﻿using DomainName.Domain.Events.Base;
 
-namespace DomainName.Domain.Events.Presentation;
+namespace DomainName.Application.Events;
 
 /// <summary>
 /// Represents an event that indicates a change in progress percentage.

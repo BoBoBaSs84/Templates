@@ -1,7 +1,4 @@
-﻿using DomainName.Domain.Models;
-
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace DomainName.Domain.Extensions;
 
@@ -17,7 +14,6 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The same service collection instance, so that multiple calls can be chained.</returns>
 	internal static IServiceCollection RegisterModels(this IServiceCollection services)
 	{
-		services.TryAddSingleton<AboutModel>();
 
 		return services;
 	}
