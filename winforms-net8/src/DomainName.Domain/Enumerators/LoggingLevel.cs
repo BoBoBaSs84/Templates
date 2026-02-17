@@ -5,9 +5,9 @@ using DomainName.Domain.Properties;
 namespace DomainName.Domain.Enumerators;
 
 /// <summary>
-/// Represents the application log level.
+/// Represents the application logging level.
 /// </summary>
-public enum LogLevel
+public enum LoggingLevel
 {
 	[Display(ResourceType = typeof(Resources),
 		Name = nameof(Resources.LogLevel_None_Name),

@@ -3,6 +3,7 @@
 using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Application.Events;
+using DomainName.Application.Extensions;
 using DomainName.Extensions;
 using DomainName.Presentation.Forms;
 
@@ -18,8 +19,8 @@ internal sealed class Program
 {
 	private static IHost s_host = default!;
 	private static IEventService s_eventService = default!;
-	private static ILanguageService s_languageService = default!;
 	private static ILoggerService<Program> s_logger = default!;
+	private static ISettingsService s_settingsService = default!;
 
 	private static readonly Action<ILogger, string, Exception?> LogInformation =
 		LoggerMessage.Define<string>(LogLevel.Information, 0, "{Information}");
@@ -37,8 +38,8 @@ internal sealed class Program
 
 		s_host = CreateDefaultBuilder().Build();
 		s_eventService = s_host.Services.GetRequiredService<IEventService>();
-		s_languageService = s_host.Services.GetRequiredService<ILanguageService>();
 		s_logger = s_host.Services.GetRequiredService<ILoggerService<Program>>();
+		s_settingsService = s_host.Services.GetRequiredService<ISettingsService>();
 
 		RegisterEventHandlers();
 		SetLanguage();
@@ -61,10 +62,14 @@ internal sealed class Program
 
 	private static void SetLanguage()
 	{
-		string language = s_languageService.GetLanguage();
-		Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(language);
-		Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
-		s_logger.Log(LogInformation, $"Application language was set to '{language}'.");
+		CultureInfo cultureInfo = s_settingsService
+			.GetLanguage()
+			.GetCultureInfo();
+
+		Thread.CurrentThread.CurrentCulture = cultureInfo;
+		Thread.CurrentThread.CurrentUICulture = cultureInfo;
+
+		s_logger.Log(LogInformation, $"Application language was set to '{cultureInfo}'.");
 	}
 
 	private static void OnExitApplication(ExitApplicationEvent @event)

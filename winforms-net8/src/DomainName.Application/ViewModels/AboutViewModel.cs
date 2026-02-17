@@ -28,7 +28,6 @@ public sealed class AboutViewModel : ViewModelBase
 		Repository = GetRepositoryLocation(assembly);
 	}
 
-
 	/// <summary>
 	/// The title of the application.
 	/// </summary>

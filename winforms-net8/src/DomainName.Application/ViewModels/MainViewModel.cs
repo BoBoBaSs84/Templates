@@ -157,7 +157,9 @@ public sealed class MainViewModel : ViewModelBase
 			.ShowQuestion("");
 
 		if (result is DialogResult.Yes)
-			_eventService.Publish(new ChangeLanguageEvent(language));
+		{
+
+		}
 	}
 
 	private void ShowAbout()
