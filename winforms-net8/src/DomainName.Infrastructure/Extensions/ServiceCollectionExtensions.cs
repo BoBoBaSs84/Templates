@@ -2,12 +2,14 @@
 
 using BB84.Extensions;
 
+using DomainName.Application.Abstractions.Application.Services;
+using DomainName.Application.Abstractions.Infrastructure.Persistence;
 using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Infrastructure.Common;
+using DomainName.Infrastructure.Persistence;
 using DomainName.Infrastructure.Services;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -27,7 +29,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterLoggerService(this IServiceCollection services, IHostEnvironment environment)
 	{
-		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
+		services.AddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 
 		services.AddLogging(builder =>
 		{
@@ -41,7 +43,11 @@ internal static class ServiceCollectionExtensions
 
 			if (environment.IsProduction())
 			{
-				builder.SetMinimumLevel(LogLevel.Warning);
+				LogLevel logLevel = services.BuildServiceProvider()
+					.GetRequiredService<ISettingsService>()
+					.GetLogLevel();
+
+				builder.SetMinimumLevel(logLevel);
 				builder.AddEventLog(settings => settings.SourceName = environment.ApplicationName);
 			}
 		});
@@ -71,8 +77,9 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
-		services.TryAddSingleton<IProviderService, ProviderService>();
-		services.TryAddSingleton<IWebService, WebService>();
+		services.AddSingleton<IFileStorageService, FileStorageService>();
+		services.AddSingleton<IProviderService, ProviderService>();
+		services.AddSingleton<IWebService, WebService>();
 
 		return services;
 	}

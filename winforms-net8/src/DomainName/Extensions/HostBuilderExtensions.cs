@@ -11,9 +11,6 @@ namespace DomainName.Extensions;
 [SuppressMessage("Style", "IDE0058", Justification = "Not relevant here.")]
 internal static class HostBuilderExtensions
 {
-	private const string FileName = "appsettings";
-	private const string FileExtension = "json";
-
 	/// <summary>
 	/// Registers the application settings configuration to the host builder.
 	/// </summary>
@@ -24,8 +21,6 @@ internal static class HostBuilderExtensions
 		hostBuilder.ConfigureAppConfiguration((context, builder) =>
 		{
 			builder.SetBasePath(context.HostingEnvironment.ContentRootPath);
-			builder.AddJsonFile($"{FileName}.{FileExtension}", true, true);
-			builder.AddJsonFile($"{FileName}.{context.HostingEnvironment.EnvironmentName}.{FileExtension}", true, true);
 			builder.AddEnvironmentVariables();
 		});
 

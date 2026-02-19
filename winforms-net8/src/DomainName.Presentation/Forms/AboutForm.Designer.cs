@@ -28,6 +28,7 @@ partial class AboutForm
 	/// </summary>
 	private void InitializeComponent()
 	{
+		components = new System.ComponentModel.Container();
 		TableLayoutPanel = new TableLayoutPanel();
 		FrameworkLabel = new Label();
 		CopyrightLabel = new Label();
@@ -36,6 +37,7 @@ partial class AboutForm
 		TitelLabel = new Label();
 		RepositoryLabel = new Label();
 		titleLabelValue = new Label();
+		aboutViewModelBindingSource = new BindingSource(components);
 		versionLabelValue = new Label();
 		companyLabelValue = new Label();
 		copyrightLabelValue = new Label();
@@ -44,6 +46,7 @@ partial class AboutForm
 		DescriptionLabel = new Label();
 		descriptionLabelValue = new Label();
 		TableLayoutPanel.SuspendLayout();
+		((System.ComponentModel.ISupportInitialize)aboutViewModelBindingSource).BeginInit();
 		SuspendLayout();
 		// 
 		// TableLayoutPanel
@@ -70,6 +73,7 @@ partial class AboutForm
 		TableLayoutPanel.Controls.Add(descriptionLabelValue, 3, 7);
 		TableLayoutPanel.Dock = DockStyle.Fill;
 		TableLayoutPanel.Location = new Point(0, 0);
+		TableLayoutPanel.Margin = new Padding(2, 2, 2, 2);
 		TableLayoutPanel.Name = "TableLayoutPanel";
 		TableLayoutPanel.RowCount = 10;
 		TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
@@ -82,17 +86,17 @@ partial class AboutForm
 		TableLayoutPanel.RowStyles.Add(new RowStyle());
 		TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
 		TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-		TableLayoutPanel.Size = new Size(800, 450);
+		TableLayoutPanel.Size = new Size(640, 360);
 		TableLayoutPanel.TabIndex = 0;
 		// 
 		// FrameworkLabel
 		// 
 		FrameworkLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 		FrameworkLabel.AutoSize = true;
-		FrameworkLabel.Location = new Point(349, 147);
-		FrameworkLabel.Margin = new Padding(3);
+		FrameworkLabel.Location = new Point(279, 118);
+		FrameworkLabel.Margin = new Padding(2, 2, 2, 2);
 		FrameworkLabel.Name = "FrameworkLabel";
-		FrameworkLabel.Size = new Size(104, 25);
+		FrameworkLabel.Size = new Size(85, 20);
 		FrameworkLabel.TabIndex = 27;
 		FrameworkLabel.Text = "Framework:";
 		// 
@@ -100,10 +104,10 @@ partial class AboutForm
 		// 
 		CopyrightLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 		CopyrightLabel.AutoSize = true;
-		CopyrightLabel.Location = new Point(358, 116);
-		CopyrightLabel.Margin = new Padding(3);
+		CopyrightLabel.Location = new Point(287, 94);
+		CopyrightLabel.Margin = new Padding(2, 2, 2, 2);
 		CopyrightLabel.Name = "CopyrightLabel";
-		CopyrightLabel.Size = new Size(95, 25);
+		CopyrightLabel.Size = new Size(77, 20);
 		CopyrightLabel.TabIndex = 22;
 		CopyrightLabel.Text = "Copyright:";
 		// 
@@ -111,10 +115,10 @@ partial class AboutForm
 		// 
 		CompanyLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 		CompanyLabel.AutoSize = true;
-		CompanyLabel.Location = new Point(360, 85);
-		CompanyLabel.Margin = new Padding(3);
+		CompanyLabel.Location = new Point(289, 70);
+		CompanyLabel.Margin = new Padding(2, 2, 2, 2);
 		CompanyLabel.Name = "CompanyLabel";
-		CompanyLabel.Size = new Size(93, 25);
+		CompanyLabel.Size = new Size(75, 20);
 		CompanyLabel.TabIndex = 17;
 		CompanyLabel.Text = "Company:";
 		// 
@@ -122,10 +126,10 @@ partial class AboutForm
 		// 
 		VersionLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 		VersionLabel.AutoSize = true;
-		VersionLabel.Location = new Point(379, 54);
-		VersionLabel.Margin = new Padding(3);
+		VersionLabel.Location = new Point(304, 46);
+		VersionLabel.Margin = new Padding(2, 2, 2, 2);
 		VersionLabel.Name = "VersionLabel";
-		VersionLabel.Size = new Size(74, 25);
+		VersionLabel.Size = new Size(60, 20);
 		VersionLabel.TabIndex = 12;
 		VersionLabel.Text = "Version:";
 		// 
@@ -133,10 +137,10 @@ partial class AboutForm
 		// 
 		TitelLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 		TitelLabel.AutoSize = true;
-		TitelLabel.Location = new Point(405, 23);
-		TitelLabel.Margin = new Padding(3);
+		TitelLabel.Location = new Point(323, 22);
+		TitelLabel.Margin = new Padding(2, 2, 2, 2);
 		TitelLabel.Name = "TitelLabel";
-		TitelLabel.Size = new Size(48, 25);
+		TitelLabel.Size = new Size(41, 20);
 		TitelLabel.TabIndex = 0;
 		TitelLabel.Text = "Title:";
 		// 
@@ -144,76 +148,86 @@ partial class AboutForm
 		// 
 		RepositoryLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 		RepositoryLabel.AutoSize = true;
-		RepositoryLabel.Location = new Point(352, 178);
-		RepositoryLabel.Margin = new Padding(3);
+		RepositoryLabel.Location = new Point(281, 142);
+		RepositoryLabel.Margin = new Padding(2, 2, 2, 2);
 		RepositoryLabel.Name = "RepositoryLabel";
-		RepositoryLabel.Size = new Size(101, 25);
+		RepositoryLabel.Size = new Size(83, 20);
 		RepositoryLabel.TabIndex = 28;
 		RepositoryLabel.Text = "Repository:";
 		// 
-		// TitleLabelValue
+		// titleLabelValue
 		// 
 		titleLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		titleLabelValue.AutoSize = true;
-		titleLabelValue.Location = new Point(459, 23);
-		titleLabelValue.Margin = new Padding(3);
-		titleLabelValue.Name = "TitleLabelValue";
-		titleLabelValue.Size = new Size(318, 25);
+		titleLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Title", true, DataSourceUpdateMode.Never));
+		titleLabelValue.Location = new Point(368, 22);
+		titleLabelValue.Margin = new Padding(2, 2, 2, 2);
+		titleLabelValue.Name = "titleLabelValue";
+		titleLabelValue.Size = new Size(250, 20);
 		titleLabelValue.TabIndex = 29;
 		titleLabelValue.Text = "TitleLabelValue";
 		// 
-		// VersionLabelValue
+		// aboutViewModelBindingSource
+		// 
+		aboutViewModelBindingSource.DataSource = typeof(Application.ViewModels.AboutViewModel);
+		// 
+		// versionLabelValue
 		// 
 		versionLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		versionLabelValue.AutoSize = true;
-		versionLabelValue.Location = new Point(459, 54);
-		versionLabelValue.Margin = new Padding(3);
-		versionLabelValue.Name = "VersionLabelValue";
-		versionLabelValue.Size = new Size(318, 25);
+		versionLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Version", true, DataSourceUpdateMode.Never));
+		versionLabelValue.Location = new Point(368, 46);
+		versionLabelValue.Margin = new Padding(2, 2, 2, 2);
+		versionLabelValue.Name = "versionLabelValue";
+		versionLabelValue.Size = new Size(250, 20);
 		versionLabelValue.TabIndex = 30;
 		versionLabelValue.Text = "VersionLabelValue";
 		// 
-		// CompanyLabelValue
+		// companyLabelValue
 		// 
 		companyLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		companyLabelValue.AutoSize = true;
-		companyLabelValue.Location = new Point(459, 85);
-		companyLabelValue.Margin = new Padding(3);
-		companyLabelValue.Name = "CompanyLabelValue";
-		companyLabelValue.Size = new Size(318, 25);
+		companyLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Company", true, DataSourceUpdateMode.Never));
+		companyLabelValue.Location = new Point(368, 70);
+		companyLabelValue.Margin = new Padding(2, 2, 2, 2);
+		companyLabelValue.Name = "companyLabelValue";
+		companyLabelValue.Size = new Size(250, 20);
 		companyLabelValue.TabIndex = 31;
 		companyLabelValue.Text = "CompanyLabelValue";
 		// 
-		// CopyrightLabelValue
+		// copyrightLabelValue
 		// 
 		copyrightLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		copyrightLabelValue.AutoSize = true;
-		copyrightLabelValue.Location = new Point(459, 116);
-		copyrightLabelValue.Margin = new Padding(3);
-		copyrightLabelValue.Name = "CopyrightLabelValue";
-		copyrightLabelValue.Size = new Size(318, 25);
+		copyrightLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Copyright", true, DataSourceUpdateMode.Never));
+		copyrightLabelValue.Location = new Point(368, 94);
+		copyrightLabelValue.Margin = new Padding(2, 2, 2, 2);
+		copyrightLabelValue.Name = "copyrightLabelValue";
+		copyrightLabelValue.Size = new Size(250, 20);
 		copyrightLabelValue.TabIndex = 32;
 		copyrightLabelValue.Text = "CopyrightLabelValue";
 		// 
-		// FrameworkLabelValue
+		// frameworkLabelValue
 		// 
 		frameworkLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		frameworkLabelValue.AutoSize = true;
-		frameworkLabelValue.Location = new Point(459, 147);
-		frameworkLabelValue.Margin = new Padding(3);
-		frameworkLabelValue.Name = "FrameworkLabelValue";
-		frameworkLabelValue.Size = new Size(318, 25);
+		frameworkLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "FrameworkName", true, DataSourceUpdateMode.Never));
+		frameworkLabelValue.Location = new Point(368, 118);
+		frameworkLabelValue.Margin = new Padding(2, 2, 2, 2);
+		frameworkLabelValue.Name = "frameworkLabelValue";
+		frameworkLabelValue.Size = new Size(250, 20);
 		frameworkLabelValue.TabIndex = 33;
 		frameworkLabelValue.Text = "FrameworkLabelValue";
 		// 
-		// RepositoryLabelValue
+		// repositoryLabelValue
 		// 
 		repositoryLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		repositoryLabelValue.AutoSize = true;
-		repositoryLabelValue.Location = new Point(459, 178);
-		repositoryLabelValue.Margin = new Padding(3);
-		repositoryLabelValue.Name = "RepositoryLabelValue";
-		repositoryLabelValue.Size = new Size(318, 25);
+		repositoryLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Repository", true, DataSourceUpdateMode.Never));
+		repositoryLabelValue.Location = new Point(368, 142);
+		repositoryLabelValue.Margin = new Padding(2, 2, 2, 2);
+		repositoryLabelValue.Name = "repositoryLabelValue";
+		repositoryLabelValue.Size = new Size(250, 20);
 		repositoryLabelValue.TabIndex = 34;
 		repositoryLabelValue.Text = "RepositoryLabelValue";
 		// 
@@ -221,34 +235,37 @@ partial class AboutForm
 		// 
 		DescriptionLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 		DescriptionLabel.AutoSize = true;
-		DescriptionLabel.Location = new Point(347, 209);
-		DescriptionLabel.Margin = new Padding(3);
+		DescriptionLabel.Location = new Point(276, 166);
+		DescriptionLabel.Margin = new Padding(2, 2, 2, 2);
 		DescriptionLabel.Name = "DescriptionLabel";
-		DescriptionLabel.Size = new Size(106, 25);
+		DescriptionLabel.Size = new Size(88, 20);
 		DescriptionLabel.TabIndex = 35;
 		DescriptionLabel.Text = "Description:";
 		// 
-		// DescriptionLabelValue
+		// descriptionLabelValue
 		// 
 		descriptionLabelValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		descriptionLabelValue.AutoSize = true;
-		descriptionLabelValue.Location = new Point(459, 209);
-		descriptionLabelValue.Margin = new Padding(3);
-		descriptionLabelValue.Name = "DescriptionLabelValue";
-		descriptionLabelValue.Size = new Size(318, 25);
+		descriptionLabelValue.DataBindings.Add(new Binding("Text", aboutViewModelBindingSource, "Comments", true, DataSourceUpdateMode.Never));
+		descriptionLabelValue.Location = new Point(368, 166);
+		descriptionLabelValue.Margin = new Padding(2, 2, 2, 2);
+		descriptionLabelValue.Name = "descriptionLabelValue";
+		descriptionLabelValue.Size = new Size(250, 20);
 		descriptionLabelValue.TabIndex = 36;
 		descriptionLabelValue.Text = "DescriptionLabelValue";
 		// 
 		// AboutForm
 		// 
-		AutoScaleDimensions = new SizeF(10F, 25F);
+		AutoScaleDimensions = new SizeF(8F, 20F);
 		AutoScaleMode = AutoScaleMode.Font;
-		ClientSize = new Size(800, 450);
+		ClientSize = new Size(640, 360);
 		Controls.Add(TableLayoutPanel);
+		Margin = new Padding(2, 2, 2, 2);
 		Name = "AboutForm";
 		Text = "AboutForm";
 		TableLayoutPanel.ResumeLayout(false);
 		TableLayoutPanel.PerformLayout();
+		((System.ComponentModel.ISupportInitialize)aboutViewModelBindingSource).EndInit();
 		ResumeLayout(false);
 	}
 
@@ -269,4 +286,5 @@ partial class AboutForm
 	private Label repositoryLabelValue;
 	private Label DescriptionLabel;
 	private Label descriptionLabelValue;
+	private BindingSource aboutViewModelBindingSource;
 }

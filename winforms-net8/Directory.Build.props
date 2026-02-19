@@ -37,7 +37,7 @@
 		<Authors>BoBoBaSs84</Authors>
 		<Company>https://github.com/BoBoBaSs84</Company>
 		<Copyright>Copyright © $([System.DateTime]::UtcNow.Year) BoBoBaSs84</Copyright>
-		<Description>...</Description>
+		<Description>This is the template for the .Net8.0 WinForms application. Made with ❤.</Description>
 		<Product>DomainName</Product>
 		<Title>$(AssemblyName)</Title>
 		<RepositoryType>git</RepositoryType>
