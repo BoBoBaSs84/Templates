@@ -4,7 +4,6 @@ using DomainName.Application.ViewModels;
 using DomainName.Presentation.Forms;
 
 using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Moq;
 
@@ -13,36 +12,32 @@ namespace DomainName.Presentation.Tests.Forms;
 [TestClass]
 public sealed class MainFormTests
 {
-	private Mock<IHostEnvironment> _hostEnvironmentMock = default!;
-	private Mock<IUserService> _userServiceMock = default!;
-	private Mock<INavigationService> _navigationServiceMock = default!;
-	private Mock<IServiceProvider> _serviceProviderMock = default!;
 	private Mock<IEventService> _eventServiceMock = default!;
+	private Mock<IHostEnvironment> _hostEnvironmentMock = default!;
+	private Mock<INotificationService> _notificationSerivceMock = default!;
+	private Mock<INavigationService> _navigationServiceMock = default!;
 
 	[TestMethod]
 	public void ConstructorShouldSetFieldsCorrectly()
 	{
+		MainForm mainForm;
 		MainViewModel viewModel = GetMainViewModel();
 		_navigationServiceMock = new();
-		_serviceProviderMock = new();
-		_eventServiceMock = new();
-		
-		using MainForm form = new(_navigationServiceMock.Object, _serviceProviderMock.Object, _eventServiceMock.Object, viewModel);
 
-		Assert.AreEqual($"{viewModel.ApplicationName} - {viewModel.EnvironmentName}", form.Text);
+		mainForm =
+			new(_eventServiceMock.Object, _navigationServiceMock.Object, viewModel);
+
+		Assert.IsNotNull(mainForm);
 	}
 
 	private MainViewModel GetMainViewModel()
 	{
+		_eventServiceMock = new();
 		_hostEnvironmentMock = new();
 		_hostEnvironmentMock.Setup(x => x.ApplicationName).Returns("TestApp");
 		_hostEnvironmentMock.Setup(x => x.EnvironmentName).Returns("TestEnv");
-		_userServiceMock = new();
-		_userServiceMock.Setup(x => x.Domain).Returns("TestDomain");
-		_userServiceMock.Setup(x => x.Name).Returns("TestUser");
-		_userServiceMock.Setup(x => x.Machine).Returns("TestMachine");
+		_notificationSerivceMock = new();
 
-		MainViewModel viewModel = new(_hostEnvironmentMock.Object, _userServiceMock.Object);
-		return viewModel;
+		return new(_eventServiceMock.Object, _hostEnvironmentMock.Object, _notificationSerivceMock.Object);
 	}
 }

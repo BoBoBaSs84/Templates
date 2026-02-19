@@ -55,6 +55,8 @@ public partial class MainForm : Form
 		_navigationService.PropertyChanging += (s, e) => OnCurrentFormChanging();
 		_navigationService.PropertyChanged += (s, e) => OnCurrentFormChanged();
 		_eventService.Subscribe<ShowAboutEvent>(OnShowAbout);
+		_eventService.Subscribe<ShowOpenFileEvent>(OnShowOpenFile);
+		_eventService.Subscribe<ShowSaveFileEvent>(OnShowSaveFile);
 		_eventService.Subscribe<ShowSettingsEvent>(OnShowSettings);
 	}
 
@@ -72,6 +74,42 @@ public partial class MainForm : Form
 
 	private void OnShowAbout(ShowAboutEvent @event)
 		=> _navigationService.NavigateTo<AboutForm>();
+
+	private void OnShowSaveFile(ShowSaveFileEvent @event)
+	{
+		using SaveFileDialog saveFileDialog = new()
+		{
+			Title = "Save File",
+			Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
+			DefaultExt = "txt",
+			AddExtension = true,
+			InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+		};
+
+		if (saveFileDialog.ShowDialog() == DialogResult.OK)
+		{
+			string filePath = saveFileDialog.FileName;
+			_eventService.Publish(new SaveFileEvent(filePath, @event.FileContent));
+		}
+	}
+
+	private void OnShowOpenFile(ShowOpenFileEvent @event)
+	{
+
+		using OpenFileDialog openFileDialog = new()
+		{
+			Title = "Open File",
+			Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
+			DefaultExt = "txt",
+			AddExtension = true,
+			InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+		};
+		if (openFileDialog.ShowDialog() == DialogResult.OK)
+		{
+			string filePath = openFileDialog.FileName;
+			_eventService.Publish(new OpenFileEvent(filePath));
+		}
+	}
 
 	private void OnShowSettings(ShowSettingsEvent @event)
 		=> _navigationService.NavigateTo<SettingsForm>();

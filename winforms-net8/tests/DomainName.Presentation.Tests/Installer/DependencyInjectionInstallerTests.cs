@@ -14,6 +14,6 @@ public sealed class DependencyInjectionInstallerTests
 
 		services.RegisterPresentationServices();
 
-		Assert.AreEqual(9, services.Count);
+		Assert.HasCount(7, services);
 	}
 }

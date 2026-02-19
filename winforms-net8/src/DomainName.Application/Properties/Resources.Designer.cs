@@ -149,5 +149,14 @@ namespace DomainName.Application.Properties {
                 return ResourceManager.GetString("Language.Spanish.ShortName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to exit the application?.
+        /// </summary>
+        public static string ViewModel_Question_ExitApplication {
+            get {
+                return ResourceManager.GetString("ViewModel.Question.ExitApplication", resourceCulture);
+            }
+        }
     }
 }

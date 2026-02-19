@@ -94,42 +94,44 @@ partial class MainForm
 		newToolStripMenuItem.ImageTransparentColor = Color.Magenta;
 		newToolStripMenuItem.Name = "newToolStripMenuItem";
 		newToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
-		newToolStripMenuItem.Size = new Size(181, 26);
+		newToolStripMenuItem.Size = new Size(228, 30);
 		newToolStripMenuItem.Text = "&New";
 		// 
 		// openToolStripMenuItem
 		// 
+		openToolStripMenuItem.DataBindings.Add(new Binding("Command", mainViewModelBindingSource, "ShowOpenFileCommand", true));
 		openToolStripMenuItem.Image = (Image)resources.GetObject("openToolStripMenuItem.Image");
 		openToolStripMenuItem.ImageTransparentColor = Color.Magenta;
 		openToolStripMenuItem.Name = "openToolStripMenuItem";
 		openToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-		openToolStripMenuItem.Size = new Size(181, 26);
+		openToolStripMenuItem.Size = new Size(228, 30);
 		openToolStripMenuItem.Text = "&Open";
 		// 
 		// toolStripSeparator
 		// 
 		toolStripSeparator.Name = "toolStripSeparator";
-		toolStripSeparator.Size = new Size(178, 6);
+		toolStripSeparator.Size = new Size(225, 6);
 		// 
 		// saveToolStripMenuItem
 		// 
+		saveToolStripMenuItem.DataBindings.Add(new Binding("Command", mainViewModelBindingSource, "ShowSaveFileCommand", true));
 		saveToolStripMenuItem.Image = (Image)resources.GetObject("saveToolStripMenuItem.Image");
 		saveToolStripMenuItem.ImageTransparentColor = Color.Magenta;
 		saveToolStripMenuItem.Name = "saveToolStripMenuItem";
 		saveToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
-		saveToolStripMenuItem.Size = new Size(181, 26);
+		saveToolStripMenuItem.Size = new Size(228, 30);
 		saveToolStripMenuItem.Text = "&Save";
 		// 
 		// saveAsToolStripMenuItem
 		// 
 		saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-		saveAsToolStripMenuItem.Size = new Size(181, 26);
+		saveAsToolStripMenuItem.Size = new Size(228, 30);
 		saveAsToolStripMenuItem.Text = "Save &As";
 		// 
 		// toolStripSeparator1
 		// 
 		toolStripSeparator1.Name = "toolStripSeparator1";
-		toolStripSeparator1.Size = new Size(178, 6);
+		toolStripSeparator1.Size = new Size(225, 6);
 		// 
 		// printToolStripMenuItem
 		// 
@@ -137,7 +139,7 @@ partial class MainForm
 		printToolStripMenuItem.ImageTransparentColor = Color.Magenta;
 		printToolStripMenuItem.Name = "printToolStripMenuItem";
 		printToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.P;
-		printToolStripMenuItem.Size = new Size(181, 26);
+		printToolStripMenuItem.Size = new Size(228, 30);
 		printToolStripMenuItem.Text = "&Print";
 		// 
 		// printPreviewToolStripMenuItem
@@ -145,19 +147,19 @@ partial class MainForm
 		printPreviewToolStripMenuItem.Image = (Image)resources.GetObject("printPreviewToolStripMenuItem.Image");
 		printPreviewToolStripMenuItem.ImageTransparentColor = Color.Magenta;
 		printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-		printPreviewToolStripMenuItem.Size = new Size(181, 26);
+		printPreviewToolStripMenuItem.Size = new Size(228, 30);
 		printPreviewToolStripMenuItem.Text = "Print Pre&view";
 		// 
 		// toolStripSeparator2
 		// 
 		toolStripSeparator2.Name = "toolStripSeparator2";
-		toolStripSeparator2.Size = new Size(178, 6);
+		toolStripSeparator2.Size = new Size(225, 6);
 		// 
 		// exitToolStripMenuItem
 		// 
 		exitToolStripMenuItem.DataBindings.Add(new Binding("Command", mainViewModelBindingSource, "ExitApplicationCommand", true));
 		exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-		exitToolStripMenuItem.Size = new Size(181, 26);
+		exitToolStripMenuItem.Size = new Size(228, 30);
 		exitToolStripMenuItem.Text = "E&xit";
 		// 
 		// mainViewModelBindingSource
@@ -239,7 +241,7 @@ partial class MainForm
 		// 
 		settingsToolStripMenuItem.DataBindings.Add(new Binding("Command", mainViewModelBindingSource, "ShowSettingsCommand", true));
 		settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-		settingsToolStripMenuItem.Size = new Size(224, 26);
+		settingsToolStripMenuItem.Size = new Size(145, 26);
 		settingsToolStripMenuItem.Text = "&Settings";
 		// 
 		// helpToolStripMenuItem

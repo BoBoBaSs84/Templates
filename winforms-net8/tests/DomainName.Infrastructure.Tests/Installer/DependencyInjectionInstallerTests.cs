@@ -2,7 +2,6 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Moq;
 
@@ -20,6 +19,6 @@ public class DependencyInjectionInstallerTests
 
 		services.RegisterInfrastructureServices(hostEnvironmentMock.Object);
 
-		Assert.AreEqual(29, services.Count);
+		Assert.HasCount(30, services);
 	}
 }

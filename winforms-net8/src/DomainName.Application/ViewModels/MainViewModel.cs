@@ -5,6 +5,7 @@ using BB84.Notifications.Interfaces.Commands;
 using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Presentation.Services;
 using DomainName.Application.Events;
+using DomainName.Application.Properties;
 using DomainName.Application.ViewModels.Base;
 
 using Microsoft.Extensions.Hosting;
@@ -22,10 +23,11 @@ public sealed class MainViewModel : ViewModelBase
 	private readonly IHostEnvironment _hostEnvironment;
 	private readonly INotificationService _notificationService;
 	private readonly SynchronizationContext? _synchronizationContext;
-	private IActionCommand<string>? _changeLanguageCommand;
-	private IActionCommand? _exitApplicationCommand;
-	private IActionCommand? _openAboutCommand;
-	private IActionCommand? _showSettingsCommand;
+	private ActionCommand? _exitApplicationCommand;
+	private ActionCommand? _showAboutCommand;
+	private ActionCommand? _showOpenFileCommand;
+	private ActionCommand? _showSaveFileCommand;
+	private ActionCommand? _showSettingsCommand;
 	private string _applicationTitle;
 	private string _statusText;
 	private int _progressBarValue;
@@ -49,6 +51,8 @@ public sealed class MainViewModel : ViewModelBase
 		_applicationTitle = $"{_hostEnvironment.ApplicationName} - {_hostEnvironment.EnvironmentName}";
 		_statusText = string.Empty;
 
+		_eventService.Subscribe<FileOpenedEvent>(OnFileOpened);
+		_eventService.Subscribe<FileSavedEvent>(OnFileSaved);
 		_eventService.Subscribe<StatusChangedEvent>(OnStatusChanged);
 		_eventService.Subscribe<ProgressChangedEvent>(OnProgressChanged);
 	}
@@ -120,16 +124,22 @@ public sealed class MainViewModel : ViewModelBase
 		=> _exitApplicationCommand ??= new ActionCommand(ExitApplication);
 
 	/// <summary>
-	/// The command to change the application language.
-	/// </summary>
-	public IActionCommand<string> ChangeLanguageCommand
-		=> _changeLanguageCommand ??= new ActionCommand<string>(ChangeLanguage);
-
-	/// <summary>
 	/// The command to show the about dialog.
 	/// </summary>
 	public IActionCommand ShowAboutCommand
-		=> _openAboutCommand ??= new ActionCommand(ShowAbout);
+		=> _showAboutCommand ??= new ActionCommand(ShowAbout);
+
+	/// <summary>
+	/// The command to show the open file dialog.
+	/// </summary>
+	public IActionCommand ShowOpenFileCommand
+		=> _showOpenFileCommand ??= new ActionCommand(ShowOpenFile);
+
+	/// <summary>
+	/// The command to show the save file dialog.
+	/// </summary>
+	public IActionCommand ShowSaveFileCommand
+		=> _showSaveFileCommand ??= new ActionCommand(ShowSaveFile);
 
 	/// <summary>
 	/// The command to show the settings dialog.
@@ -144,28 +154,39 @@ public sealed class MainViewModel : ViewModelBase
 	private void ExitApplication()
 	{
 		DialogResult result = _notificationService
-			.ShowQuestion("");
+			.ShowQuestion(Resources.ViewModel_Question_ExitApplication);
 
 		if (result is DialogResult.Yes)
 			_eventService.Publish(new ExitApplicationEvent());
 	}
 
-	private void ChangeLanguage(string language)
-	{
-		DialogResult result = _notificationService
-			.ShowQuestion("");
-
-		if (result is DialogResult.Yes)
-		{
-
-		}
-	}
-
 	private void ShowAbout()
 		=> _eventService.Publish(new ShowAboutEvent());
 
+	private void ShowOpenFile()
+		=> _eventService.Publish(new ShowOpenFileEvent());
+
+	/// <summary>
+	/// Dummy implementation to show the save file dialog.
+	/// In a real application, you would pass the actual file content to save.
+	/// </summary>
+	private void ShowSaveFile()
+		=> _eventService.Publish(new ShowSaveFileEvent([66, 66, 66]));
+
 	private void ShowSettings()
 		=> _eventService.Publish(new ShowSettingsEvent());
+
+	private void OnFileSaved(FileSavedEvent @event)
+	{
+		string message = "File saved successfully: " + @event.FilePath;
+		_eventService.Publish(new StatusChangedEvent(message));
+	}
+
+	private void OnFileOpened(FileOpenedEvent @event)
+	{
+		string message = "File opened successfully. Size: " + @event.FileContent.Length + " bytes.";
+		_eventService.Publish(new StatusChangedEvent(message));
+	}
 
 	private void OnProgressChanged(ProgressChangedEvent @event)
 	{

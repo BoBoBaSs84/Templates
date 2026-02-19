@@ -8,6 +8,9 @@ using DomainName.Presentation.Properties;
 
 namespace DomainName.Presentation.Forms;
 
+/// <summary>
+/// Represents the settings form of the application.
+/// </summary>
 public partial class SettingsForm : Form
 {
 	private readonly IEventService _eventService;
@@ -45,8 +48,10 @@ public partial class SettingsForm : Form
 
 	private void SetupForm()
 	{
-		Text = "Settings ...";
-		Icon = Resources.Settings;
+		settingsGroupBox.Text = Resources.Form_Settings_Settings;
+		logLevelLabel.Text = Resources.Form_Settings_LogLevel;
+		languageLabel.Text = Resources.Form_Settings_Language;
+		saveButton.Text = Resources.Form_Settings_Save;
 	}
 
 	private void RegisterEvents()
@@ -55,7 +60,7 @@ public partial class SettingsForm : Form
 	private void OnSettingsChanged(SettingsChangedEvent @event)
 	{
 		DialogResult result = _notificationService
-			.ShowQuestion("");
+			.ShowQuestion(Resources.Notification_Question_SettingsChanged);
 
 		if (result is DialogResult.Yes)
 			_eventService.Publish(new RestartApplicationEvent());

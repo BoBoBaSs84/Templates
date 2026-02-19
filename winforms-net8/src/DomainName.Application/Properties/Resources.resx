@@ -147,4 +147,7 @@
   <data name="Language.Spanish.ShortName" xml:space="preserve">
     <value>es-ES</value>
   </data>
+  <data name="ViewModel.Question.ExitApplication" xml:space="preserve">
+    <value>Are you sure you want to exit the application?</value>
+  </data>
 </root>

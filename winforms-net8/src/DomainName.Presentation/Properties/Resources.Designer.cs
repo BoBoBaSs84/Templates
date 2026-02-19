@@ -91,6 +91,42 @@ namespace DomainName.Presentation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string Form_Settings_Language {
+            get {
+                return ResourceManager.GetString("Form.Settings.Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LogLevel.
+        /// </summary>
+        internal static string Form_Settings_LogLevel {
+            get {
+                return ResourceManager.GetString("Form.Settings.LogLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string Form_Settings_Save {
+            get {
+                return ResourceManager.GetString("Form.Settings.Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Form_Settings_Settings {
+            get {
+                return ResourceManager.GetString("Form.Settings.Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Languages {
@@ -124,6 +160,15 @@ namespace DomainName.Presentation.Properties {
         internal static string Notification_Question {
             get {
                 return ResourceManager.GetString("Notification.Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have changed the settings. Do you want to restart the application to apply the changes?.
+        /// </summary>
+        internal static string Notification_Question_SettingsChanged {
+            get {
+                return ResourceManager.GetString("Notification.Question.SettingsChanged", resourceCulture);
             }
         }
         
