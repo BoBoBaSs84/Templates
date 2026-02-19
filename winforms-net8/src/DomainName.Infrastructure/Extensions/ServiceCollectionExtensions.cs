@@ -2,6 +2,7 @@
 
 using BB84.Extensions;
 
+using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Infrastructure.Common;
 using DomainName.Infrastructure.Services;
@@ -41,7 +42,11 @@ internal static class ServiceCollectionExtensions
 
 			if (environment.IsProduction())
 			{
-				builder.SetMinimumLevel(LogLevel.Warning);
+				LogLevel logLevel = services.BuildServiceProvider()
+					.GetRequiredService<ISettingsService>()
+					.GetLogLevel();
+
+				builder.SetMinimumLevel(logLevel);
 				builder.AddEventLog(settings => settings.SourceName = environment.ApplicationName);
 			}
 		});

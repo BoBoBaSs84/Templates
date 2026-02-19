@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DomainName.Domain.Properties {
+namespace DomainName.Application.Properties {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace DomainName.Domain.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace DomainName.Domain.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DomainName.Domain.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DomainName.Application.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace DomainName.Domain.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace DomainName.Domain.Properties {
         /// <summary>
         ///   Looks up a localized string similar to English (US).
         /// </summary>
-        internal static string Language_English_Name {
+        public static string Language_English_Name {
             get {
                 return ResourceManager.GetString("Language.English.Name", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace DomainName.Domain.Properties {
         /// <summary>
         ///   Looks up a localized string similar to en-US.
         /// </summary>
-        internal static string Language_English_ShortName {
+        public static string Language_English_ShortName {
             get {
                 return ResourceManager.GetString("Language.English.ShortName", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace DomainName.Domain.Properties {
         /// <summary>
         ///   Looks up a localized string similar to French.
         /// </summary>
-        internal static string Language_French_Name {
+        public static string Language_French_Name {
             get {
                 return ResourceManager.GetString("Language.French.Name", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace DomainName.Domain.Properties {
         /// <summary>
         ///   Looks up a localized string similar to fr-FR.
         /// </summary>
-        internal static string Language_French_ShortName {
+        public static string Language_French_ShortName {
             get {
                 return ResourceManager.GetString("Language.French.ShortName", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace DomainName.Domain.Properties {
         /// <summary>
         ///   Looks up a localized string similar to German.
         /// </summary>
-        internal static string Language_German_Name {
+        public static string Language_German_Name {
             get {
                 return ResourceManager.GetString("Language.German.Name", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace DomainName.Domain.Properties {
         /// <summary>
         ///   Looks up a localized string similar to de-DE.
         /// </summary>
-        internal static string Language_German_ShortName {
+        public static string Language_German_ShortName {
             get {
                 return ResourceManager.GetString("Language.German.ShortName", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace DomainName.Domain.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Italian.
         /// </summary>
-        internal static string Language_Italian_Name {
+        public static string Language_Italian_Name {
             get {
                 return ResourceManager.GetString("Language.Italian.Name", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace DomainName.Domain.Properties {
         /// <summary>
         ///   Looks up a localized string similar to it-IT.
         /// </summary>
-        internal static string Language_Italian_ShortName {
+        public static string Language_Italian_ShortName {
             get {
                 return ResourceManager.GetString("Language.Italian.ShortName", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace DomainName.Domain.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Spanish.
         /// </summary>
-        internal static string Language_Spanish_Name {
+        public static string Language_Spanish_Name {
             get {
                 return ResourceManager.GetString("Language.Spanish.Name", resourceCulture);
             }
@@ -144,45 +144,9 @@ namespace DomainName.Domain.Properties {
         /// <summary>
         ///   Looks up a localized string similar to es-ES.
         /// </summary>
-        internal static string Language_Spanish_ShortName {
+        public static string Language_Spanish_ShortName {
             get {
                 return ResourceManager.GetString("Language.Spanish.ShortName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Debug.
-        /// </summary>
-        internal static string LogLevel_Debug_Name {
-            get {
-                return ResourceManager.GetString("LogLevel.Debug.Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DB.
-        /// </summary>
-        internal static string LogLevel_Debug_ShortName {
-            get {
-                return ResourceManager.GetString("LogLevel.Debug.ShortName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to None.
-        /// </summary>
-        internal static string LogLevel_None_Name {
-            get {
-                return ResourceManager.GetString("LogLevel.None.Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to NO.
-        /// </summary>
-        internal static string LogLevel_None_ShortName {
-            get {
-                return ResourceManager.GetString("LogLevel.None.ShortName", resourceCulture);
             }
         }
     }

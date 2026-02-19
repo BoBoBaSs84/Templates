@@ -101,6 +101,51 @@ namespace DomainName.Presentation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Notification_Error {
+            get {
+                return ResourceManager.GetString("Notification.Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        internal static string Notification_Information {
+            get {
+                return ResourceManager.GetString("Notification.Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question.
+        /// </summary>
+        internal static string Notification_Question {
+            get {
+                return ResourceManager.GetString("Notification.Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retry.
+        /// </summary>
+        internal static string Notification_Retry {
+            get {
+                return ResourceManager.GetString("Notification.Retry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        internal static string Notification_Warning {
+            get {
+                return ResourceManager.GetString("Notification.Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Settings {

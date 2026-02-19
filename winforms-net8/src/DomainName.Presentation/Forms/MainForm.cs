@@ -4,8 +4,6 @@ using DomainName.Application.Events;
 using DomainName.Application.ViewModels;
 using DomainName.Presentation.Properties;
 
-using Microsoft.Extensions.DependencyInjection;
-
 namespace DomainName.Presentation.Forms;
 
 /// <summary>
@@ -15,7 +13,6 @@ public partial class MainForm : Form
 {
 	private readonly IEventService _eventService;
 	private readonly INavigationService _navigationService;
-	private readonly IServiceProvider _serviceProvider;
 	private readonly MainViewModel _mainViewModel;
 
 	/// <summary>
@@ -23,13 +20,11 @@ public partial class MainForm : Form
 	/// </summary>
 	/// <param name="eventService">The event service to publish and subscribe to events.</param>
 	/// <param name="navigationService">The navigation service instance to use.</param>
-	/// <param name="serviceProvider">The service provider instance to use.</param>
 	/// <param name="mainViewModel">The main view model instance to use.</param>
-	public MainForm(IEventService eventService, INavigationService navigationService, IServiceProvider serviceProvider, MainViewModel mainViewModel)
+	public MainForm(IEventService eventService, INavigationService navigationService, MainViewModel mainViewModel)
 	{
 		InitializeComponent();
 		_navigationService = navigationService;
-		_serviceProvider = serviceProvider;
 		_eventService = eventService;
 		_mainViewModel = mainViewModel;
 
@@ -41,6 +36,7 @@ public partial class MainForm : Form
 	protected override void OnLoad(EventArgs e)
 	{
 		base.OnLoad(e);
+
 		mainViewModelBindingSource.DataSource = _mainViewModel;
 	}
 
@@ -48,6 +44,10 @@ public partial class MainForm : Form
 	{
 		Text = _mainViewModel.ApplicationTitle;
 		Icon = Resources.Application;
+
+		aboutToolStripMenuItem.Image = Resources.About.ToBitmap();
+		exitToolStripMenuItem.Image = Resources.Exit.ToBitmap();
+		settingsToolStripMenuItem.Image = Resources.Settings.ToBitmap();
 	}
 
 	private void RegisterEvents()
@@ -71,10 +71,7 @@ public partial class MainForm : Form
 	}
 
 	private void OnShowAbout(ShowAboutEvent @event)
-	{
-		AboutForm aboutForm = _serviceProvider.GetRequiredService<AboutForm>();
-		aboutForm.ShowDialog(this);
-	}
+		=> _navigationService.NavigateTo<AboutForm>();
 
 	private void OnShowSettings(ShowSettingsEvent @event)
 		=> _navigationService.NavigateTo<SettingsForm>();

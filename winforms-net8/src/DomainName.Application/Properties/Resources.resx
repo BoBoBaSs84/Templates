@@ -147,16 +147,4 @@
   <data name="Language.Spanish.ShortName" xml:space="preserve">
     <value>es-ES</value>
   </data>
-  <data name="LogLevel.Debug.Name" xml:space="preserve">
-    <value>Debug</value>
-  </data>
-  <data name="LogLevel.Debug.ShortName" xml:space="preserve">
-    <value>DB</value>
-  </data>
-  <data name="LogLevel.None.Name" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="LogLevel.None.ShortName" xml:space="preserve">
-    <value>NO</value>
-  </data>
 </root>

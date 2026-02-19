@@ -1,8 +1,9 @@
 ﻿using System.Configuration;
 
 using DomainName.Application.Abstractions.Application.Services;
-using DomainName.Application.Events;
-using DomainName.Domain.Enumerators;
+using DomainName.Application.Enumerators;
+
+using Microsoft.Extensions.Logging;
 
 namespace DomainName.Application.Services;
 
@@ -10,8 +11,7 @@ namespace DomainName.Application.Services;
 /// Represents a service responsible for managing application settings, such as user preferences,
 /// configuration options, and other customizable parameters.
 /// </summary>
-/// <param name="eventService">The event service instance to use for publishing and subscribing events.</param>
-internal sealed class SettingsService(IEventService eventService) : ISettingsService
+internal sealed class SettingsService : ISettingsService
 {
 	private const string AppSettingsSection = "appSettings";
 	private const string LanguageSettingKey = "language";
@@ -26,12 +26,12 @@ internal sealed class SettingsService(IEventService eventService) : ISettingsSer
 		return Language.English; // Default
 	}
 
-	public LoggingLevel GetLogLevel()
+	public LogLevel GetLogLevel()
 	{
 		string logLevelValue = _configuration.AppSettings.Settings[LogLevelSettingKey].Value;
-		if (Enum.TryParse(logLevelValue, out LoggingLevel logLevel))
+		if (Enum.TryParse(logLevelValue, out LogLevel logLevel))
 			return logLevel;
-		return LoggingLevel.Error; // Default
+		return LogLevel.Error; // Default
 	}
 
 	public void SetLanguage(Language language)
@@ -39,14 +39,12 @@ internal sealed class SettingsService(IEventService eventService) : ISettingsSer
 		_configuration.AppSettings.Settings[LanguageSettingKey].Value = $"{language}";
 		_configuration.Save(ConfigurationSaveMode.Modified);
 		ConfigurationManager.RefreshSection(AppSettingsSection);
-		eventService.Publish(new LanguageChangedEvent(language));
 	}
 
-	public void SetLogLevel(LoggingLevel logLevel)
+	public void SetLogLevel(LogLevel logLevel)
 	{
 		_configuration.AppSettings.Settings[LogLevelSettingKey].Value = $"{logLevel}";
 		_configuration.Save(ConfigurationSaveMode.Modified);
 		ConfigurationManager.RefreshSection(AppSettingsSection);
-		eventService.Publish(new LogLevelChangedEvent(logLevel));
 	}
 }

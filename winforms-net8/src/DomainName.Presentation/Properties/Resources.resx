@@ -130,6 +130,21 @@
   <data name="Languages" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\earth.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Notification.Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Notification.Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Notification.Question" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="Notification.Retry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="Notification.Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
   <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gear.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

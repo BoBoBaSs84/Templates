@@ -1,4 +1,6 @@
-﻿using DomainName.Domain.Enumerators;
+﻿using DomainName.Application.Enumerators;
+
+using Microsoft.Extensions.Logging;
 
 namespace DomainName.Application.Abstractions.Application.Services;
 
@@ -20,7 +22,7 @@ public interface ISettingsService
 	/// which determines the verbosity of logging output.
 	/// </summary>
 	/// <returns>The current logging level setting.</returns>
-	LoggingLevel GetLogLevel();
+	LogLevel GetLogLevel();
 
 	/// <summary>
 	/// Sets the language preference in the application's configuration, which determines the language
@@ -34,5 +36,5 @@ public interface ISettingsService
 	/// of logging output. 
 	/// </summary>
 	/// <param name="logLevel">The logging level to set as the current preference for the application.</param>
-	void SetLogLevel(LoggingLevel logLevel);
+	void SetLogLevel(LogLevel logLevel);
 }

@@ -1,9 +1,13 @@
-﻿using BB84.Notifications.Commands;
+﻿using BB84.Notifications.Attributes;
+using BB84.Notifications.Commands;
 using BB84.Notifications.Interfaces.Commands;
 
 using DomainName.Application.Abstractions.Application.Services;
+using DomainName.Application.Enumerators;
+using DomainName.Application.Events;
 using DomainName.Application.ViewModels.Base;
-using DomainName.Domain.Enumerators;
+
+using Microsoft.Extensions.Logging;
 
 namespace DomainName.Application.ViewModels;
 
@@ -13,27 +17,31 @@ namespace DomainName.Application.ViewModels;
 /// </summary>
 public sealed class SettingsViewModel : ViewModelBase
 {
+	private readonly IEventService _eventService;
 	private readonly ISettingsService _settingsService;
-	private Language _language = Language.English;
-	private LoggingLevel _logLevel = LoggingLevel.Error;
-	private IActionCommand<Language>? _changeLanguageCommand;
-	private IActionCommand<LoggingLevel>? _changeLogLevelCommand;
+	private Language _language;
+	private LogLevel _logLevel;
+	private IActionCommand? _saveCommand;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
 	/// </summary>
+	/// <param name="eventService">The event service used to publish events when settings are changed.</param>
 	/// <param name="settingsService">The settings service used to manage application settings.</param>
-	public SettingsViewModel(ISettingsService settingsService)
+	public SettingsViewModel(IEventService eventService, ISettingsService settingsService)
 	{
+		_eventService = eventService;
 		_settingsService = settingsService;
-		Language = _settingsService.GetLanguage();
-		LogLevel = _settingsService.GetLogLevel();
+
+		_language = _settingsService.GetLanguage();
+		_logLevel = _settingsService.GetLogLevel();
 	}
 
 	/// <summary>
 	/// Gets or sets the language preference for the application, allowing users to select their
 	/// preferred language from a predefined set of options.
 	/// </summary>
+	[NotifyChanged(nameof(SaveButtonVisible))]
 	public Language Language
 	{
 		get => _language;
@@ -44,35 +52,32 @@ public sealed class SettingsViewModel : ViewModelBase
 	/// Gets or sets the log level preference for the application, allowing users to select their
 	/// preferred log level from a predefined set of options.
 	/// </summary>
-	public LoggingLevel LogLevel
+	[NotifyChanged(nameof(SaveButtonVisible))]
+	public LogLevel LogLevel
 	{
 		get => _logLevel;
 		set => SetProperty(ref _logLevel, value);
 	}
 
 	/// <summary>
-	/// The command to change the language preference, which can be bound to UI elements to allow users
-	/// the ability to change the application's language settings.
+	/// Indicates whether the settings have been changed from their original values, which can be used
+	/// to enable or disable save/apply buttons in the UI.
 	/// </summary>
-	public IActionCommand<Language> ChangeLanguageCommand
-		=> _changeLanguageCommand ??= new ActionCommand<Language>(ChangeLanguage, CanChangeLanguage);
+	public bool SaveButtonVisible
+		=> _language != _settingsService.GetLanguage() || _logLevel != _settingsService.GetLogLevel();
 
 	/// <summary>
-	/// The command to change the log level preference, which can be bound to UI elements to allow users
-	/// the ability to change the application's log level settings.
+	/// The command to save the current settings, which can be bound to a save/apply button in the UI to
+	/// allow users to save their changes.
 	/// </summary>
-	public IActionCommand<LoggingLevel> ChangeLogLevelCommand
-		=> _changeLogLevelCommand ??= new ActionCommand<LoggingLevel>(ChangeLogLevel, CanChangeLogLevel);
+	public IActionCommand SaveCommand
+		=> _saveCommand ??= new ActionCommand(SaveSettings);
 
-	private bool CanChangeLanguage(Language language)
-		=> language != _settingsService.GetLanguage();
+	private void SaveSettings()
+	{
+		_settingsService.SetLanguage(_language);
+		_settingsService.SetLogLevel(_logLevel);
 
-	private void ChangeLanguage(Language language)
-		=> _settingsService.SetLanguage(language);
-
-	private bool CanChangeLogLevel(LoggingLevel logLevel)
-		=> logLevel != _settingsService.GetLogLevel();
-
-	private void ChangeLogLevel(LoggingLevel logLevel)
-		=> _settingsService.SetLogLevel(logLevel);
+		_eventService.Publish(new SettingsChangedEvent());
+	}
 }

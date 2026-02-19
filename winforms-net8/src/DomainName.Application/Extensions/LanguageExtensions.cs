@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-using DomainName.Domain.Enumerators;
+using DomainName.Application.Enumerators;
 
 namespace DomainName.Application.Extensions;
 

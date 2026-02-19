@@ -50,7 +50,6 @@ public sealed class MainViewModel : ViewModelBase
 		_statusText = string.Empty;
 
 		_eventService.Subscribe<StatusChangedEvent>(OnStatusChanged);
-		_eventService.Subscribe<LanguageChangedEvent>(OnLanguageChanged);
 		_eventService.Subscribe<ProgressChangedEvent>(OnProgressChanged);
 	}
 
@@ -181,15 +180,6 @@ public sealed class MainViewModel : ViewModelBase
 		ProgressBarMinimum = @event.Minimum;
 		ProgressBarMaximum = @event.Maximum;
 		ProgressBarValue = @event.Value;
-	}
-
-	private void OnLanguageChanged(LanguageChangedEvent @event)
-	{
-		DialogResult result = _notificationService
-			.ShowQuestion("");
-
-		if (result is DialogResult.Yes)
-			_eventService.Publish(new RestartApplicationEvent());
 	}
 
 	private void OnStatusChanged(StatusChangedEvent @event)
