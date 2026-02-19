@@ -41,7 +41,7 @@ public sealed class SettingsViewModel : ViewModelBase
 	/// Gets or sets the language preference for the application, allowing users to select their
 	/// preferred language from a predefined set of options.
 	/// </summary>
-	[NotifyChanged(nameof(SaveButtonVisible))]
+	[NotifyChanged(nameof(IsSaveButtonEnabled))]
 	public Language Language
 	{
 		get => _language;
@@ -52,7 +52,7 @@ public sealed class SettingsViewModel : ViewModelBase
 	/// Gets or sets the log level preference for the application, allowing users to select their
 	/// preferred log level from a predefined set of options.
 	/// </summary>
-	[NotifyChanged(nameof(SaveButtonVisible))]
+	[NotifyChanged(nameof(IsSaveButtonEnabled))]
 	public LogLevel LogLevel
 	{
 		get => _logLevel;
@@ -63,7 +63,7 @@ public sealed class SettingsViewModel : ViewModelBase
 	/// Indicates whether the settings have been changed from their original values, which can be used
 	/// to enable or disable save/apply buttons in the UI.
 	/// </summary>
-	public bool SaveButtonVisible
+	public bool IsSaveButtonEnabled
 		=> _language != _settingsService.GetLanguage() || _logLevel != _settingsService.GetLogLevel();
 
 	/// <summary>
@@ -77,7 +77,7 @@ public sealed class SettingsViewModel : ViewModelBase
 	{
 		_settingsService.SetLanguage(_language);
 		_settingsService.SetLogLevel(_logLevel);
-
+		RaisePropertiesChanged(nameof(IsSaveButtonEnabled));
 		_eventService.Publish(new SettingsChangedEvent());
 	}
 }
