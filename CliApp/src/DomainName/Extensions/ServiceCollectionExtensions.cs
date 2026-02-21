@@ -5,7 +5,6 @@ using DomainName.Options;
 using DomainName.Services;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -31,6 +30,7 @@ internal static class ServiceCollectionExtensions
 
 		WeatherForecastOption.Bind(services);
 
+		services.AddSingleton<IEventService, EventService>();
 		services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
 
 		return services;
@@ -47,7 +47,7 @@ internal static class ServiceCollectionExtensions
 	[SuppressMessage("Interoperability", "CA1416", Justification = "Validate platform compatibility done.")]
 	private static IServiceCollection RegisterLoggerService(this IServiceCollection services, IHostEnvironment environment)
 	{
-		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
+		services.AddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 
 		services.AddLogging(builder =>
 		{
