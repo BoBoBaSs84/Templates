@@ -1,5 +1,4 @@
 ﻿using DomainName.Application.ViewModels;
-using DomainName.Domain.Models;
 
 namespace DomainName.Application.Tests.ViewModels;
 
@@ -9,10 +8,17 @@ public sealed class AboutViewModelTests
 	[TestMethod]
 	public void ConstructorShouldSetPropertiesCorrect()
 	{
-		AboutModel model = new();
+		AboutViewModel? viewModel;
 
-		AboutViewModel viewModel = new(model);
+		viewModel = new();
 
-		Assert.AreEqual(model, viewModel.Model);
+		Assert.IsNotNull(viewModel);
+		Assert.AreNotEqual(string.Empty, viewModel.Title);
+		Assert.AreNotEqual(string.Empty, viewModel.Version);
+		Assert.AreNotEqual(string.Empty, viewModel.Comments);
+		Assert.AreNotEqual(string.Empty, viewModel.Company);
+		Assert.AreNotEqual(string.Empty, viewModel.Copyright);
+		Assert.AreNotEqual(string.Empty, viewModel.FrameworkName);
+		Assert.AreNotEqual(string.Empty, viewModel.Repository);
 	}
 }

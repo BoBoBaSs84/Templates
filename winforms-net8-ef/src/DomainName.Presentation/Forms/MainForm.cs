@@ -1,11 +1,8 @@
 ﻿using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Events;
 using DomainName.Application.ViewModels;
-using DomainName.Domain.Events.Presentation;
-
-using Microsoft.Extensions.DependencyInjection;
-
-using WinFormsApp = System.Windows.Forms.Application;
+using DomainName.Presentation.Properties;
 
 namespace DomainName.Presentation.Forms;
 
@@ -14,57 +11,53 @@ namespace DomainName.Presentation.Forms;
 /// </summary>
 public partial class MainForm : Form
 {
-	private readonly INavigationService _navigationService;
-	private readonly IServiceProvider _serviceProvider;
 	private readonly IEventService _eventService;
-	private bool _statusChanged;
+	private readonly INavigationService _navigationService;
+	private readonly MainViewModel _mainViewModel;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="MainForm"/> class.
 	/// </summary>
+	/// <param name="eventService">The event service to publish and subscribe to events.</param>
 	/// <param name="navigationService">The navigation service instance to use.</param>
 	/// <param name="mainViewModel">The main view model instance to use.</param>
-	/// <param name="serviceProvider">The service provider instance to use.</param>
-	/// <param name="eventService">The event service instance to use.</param>
-	public MainForm(INavigationService navigationService, IServiceProvider serviceProvider, IEventService eventService, MainViewModel mainViewModel)
+	public MainForm(IEventService eventService, INavigationService navigationService, MainViewModel mainViewModel)
 	{
 		InitializeComponent();
-
-		Text = $"{mainViewModel.ApplicationName} - {mainViewModel.EnvironmentName} - {mainViewModel.CurrentUser}";
-
 		_navigationService = navigationService;
-		_serviceProvider = serviceProvider;
 		_eventService = eventService;
+		_mainViewModel = mainViewModel;
 
+		SetupForm();
 		RegisterEvents();
+	}
+
+	/// <inheritdoc/>
+	protected override void OnLoad(EventArgs e)
+	{
+		base.OnLoad(e);
+
+		mainViewModelBindingSource.DataSource = _mainViewModel;
+	}
+
+	private void SetupForm()
+	{
+		Text = _mainViewModel.ApplicationTitle;
+		Icon = Resources.Application;
+
+		aboutToolStripMenuItem.Image = Resources.About.ToBitmap();
+		exitToolStripMenuItem.Image = Resources.Exit.ToBitmap();
+		settingsToolStripMenuItem.Image = Resources.Settings.ToBitmap();
 	}
 
 	private void RegisterEvents()
 	{
 		_navigationService.PropertyChanging += (s, e) => OnCurrentFormChanging();
 		_navigationService.PropertyChanged += (s, e) => OnCurrentFormChanged();
-		_eventService.Subscribe<StatusChangedEvent>(OnStatusChanged);
-		_eventService.Subscribe<ProgressChangedEvent>(OnProgressChanged);
-	}
-
-	private void OnProgressChanged(ProgressChangedEvent @event)
-	{
-		mainToolStripProgressBar.Minimum = @event.Minimum;
-		mainToolStripProgressBar.Maximum = @event.Maximum;
-		mainToolStripProgressBar.Value = @event.Value;
-	}
-
-	private void OnStatusChanged(StatusChangedEvent @event)
-	{
-		mainToolStripStatusLabel.Text = @event.Text;
-		Task.Run(() =>
-		{
-			_statusChanged = true;
-			Thread.Sleep(2000);
-			if (_statusChanged)
-				mainToolStripStatusLabel.Text = string.Empty;
-			_statusChanged = false;
-		}).ConfigureAwait(true);
+		_eventService.Subscribe<ShowAboutEvent>(OnShowAbout);
+		_eventService.Subscribe<ShowOpenFileEvent>(OnShowOpenFile);
+		_eventService.Subscribe<ShowSaveFileEvent>(OnShowSaveFile);
+		_eventService.Subscribe<ShowSettingsEvent>(OnShowSettings);
 	}
 
 	private void OnCurrentFormChanged()
@@ -79,14 +72,45 @@ public partial class MainForm : Form
 			mainPanel.Controls.Remove(_navigationService.CurrentForm);
 	}
 
-	private void ExitToolStripMenuItem_Click(object sender, EventArgs e) => WinFormsApp.Exit();
+	private void OnShowAbout(ShowAboutEvent @event)
+		=> _navigationService.NavigateTo<AboutForm>();
 
-	private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+	private void OnShowSaveFile(ShowSaveFileEvent @event)
 	{
-		AboutForm aboutForm = _serviceProvider.GetRequiredService<AboutForm>();
-		aboutForm.ShowDialog(this);
+		using SaveFileDialog saveFileDialog = new()
+		{
+			Title = "Save File",
+			Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
+			DefaultExt = "txt",
+			AddExtension = true,
+			InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+		};
+
+		if (saveFileDialog.ShowDialog() == DialogResult.OK)
+		{
+			string filePath = saveFileDialog.FileName;
+			_eventService.Publish(new SaveFileEvent(filePath, @event.FileContent));
+		}
 	}
 
-	private void TodosToolStripMenuItem_Click(object sender, EventArgs e)
-		=> _navigationService.NavigateTo<TodoForm>();
+	private void OnShowOpenFile(ShowOpenFileEvent @event)
+	{
+
+		using OpenFileDialog openFileDialog = new()
+		{
+			Title = "Open File",
+			Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
+			DefaultExt = "txt",
+			AddExtension = true,
+			InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+		};
+		if (openFileDialog.ShowDialog() == DialogResult.OK)
+		{
+			string filePath = openFileDialog.FileName;
+			_eventService.Publish(new OpenFileEvent(filePath));
+		}
+	}
+
+	private void OnShowSettings(ShowSettingsEvent @event)
+		=> _navigationService.NavigateTo<SettingsForm>();
 }

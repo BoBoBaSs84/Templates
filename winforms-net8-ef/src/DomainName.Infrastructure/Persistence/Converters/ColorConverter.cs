@@ -14,6 +14,12 @@ internal sealed class ColorConverter : ValueConverter<Color, byte[]>
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ColorConverter"/> class.
 	/// </summary>
-	public ColorConverter() : base(v => v.ToRgbByteArray(), v => v.FromRgbByteArray())
+	public ColorConverter() : base(v => ConvertFrom(v), v => ConvertTo(v))
 	{ }
+
+	private static byte[] ConvertFrom(Color v)
+		=> v.ToRgbByteArray();
+
+	private static Color ConvertTo(byte[] v)
+		=> v.FromRgbByteArray();
 }

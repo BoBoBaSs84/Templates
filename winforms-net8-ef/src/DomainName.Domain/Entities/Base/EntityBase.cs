@@ -1,16 +1,12 @@
-﻿using BB84.EntityFrameworkCore.Entities.Abstractions;
-using BB84.Notifications;
+﻿using DomainName.Domain.Abstractions.Entities.Base;
 
 namespace DomainName.Domain.Entities.Base;
 
 /// <summary>
-/// The base class for all entities in the domain.
+/// Represents the base entity.
 /// </summary>
-public abstract class EntityBase : ValidatableObject, IIdentityEntity
+public abstract class EntityBase : IEntityBase
 {
 	/// <inheritdoc/>
-	public Guid Id { get; set; } = default!;
-
-	/// <inheritdoc/>
-	public byte[] Timestamp { get; } = default!;
+	public Guid Id { get; set; }
 }
