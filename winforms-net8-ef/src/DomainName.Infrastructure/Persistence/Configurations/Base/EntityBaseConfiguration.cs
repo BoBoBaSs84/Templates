@@ -1,5 +1,4 @@
-﻿using BB84.EntityFrameworkCore.Entities.Abstractions;
-
+﻿using DomainName.Domain.Abstractions.Entities.Base;
 using DomainName.Domain.Entities.Base;
 
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +11,7 @@ namespace DomainName.Infrastructure.Persistence.Configurations.Base;
 /// </summary>
 /// <typeparam name="TEntity">The type of the entity to configure.</typeparam>
 internal abstract class EntityBaseConfiguration<TEntity> : IEntityTypeConfiguration<TEntity>
-	where TEntity : EntityBase, IIdentityEntity
+	where TEntity : EntityBase, IEntityBase
 {
 	/// <inheritdoc/>
 	public virtual void Configure(EntityTypeBuilder<TEntity> builder)
@@ -22,12 +21,5 @@ internal abstract class EntityBaseConfiguration<TEntity> : IEntityTypeConfigurat
 		builder.Property(e => e.Id)
 			.HasColumnOrder(1)
 			.ValueGeneratedOnAdd();
-
-		builder.Property(e => e.Timestamp)
-			.HasColumnOrder(2)
-			.HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-		builder.Ignore(i => i.IsValid)
-			.Ignore(i => i.HasErrors);
 	}
 }

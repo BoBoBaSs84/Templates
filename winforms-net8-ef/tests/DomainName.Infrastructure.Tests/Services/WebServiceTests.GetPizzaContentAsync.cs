@@ -3,6 +3,7 @@
 using DomainName.Infrastructure.Services;
 
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Moq;
 
@@ -47,10 +48,10 @@ public sealed partial class WebServiceTests
 		string content = "{ \"query\": { \"pages\": { \"123\": { \"revisions\": [ { \"*\": \"Pizza content\" } ] } } } }";
 		_httpClientFactoryMock.Setup(x => x.CreateClient(It.IsAny<string>()))
 			.Returns(CreateMockedClient(HttpStatusCode.OK, content));
-
+		
 		string? result = await sut.GetPizzaContentAsync()
 			.ConfigureAwait(false);
-
+		
 		Assert.AreEqual(content, result);
 		_loggerServiceMock.Verify(x => x.Log(It.IsAny<Action<ILogger, Exception?>>(), It.IsAny<Exception?>()), Times.Never);
 		_notificationServiceMock.Verify(x => x.ShowError(It.IsAny<string>()), Times.Never);

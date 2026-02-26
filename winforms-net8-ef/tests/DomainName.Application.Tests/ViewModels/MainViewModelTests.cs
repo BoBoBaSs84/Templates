@@ -1,4 +1,5 @@
-﻿using DomainName.Application.Abstractions.Presentation.Services;
+﻿using DomainName.Application.Abstractions.Application.Services;
+using DomainName.Application.Abstractions.Presentation.Services;
 using DomainName.Application.ViewModels;
 
 using Microsoft.Extensions.Hosting;
@@ -13,18 +14,19 @@ public sealed class MainViewModelTests
 	[TestMethod]
 	public void ConstructorShouldSetPropertiesCorrect()
 	{
+		Mock<IEventService> eventServiceMock = new();
 		Mock<IHostEnvironment> hostEnvironmentMock = new();
 		hostEnvironmentMock.Setup(x => x.ApplicationName).Returns("TestApp");
 		hostEnvironmentMock.Setup(x => x.EnvironmentName).Returns("TestEnv");
-		Mock<IUserService> userServiceMock = new();
-		userServiceMock.Setup(x => x.Domain).Returns("TestDomain");
-		userServiceMock.Setup(x => x.Name).Returns("TestUser");
-		userServiceMock.Setup(x => x.Machine).Returns("TestMachine");
+		Mock<INotificationService> notificationSerivceMock = new();
 
-		MainViewModel viewModel = new(hostEnvironmentMock.Object, userServiceMock.Object);
+		MainViewModel viewModel = new(eventServiceMock.Object, hostEnvironmentMock.Object, notificationSerivceMock.Object);
 
-		Assert.AreEqual("TestApp", viewModel.ApplicationName);
-		Assert.AreEqual("TestEnv", viewModel.EnvironmentName);
-		Assert.AreEqual("TestDomain\\TestUser@TestMachine", viewModel.CurrentUser);
+		Assert.AreEqual("TestApp - TestEnv", viewModel.ApplicationTitle);
+		Assert.AreEqual(string.Empty, viewModel.StatusText);
+		Assert.AreEqual(0, viewModel.ProgressBarValue);
+		Assert.AreEqual(100, viewModel.ProgressBarMaximum);
+		Assert.AreEqual(0, viewModel.ProgressBarMinimum);
+		Assert.IsFalse(viewModel.ProgressBarVisible);
 	}
 }

@@ -2,6 +2,7 @@
 
 using BB84.Extensions;
 
+using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Infrastructure.Persistence;
 using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Infrastructure.Common;
@@ -10,9 +11,7 @@ using DomainName.Infrastructure.Services;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -28,14 +27,18 @@ internal static class ServiceCollectionExtensions
 	/// Registers the database context to the service collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
-	/// <param name="configuration">The configuration instance to use for the connection string.</param>
 	/// <param name="environment">The host environment instance to use for logging and error handling.</param>
 	/// <returns>The same service collection enriched with the database context.</returns>
-	internal static IServiceCollection RegisterDatabaseContext(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
+	internal static IServiceCollection RegisterDatabaseContext(this IServiceCollection services, IHostEnvironment environment)
 	{
 		services.AddDbContext<IDatabaseContext, DatabaseContext>(options =>
 		{
-			options.UseSqlite(configuration.GetConnectionString("DefaultConnection"), options =>
+			string databaseConnection = services
+			.BuildServiceProvider()
+			.GetRequiredService<ISettingsService>()
+			.GetDatabaseConnection();
+
+			options.UseSqlite(databaseConnection, options =>
 			{
 				options.MigrationsAssembly(typeof(IInfrastructureAssemblyMarker).Assembly.FullName);
 				options.CommandTimeout(15);
@@ -59,7 +62,7 @@ internal static class ServiceCollectionExtensions
 				options.EnableDetailedErrors(false);
 				options.EnableSensitiveDataLogging(false);
 			}
-		}, ServiceLifetime.Singleton);
+		});
 
 		return services;
 	}
@@ -72,7 +75,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterLoggerService(this IServiceCollection services, IHostEnvironment environment)
 	{
-		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
+		services.AddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 
 		services.AddLogging(builder =>
 		{
@@ -86,7 +89,11 @@ internal static class ServiceCollectionExtensions
 
 			if (environment.IsProduction())
 			{
-				builder.SetMinimumLevel(LogLevel.Warning);
+				LogLevel logLevel = services.BuildServiceProvider()
+					.GetRequiredService<ISettingsService>()
+					.GetLogLevel();
+
+				builder.SetMinimumLevel(logLevel);
 				builder.AddEventLog(settings => settings.SourceName = environment.ApplicationName);
 			}
 		});
@@ -116,8 +123,10 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
-		services.TryAddSingleton<IProviderService, ProviderService>();
-		services.TryAddSingleton<IWebService, WebService>();
+		services.AddSingleton<IFileStorageService, FileStorageService>();
+		services.AddScoped<IRepositoryService, RepositoryService>();
+		services.AddSingleton<IProviderService, ProviderService>();
+		services.AddSingleton<IWebService, WebService>();
 
 		return services;
 	}

@@ -19,9 +19,9 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterForms(this IServiceCollection services)
 	{
-		services.TryAddSingleton<AboutForm>();
-		services.TryAddSingleton<TodoForm>();
-		services.TryAddSingleton<MainForm>();
+		services.AddSingleton<AboutForm>();
+		services.AddSingleton<MainForm>();
+		services.AddSingleton<SettingsForm>();
 
 		return services;
 	}
@@ -33,9 +33,9 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
-		services.TryAddTransient<IUserService, UserService>();
-		services.TryAddSingleton<INavigationService, NavigationService>();
-		services.TryAddSingleton<INotificationService, NotificationService>();
+		services.AddTransient<IUserService, UserService>();
+		services.AddSingleton<INavigationService, NavigationService>();
+		services.AddSingleton<INotificationService, NotificationService>();
 
 		return services;
 	}
