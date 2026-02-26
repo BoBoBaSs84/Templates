@@ -3,21 +3,21 @@
     <ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="BB84.EntityFrameworkCore.Entities" Version="4.0.1026" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories" Version="4.0.1026" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="4.0.1026" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.SqlServer" Version="4.0.1026" />
-    <PackageVersion Include="BB84.Extensions" Version="4.0.1202" />
-    <PackageVersion Include="BB84.Notifications" Version="4.0.1205" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="[9.0.11, 10)" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="10.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.EventLog" Version="10.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="10.0.1" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Entities.Abstractions" Version="4.1.222" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories" Version="4.1.222" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="4.1.222" />
+    <PackageVersion Include="BB84.Extensions" Version="4.3.222" />
+    <PackageVersion Include="BB84.Notifications" Version="4.1.122" />
+    <PackageVersion Include="BB84.WinForms.Extensions" Version="4.3.222" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="[9.0.13, 10.0.0)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="[9.0.13, 10.0.0)" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.EventLog" Version="10.0.3" />
     <PackageVersion Include="Moq" Version="4.20.72" />
-    <PackageVersion Include="MSTest" Version="4.0.2" />
+    <PackageVersion Include="MSTest" Version="4.1.0" />
   </ItemGroup>
 </Project>
