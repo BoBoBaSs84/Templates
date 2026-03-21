@@ -10,9 +10,10 @@ updates:
     - "/CliApp"
     - "/GtaMod"
     - "/winforms-net8"
+    - "/winforms-net8-ef"
     - "/winforms-net48"
     - "/wpf-net8"
-    - "/wpf-ef-net8"
+    - "/wpf-net8-ef"
     schedule:
       interval: "weekly"
       day: "monday"
@@ -27,3 +28,9 @@ updates:
       microsoft-dependencies:
         patterns:
           - "Microsoft*"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "03:00"
