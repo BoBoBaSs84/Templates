@@ -21,7 +21,7 @@ namespace DomainName.Commands;
 public sealed class WeatherForecastCommand(IOptions<WeatherForecastOption> options, IWeatherForecastService weatherForecastService) : Command<WeatherForecastSettings>
 {
 	/// <inheritdoc/>
-	public override int Execute([NotNull] CommandContext context, [NotNull] WeatherForecastSettings settings, CancellationToken cancellationToken)
+	protected override int Execute([NotNull] CommandContext context, [NotNull] WeatherForecastSettings settings, CancellationToken cancellationToken)
 	{
 		TemperatureUnit unit = settings.Unit ?? options.Value.Unit;
 
