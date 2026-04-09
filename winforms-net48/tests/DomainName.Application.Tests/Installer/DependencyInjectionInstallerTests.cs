@@ -1,7 +1,6 @@
 ﻿using DomainName.Application.Installer;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DomainName.Application.Tests.Installer;
 
@@ -15,6 +14,6 @@ public class DependencyInjectionInstallerTests
 
 		services.RegisterApplicationServices();
 
-		Assert.AreEqual(2, services.Count);
+		Assert.HasCount(4, services);
 	}
 }

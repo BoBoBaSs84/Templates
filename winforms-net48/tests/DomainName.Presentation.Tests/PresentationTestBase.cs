@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Windows.Forms;
 
 namespace DomainName.Presentation.Tests;
 

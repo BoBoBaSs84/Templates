@@ -1,15 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
 	<PropertyGroup>
 		<UseWindowsForms>true</UseWindowsForms>
 	</PropertyGroup>
-
 	<ItemGroup>
-	  <PackageReference Include="BB84.WinForms.Extensions" />
+		<PackageReference Include="BB84.WinForms.Extensions" />
 	</ItemGroup>
-
 	<ItemGroup>
-	  <ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />
+		<ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />
 	</ItemGroup>
-
 </Project>

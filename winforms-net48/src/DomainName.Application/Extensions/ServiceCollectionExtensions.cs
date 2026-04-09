@@ -5,7 +5,6 @@ using DomainName.Application.Services;
 using DomainName.Application.ViewModels;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace DomainName.Application.Extensions;
 
@@ -22,7 +21,8 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
-		services.TryAddSingleton<IEventService, EventService>();
+		services.AddSingleton<IEventService, EventService>();
+		services.AddSingleton<IProviderService, ProviderService>();
 
 		return services;
 	}

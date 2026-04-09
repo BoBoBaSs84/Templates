@@ -1,7 +1,5 @@
 ﻿using DomainName.Domain.Models;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace DomainName.Domain.Tests.Models;
 
 [TestClass]
