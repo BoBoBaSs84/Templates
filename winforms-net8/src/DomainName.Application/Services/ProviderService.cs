@@ -1,8 +1,8 @@
-﻿using DomainName.Application.Abstractions.Infrastructure.Providers;
-using DomainName.Application.Abstractions.Infrastructure.Services;
-using DomainName.Infrastructure.Providers;
+﻿using DomainName.Application.Abstractions.Application.Providers;
+using DomainName.Application.Abstractions.Application.Services;
+using DomainName.Application.Providers;
 
-namespace DomainName.Infrastructure.Services;
+namespace DomainName.Application.Services;
 
 /// <summary>
 /// Represents a service that provides access to external providers.

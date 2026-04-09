@@ -1,7 +1,6 @@
 ﻿using DomainName.Domain.Installer;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DomainName.Domain.Tests.Installer;
 

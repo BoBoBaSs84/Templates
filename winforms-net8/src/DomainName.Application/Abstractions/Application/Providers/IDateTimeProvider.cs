@@ -1,4 +1,4 @@
-﻿namespace DomainName.Application.Abstractions.Infrastructure.Providers;
+﻿namespace DomainName.Application.Abstractions.Application.Providers;
 
 /// <summary>
 /// This interface defines a contract for date time provider.
