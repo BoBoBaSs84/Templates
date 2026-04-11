@@ -1,4 +1,6 @@
-﻿namespace DomainName.Application.Abstractions.Application.Services;
+﻿using DomainName.Domain.Abstractions.Events;
+
+namespace DomainName.Application.Abstractions.Application.Services;
 
 /// <summary>
 /// Represents a simple event service contract for publishing and subscribing to events.
@@ -10,12 +12,12 @@ public interface IEventService
 	/// </summary>
 	/// <typeparam name="T">The type of event to subscribe to.</typeparam>
 	/// <param name="handler">The handler to invoke when an event of type <typeparamref name="T"/> is published.</param>
-	void Subscribe<T>(Action<T> handler) where T : notnull;
+	void Subscribe<T>(Action<T> handler) where T : notnull, IEvent;
 
 	/// <summary>
 	/// Publish an event of <typeparamref name="T"/> type with the specified message.
 	/// </summary>
 	/// <typeparam name="T">The type of event to publish.</typeparam>
 	/// <param name="message">The event message to publish.</param>
-	void Publish<T>(T message) where T : notnull;
+	void Publish<T>(T message) where T : notnull, IEvent;
 }

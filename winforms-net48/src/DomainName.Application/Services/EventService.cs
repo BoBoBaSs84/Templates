@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
 using DomainName.Application.Abstractions.Application.Services;
+using DomainName.Domain.Abstractions.Events;
 
 namespace DomainName.Application.Services;
 
@@ -12,7 +13,7 @@ internal sealed class EventService : IEventService
 {
 	private readonly Dictionary<Type, List<Action<object>>> _subscribers = [];
 
-	public void Subscribe<T>(Action<T> handler) where T : notnull
+	public void Subscribe<T>(Action<T> handler) where T : notnull, IEvent
 	{
 		if (!_subscribers.TryGetValue(typeof(T), out var handlers))
 		{
@@ -23,7 +24,7 @@ internal sealed class EventService : IEventService
 		handlers.Add(obj => handler((T)obj));
 	}
 
-	public void Publish<T>(T message) where T : notnull
+	public void Publish<T>(T message) where T : notnull, IEvent
 	{
 		if (_subscribers.TryGetValue(typeof(T), out List<Action<object>>? handlers))
 			handlers.ForEach(handler => handler(message));
