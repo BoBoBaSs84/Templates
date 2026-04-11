@@ -22,6 +22,7 @@ internal static class ServiceCollectionExtensions
 	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
 		services.AddSingleton<IEventService, EventService>();
+		services.AddSingleton<IProviderService, ProviderService>();
 		services.AddSingleton<ISettingsService, SettingsService>();
 
 		return services;

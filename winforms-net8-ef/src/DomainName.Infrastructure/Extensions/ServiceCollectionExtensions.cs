@@ -125,7 +125,6 @@ internal static class ServiceCollectionExtensions
 	{
 		services.AddSingleton<IFileStorageService, FileStorageService>();
 		services.AddScoped<IRepositoryService, RepositoryService>();
-		services.AddSingleton<IProviderService, ProviderService>();
 		services.AddSingleton<IWebService, WebService>();
 
 		return services;
