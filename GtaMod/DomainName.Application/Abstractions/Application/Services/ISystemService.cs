@@ -1,11 +1,12 @@
-﻿using DomainName.Application.Abstractions.Infrastructure.Providers;
+﻿using DomainName.Application.Abstractions.Application.Providers;
 
-namespace DomainName.Application.Abstractions.Infrastructure.Services;
+namespace DomainName.Application.Abstractions.Application.Services;
 
 /// <summary>
-/// Represents the provider service interface for accessing various providers.
+/// Represents a service that provides access to various system-related providers,
+/// such as date and time, directory, file, and path providers.
 /// </summary>
-public interface IProviderService
+public interface ISystemService
 {
 	/// <summary>
 	/// Gets the date and time provider.

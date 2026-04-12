@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-using DomainName.Application.Abstractions.Infrastructure.Providers;
+using DomainName.Application.Abstractions.Application.Providers;
 
-namespace DomainName.Infrastructure.Providers;
+namespace DomainName.Application.Providers;
 
 /// <summary>
 /// The implementation for the date time provider contract.

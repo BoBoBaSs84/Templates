@@ -23,7 +23,7 @@ internal sealed class PedestrianService : IPedestrianService
 	public PedestrianService(IEventService eventService)
 	{
 		_eventService = eventService;
-		_eventService.Subscribe<TickEvent>(OnTickEvent);
+		_eventService.Subscribe<TickTriggered>(OnTickTriggered);
 	}
 
 	public int Count => _peds.Count;
@@ -61,13 +61,19 @@ internal sealed class PedestrianService : IPedestrianService
 	IEnumerator IEnumerable.GetEnumerator()
 		=> _peds.GetEnumerator();
 
-	private void OnTickEvent(TickEvent args)
+	private void OnTickTriggered(TickTriggered args)
 	{
 		foreach (Ped ped in _peds)
 		{
-			if (ped.IsDead is true)
+			if (ped.IsDead)
 			{
 				_eventService.Publish(new PedestrianDied(ped.Handle));
+				_peds.Remove(ped);
+			}
+
+			if (ped.IsFleeing)
+			{
+				_eventService.Publish(new PedestrianFled(ped.Handle));
 				_peds.Remove(ped);
 			}
 		}

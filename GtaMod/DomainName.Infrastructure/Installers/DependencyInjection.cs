@@ -18,7 +18,6 @@ public static class DependencyInjection
 	public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
 	{
 		services.AddSingleton<ILoggerService, LoggerService>();
-		services.AddSingleton<IProviderService, ProviderService>();
 
 		return services;
 	}

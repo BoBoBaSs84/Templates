@@ -20,6 +20,7 @@ public static class DependencyInjection
 		services.AddSingleton<IEventService, EventService>();
 		services.AddSingleton<IPedestrianService, PedestrianService>();
 		services.AddSingleton<IScriptHookService, ScriptHookService>();
+		services.AddSingleton<ISystemService, SystemService>();
 
 		return services;
 	}
