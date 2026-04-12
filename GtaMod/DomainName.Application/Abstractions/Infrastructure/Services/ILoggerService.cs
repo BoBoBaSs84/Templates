@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿#pragma warning disable CA1716 // Identifiers should not match keywords
+using System.Runtime.CompilerServices;
 
 namespace DomainName.Application.Abstractions.Infrastructure.Services;
 
@@ -29,11 +30,12 @@ public interface ILoggerService
 	void Warning(string message, [CallerMemberName] string callerName = "");
 
 	/// <summary>
-	/// Logs critical error related things.
+	/// Logs error related things.
 	/// </summary>
 	/// <param name="message">The message to log.</param>
 	/// <param name="callerName">The message caller.</param>
-	void Critical(string message, [CallerMemberName] string callerName = "");
+
+	void Error(string message, [CallerMemberName] string callerName = "");
 
 	/// <summary>
 	/// Logs critical error related things.
@@ -41,6 +43,6 @@ public interface ILoggerService
 	/// <param name="message">The message to log.</param>
 	/// <param name="exception">The exception to log.</param>
 	/// <param name="callerName">The message caller.</param>
-	void Critical(string message, Exception exception, [CallerMemberName] string callerName = "");
+	void Critical(string message, Exception? exception, [CallerMemberName] string callerName = "");
 }
 

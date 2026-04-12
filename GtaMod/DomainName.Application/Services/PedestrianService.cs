@@ -23,6 +23,7 @@ internal sealed class PedestrianService : IPedestrianService
 	public PedestrianService(IEventService eventService)
 	{
 		_eventService = eventService;
+		_eventService.Subscribe<AbortTriggered>(OnAbortTriggered);
 		_eventService.Subscribe<TickTriggered>(OnTickTriggered);
 	}
 
@@ -60,6 +61,9 @@ internal sealed class PedestrianService : IPedestrianService
 
 	IEnumerator IEnumerable.GetEnumerator()
 		=> _peds.GetEnumerator();
+
+	private void OnAbortTriggered(AbortTriggered triggered)
+		=> Clear();
 
 	private void OnTickTriggered(TickTriggered args)
 	{

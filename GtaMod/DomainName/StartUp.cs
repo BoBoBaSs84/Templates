@@ -1,4 +1,5 @@
 ﻿using DomainName.Application.Abstractions.Application.Services;
+using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Application.Installers;
 using DomainName.Domain.Events.System;
 using DomainName.Infrastructure.Installers;
@@ -16,16 +17,20 @@ namespace DomainName;
 [ScriptAttributes(Author = "BoBoBaSs84", SupportURL = "https://github.com/BoBoBaSs84")]
 public sealed class StartUp : Script
 {
-	private readonly IServiceProvider _serviceProvider;
 	private readonly IEventService _eventService;
+	private readonly ILoggerService _loggerService;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="StartUp"/> class.
 	/// </summary>
 	public StartUp()
 	{
-		_serviceProvider = CreateServiceProvider();
-		_eventService = _serviceProvider.GetRequiredService<IEventService>();
+		ServiceProvider serviceProvider = CreateServiceProvider();
+		_eventService = serviceProvider.GetRequiredService<IEventService>();
+		_loggerService = serviceProvider.GetRequiredService<ILoggerService>();
+
+		AppDomain.CurrentDomain.UnhandledException += (s, e)
+			=> OnUnhandledException(e.ExceptionObject as Exception);
 
 		Interval = 10;
 
@@ -33,6 +38,12 @@ public sealed class StartUp : Script
 		Aborted += (s, e) => _eventService.Publish(new AbortTriggered());
 		KeyDown += (s, e) => _eventService.Publish(new KeyPressed(e.KeyData));
 		KeyUp += (s, e) => _eventService.Publish(new KeyReleased(e.KeyData));
+	}
+
+	private void OnUnhandledException(Exception? exception)
+	{
+		_loggerService.Critical("An unhandled exception occurred.", exception);
+		_eventService.Publish(new ExceptionOccurred(exception));
 	}
 
 	/// <summary>

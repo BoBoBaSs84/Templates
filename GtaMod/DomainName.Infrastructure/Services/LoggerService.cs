@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text;
 
+using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Infrastructure.Services;
 
 namespace DomainName.Infrastructure.Services;
@@ -10,18 +11,23 @@ namespace DomainName.Infrastructure.Services;
 /// </summary>
 internal sealed class LoggerService : ILoggerService
 {
+	private readonly ISystemService _systemService;
 	private readonly string _logFilePath;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="LoggerService"/> class.
 	/// </summary>
-	public LoggerService()
-		=> _logFilePath = Path.Combine(Environment.CurrentDirectory, $"{nameof(DomainName)}.log");
+	/// <param name="systemService">The system service instance to be used by the logger service.</param>
+	public LoggerService(ISystemService systemService)
+	{
+		_systemService = systemService;
+		_logFilePath = _systemService.Path.Combine(Environment.CurrentDirectory, $"{nameof(DomainName)}.log");
+	}
 
-	public void Critical(string message, [CallerMemberName] string callerName = "")
-		=> LogToFile("FTL", callerName, message);
+	public void Error(string message, [CallerMemberName] string callerName = "")
+		=> LogToFile("ERR", callerName, message);
 
-	public void Critical(string message, Exception exception, [CallerMemberName] string callerName = "")
+	public void Critical(string message, Exception? exception, [CallerMemberName] string callerName = "")
 		=> LogToFile("FTL", callerName, $"{message} - {exception}");
 
 	public void Debug(string message, [CallerMemberName] string callerName = "")
@@ -42,6 +48,6 @@ internal sealed class LoggerService : ILoggerService
 	private void LogToFile(string type, string caller, string message)
 	{
 		string content = $"{DateTime.Now:yyyy-MM-ddTHH:mm:ss.fff}\t[{type}]\t<{caller}> - {message}{Environment.NewLine}";
-		File.AppendAllText(_logFilePath, content, Encoding.UTF8);
+		_systemService.File.AppendAllText(_logFilePath, content, Encoding.UTF8);
 	}
 }
