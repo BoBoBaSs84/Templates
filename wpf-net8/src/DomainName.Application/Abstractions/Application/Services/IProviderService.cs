@@ -1,6 +1,6 @@
-﻿using DomainName.Application.Abstractions.Infrastructure.Providers;
+﻿using DomainName.Application.Abstractions.Application.Providers;
 
-namespace DomainName.Application.Abstractions.Infrastructure.Services;
+namespace DomainName.Application.Abstractions.Application.Services;
 
 /// <summary>
 /// Represents a service interface that provides access to external providers.
@@ -21,4 +21,9 @@ public interface IProviderService
 	/// The provider for accessing file operations.
 	/// </summary>
 	IFileProvider File { get; }
+
+	/// <summary>
+	/// The provider for accessing path operations.
+	/// </summary>
+	IPathProvider Path { get; }
 }

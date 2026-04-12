@@ -23,7 +23,7 @@ public static class DependencyInjectionInstaller
 	{
 		services.RegisterLoggerService(environment)
 			.RegisterHttpClients()
-			.RegisterServices();
+			.RegisterInfrastructureServices();
 
 		return services;
 	}

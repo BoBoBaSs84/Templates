@@ -1,10 +1,10 @@
-﻿using DomainName.Infrastructure.Providers;
-using DomainName.Infrastructure.Services;
+﻿using DomainName.Application.Providers;
+using DomainName.Application.Services;
 
-namespace DomainName.Infrastructure.Tests.Services;
+namespace DomainName.Application.Tests.Services;
 
 [TestClass]
-public sealed class ProviderServiceTests : InfrastructureTestBase
+public sealed class ProviderServiceTests : ApplicationTestBase
 {
 	[TestMethod]
 	public void ProviderServiceConstructorShouldSetUpAllProperties()
@@ -17,5 +17,6 @@ public sealed class ProviderServiceTests : InfrastructureTestBase
 		Assert.IsInstanceOfType<DateTimeProvider>(service.DateTime, "DateTime provider should be of type DateTimeProvider.");
 		Assert.IsInstanceOfType<DirectoryProvider>(service.Directory, "Directory provider should be of type DirectoryProvider.");
 		Assert.IsInstanceOfType<FileProvider>(service.File, "File provider should be of type FileProvider.");
+		Assert.IsInstanceOfType<PathProvider>(service.Path, "Path provider should be of type PathProvider.");
 	}
 }

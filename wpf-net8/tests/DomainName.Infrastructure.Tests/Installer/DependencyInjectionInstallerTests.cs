@@ -27,7 +27,7 @@ public sealed class DependencyInjectionInstallerTests : InfrastructureTestBase
 
 		services.RegisterInfrastructureServices(_hostEnvironmentMock.Object);
 
-		Assert.AreEqual(43, services.Count);
+		Assert.HasCount(43, services);
 	}
 
 	[TestMethod]
@@ -39,6 +39,6 @@ public sealed class DependencyInjectionInstallerTests : InfrastructureTestBase
 
 		services.RegisterInfrastructureServices(_hostEnvironmentMock.Object);
 
-		Assert.AreEqual(31, services.Count);
+		Assert.HasCount(31, services);
 	}
 }

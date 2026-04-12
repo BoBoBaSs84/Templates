@@ -6,7 +6,6 @@ using DomainName.Application.ViewModels;
 using DomainName.Application.ViewModels.Base;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace DomainName.Application.Extensions;
 
@@ -20,7 +19,7 @@ internal static class ServiceCollectionExtensions
 	/// Registers the required application options and settings to the <paramref name="services"/> collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
-	/// <returns>The enriched service collection.</returns>
+	/// <returns>The same <see cref="IServiceCollection"/> so that multiple calls can be chained.</returns>
 	internal static IServiceCollection RegisterApplicationOptions(this IServiceCollection services)
 	{
 		//services.AddOptions<AppSettings>()
@@ -32,16 +31,17 @@ internal static class ServiceCollectionExtensions
 	}
 
 	/// <summary>
-	/// Registers the required navigation service to the <paramref name="services"/> collection.
+	/// Registers the required application services to the <paramref name="services"/> collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
-	/// <returns>The enriched service collection.</returns>
-	internal static IServiceCollection RegisterNavigationService(this IServiceCollection services)
+	/// <returns>The same <see cref="IServiceCollection"/> so that multiple calls can be chained.</returns>
+	internal static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
 	{
-		services.TryAddSingleton<INavigationService, NavigationService>();
-
-		services.TryAddSingleton<Func<Type, ViewModelBase>>(serviceProvider
+		services.AddSingleton<INavigationService, NavigationService>();
+		services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider
 			=> viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
+		services.AddSingleton<IEventService, EventService>();
+		services.AddSingleton<IProviderService, ProviderService>();
 
 		return services;
 	}
@@ -50,11 +50,11 @@ internal static class ServiceCollectionExtensions
 	/// Registers the required view models to the <paramref name="services"/> collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
-	/// <returns>The enriched service collection.</returns>
+	/// <returns>The same <see cref="IServiceCollection"/> so that multiple calls can be chained.</returns>
 	internal static IServiceCollection RegisterViewModels(this IServiceCollection services)
 	{
-		services.TryAddSingleton<AboutViewModel>();
-		services.TryAddSingleton<MainViewModel>();
+		services.AddSingleton<AboutViewModel>();
+		services.AddSingleton<MainViewModel>();
 
 		return services;
 	}

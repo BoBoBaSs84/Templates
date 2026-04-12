@@ -7,7 +7,6 @@ using DomainName.Infrastructure.Common;
 using DomainName.Infrastructure.Services;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -27,7 +26,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterLoggerService(this IServiceCollection services, IHostEnvironment environment)
 	{
-		services.TryAddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
+		services.AddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
 
 		services.AddLogging(builder =>
 		{
@@ -69,10 +68,9 @@ internal static class ServiceCollectionExtensions
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	internal static IServiceCollection RegisterServices(this IServiceCollection services)
+	internal static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services)
 	{
-		services.TryAddSingleton<IProviderService, ProviderService>();
-		services.TryAddSingleton<IWebService, WebService>();
+		services.AddSingleton<IWebService, WebService>();
 
 		return services;
 	}
