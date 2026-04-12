@@ -5,6 +5,5 @@ namespace DomainName.Domain.Events.System;
 /// <summary>
 /// Represents the event data for an aborted event.
 /// </summary>
-/// <param name="source">The source of the event.</param>
-public sealed class AbortedEvent(string source) : EventBase(source)
+public sealed class AbortedEvent : EventBase
 { }

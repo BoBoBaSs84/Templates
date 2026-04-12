@@ -1,13 +1,17 @@
-﻿namespace DomainName.Domain.Events.Base;
+﻿using DomainName.Domain.Abstractions.Events;
+
+namespace DomainName.Domain.Events.Base;
 
 /// <summary>
-/// Represents the base event data for all events.
+/// Represents the base class for all domain events in the system. This class provides common properties
+/// such as a unique identifier and a timestamp for when the event occurred. All specific domain events
+/// should inherit from this base class to ensure consistency and to leverage shared functionality.
 /// </summary>
-/// <param name="source">The source of the event.</param>
-public abstract class EventBase(string source) : EventArgs
+public abstract class EventBase : IEvent
 {
-	/// <summary>
-	/// Gets the source of the event.
-	/// </summary>
-	public string Source => source;
+	/// <inheritdoc/>
+	public Guid Id { get; } = Guid.NewGuid();
+
+	/// <inheritdoc/>
+	public DateTimeOffset OccurredAt { get; } = DateTimeOffset.UtcNow;
 }

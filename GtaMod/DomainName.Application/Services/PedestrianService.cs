@@ -32,7 +32,7 @@ internal sealed class PedestrianService : IPedestrianService
 
 	public void Add(Ped item)
 	{
-		_eventService.Publish(new AddedEvent($"{this}", item.Handle));
+		_eventService.Publish(new PedestrianAdded(item.Handle));
 		_peds.Add(item);
 	}
 
@@ -67,7 +67,7 @@ internal sealed class PedestrianService : IPedestrianService
 		{
 			if (ped.IsDead is true)
 			{
-				_eventService.Publish(new DiedEvent($"{this}", ped.Handle));
+				_eventService.Publish(new PedestrianDied(ped.Handle));
 				_peds.Remove(ped);
 			}
 		}

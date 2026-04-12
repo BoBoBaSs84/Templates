@@ -32,7 +32,7 @@ public sealed class StartUp : Script
 		Tick += (s, e) => _eventService.Publish(new TickEvent($"{s}"));
 		Aborted += (s, e) => _eventService.Publish(new AbortedEvent($"{s}"));
 		KeyDown += (s, e) => _eventService.Publish(new KeyDownEvent($"{s}", e.KeyData));
-		KeyUp += (s, e) => _eventService.Publish(new KeyUpEvent($"{s}", e.KeyData));
+		KeyUp += (s, e) => _eventService.Publish(new KeyReleased($"{s}", e.KeyData));
 	}
 
 	/// <summary>

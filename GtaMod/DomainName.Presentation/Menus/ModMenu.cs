@@ -18,11 +18,11 @@ public sealed class ModMenu : BaseMenu
 	public ModMenu(IEventService eventService) : base("Main", "Mod Menu", "The fancy mod menu.")
 	{
 		_eventService = eventService;
-		_eventService.Subscribe<KeyUpEvent>(OnKeyUpEvent);
+		_eventService.Subscribe<KeyReleased>(OnKeyUpEvent);
 		_eventService.Subscribe<TickEvent>(OnTickEvent);
 	}
 
-	private void OnKeyUpEvent(KeyUpEvent @event)
+	private void OnKeyUpEvent(KeyReleased @event)
 	{
 		if (@event.Keys == Keys.F10)
 			Visible = !Visible;

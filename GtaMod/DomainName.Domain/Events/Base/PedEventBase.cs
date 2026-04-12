@@ -3,9 +3,8 @@
 /// <summary>
 /// Represents the base event data for pedestrian (ped) related events.
 /// </summary>
-/// <param name="source">The source of the event.</param>
 /// <param name="pedId">The unique identifier of the ped.</param>
-public abstract class PedEventBase(string source, int pedId) : EventBase(source)
+public abstract class PedEventBase(int pedId) : EventBase
 {
 	/// <summary>
 	/// Gets the unique identifier of the ped.
