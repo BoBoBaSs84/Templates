@@ -12,6 +12,7 @@ namespace DomainName.Presentation.Forms;
 public partial class MainForm : Form
 {
 	private readonly IEventService _eventService;
+	private readonly IProviderService _providerService;
 	private readonly INavigationService _navigationService;
 	private readonly MainViewModel _mainViewModel;
 
@@ -19,13 +20,15 @@ public partial class MainForm : Form
 	/// Initializes a new instance of the <see cref="MainForm"/> class.
 	/// </summary>
 	/// <param name="eventService">The event service to publish and subscribe to events.</param>
+	/// <param name="providerService">The provider service to resolve dependencies.</param>
 	/// <param name="navigationService">The navigation service instance to use.</param>
 	/// <param name="mainViewModel">The main view model instance to use.</param>
-	public MainForm(IEventService eventService, INavigationService navigationService, MainViewModel mainViewModel)
+	public MainForm(IEventService eventService, IProviderService providerService, INavigationService navigationService, MainViewModel mainViewModel)
 	{
 		InitializeComponent();
 		_navigationService = navigationService;
 		_eventService = eventService;
+		_providerService = providerService;
 		_mainViewModel = mainViewModel;
 
 		SetupForm();
@@ -83,7 +86,7 @@ public partial class MainForm : Form
 			Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
 			DefaultExt = "txt",
 			AddExtension = true,
-			InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+			InitialDirectory = _providerService.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
 		};
 
 		if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -95,14 +98,13 @@ public partial class MainForm : Form
 
 	private void OnShowOpenFile(ShowOpenFileEvent @event)
 	{
-
 		using OpenFileDialog openFileDialog = new()
 		{
 			Title = "Open File",
 			Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
 			DefaultExt = "txt",
 			AddExtension = true,
-			InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+			InitialDirectory = _providerService.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
 		};
 		if (openFileDialog.ShowDialog() == DialogResult.OK)
 		{

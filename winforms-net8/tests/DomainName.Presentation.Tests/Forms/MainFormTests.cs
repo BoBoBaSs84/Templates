@@ -13,6 +13,7 @@ namespace DomainName.Presentation.Tests.Forms;
 public sealed class MainFormTests
 {
 	private Mock<IEventService> _eventServiceMock = default!;
+	private Mock<IProviderService> _providerServiceMock = default!;
 	private Mock<IHostEnvironment> _hostEnvironmentMock = default!;
 	private Mock<INotificationService> _notificationSerivceMock = default!;
 	private Mock<INavigationService> _navigationServiceMock = default!;
@@ -22,10 +23,11 @@ public sealed class MainFormTests
 	{
 		MainForm mainForm;
 		MainViewModel viewModel = GetMainViewModel();
+		_providerServiceMock = new();
 		_navigationServiceMock = new();
 
 		mainForm =
-			new(_eventServiceMock.Object, _navigationServiceMock.Object, viewModel);
+			new(_eventServiceMock.Object, _providerServiceMock.Object, _navigationServiceMock.Object, viewModel);
 
 		Assert.IsNotNull(mainForm);
 	}

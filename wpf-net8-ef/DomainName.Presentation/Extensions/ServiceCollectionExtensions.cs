@@ -1,10 +1,9 @@
-﻿using DomainName.Application.Interfaces.Presentation.Services;
+﻿using DomainName.Application.Abstractions.Presentation.Services;
 using DomainName.Presentation.Controls;
 using DomainName.Presentation.Services;
 using DomainName.Presentation.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace DomainName.Presentation.Extensions;
 
@@ -20,7 +19,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterControls(this IServiceCollection services)
 	{
-		services.TryAddSingleton<AboutControl>();
+		services.AddSingleton<AboutControl>();
 
 		return services;
 	}
@@ -32,7 +31,8 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
-		services.TryAddSingleton<INotificationService, NotificationService>();
+		services.AddSingleton<INotificationService, NotificationService>();
+		services.AddTransient<IUserService, UserService>();
 
 		return services;
 	}
@@ -44,7 +44,7 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The enriched service collection.</returns>
 	internal static IServiceCollection RegisterWindows(this IServiceCollection services)
 	{
-		services.TryAddSingleton<MainWindow>();
+		services.AddSingleton<MainWindow>();
 
 		return services;
 	}

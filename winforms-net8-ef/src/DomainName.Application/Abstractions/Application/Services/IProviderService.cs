@@ -8,22 +8,27 @@ namespace DomainName.Application.Abstractions.Application.Services;
 public interface IProviderService
 {
 	/// <summary>
-	/// The provider for accessing date and time operations.
+	/// Gets the provider for accessing date and time operations.
 	/// </summary>
 	IDateTimeProvider DateTime { get; }
 
 	/// <summary>
-	/// The provider for accessing directory operations.
+	/// Gets the provider for accessing directory operations.
 	/// </summary>
 	IDirectoryProvider Directory { get; }
 
 	/// <summary>
-	/// The provider for accessing file operations.
+	/// Gets the provider for accessing environment operations.
+	/// </summary>
+	IEnvironmentProvider Environment { get; }
+
+	/// <summary>
+	/// Gets the provider for accessing file operations.
 	/// </summary>
 	IFileProvider File { get; }
 
 	/// <summary>
-	/// The provider for accessing path operations.
+	/// Gets the provider for accessing path operations.
 	/// </summary>
 	IPathProvider Path { get; }
 }

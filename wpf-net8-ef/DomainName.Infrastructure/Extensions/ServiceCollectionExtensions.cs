@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-using DomainName.Application.Interfaces.Infrastructure.Persistence;
+using DomainName.Application.Abstractions.Infrastructure.Persistence;
+using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Application.Interfaces.Infrastructure.Services;
 using DomainName.Application.Options;
 using DomainName.Infrastructure.Common;

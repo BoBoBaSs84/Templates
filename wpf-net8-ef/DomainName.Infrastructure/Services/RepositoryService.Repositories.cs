@@ -1,4 +1,4 @@
-﻿using DomainName.Application.Interfaces.Infrastructure.Persistence.Repositories;
+﻿using DomainName.Application.Abstractions.Infrastructure.Persistence.Repositories;
 using DomainName.Infrastructure.Persistence.Repositories;
 
 namespace DomainName.Infrastructure.Services;

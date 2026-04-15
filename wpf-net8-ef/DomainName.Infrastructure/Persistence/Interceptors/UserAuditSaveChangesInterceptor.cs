@@ -1,6 +1,6 @@
 ﻿using BB84.EntityFrameworkCore.Entities.Abstractions.Components;
 
-using DomainName.Application.Interfaces.Application.Services;
+using DomainName.Application.Abstractions.Presentation.Services;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -14,8 +14,6 @@ namespace DomainName.Infrastructure.Persistence.Interceptors;
 /// <param name="userService">The user service instance to use.</param>
 public sealed class UserAuditSaveChangesInterceptor(IUserService userService) : SaveChangesInterceptor
 {
-	private readonly IUserService _userService = userService;
-
 	/// <inheritdoc/>
 	public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
 	{
@@ -39,10 +37,10 @@ public sealed class UserAuditSaveChangesInterceptor(IUserService userService) : 
 				switch (entityEntry.State)
 				{
 					case EntityState.Modified:
-						entityEntry.Entity.EditedBy = _userService.User;
+						entityEntry.Entity.EditedBy = $"{userService.Domain}\\{userService.Name}";
 						break;
 					case EntityState.Added:
-						entityEntry.Entity.CreatedBy = _userService.User;
+						entityEntry.Entity.CreatedBy = $"{userService.Domain}\\{userService.Name}";
 						break;
 				}
 			}

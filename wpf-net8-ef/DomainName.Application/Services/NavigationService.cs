@@ -1,6 +1,6 @@
 ﻿using BB84.Notifications;
 
-using DomainName.Application.Interfaces.Application.Services;
+using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.ViewModels.Base;
 
 namespace DomainName.Application.Services;

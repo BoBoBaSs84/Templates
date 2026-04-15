@@ -20,10 +20,8 @@ public static class DependencyInjection
 	public static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
 	{
 		services.RegisterApplicationOptions()
-			.RegisterNavigationService()
-			.RegisterScopedServices()
-			.RegisterSingletonServices()
-			.RegisterViewModels();
+			.RegisterViewModels()
+			.RegisterServices();
 
 		return services;
 	}

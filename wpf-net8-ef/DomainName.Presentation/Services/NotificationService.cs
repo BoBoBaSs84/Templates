@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-using DomainName.Application.Interfaces.Presentation.Services;
+using DomainName.Application.Abstractions.Presentation.Services;
 
 namespace DomainName.Presentation.Services;
 

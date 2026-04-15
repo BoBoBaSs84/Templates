@@ -1,7 +1,7 @@
 ﻿using BB84.EntityFrameworkCore.Repositories;
 
-using DomainName.Application.Interfaces.Infrastructure.Persistence;
-using DomainName.Application.Interfaces.Infrastructure.Persistence.Repositories;
+using DomainName.Application.Abstractions.Infrastructure.Persistence;
+using DomainName.Application.Abstractions.Infrastructure.Persistence.Repositories;
 using DomainName.Domain.Entities;
 
 namespace DomainName.Infrastructure.Persistence.Repositories;

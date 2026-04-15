@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-using DomainName.Application.Interfaces.Infrastructure.Persistence;
+using DomainName.Application.Abstractions.Infrastructure.Persistence;
 using DomainName.Infrastructure.Common;
 using DomainName.Infrastructure.Persistence.Interceptors;
 

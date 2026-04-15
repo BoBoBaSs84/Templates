@@ -1,4 +1,4 @@
-﻿using DomainName.Application.Interfaces.Application.Features;
+﻿using DomainName.Application.Abstractions.Application.Features;
 
 namespace DomainName.Application.Features.Pagination;
 
