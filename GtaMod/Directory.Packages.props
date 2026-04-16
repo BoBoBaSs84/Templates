@@ -3,7 +3,7 @@
     <ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="BB84.SourceGenerators" Version="1.3.412" />
+    <PackageVersion Include="BB84.SourceGenerators" Version="1.4.415" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.6" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.6" />
     <PackageVersion Include="ScriptHookVDotNet3" Version="3.6.0" />
