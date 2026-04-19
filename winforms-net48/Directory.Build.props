@@ -21,6 +21,7 @@
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>latest</LangVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>

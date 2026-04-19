@@ -4,6 +4,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="BB84.WinForms.Extensions" />
+		<PackageReference Include="System.Resources.Extensions" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />

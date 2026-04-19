@@ -7,6 +7,7 @@
     <PackageVersion Include="BB84.Notifications" Version="4.2.417" />
     <PackageVersion Include="BB84.SourceGenerators" Version="1.6.419" />
     <PackageVersion Include="BB84.WinForms.Extensions" Version="4.3.319" />
+    <PackageVersion Include="MSTest" Version="4.2.1" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.6" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.6" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.6" />
@@ -14,6 +15,6 @@
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="10.0.6" />
     <PackageVersion Include="Microsoft.Extensions.Logging.EventLog" Version="10.0.6" />
     <PackageVersion Include="Moq" Version="4.20.72" />
-    <PackageVersion Include="MSTest" Version="4.2.1" />
+    <PackageVersion Include="System.Resources.Extensions" Version="10.0.6" />
   </ItemGroup>
 </Project>
