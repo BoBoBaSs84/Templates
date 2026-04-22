@@ -24,7 +24,7 @@ jobs:
     - name: Find all solutions
       id: find-solutions
       run: |
-        $solutions = Get-ChildItem -Path . -Filter "*.sln" -Recurse | Select-Object -ExpandProperty FullName
+        $solutions = Get-ChildItem -Path . -Filter "*.slnx" -Recurse | Select-Object -ExpandProperty FullName
         $solutionsJson = ConvertTo-Json -InputObject @($solutions) -Compress
         $solutionsJson | Out-File -FilePath solutions.json -Encoding utf8
         Write-Host "Saved solutions to solutions.json"
