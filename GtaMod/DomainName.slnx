@@ -1,0 +1,30 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="DomainName.Application/DomainName.Application.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="DomainName.Domain/DomainName.Domain.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="DomainName.Infrastructure/DomainName.Infrastructure.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="DomainName.Presentation/DomainName.Presentation.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="DomainName/DomainName.csproj">
+      <Platform Project="x64" />
+    </Project>
+  </Folder>
+</Solution>

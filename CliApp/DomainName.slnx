@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+    <File Path="test.runsettings" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/DomainName/DomainName.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DomainNameTests/DomainNameTests.csproj" />
+  </Folder>
+</Solution>
