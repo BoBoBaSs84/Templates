@@ -1,6 +1,9 @@
 ﻿using System.Windows;
 
 using DomainName.Application.ViewModels;
+using DomainName.Presentation.Extensions;
+
+using RESX = DomainName.Presentation.Properties.Resources;
 
 namespace DomainName.Presentation.Windows;
 
@@ -16,7 +19,19 @@ public partial class MainWindow : Window
 	public MainWindow(MainViewModel viewModel)
 	{
 		InitializeComponent();
+		InitializeResources();
 		DataContext = viewModel;
-		Title = $"{viewModel.ApplicationName} - {viewModel.EnvironmentName}";
+	}
+
+	private void InitializeResources()
+	{
+		NewMenuItem.Icon = RESX.DocumentIcon.ToControlsImage();
+		OpenMenuItem.Icon = RESX.FolderDocumentIcon.ToControlsImage();
+		SettingsMenuItem.Icon = RESX.GearsViewIcon.ToControlsImage();
+		QuitMenuItem.Icon = RESX.ExitIcon.ToControlsImage();
+		AboutMenuItem.Icon = RESX.AboutIcon.ToControlsImage();
+		CheckForUpdatesMenuItem.Icon = RESX.WindowNextIcon.ToControlsImage();
+		WhatsNewMenuItem.Icon = RESX.NewspaperIcon.ToControlsImage();
+		HelpMenuItem.Icon = RESX.QuestionAndAnswerIcon.ToControlsImage();
 	}
 }

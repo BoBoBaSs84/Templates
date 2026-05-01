@@ -1,5 +1,6 @@
-﻿using DomainName.Application.Services;
-using DomainName.Application.ViewModels;
+﻿using DomainName.Application.Abstractions.Application.ViewModels;
+using DomainName.Application.Services;
+using DomainName.Application.ViewModels.Base;
 
 namespace DomainName.Application.Tests.Services;
 
@@ -7,26 +8,17 @@ namespace DomainName.Application.Tests.Services;
 public sealed class NavigationServiceTests : ApplicationTestBase
 {
 	[TestMethod]
-	[TestCategory("Constructor")]
-	public void NavigationServiceTest()
+	public void NavigateToShouldNavigateToTheSpecifiedViewModel()
 	{
-		NavigationService? service;
-		AboutViewModel viewModel = new(new());
+		Func<Type, ViewModelBase> viewModelFactory = new(type => new TestViewModel());
+		NavigationService navigationService = new(viewModelFactory);
 
-		service = new(t => viewModel);
+		navigationService.NavigateTo<TestViewModel>();
 
-		Assert.IsNotNull(service);
+		Assert.IsNotNull(navigationService.CurrentView);
+		Assert.IsInstanceOfType<TestViewModel>(navigationService.CurrentView);
 	}
 
-	[TestMethod]
-	[TestCategory("Method")]
-	public void NavigateToTest()
-	{
-		AboutViewModel viewModel = new(new());
-		NavigationService service = new(t => viewModel);
-
-		service.NavigateTo<AboutViewModel>();
-
-		Assert.IsInstanceOfType<AboutViewModel>(service.CurrentView);
-	}
+	private sealed class TestViewModel : ViewModelBase, INavigatable
+	{ }
 }

@@ -68,8 +68,9 @@ internal static class ServiceCollectionExtensions
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	internal static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services)
+	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
+		services.AddSingleton<ISettingsService, SettingsService>();
 		services.AddSingleton<IWebService, WebService>();
 
 		return services;

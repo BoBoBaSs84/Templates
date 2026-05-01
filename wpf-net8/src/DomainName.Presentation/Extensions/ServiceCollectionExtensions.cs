@@ -41,8 +41,9 @@ internal static class ServiceCollectionExtensions
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The enriched service collection.</returns>
-	internal static IServiceCollection RegisterPresentationServices(this IServiceCollection services)
+	internal static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
+		services.AddSingleton<IFileDialogService, FileDialogService>();
 		services.AddSingleton<INotificationService, NotificationService>();
 		services.AddSingleton<IUserService, UserService>();
 

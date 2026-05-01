@@ -11,5 +11,5 @@ public abstract class EventBase : IEvent
 	public Guid Id { get; } = Guid.NewGuid();
 
 	/// <inheritdoc/>
-	public DateTimeOffset OccurredAt { get; } = DateTimeOffset.UtcNow;
+	public DateTimeOffset OccurredOn { get; } = DateTimeOffset.UtcNow;
 }

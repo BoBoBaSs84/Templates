@@ -3,17 +3,10 @@
 		<UseWPF>True</UseWPF>
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />
+	  <PackageReference Include="System.Drawing.Common" />
 	</ItemGroup>
 	<ItemGroup>
-		<Resource Include="Assets\Icons\File_New.ico" />
-		<Resource Include="Assets\Icons\File_Open.ico" />
-		<Resource Include="Assets\Icons\File_Quit.ico" />
-		<Resource Include="Assets\Icons\File_Settings.ico" />
-		<Resource Include="Assets\Icons\Help_About.ico" />
-		<Resource Include="Assets\Icons\Help_Center.ico" />
-		<Resource Include="Assets\Icons\Help_News.ico" />
-		<Resource Include="Assets\Icons\Help_Update.ico" />
+		<ProjectReference Include="..\DomainName.Application\DomainName.Application.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="Properties\Resources.Designer.cs">

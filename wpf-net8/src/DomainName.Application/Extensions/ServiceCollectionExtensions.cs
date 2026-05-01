@@ -2,6 +2,7 @@
 
 using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Services;
+using DomainName.Application.Settings;
 using DomainName.Application.ViewModels;
 using DomainName.Application.ViewModels.Base;
 
@@ -16,16 +17,13 @@ namespace DomainName.Application.Extensions;
 internal static class ServiceCollectionExtensions
 {
 	/// <summary>
-	/// Registers the required application options and settings to the <paramref name="services"/> collection.
+	/// Registers the required application settings to the <paramref name="services"/> collection.
 	/// </summary>
 	/// <param name="services">The service collection to enrich.</param>
 	/// <returns>The same <see cref="IServiceCollection"/> so that multiple calls can be chained.</returns>
-	internal static IServiceCollection RegisterApplicationOptions(this IServiceCollection services)
+	internal static IServiceCollection RegisterSettings(this IServiceCollection services)
 	{
-		//services.AddOptions<AppSettings>()
-		//	.BindConfiguration(nameof(AppSettings))
-		//	.ValidateDataAnnotations()
-		//	.ValidateOnStart();
+		services.AddSingleton<ApplicationSettings>();
 
 		return services;
 	}
@@ -37,10 +35,12 @@ internal static class ServiceCollectionExtensions
 	/// <returns>The same <see cref="IServiceCollection"/> so that multiple calls can be chained.</returns>
 	internal static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
 	{
+		services.AddSingleton<IEventService, EventService>();
+
 		services.AddSingleton<INavigationService, NavigationService>();
 		services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider
 			=> viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
-		services.AddSingleton<IEventService, EventService>();
+
 		services.AddSingleton<IProviderService, ProviderService>();
 
 		return services;
@@ -55,6 +55,7 @@ internal static class ServiceCollectionExtensions
 	{
 		services.AddSingleton<AboutViewModel>();
 		services.AddSingleton<MainViewModel>();
+		services.AddSingleton<SettingsViewModel>();
 
 		return services;
 	}

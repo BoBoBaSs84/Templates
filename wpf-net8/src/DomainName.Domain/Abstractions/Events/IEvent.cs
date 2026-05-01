@@ -11,7 +11,7 @@ public interface IEvent
 	/// <summary>
 	/// Gets the timestamp when the event occurred.
 	/// </summary>
-	DateTimeOffset OccurredAt { get; }
+	DateTimeOffset OccurredOn { get; }
 
 	/// <summary>
 	/// Gets the unique identifier of the event.

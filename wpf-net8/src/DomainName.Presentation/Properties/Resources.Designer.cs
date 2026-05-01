@@ -61,6 +61,66 @@ namespace DomainName.Presentation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon AboutIcon {
+            get {
+                object obj = ResourceManager.GetObject("AboutIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon DocumentIcon {
+            get {
+                object obj = ResourceManager.GetObject("DocumentIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon ExitIcon {
+            get {
+                object obj = ResourceManager.GetObject("ExitIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon FolderDocumentIcon {
+            get {
+                object obj = ResourceManager.GetObject("FolderDocumentIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon GearsViewIcon {
+            get {
+                object obj = ResourceManager.GetObject("GearsViewIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon NewspaperIcon {
+            get {
+                object obj = ResourceManager.GetObject("NewspaperIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string NotificationService_ShowError_Captition {
@@ -102,6 +162,44 @@ namespace DomainName.Presentation.Properties {
         internal static string NotificationService_ShowWarning_Captition {
             get {
                 return ResourceManager.GetString("NotificationService.ShowWarning.Captition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon QuestionAndAnswerIcon {
+            get {
+                object obj = ResourceManager.GetObject("QuestionAndAnswerIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        internal static string SettingsControl_GeneralGroupBox_Header {
+            get {
+                return ResourceManager.GetString("SettingsControl.GeneralGroupBox.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string SettingsControl_LanguageTextBlock_Text {
+            get {
+                return ResourceManager.GetString("SettingsControl.LanguageTextBlock.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon WindowNextIcon {
+            get {
+                object obj = ResourceManager.GetObject("WindowNextIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

@@ -19,7 +19,7 @@ public static class DependencyInjectionInstaller
 	/// <returns>The enriched service collection.</returns>
 	public static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
 	{
-		ServiceCollectionExtensions.RegisterApplicationServices(services.RegisterApplicationOptions()
+		ServiceCollectionExtensions.RegisterApplicationServices(services.RegisterSettings()
 )
 			.RegisterViewModels();
 

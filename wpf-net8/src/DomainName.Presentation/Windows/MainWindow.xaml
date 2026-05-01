@@ -7,63 +7,66 @@
 				mc:Ignorable="d"
 				d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
 				ShowInTaskbar="True"
+				Title="{Binding ApplicationTitle}"
 				Height="720"
-				Width="1280">
-	<DockPanel LastChildFill="False">
+				Width="1280"
+				WindowStartupLocation="CenterScreen">
+	<Window.Resources>
+		<BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+	</Window.Resources>
+	<DockPanel>
+		<!-- Menu Bar -->
 		<Menu DockPanel.Dock="Top">
 			<MenuItem Header="_File">
-				<MenuItem Header="_New">
-					<MenuItem.Icon>
-						<Image Source="/DomainName.Presentation;component/Assets/Icons/File_New.ico" />
-					</MenuItem.Icon>
-				</MenuItem>
-				<MenuItem Header="_Open">
-					<MenuItem.Icon>
-						<Image Source="/DomainName.Presentation;component/Assets/Icons/File_Open.ico" />
-					</MenuItem.Icon>
-				</MenuItem>
+				<MenuItem x:Name="NewMenuItem"
+									Header="_New"
+									InputGestureText="Ctrl+N"></MenuItem>
+				<MenuItem x:Name="OpenMenuItem"
+									Header="_Open"
+									InputGestureText="Ctrl+O"></MenuItem>
 				<Separator />
-				<MenuItem Header="_Settings">
-					<MenuItem.Icon>
-						<Image Source="/DomainName.Presentation;component/Assets/Icons/File_Settings.ico" />
-					</MenuItem.Icon>
-				</MenuItem>
+				<MenuItem x:Name="SettingsMenuItem"
+									Header="_Settings"
+									InputGestureText="Ctrl+S"
+									Command="{Binding ShowSettingsCommand}"></MenuItem>
 				<Separator />
-				<MenuItem Header="_Quit"
-									Command="{Binding ExitCommand}">
-					<MenuItem.Icon>
-						<Image Source="/DomainName.Presentation;component/Assets/Icons/File_Quit.ico" />
-					</MenuItem.Icon>
-				</MenuItem>
+				<MenuItem x:Name="QuitMenuItem"
+									Header="_Quit"
+									InputGestureText="Ctrl+Q"
+									Command="{Binding QuitApplicationCommand}"></MenuItem>
 			</MenuItem>
 			<MenuItem Header="_Help">
-				<MenuItem Header="_About"
-									Command="{Binding AboutCommand}">
-					<MenuItem.Icon>
-						<Image Source="/DomainName.Presentation;component/Assets/Icons/Help_About.ico" />
-					</MenuItem.Icon>
-				</MenuItem>
-				<MenuItem Header="_Check for Updates...">
-					<MenuItem.Icon>
-						<Image Source="/DomainName.Presentation;component/Assets/Icons/Help_Update.ico" />
-					</MenuItem.Icon>
-				</MenuItem>
-				<MenuItem Header="_What's new...">
-					<MenuItem.Icon>
-						<Image Source="/DomainName.Presentation;component/Assets/Icons/Help_News.ico" />
-					</MenuItem.Icon>
-				</MenuItem>
+				<MenuItem x:Name="AboutMenuItem"
+									Header="_About"
+									InputGestureText="Ctrl+A"
+									Command="{Binding ShowAboutCommand}"></MenuItem>
+				<MenuItem x:Name="CheckForUpdatesMenuItem"
+									Header="_Check for Updates..."
+									InputGestureText="Ctrl+U"></MenuItem>
+				<MenuItem x:Name="WhatsNewMenuItem"
+									Header="_What's new..."></MenuItem>
 				<Separator />
-				<MenuItem Header="_Help">
-					<MenuItem.Icon>
-						<Image Source="/DomainName.Presentation;component/Assets/Icons/Help_Center.ico" />
-					</MenuItem.Icon>
-				</MenuItem>
+				<MenuItem x:Name="HelpMenuItem"
+									Header="_Help"
+									InputGestureText="Ctrl+H"></MenuItem>
 			</MenuItem>
 		</Menu>
-		<ContentControl Content="{Binding NavigationService.CurrentView}" />
+		<!-- Status Bar -->
 		<StatusBar DockPanel.Dock="Bottom">
-			<StatusBarItem Content="{Binding CurrentUser}" />
+			<StatusBarItem>
+				<TextBlock Text="{Binding ApplicationStatus}" />
+			</StatusBarItem>
+			<StatusBarItem HorizontalAlignment="Right">
+				<ProgressBar x:Name="mainProgressBar"
+										 Width="200"
+										 Height="16"
+										 Minimum="{Binding ProgressBarMinimum}"
+										 Maximum="{Binding ProgressBarMaximum}"
+										 Value="{Binding ProgressBarValue}"
+										 Visibility="{Binding ProgressBarVisible, Converter={StaticResource BoolToVisibilityConverter}}" />
+			</StatusBarItem>
 		</StatusBar>
+		<!-- Main Content Area -->
+		<ContentControl Content="{Binding NavigationService.CurrentView}" />
 	</DockPanel>
 </Window>
