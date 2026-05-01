@@ -1,4 +1,5 @@
-﻿using DomainName.Application.ViewModels.Base;
+﻿using DomainName.Application.Abstractions.Application.ViewModels;
+using DomainName.Application.ViewModels.Base;
 
 namespace DomainName.Application.Abstractions.Application.Services;
 
@@ -16,5 +17,5 @@ public interface INavigationService
 	/// Navigates to the provided view model.
 	/// </summary>
 	/// <typeparam name="T">The view model to navigate to.</typeparam>
-	void NavigateTo<T>() where T : ViewModelBase;
+	void NavigateTo<T>() where T : ViewModelBase, INavigatable;
 }

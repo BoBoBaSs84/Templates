@@ -1,9 +1,9 @@
-﻿using System.Windows;
+﻿using DomainName.Application.Enumerators;
 
 namespace DomainName.Application.Abstractions.Presentation.Services;
 
 /// <summary>
-/// The interface for the notification service.
+/// Represents a service interface for showing notifications to the user.
 /// </summary>
 public interface INotificationService
 {
@@ -30,12 +30,12 @@ public interface INotificationService
 	/// </summary>
 	/// <param name="message">The message to show.</param>
 	/// <returns>The result of the retry message.</returns>
-	MessageBoxResult ShowRetry(string message);
+	NotificationResult ShowRetry(string message);
 
 	/// <summary>
 	/// Shows a question message and return the result.
 	/// </summary>
 	/// <param name="message">The question to show.</param>
 	/// <returns>The result of the question.</returns>
-	MessageBoxResult ShowQuestion(string message);
+	NotificationResult ShowQuestion(string message);
 }

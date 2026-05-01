@@ -1,7 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<UseWPF>True</UseWPF>
-	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="BB84.SourceGenerators">
 		  <PrivateAssets>all</PrivateAssets>
