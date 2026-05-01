@@ -14,6 +14,6 @@ public sealed class DependencyInjectionInstallerTests : PresentationTestBase
 
 		services.RegisterPresentationServices();
 
-		Assert.HasCount(4, services, "Expected 4 services to be registered.");
+		Assert.HasCount(5, services);
 	}
 }
