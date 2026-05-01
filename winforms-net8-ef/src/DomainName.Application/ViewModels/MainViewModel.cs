@@ -4,6 +4,7 @@ using BB84.Notifications.Interfaces.Commands;
 
 using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Enumerators;
 using DomainName.Application.Events;
 using DomainName.Application.Properties;
 using DomainName.Application.ViewModels.Base;
@@ -153,10 +154,10 @@ public sealed class MainViewModel : ViewModelBase
 
 	private void ExitApplication()
 	{
-		DialogResult result = _notificationService
+		NotificationResult result = _notificationService
 			.ShowQuestion(Resources.ViewModel_Question_ExitApplication);
 
-		if (result is DialogResult.Yes)
+		if (result == NotificationResult.Yes)
 			_eventService.Publish(new ExitApplicationEvent());
 	}
 
