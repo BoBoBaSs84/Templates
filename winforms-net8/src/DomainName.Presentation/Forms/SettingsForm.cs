@@ -2,6 +2,7 @@
 
 using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Enumerators;
 using DomainName.Application.Events;
 using DomainName.Application.ViewModels;
 using DomainName.Presentation.Properties;
@@ -59,10 +60,10 @@ public partial class SettingsForm : Form
 
 	private void OnSettingsChanged(SettingsChangedEvent @event)
 	{
-		DialogResult result = _notificationService
+		NotificationResult result = _notificationService
 			.ShowQuestion(Resources.Notification_Question_SettingsChanged);
 
-		if (result is DialogResult.Yes)
+		if (result == NotificationResult.Yes)
 			_eventService.Publish(new RestartApplicationEvent());
 	}
 }
