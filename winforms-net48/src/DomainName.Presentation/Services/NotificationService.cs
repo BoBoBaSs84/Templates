@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
 using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Enumerators;
 
 namespace DomainName.Presentation.Services;
 
@@ -19,11 +20,17 @@ internal sealed class NotificationService : INotificationService
 	public void ShowWarning(string message)
 		=> DisplayMessage(message, "Warning", MessageBoxIcon.Warning);
 
-	public DialogResult ShowQuestion(string message)
-		=> DisplayQuestion(message, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+	public NotificationResult ShowQuestion(string message)
+	{
+		DialogResult dialogResult = DisplayQuestion(message, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+		return dialogResult == DialogResult.Yes ? NotificationResult.Yes : NotificationResult.No;
+	}
 
-	public DialogResult ShowRetry(string message)
-		=> MessageBox.Show(message, "Retry", MessageBoxButtons.RetryCancel, MessageBoxIcon.Question);
+	public NotificationResult ShowRetry(string message)
+	{
+		DialogResult dialogResult = MessageBox.Show(message, "Retry", MessageBoxButtons.RetryCancel, MessageBoxIcon.Question);
+		return dialogResult == DialogResult.Retry ? NotificationResult.Retry : NotificationResult.Cancel;
+	}
 
 	private static void DisplayMessage(string message, string captition, MessageBoxIcon icon)
 		=> MessageBox.Show(message, captition, MessageBoxButtons.OK, icon);
