@@ -4,6 +4,7 @@ using BB84.Notifications.Interfaces.Commands;
 using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Application.ViewModels;
 using DomainName.Application.Abstractions.Infrastructure.Services;
+using DomainName.Application.Abstractions.Presentation.Services;
 using DomainName.Application.Enumerators;
 using DomainName.Application.Events;
 using DomainName.Application.Settings;
@@ -16,8 +17,9 @@ namespace DomainName.Application.ViewModels;
 /// </summary>
 public sealed class SettingsViewModel : ViewModelBase, INavigatable
 {
-	private readonly ISettingsService _settingsService;
 	private readonly IEventService _eventService;
+	private readonly ISettingsService _settingsService;
+	private readonly INotificationService _notificationService;
 	private readonly ApplicationSettings _applicationSettings;
 	private bool _canLoadSettings = true;
 	private bool _canSaveSettings = true;
@@ -27,13 +29,15 @@ public sealed class SettingsViewModel : ViewModelBase, INavigatable
 	/// <summary>
 	/// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
 	/// </summary>
-	/// <param name="settingsService">The service responsible for managing application settings.</param>
 	/// <param name="eventService">The service responsible for managing application events.</param>
+	/// <param name="settingsService">The service responsible for managing application settings.</param>
+	/// <param name="notificationService">The service responsible for managing notifications.</param>
 	/// <param name="applicationSettings">The current application settings.</param>
-	public SettingsViewModel(ISettingsService settingsService, IEventService eventService, ApplicationSettings applicationSettings)
+	public SettingsViewModel(IEventService eventService, ISettingsService settingsService, INotificationService notificationService, ApplicationSettings applicationSettings)
 	{
 		_settingsService = settingsService;
 		_eventService = eventService;
+		_notificationService = notificationService;
 		_applicationSettings = applicationSettings;
 
 		General = _applicationSettings.General;
@@ -105,6 +109,12 @@ public sealed class SettingsViewModel : ViewModelBase, INavigatable
 			await _settingsService
 				.SaveAsync(_applicationSettings)
 				.ConfigureAwait(false);
+
+			NotificationResult result = _notificationService
+				.ShowQuestion("Settings saved successfully. Do you want to restart the application to apply the changes?");
+
+			if (result == NotificationResult.Yes)
+				_eventService.Publish(new RestartRequestedEvent());
 		}
 		finally
 		{
@@ -115,7 +125,7 @@ public sealed class SettingsViewModel : ViewModelBase, INavigatable
 	private void OnError(Exception exception)
 	{
 		string message = "An error occurred while managing application settings.";
+		_eventService.Publish(new DelayedStatusChangedEvent(message));
 		_eventService.Publish(new ExceptionOccuredEvent(message, exception));
-		_eventService.Publish(new DelayedStatusChangedEvent(message, 1000));
 	}
 }

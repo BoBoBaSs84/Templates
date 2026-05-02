@@ -42,8 +42,6 @@ internal sealed class SettingsService : ISettingsService
 		_settingsFileName = $"{AssemblyInformation.Product}.ini";
 		_settingsFilePath = _providerService.Environment.CurrentDirectory;
 		_applicationSettings = applicationSettings;
-
-		RegisterSettingsChangeHandler();
 	}
 
 	public async Task LoadAsync(CancellationToken cancellationToken = default)
@@ -68,14 +66,13 @@ internal sealed class SettingsService : ISettingsService
 				.Read(fileContent);
 
 			_applicationSettings.Load(newSettings);
-			_eventService.Publish(new SettingsLoadedEvent());
-			_eventService.Publish(new DelayedStatusChangedEvent(RESX.SettingsService_Load_Success));
+
+			SendDelayedStatusMessage(RESX.SettingsService_Load_Success);
 		}
 		catch (Exception ex)
 		{
 			string message = RESX.SettingsService_Load_Failed;
-			_eventService.Publish(new ExceptionOccuredEvent(message, ex));
-			_eventService.Publish(new DelayedStatusChangedEvent(message));
+			SendDelayedStatusMessage(message);
 			_loggerService.Log(LogError, message, ex);
 		}
 	}
@@ -91,26 +88,16 @@ internal sealed class SettingsService : ISettingsService
 				.WriteAllTextAsync(filePath, fileContent, cancellationToken)
 				.ConfigureAwait(false);
 
-			_eventService.Publish(new SettingsSavedEvent());
-			_eventService.Publish(new DelayedStatusChangedEvent(RESX.SettingsService_Save_Success));
+			SendDelayedStatusMessage(RESX.SettingsService_Save_Success);
 		}
 		catch (Exception ex)
 		{
 			string message = RESX.SettingsService_Save_Failed;
-			_eventService.Publish(new ExceptionOccuredEvent(message, ex));
-			_eventService.Publish(new DelayedStatusChangedEvent(message));
+			SendDelayedStatusMessage(message);
 			_loggerService.Log(LogError, message, ex);
 		}
 	}
 
-	private void RegisterSettingsChangeHandler()
-	{
-		_applicationSettings.General.PropertyChanged += (sender, args) =>
-		{
-			SaveAsync(_applicationSettings).GetAwaiter().GetResult();
-
-			if (args.PropertyName is nameof(GeneralSettings.Language))
-				_eventService.Publish(new LanguageChangedEvent(args.PropertyName));
-		};
-	}
+	private void SendDelayedStatusMessage(string message)
+		=> _eventService.Publish(new DelayedStatusChangedEvent(message));
 }

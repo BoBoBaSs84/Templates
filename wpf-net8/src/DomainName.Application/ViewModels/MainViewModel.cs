@@ -48,7 +48,6 @@ public sealed class MainViewModel : ViewModelBase
 
 		NavigationService = navigationService;
 
-		_eventService.Subscribe<LanguageChangedEvent>(OnLanguageChanged);
 		_eventService.Subscribe<DelayedStatusChangedEvent>(OnStatusChanged);
 		_eventService.Subscribe<ProgressChangedEvent>(OnProgressChanged);
 	}
@@ -143,15 +142,6 @@ public sealed class MainViewModel : ViewModelBase
 
 		if (result == NotificationResult.Yes)
 			_eventService.Publish(new ExitRequestedEvent());
-	}
-
-	private void OnLanguageChanged(LanguageChangedEvent @event)
-	{
-		var result = _notificationService
-			.ShowQuestion(RESX.MainViewModel_Notification_LanguageRestartApplication);
-
-		if (result == NotificationResult.Yes)
-			_eventService.Publish(new RestartRequestedEvent());
 	}
 
 	private void OnStatusChanged(DelayedStatusChangedEvent @event)
