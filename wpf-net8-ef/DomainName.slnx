@@ -1,22 +1,22 @@
 <Solution>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
     <File Path=".gitignore" />
     <File Path="Directory.Build.props" />
-    <File Path="Directory.Build.targets" />
     <File Path="Directory.Packages.props" />
-    <File Path="test.runsettings" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="DomainName.Application/DomainName.Application.csproj" />
-    <Project Path="DomainName.Domain/DomainName.Domain.csproj" />
-    <Project Path="DomainName.Infrastructure/DomainName.Infrastructure.csproj" />
-    <Project Path="DomainName.Presentation/DomainName.Presentation.csproj" />
-    <Project Path="DomainName/DomainName.csproj" />
+    <Project Path="src/DomainName.Application/DomainName.Application.csproj" />
+    <Project Path="src/DomainName.Domain/DomainName.Domain.csproj" />
+    <Project Path="src/DomainName.Infrastructure/DomainName.Infrastructure.csproj" />
+    <Project Path="src/DomainName.Presentation/DomainName.Presentation.csproj" />
+    <Project Path="src/DomainName/DomainName.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="DomainName.Application.Tests/DomainName.Application.Tests.csproj" />
-    <Project Path="DomainName.Domain.Tests/DomainName.Domain.Tests.csproj" />
-    <Project Path="DomainName.Infrastructure.Tests/DomainName.Infrastructure.Tests.csproj" />
+    <Project Path="tests/DomainName.Application.Tests/DomainName.Application.Tests.csproj" />
+    <Project Path="tests/DomainName.Domain.Tests/DomainName.Domain.Tests.csproj" />
+    <Project Path="tests/DomainName.Infrastructure.Tests/DomainName.Infrastructure.Tests.csproj" />
+    <Project Path="tests/DomainName.Presentation.Tests/DomainName.Presentation.Tests.csproj" />
   </Folder>
 </Solution>

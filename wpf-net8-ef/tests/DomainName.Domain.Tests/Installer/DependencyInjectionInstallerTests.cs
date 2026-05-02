@@ -1,0 +1,19 @@
+﻿using DomainName.Domain.Installers;
+
+using Microsoft.Extensions.DependencyInjection;
+
+namespace DomainName.Domain.Tests.Installer;
+
+[TestClass]
+public sealed class DependencyInjectionInstallerTests
+{
+	[TestMethod]
+	public void RegisterDomainServicesTest()
+	{
+		ServiceCollection services = new();
+
+		services.RegisterDomainServices();
+
+		Assert.HasCount(0, services);
+	}
+}
