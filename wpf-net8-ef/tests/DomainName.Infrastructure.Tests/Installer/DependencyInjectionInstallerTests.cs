@@ -1,4 +1,5 @@
-﻿using DomainName.Infrastructure.Installers;
+﻿using DomainName.Application.Settings;
+using DomainName.Infrastructure.Installers;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,9 +26,10 @@ public sealed class DependencyInjectionInstallerTests : InfrastructureTestBase
 		_hostEnvironmentMock.Setup(x => x.EnvironmentName).Returns("Development");
 		ServiceCollection services = new();
 
-		services.RegisterInfrastructureServices(_hostEnvironmentMock.Object);
+		services.AddSingleton<ApplicationSettings>()
+			.RegisterInfrastructureServices(_hostEnvironmentMock.Object);
 
-		Assert.HasCount(44, services);
+		Assert.HasCount(53, services);
 	}
 
 	[TestMethod]
@@ -37,8 +39,9 @@ public sealed class DependencyInjectionInstallerTests : InfrastructureTestBase
 		_hostEnvironmentMock.Setup(x => x.EnvironmentName).Returns("Production");
 		ServiceCollection services = new();
 
-		services.RegisterInfrastructureServices(_hostEnvironmentMock.Object);
+		services.AddSingleton<ApplicationSettings>()
+			.RegisterInfrastructureServices(_hostEnvironmentMock.Object);
 
-		Assert.HasCount(32, services);
+		Assert.HasCount(41, services);
 	}
 }
