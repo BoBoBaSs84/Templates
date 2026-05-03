@@ -18,6 +18,7 @@
 		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
 		<DebugType>full</DebugType>
 		<Deterministic>True</Deterministic>
+		<EmitCompilerGeneratedFiles>True</EmitCompilerGeneratedFiles>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
