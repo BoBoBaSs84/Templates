@@ -3,13 +3,13 @@
     <ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="BB84.EntityFrameworkCore.Entities.Abstractions" Version="4.3.513" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories" Version="4.3.513" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="4.3.513" />
-    <PackageVersion Include="BB84.Extensions" Version="4.3.428" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Entities.Abstractions" Version="4.3.520" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories" Version="4.3.520" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="4.3.520" />
+    <PackageVersion Include="BB84.Extensions" Version="4.3.520" />
     <PackageVersion Include="BB84.Notifications" Version="4.2.417" />
-    <PackageVersion Include="BB84.SourceGenerators" Version="1.11.515" />
-    <PackageVersion Include="BB84.WinForms.Extensions" Version="4.3.428" />
+    <PackageVersion Include="BB84.SourceGenerators" Version="2.0.526" />
+    <PackageVersion Include="BB84.WinForms.Extensions" Version="4.3.520" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="[9.0.16, 10.0.0)" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.8" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.8" />
