@@ -30,6 +30,9 @@ updates:
       microsoft-dependencies:
         patterns:
           - "Microsoft*"
+      system-dependencies:
+        patterns:
+          - "System*"          
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
