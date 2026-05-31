@@ -2,6 +2,7 @@
 using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Application.Installers;
 using DomainName.Domain.Events.System;
+using DomainName.Domain.Installers;
 using DomainName.Infrastructure.Installers;
 using DomainName.Presentation.Installers;
 
@@ -41,10 +42,7 @@ public sealed class StartUp : Script
 	}
 
 	private void OnUnhandledException(Exception? exception)
-	{
-		_loggerService.Critical("An unhandled exception occurred.", exception);
-		_eventService.Publish(new ExceptionOccurred(exception));
-	}
+		=> _loggerService.Critical("An unhandled exception occurred.", exception);
 
 	/// <summary>
 	/// Creates the service provider.
@@ -54,6 +52,7 @@ public sealed class StartUp : Script
 	{
 		IServiceCollection services = new ServiceCollection()
 			.AddApplicationServices()
+			.AddDomainServices()
 			.AddInfrastructureServices()
 			.AddPresentationServices();
 

@@ -16,7 +16,7 @@ public static class DependencyInjection
 	/// <returns>The same <see cref="IServiceCollection"/> collection for chaining.</returns>
 	public static IServiceCollection AddPresentationServices(this IServiceCollection services)
 	{
-		services.AddSingleton<ModMenu>();
+		services.AddSingleton<ModificationMainMenu>();
 
 		return services;
 	}

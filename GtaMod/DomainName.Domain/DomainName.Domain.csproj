@@ -2,10 +2,15 @@
 	
 	<PropertyGroup>
 		<NoWarn>$(NoWarn);CA1710</NoWarn>
+		<UseWindowsForms>True</UseWindowsForms>
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="ScriptHookVDotNet3" ExcludeAssets="runtime" />
+	  <PackageReference Include="BB84.SourceGenerators">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
 	</ItemGroup>
 
 </Project>

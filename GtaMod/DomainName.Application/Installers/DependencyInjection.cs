@@ -1,5 +1,6 @@
 ﻿using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Services;
+using DomainName.Application.Settings;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,6 +18,8 @@ public static class DependencyInjection
 	/// <returns>The same <see cref="IServiceCollection"/> collection for chaining.</returns>
 	public static IServiceCollection AddApplicationServices(this IServiceCollection services)
 	{
+		services.AddSingleton<ModificationSettings>();
+
 		services.AddSingleton<IEventService, EventService>();
 		services.AddSingleton<IPedestrianService, PedestrianService>();
 		services.AddSingleton<IScriptHookService, ScriptHookService>();

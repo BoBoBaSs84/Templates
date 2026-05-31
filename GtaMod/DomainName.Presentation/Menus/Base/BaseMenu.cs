@@ -1,4 +1,6 @@
-﻿using LemonUI;
+﻿using DomainName.Presentation.Abstractions;
+
+using LemonUI;
 using LemonUI.Menus;
 
 using GTAFont = GTA.UI.Font;
@@ -14,6 +16,11 @@ public abstract class BaseMenu : NativeMenu
 	/// Gets the menu object pool.
 	/// </summary>
 	protected ObjectPool MenuPool { get; }
+
+	/// <summary>
+	/// Gets the collection of property bindings associated with this menu.
+	/// </summary>
+	protected ICollection<IPropertyBinding> DataBindings { get; } = [];
 
 	/// <summary>
 	///	Initializes a new instance of the <see cref="BaseMenu"/> class.
@@ -74,6 +81,15 @@ public abstract class BaseMenu : NativeMenu
 	/// <returns>The checkbox item.</returns>
 	protected NativeCheckboxItem AddCheckbox(string title, bool defaultValue = false, Action<bool>? changed = null)
 		=> AddCheckbox(title, string.Empty, defaultValue, changed, null);
+
+	/// <summary>
+	/// Adds a new checkbox item to the menu.
+	/// </summary>
+	/// <param name="title">The title of the item.</param>
+	/// <param name="description">The description when the item is selected.</param>
+	/// <returns>The added native checkbox item.</returns>
+	protected NativeCheckboxItem AddCheckbox(string title, string description)
+		=> AddCheckbox(title, description, default, null, null);
 
 	/// <summary>
 	/// Adds a new checkbox item to the menu.
@@ -163,10 +179,23 @@ public abstract class BaseMenu : NativeMenu
 	/// Adds a new submenu and associated item to the menu.
 	/// </summary>
 	/// <param name="subMenu">The Sub Menu to add.</param>
+	/// <param name="altTitleFont">The font of alternative title item shown on the right.</param>
+	/// <returns>The item associated with the sub menu.</returns>
+	protected NativeSubmenuItem AddMenu(BaseMenu subMenu, GTAFont altTitleFont = GTAFont.ChaletComprimeCologne)
+	{
+		NativeSubmenuItem subMenuItem = AddSubMenu(subMenu);
+		subMenuItem.AltTitleFont = altTitleFont;
+		return subMenuItem;
+	}
+
+	/// <summary>
+	/// Adds a new submenu and associated item to the menu.
+	/// </summary>
+	/// <param name="subMenu">The Sub Menu to add.</param>
 	/// <param name="altTitle">The alternative title of the item shown on the right.</param>
 	/// <param name="altTitleFont">The font of alternative title item shown on the right.</param>
 	/// <returns>The item associated with the sub menu.</returns>
-	protected NativeSubmenuItem AddMenu(BaseMenu subMenu, string altTitle = "Menu", GTAFont altTitleFont = GTAFont.ChaletComprimeCologne)
+	protected NativeSubmenuItem AddMenu(BaseMenu subMenu, string altTitle, GTAFont altTitleFont = GTAFont.ChaletComprimeCologne)
 	{
 		NativeSubmenuItem subMenuItem = AddSubMenu(subMenu);
 		subMenuItem.AltTitle = altTitle;

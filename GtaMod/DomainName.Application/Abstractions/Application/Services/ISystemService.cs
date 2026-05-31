@@ -19,6 +19,11 @@ public interface ISystemService
 	IDirectoryProvider Directory { get; }
 
 	/// <summary>
+	/// Gets the environment provider.
+	/// </summary>
+	IEnvironmentProvider Environment { get; }
+
+	/// <summary>
 	/// Gets the file provider.
 	/// </summary>
 	IFileProvider File { get; }
