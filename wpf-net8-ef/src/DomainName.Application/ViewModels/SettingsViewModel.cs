@@ -41,6 +41,7 @@ public sealed class SettingsViewModel : ViewModelBase, INavigatable
 		_applicationSettings = applicationSettings;
 
 		General = _applicationSettings.General;
+		SupportedLanguages = LanguageExtensions.GetValuesFast();
 	}
 
 	/// <summary>
@@ -51,8 +52,7 @@ public sealed class SettingsViewModel : ViewModelBase, INavigatable
 	/// <summary>
 	/// Gets the collection of supported languages for the application.
 	/// </summary>
-	public IEnumerable<Language> SupportedLanguages
-		=> General.Language.GetValuesFast();
+	public IEnumerable<Language> SupportedLanguages { get; }
 
 	/// <summary>
 	/// Indicates whether the application settings can be loaded.
