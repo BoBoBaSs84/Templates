@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.IO;
 
 using BB84.SourceGenerators.Attributes;
 
@@ -13,6 +12,6 @@ namespace DomainName.Application.Providers;
 /// layer for path operations within the application.
 /// </summary>
 [ExcludeFromCodeCoverage(Justification = "This class is a simple wrapper around the System.IO.Path class.")]
-[GenerateAbstraction(typeof(Path), typeof(IPathProvider), typeof(PathProvider), nameof(Path.TryJoin))]
+[GenerateAbstraction(typeof(Path), typeof(IPathProvider), typeof(PathProvider))]
 internal sealed partial class PathProvider : IPathProvider
 { }
