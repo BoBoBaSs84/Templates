@@ -3,13 +3,13 @@
     <ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="BB84.EntityFrameworkCore.Entities" Version="4.3.520" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Entities" Version="4.4.625" />
     <PackageVersion Include="BB84.EntityFrameworkCore.Entities.Abstractions" Version="4.1.222" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories" Version="4.3.520" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="4.3.520" />
-    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.SqlServer" Version="4.3.520" />
-    <PackageVersion Include="BB84.Extensions" Version="4.4.610" />
-    <PackageVersion Include="BB84.Notifications" Version="4.3.604" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories" Version="4.4.625" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="4.4.625" />
+    <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.SqlServer" Version="4.4.625" />
+    <PackageVersion Include="BB84.Extensions" Version="4.6.625" />
+    <PackageVersion Include="BB84.Notifications" Version="4.3.625" />
     <PackageVersion Include="BB84.SourceGenerators" Version="2.2.614" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="[9.0.13, 10.0.0)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="[9.0.14, 10.0.0)" />
