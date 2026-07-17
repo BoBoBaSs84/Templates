@@ -1,9 +1,8 @@
-using System.Reflection;
-
 using DomainName.Abstractions.Services;
 using DomainName.Common;
 using DomainName.Events;
 using DomainName.Extensions;
+using DomainName.Properties;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,7 +13,6 @@ using Spectre.Console.Cli;
 
 internal class Program
 {
-	private static readonly Assembly Assembly = typeof(Program).Assembly;
 	private static readonly Action<ILogger, Exception?> LogCritical =
 		LoggerMessage.Define(LogLevel.Critical, 0, string.Empty);
 
@@ -23,13 +21,13 @@ internal class Program
 
 	private static async Task Main(string[] args)
 	{
-		AnsiConsole.Write(new FigletText($"{Assembly.GetName().Name}"));
-		AnsiConsole.WriteLine($"{Assembly.GetName().Name} Command-line-interface {Assembly.GetName().Version}");
+		AnsiConsole.Write(new FigletText($"{AssemblyInformation.Title}"));
+		AnsiConsole.WriteLine($"{AssemblyInformation.Title} Command-line-interface {AssemblyInformation.Version}");
 		AnsiConsole.WriteLine();
 
 		CommandApp app = CreateCommandApp(args);
 
-		await app.RunAsync(args)
+		_ = await app.RunAsync(args)
 			.ConfigureAwait(false);
 	}
 
