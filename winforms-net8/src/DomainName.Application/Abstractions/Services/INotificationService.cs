@@ -1,6 +1,6 @@
 ﻿using DomainName.Application.Enumerators;
 
-namespace DomainName.Application.Abstractions.Presentation.Services;
+namespace DomainName.Application.Abstractions.Services;
 
 /// <summary>
 /// The interface for the notification service.

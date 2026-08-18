@@ -5,7 +5,7 @@ using DomainName.Application.Abstractions.Infrastructure.Services;
 using DomainName.Application.Events;
 using DomainName.Application.Extensions;
 using DomainName.Extensions;
-using DomainName.Presentation.Forms;
+using DomainName.Forms;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

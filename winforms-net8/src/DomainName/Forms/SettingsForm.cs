@@ -1,13 +1,13 @@
 ﻿using BB84.WinForms.Extensions;
 
 using DomainName.Application.Abstractions.Application.Services;
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 using DomainName.Application.Enumerators;
 using DomainName.Application.Events;
 using DomainName.Application.ViewModels;
-using DomainName.Presentation.Properties;
+using DomainName.Properties;
 
-namespace DomainName.Presentation.Forms;
+namespace DomainName.Forms;
 
 /// <summary>
 /// Represents the settings form of the application.
@@ -41,9 +41,9 @@ public partial class SettingsForm : Form
 		base.OnLoad(e);
 		settingsViewModelBindingSource.DataSource = _viewModel;
 
-		logLevelComboBox.WithEnumeratorBinding(_viewModel.LogLevel)
+		_ = logLevelComboBox.WithEnumeratorBinding(_viewModel.LogLevel)
 			.WithSelectedValueBinding(_viewModel, nameof(_viewModel.LogLevel));
-		languageComboBox.WithEnumeratorBinding(_viewModel.Language)
+		_ = languageComboBox.WithEnumeratorBinding(_viewModel.Language)
 			.WithSelectedValueBinding(_viewModel, nameof(_viewModel.Language));
 	}
 
