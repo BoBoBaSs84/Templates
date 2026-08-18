@@ -1,7 +1,7 @@
 ﻿using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Domain.Events.Presentation;
 
-namespace DomainName.Presentation.Forms;
+namespace DomainName.Forms;
 
 /// <summary>
 /// The third form of the application.

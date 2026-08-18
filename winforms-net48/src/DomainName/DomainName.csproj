@@ -7,13 +7,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="BB84.WinForms.Extensions" />
 	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
 	  <PackageReference Include="Microsoft.Extensions.Hosting" />
-	</ItemGroup>
+		<PackageReference Include="System.Resources.Extensions" />
+</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\DomainName.Infrastructure\DomainName.Infrastructure.csproj" />
-		<ProjectReference Include="..\DomainName.Presentation\DomainName.Presentation.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

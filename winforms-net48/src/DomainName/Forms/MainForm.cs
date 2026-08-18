@@ -1,5 +1,5 @@
 ﻿using DomainName.Application.Abstractions.Application.Services;
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 using DomainName.Application.ViewModels;
 using DomainName.Domain.Events.Presentation;
 
@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using WinFormsApp = System.Windows.Forms.Application;
 
-namespace DomainName.Presentation.Forms;
+namespace DomainName.Forms;
 
 /// <summary>
 /// The main form class.

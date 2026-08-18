@@ -1,5 +1,5 @@
 ﻿using DomainName.Application.Abstractions.Application.Services;
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 using DomainName.Application.ViewModels;
 using DomainName.Presentation.Forms;
 

@@ -1,6 +1,6 @@
-﻿namespace DomainName.Presentation.Forms;
+﻿namespace DomainName.Forms;
 
-partial class ThirdForm
+partial class SecondForm
 {
 	/// <summary>
 	/// Required designer variable.
@@ -28,31 +28,31 @@ partial class ThirdForm
 	/// </summary>
 	private void InitializeComponent()
 	{
-			this.ThirdFormLabel = new System.Windows.Forms.Label();
+			this.SecondFormLabel = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
-			// ThirdFormLabel
+			// SecondFormLabel
 			// 
-			this.ThirdFormLabel.AutoSize = true;
-			this.ThirdFormLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.ThirdFormLabel.Location = new System.Drawing.Point(0, 0);
-			this.ThirdFormLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.ThirdFormLabel.Name = "ThirdFormLabel";
-			this.ThirdFormLabel.Size = new System.Drawing.Size(44, 16);
-			this.ThirdFormLabel.TabIndex = 0;
-			this.ThirdFormLabel.Text = "label1";
-			this.ThirdFormLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.SecondFormLabel.AutoSize = true;
+			this.SecondFormLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.SecondFormLabel.Location = new System.Drawing.Point(0, 0);
+			this.SecondFormLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.SecondFormLabel.Name = "SecondFormLabel";
+			this.SecondFormLabel.Size = new System.Drawing.Size(44, 16);
+			this.SecondFormLabel.TabIndex = 0;
+			this.SecondFormLabel.Text = "label1";
+			this.SecondFormLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// ThirdForm
+			// SecondForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(640, 288);
-			this.Controls.Add(this.ThirdFormLabel);
+			this.Controls.Add(this.SecondFormLabel);
 			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-			this.Name = "ThirdForm";
+			this.Name = "SecondForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "ThirdForm";
+			this.Text = "SecondForm";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -60,5 +60,5 @@ partial class ThirdForm
 
 	#endregion
 
-	private Label ThirdFormLabel;
+	private Label SecondFormLabel;
 }

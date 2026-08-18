@@ -1,4 +1,4 @@
-﻿namespace DomainName.Presentation.Forms;
+﻿namespace DomainName.Forms;
 
 partial class MainForm
 {

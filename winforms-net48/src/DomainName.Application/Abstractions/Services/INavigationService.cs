@@ -1,6 +1,6 @@
 ﻿using BB84.Notifications.Interfaces;
 
-namespace DomainName.Application.Abstractions.Presentation.Services;
+namespace DomainName.Application.Abstractions.Services;
 
 /// <summary>
 /// The interface for the navigation service.
