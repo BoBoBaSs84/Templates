@@ -14,7 +14,7 @@ public sealed partial class WebServiceTests
 	public async Task GetPizzaContentAsyncShouldLogAndNotifyOnException()
 	{
 		WebService sut = CreateMockedInstance();
-		_httpClientFactoryMock.Setup(x => x.CreateClient(It.IsAny<string>()))
+		_ = _httpClientFactoryMock.Setup(x => x.CreateClient(It.IsAny<string>()))
 			.Throws<Exception>();
 
 		string? result = await sut.GetPizzaContentAsync()
@@ -29,7 +29,7 @@ public sealed partial class WebServiceTests
 	public async Task GetPizzaContentAsyncShouldLogAndNotifyOnNotSuccessful()
 	{
 		WebService sut = CreateMockedInstance();
-		_httpClientFactoryMock.Setup(x => x.CreateClient(It.IsAny<string>()))
+		_ = _httpClientFactoryMock.Setup(x => x.CreateClient(It.IsAny<string>()))
 			.Returns(CreateMockedClient(HttpStatusCode.InternalServerError));
 
 		string? result = await sut.GetPizzaContentAsync()
@@ -45,7 +45,7 @@ public sealed partial class WebServiceTests
 	{
 		WebService sut = CreateMockedInstance();
 		string content = "{ \"query\": { \"pages\": { \"123\": { \"revisions\": [ { \"*\": \"Pizza content\" } ] } } } }";
-		_httpClientFactoryMock.Setup(x => x.CreateClient(It.IsAny<string>()))
+		_ = _httpClientFactoryMock.Setup(x => x.CreateClient(It.IsAny<string>()))
 			.Returns(CreateMockedClient(HttpStatusCode.OK, content));
 
 		string? result = await sut.GetPizzaContentAsync()

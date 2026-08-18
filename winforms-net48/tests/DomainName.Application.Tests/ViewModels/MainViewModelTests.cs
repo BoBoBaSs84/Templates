@@ -14,12 +14,12 @@ public sealed class MainViewModelTests
 	public void ConstructorShouldSetPropertiesCorrect()
 	{
 		Mock<IHostEnvironment> hostEnvironmentMock = new();
-		hostEnvironmentMock.Setup(x => x.ApplicationName).Returns("TestApp");
-		hostEnvironmentMock.Setup(x => x.EnvironmentName).Returns("TestEnv");
+		_ = hostEnvironmentMock.Setup(x => x.ApplicationName).Returns("TestApp");
+		_ = hostEnvironmentMock.Setup(x => x.EnvironmentName).Returns("TestEnv");
 		Mock<IUserService> userServiceMock = new();
-		userServiceMock.Setup(x => x.Domain).Returns("TestDomain");
-		userServiceMock.Setup(x => x.Name).Returns("TestUser");
-		userServiceMock.Setup(x => x.Machine).Returns("TestMachine");
+		_ = userServiceMock.Setup(x => x.Domain).Returns("TestDomain");
+		_ = userServiceMock.Setup(x => x.Name).Returns("TestUser");
+		_ = userServiceMock.Setup(x => x.Machine).Returns("TestMachine");
 
 		MainViewModel viewModel = new(hostEnvironmentMock.Object, userServiceMock.Object);
 

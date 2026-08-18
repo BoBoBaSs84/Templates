@@ -3,8 +3,8 @@
 using DomainName.Application.Abstractions.Services;
 using DomainName.Application.Installer;
 using DomainName.Domain.Installer;
-using DomainName.Infrastructure.Installer;
 using DomainName.Forms;
+using DomainName.Infrastructure.Installer;
 using DomainName.Services;
 
 using Microsoft.Extensions.DependencyInjection;

@@ -17,7 +17,7 @@ public class DependencyInjectionInstallerTests
 			.SetupAllProperties();
 		ServiceCollection services = new();
 
-		services.RegisterInfrastructureServices(hostEnvironmentMock.Object);
+		_ = services.RegisterInfrastructureServices(hostEnvironmentMock.Object);
 
 		Assert.HasCount(21, services);
 	}

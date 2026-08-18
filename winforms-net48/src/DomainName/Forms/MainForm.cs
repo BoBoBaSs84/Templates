@@ -58,7 +58,7 @@ public partial class MainForm : Form
 	private void OnStatusChanged(StatusChangedEvent @event)
 	{
 		mainToolStripStatusLabel.Text = @event.Text;
-		Task.Run(() =>
+		_ = Task.Run(() =>
 		{
 			_statusChanged = true;
 			Thread.Sleep(2000);
@@ -91,6 +91,6 @@ public partial class MainForm : Form
 	private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
 	{
 		AboutForm aboutForm = _serviceProvider.GetRequiredService<AboutForm>();
-		aboutForm.ShowDialog(this);
+		_ = aboutForm.ShowDialog(this);
 	}
 }

@@ -10,7 +10,6 @@ namespace DomainName.Services;
 internal sealed class NavigationService : NotifiableObject, INavigationService
 {
 	private readonly Func<Type, Form> _formFactory;
-	private Form? _currentForm;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="NavigationService"/> class.
@@ -20,14 +19,14 @@ internal sealed class NavigationService : NotifiableObject, INavigationService
 	{
 		_formFactory = formFactory;
 
-		PropertyChanging += (s, e) => OnCurrentFormChanging();
-		PropertyChanged += (s, e) => OnCurrentFormChanged();
+		PropertyChanging += (s, e) => CurrentForm?.Visible = false;
+		PropertyChanged += (s, e) => CurrentForm?.Visible = true;
 	}
 
 	public Form? CurrentForm
 	{
-		get => _currentForm;
-		private set => SetProperty(ref _currentForm, value);
+		get;
+		private set => SetProperty(ref field, value);
 	}
 
 	public void NavigateTo<T>() where T : Form
@@ -37,17 +36,5 @@ internal sealed class NavigationService : NotifiableObject, INavigationService
 		form.Dock = DockStyle.Fill;
 		form.FormBorderStyle = FormBorderStyle.None;
 		CurrentForm = form;
-	}
-
-	private void OnCurrentFormChanged()
-	{
-		if (CurrentForm is not null)
-			CurrentForm.Visible = true;
-	}
-
-	private void OnCurrentFormChanging()
-	{
-		if (CurrentForm is not null)
-			CurrentForm.Visible = false;
 	}
 }

@@ -12,7 +12,7 @@ public sealed class DependencyInjectionInstallerTests
 	{
 		ServiceCollection services = new();
 
-		services.RegisterDomainServices();
+		_ = services.RegisterDomainServices();
 
 		Assert.AreEqual(1, services.Count);
 	}
