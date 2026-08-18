@@ -2,11 +2,9 @@
 using System.Text;
 
 using DomainName.Application.Abstractions.Infrastructure.Services;
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 using DomainName.Infrastructure.Common;
 using DomainName.Infrastructure.Services;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Moq;
 using Moq.Protected;

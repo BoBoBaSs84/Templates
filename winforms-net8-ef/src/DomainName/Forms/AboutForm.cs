@@ -1,7 +1,7 @@
 ﻿using DomainName.Application.ViewModels;
-using DomainName.Presentation.Properties;
+using DomainName.Properties;
 
-namespace DomainName.Presentation.Forms;
+namespace DomainName.Forms;
 
 /// <summary>
 /// The form for the about page.

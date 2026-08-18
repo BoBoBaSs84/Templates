@@ -16,9 +16,9 @@ internal abstract class EntityBaseConfiguration<TEntity> : IEntityTypeConfigurat
 	/// <inheritdoc/>
 	public virtual void Configure(EntityTypeBuilder<TEntity> builder)
 	{
-		builder.HasKey(e => e.Id);
+		_ = builder.HasKey(e => e.Id);
 
-		builder.Property(e => e.Id)
+		_ = builder.Property(e => e.Id)
 			.HasColumnOrder(1)
 			.ValueGeneratedOnAdd();
 	}

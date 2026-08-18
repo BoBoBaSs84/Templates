@@ -1,5 +1,5 @@
 ﻿using DomainName.Application.Abstractions.Application.Services;
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 using DomainName.Application.ViewModels;
 
 using Microsoft.Extensions.Hosting;
@@ -16,8 +16,8 @@ public sealed class MainViewModelTests
 	{
 		Mock<IEventService> eventServiceMock = new();
 		Mock<IHostEnvironment> hostEnvironmentMock = new();
-		hostEnvironmentMock.Setup(x => x.ApplicationName).Returns("TestApp");
-		hostEnvironmentMock.Setup(x => x.EnvironmentName).Returns("TestEnv");
+		_ = hostEnvironmentMock.Setup(x => x.ApplicationName).Returns("TestApp");
+		_ = hostEnvironmentMock.Setup(x => x.EnvironmentName).Returns("TestEnv");
 		Mock<INotificationService> notificationSerivceMock = new();
 
 		MainViewModel viewModel = new(eventServiceMock.Object, hostEnvironmentMock.Object, notificationSerivceMock.Object);

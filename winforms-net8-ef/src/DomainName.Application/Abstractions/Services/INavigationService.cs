@@ -1,6 +1,6 @@
 ﻿using BB84.Notifications.Interfaces;
 
-namespace DomainName.Application.Abstractions.Presentation.Services;
+namespace DomainName.Application.Abstractions.Services;
 
 /// <summary>
 /// The interface for the navigation service.
@@ -10,7 +10,7 @@ public interface INavigationService : INotifiableObject
 	/// <summary>
 	/// The currently form that has been navigated to.
 	/// </summary>
-	public Form? CurrentForm { get; }
+	Form? CurrentForm { get; }
 
 	/// <summary>
 	/// Navigates to the provided form.

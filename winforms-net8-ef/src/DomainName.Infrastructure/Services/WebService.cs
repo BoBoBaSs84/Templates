@@ -1,9 +1,8 @@
 ﻿using DomainName.Application.Abstractions.Infrastructure.Services;
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
+using DomainName.Infrastructure.Common;
 
 using Microsoft.Extensions.Logging;
-
-using ApplicationConstants = DomainName.Infrastructure.Common.Constants;
 
 namespace DomainName.Infrastructure.Services;
 
@@ -22,7 +21,7 @@ internal sealed class WebService(IHttpClientFactory httpClientFactory, ILoggerSe
 	{
 		try
 		{
-			HttpClient httpClient = httpClientFactory.CreateClient(ApplicationConstants.WikiClient.Name);
+			HttpClient httpClient = httpClientFactory.CreateClient(Constants.WikiClient.Name);
 			string requestUri = @"/w/api.php?action=query&prop=revisions&format=json&rvprop=content&rvsection=0&titles=pizza";
 			using HttpResponseMessage responseMessage = await httpClient.GetAsync(requestUri, cancellationToken)
 				.ConfigureAwait(false);

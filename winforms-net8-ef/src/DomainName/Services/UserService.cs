@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
 using DomainName.Application.Abstractions.Application.Services;
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 
-namespace DomainName.Presentation.Services;
+namespace DomainName.Services;
 
 /// <summary>
 /// The user service implementation.

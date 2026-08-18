@@ -1,10 +1,10 @@
 ﻿using DomainName.Application.Abstractions.Application.Services;
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 using DomainName.Application.Events;
 using DomainName.Application.ViewModels;
-using DomainName.Presentation.Properties;
+using DomainName.Properties;
 
-namespace DomainName.Presentation.Forms;
+namespace DomainName.Forms;
 
 /// <summary>
 /// The main form class.

@@ -1,7 +1,6 @@
 ﻿using DomainName.Domain.Installer;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DomainName.Domain.Tests.Installer;
 
@@ -13,7 +12,7 @@ public sealed class DependencyInjectionInstallerTests
 	{
 		ServiceCollection services = new();
 
-		services.RegisterDomainServices();
+		_ = services.RegisterDomainServices();
 
 		Assert.HasCount(0, services);
 	}

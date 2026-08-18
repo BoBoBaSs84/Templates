@@ -21,7 +21,6 @@ public sealed class SettingsViewModel : ViewModelBase
 	private readonly ISettingsService _settingsService;
 	private Language _language;
 	private LogLevel _logLevel;
-	private IActionCommand? _saveCommand;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
@@ -71,7 +70,7 @@ public sealed class SettingsViewModel : ViewModelBase
 	/// allow users to save their changes.
 	/// </summary>
 	public IActionCommand SaveCommand
-		=> _saveCommand ??= new ActionCommand(SaveSettings);
+		=> field ??= new ActionCommand(SaveSettings);
 
 	private void SaveSettings()
 	{

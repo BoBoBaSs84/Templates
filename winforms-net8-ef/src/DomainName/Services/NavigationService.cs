@@ -1,8 +1,8 @@
 ﻿using BB84.Notifications;
 
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 
-namespace DomainName.Presentation.Services;
+namespace DomainName.Services;
 
 /// <summary>
 /// The navigation service class.
@@ -10,7 +10,6 @@ namespace DomainName.Presentation.Services;
 internal sealed class NavigationService : NotifiableObject, INavigationService
 {
 	private readonly Func<Type, Form> _formFactory;
-	private Form? _currentForm;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="NavigationService"/> class.
@@ -26,8 +25,8 @@ internal sealed class NavigationService : NotifiableObject, INavigationService
 
 	public Form? CurrentForm
 	{
-		get => _currentForm;
-		private set => SetProperty(ref _currentForm, value);
+		get;
+		private set => SetProperty(ref field, value);
 	}
 
 	public void NavigateTo<T>() where T : Form
@@ -41,13 +40,11 @@ internal sealed class NavigationService : NotifiableObject, INavigationService
 
 	private void OnCurrentFormChanged()
 	{
-		if (CurrentForm is not null)
-			CurrentForm.Visible = true;
+		CurrentForm?.Visible = true;
 	}
 
 	private void OnCurrentFormChanging()
 	{
-		if (CurrentForm is not null)
-			CurrentForm.Visible = false;
+		CurrentForm?.Visible = false;
 	}
 }

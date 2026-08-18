@@ -12,7 +12,7 @@ internal sealed class DatabaseContext(DbContextOptions<DatabaseContext> options)
 	{
 		base.OnConfiguring(optionsBuilder);
 
-		optionsBuilder.AddInterceptors([]);
+		_ = optionsBuilder.AddInterceptors([]);
 	}
 
 	/// <inheritdoc/>
@@ -20,6 +20,6 @@ internal sealed class DatabaseContext(DbContextOptions<DatabaseContext> options)
 	{
 		base.OnModelCreating(modelBuilder);
 
-		modelBuilder.ApplyConfigurationsFromAssembly(typeof(IInfrastructureAssemblyMarker).Assembly);
+		_ = modelBuilder.ApplyConfigurationsFromAssembly(typeof(IInfrastructureAssemblyMarker).Assembly);
 	}
 }

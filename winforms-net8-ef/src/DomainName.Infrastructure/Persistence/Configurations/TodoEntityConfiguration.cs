@@ -17,9 +17,9 @@ internal sealed class TodoListConfiguration : EntityBaseConfiguration<TodoEntity
 	{
 		base.Configure(builder);
 
-		builder.ToTable("Todos");
+		_ = builder.ToTable("Todos");
 
-		builder.Property(p => p.Color)
+		_ = builder.Property(p => p.Color)
 			.HasConversion(new ColorConverter());
 	}
 }

@@ -3,7 +3,7 @@ using BB84.Notifications.Commands;
 using BB84.Notifications.Interfaces.Commands;
 
 using DomainName.Application.Abstractions.Application.Services;
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 using DomainName.Application.Enumerators;
 using DomainName.Application.Events;
 using DomainName.Application.Properties;
@@ -31,9 +31,6 @@ public sealed class MainViewModel : ViewModelBase
 	private ActionCommand? _showSettingsCommand;
 	private string _applicationTitle;
 	private string _statusText;
-	private int _progressBarValue;
-	private int _progressBarMaximum = 100;
-	private int _progressBarMinimum;
 
 	#endregion members
 
@@ -84,8 +81,8 @@ public sealed class MainViewModel : ViewModelBase
 	[NotifyChanged(nameof(ProgressBarVisible))]
 	public int ProgressBarValue
 	{
-		get => _progressBarValue;
-		set => SetProperty(ref _progressBarValue, value);
+		get;
+		set => SetProperty(ref field, value);
 	}
 
 	/// <summary>
@@ -100,9 +97,9 @@ public sealed class MainViewModel : ViewModelBase
 	[NotifyChanged(nameof(ProgressBarVisible))]
 	public int ProgressBarMaximum
 	{
-		get => _progressBarMaximum;
-		set => SetProperty(ref _progressBarMaximum, value);
-	}
+		get;
+		set => SetProperty(ref field, value);
+	} = 100;
 
 	/// <summary>
 	/// Gets or sets the minimum value of the progress bar.
@@ -110,8 +107,8 @@ public sealed class MainViewModel : ViewModelBase
 	[NotifyChanged(nameof(ProgressBarVisible))]
 	public int ProgressBarMinimum
 	{
-		get => _progressBarMinimum;
-		set => SetProperty(ref _progressBarMinimum, value);
+		get;
+		set => SetProperty(ref field, value);
 	}
 
 	#endregion properties
@@ -218,7 +215,7 @@ public sealed class MainViewModel : ViewModelBase
 
 		if (@event.AutoClear)
 		{
-			Task.Delay(@event.Duration)
+			_ = Task.Delay(@event.Duration)
 				.ContinueWith(_ => StatusText = string.Empty);
 		}
 	}
