@@ -1,0 +1,40 @@
+{
+	"$schema": "http://json.schemastore.org/template",
+	"author": "BoBoBaSs84",
+	"classifications": [
+		"Desktop",
+		"Windows",
+		"XAML"
+	],
+	"name": "BB84 - WPF Application",
+	"description": "The WPF Application Template (.Net 10.0). Unit test project are included and the project is structured into concentric layers, resembling the layers of an onion",
+	"identity": "BB84.WPF.App.Net10",
+	"shortName": "bb84-wpf-net10",
+	"tags": {
+		"language": "C#",
+		"type": "project",
+		"platform": "net10.0",
+		"framework": "windows"
+	},
+	"sourceName": "DomainName",
+	"preferNameDirectory": true,
+	"sources": [
+		{
+			"source": "./",
+			"target": "./",
+			"exclude": [
+				"README.md",
+				"**/[Bb]in/**",
+				"**/[Oo]bj/**",
+				".template.config/**/*",
+				".vs/**/*",
+				"**/*.filelist",
+				"**/*.user",
+				"**/*.lock.json",
+				"**/.git/**",
+				"*.nuspec",
+				"**/node_modules/**"
+			]
+		}
+	]
+}
