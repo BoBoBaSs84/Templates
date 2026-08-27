@@ -1,4 +1,4 @@
-﻿namespace DomainName.Application.Abstractions.Presentation.Services;
+﻿namespace DomainName.Application.Abstractions.Services;
 
 /// <summary>
 /// Represents a service contract that provides information about the

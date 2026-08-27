@@ -10,7 +10,6 @@
     <Project Path="src/DomainName.Application/DomainName.Application.csproj" />
     <Project Path="src/DomainName.Domain/DomainName.Domain.csproj" />
     <Project Path="src/DomainName.Infrastructure/DomainName.Infrastructure.csproj" />
-    <Project Path="src/DomainName.Presentation/DomainName.Presentation.csproj" />
     <Project Path="src/DomainName/DomainName.csproj" />
   </Folder>
   <Folder Name="/tests/">
