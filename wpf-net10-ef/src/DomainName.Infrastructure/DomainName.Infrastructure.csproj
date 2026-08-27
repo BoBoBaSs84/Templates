@@ -5,7 +5,6 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="BB84.EntityFrameworkCore.Repositories"/>
 		<PackageReference Include="BB84.EntityFrameworkCore.Repositories.SqlServer" />
 		<PackageReference Include="BB84.SourceGenerators">
 		  <PrivateAssets>all</PrivateAssets>
@@ -14,7 +13,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" />
     <PackageReference Include="Microsoft.Extensions.Logging.EventLog" />
 		<PackageReference Include="Microsoft.Extensions.Http" />
-		<PackageReference Include="System.Drawing.Common" VersionOverride="10.0.11" />
 	</ItemGroup>
 	
 	<ItemGroup>

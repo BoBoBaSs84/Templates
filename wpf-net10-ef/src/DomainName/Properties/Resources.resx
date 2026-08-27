@@ -131,22 +131,22 @@
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="AboutIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\DomainName.Presentation\Properties\..\Resources\about.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\about.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DocumentIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\DomainName.Presentation\Properties\..\Resources\document.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\document.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ExitIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\DomainName.Presentation\Properties\..\Resources\exit.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\exit.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FolderDocumentIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\DomainName.Presentation\Properties\..\Resources\folder_document.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\folder_document.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GearsViewIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\DomainName.Presentation\Properties\..\Resources\gears_view.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\gears_view.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NewspaperIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\DomainName.Presentation\Properties\..\Resources\newspaper.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\newspaper.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NotificationService.ShowError.Captition" xml:space="preserve">
     <value>Error</value>
@@ -164,7 +164,7 @@
     <value>Warning</value>
   </data>
   <data name="QuestionAndAnswerIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\DomainName.Presentation\Properties\..\Resources\question_and_answer.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\question_and_answer.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SettingsControl.GeneralGroupBox.Header" xml:space="preserve">
     <value>General</value>
@@ -173,6 +173,6 @@
     <value>Language</value>
   </data>
   <data name="WindowNextIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\DomainName.Presentation\Properties\..\Resources\window_next.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\window_next.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
