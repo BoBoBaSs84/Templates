@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<ItemGroup>
-		<PackageReference Include="BB84.EntityFrameworkCore.Repositories.Abstractions"/>
+		<PackageReference Include="BB84.EntityFrameworkCore.Repositories.Abstractions" />
 		<PackageReference Include="BB84.Extensions" />
 		<PackageReference Include="BB84.Notifications" />
 		<PackageReference Include="BB84.SourceGenerators">
@@ -24,5 +24,8 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Abstractions\Presentation\" />
 	</ItemGroup>
 </Project>

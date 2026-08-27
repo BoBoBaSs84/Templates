@@ -2,7 +2,7 @@
 						 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 						 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 						 xmlns:vm="clr-namespace:DomainName.Application.ViewModels;assembly=DomainName.Application"
-						 xmlns:v="clr-namespace:DomainName.Presentation.Controls;assembly=DomainName.Presentation"
+						 xmlns:c="clr-namespace:DomainName.Controls"
 						 Startup="Application_Startup"
 						 Exit="Application_Exit">
 	<Application.Resources>
@@ -12,10 +12,10 @@
 											Opacity="0.15"
 											Color="Black" />
 		<DataTemplate DataType="{x:Type TypeName=vm:AboutViewModel}">
-			<v:AboutControl />
+			<c:AboutControl />
 		</DataTemplate>
 		<DataTemplate DataType="{x:Type TypeName=vm:SettingsViewModel}">
-			<v:SettingsControl />
+			<c:SettingsControl />
 		</DataTemplate>
 	</Application.Resources>
 </Application>

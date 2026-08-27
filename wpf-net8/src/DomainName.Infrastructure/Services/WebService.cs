@@ -1,5 +1,5 @@
 ﻿using DomainName.Application.Abstractions.Infrastructure.Services;
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 
 using Microsoft.Extensions.Logging;
 

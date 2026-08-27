@@ -1,6 +1,6 @@
 ﻿using BB84.EntityFrameworkCore.Entities.Abstractions.Components;
 
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;

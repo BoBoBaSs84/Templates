@@ -7,7 +7,7 @@ using DomainName.Application.Enumerators;
 using DomainName.Application.Events;
 using DomainName.Application.Settings;
 using DomainName.Extensions;
-using DomainName.Presentation.Windows;
+using DomainName.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

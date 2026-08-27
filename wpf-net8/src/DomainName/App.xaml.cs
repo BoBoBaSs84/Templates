@@ -7,21 +7,20 @@ using DomainName.Application.Enumerators;
 using DomainName.Application.Events;
 using DomainName.Application.Settings;
 using DomainName.Extensions;
-using DomainName.Presentation.Windows;
+using DomainName.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using RESX = DomainName.Properties.Resources;
-using WpfApp = System.Windows.Application;
 
 namespace DomainName;
 
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App : WpfApp
+public partial class App : System.Windows.Application
 {
 	private readonly IHost _host;
 	private readonly IEventService _eventService;
@@ -97,7 +96,7 @@ public partial class App : WpfApp
 	private void OnRestartRequested(RestartRequestedEvent @event)
 	{
 		_loggerService.Log(LogInformation, RESX.RestartRequested);
-		System.Diagnostics.Process.Start(Environment.ProcessPath!);
+		_ = System.Diagnostics.Process.Start(Environment.ProcessPath!);
 		Current.Shutdown();
 	}
 

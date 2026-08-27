@@ -2,7 +2,7 @@
 using BB84.Notifications.Interfaces.Commands;
 
 using DomainName.Application.Abstractions.Application.Services;
-using DomainName.Application.Abstractions.Presentation.Services;
+using DomainName.Application.Abstractions.Services;
 using DomainName.Application.Enumerators;
 using DomainName.Application.Events;
 using DomainName.Application.ViewModels.Base;

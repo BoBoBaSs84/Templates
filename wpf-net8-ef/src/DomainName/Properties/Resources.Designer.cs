@@ -19,7 +19,7 @@ namespace DomainName.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,6 +61,16 @@ namespace DomainName.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon AboutIcon {
+            get {
+                object obj = ResourceManager.GetObject("AboutIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Application is exiting ...
         /// </summary>
         internal static string ApplicationIsExiting {
@@ -79,6 +89,26 @@ namespace DomainName.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon DocumentIcon {
+            get {
+                object obj = ResourceManager.GetObject("DocumentIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon ExitIcon {
+            get {
+                object obj = ResourceManager.GetObject("ExitIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit requested, trying to exit application ...
         /// </summary>
         internal static string ExitRequested {
@@ -88,11 +118,124 @@ namespace DomainName.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon FolderDocumentIcon {
+            get {
+                object obj = ResourceManager.GetObject("FolderDocumentIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon GearsViewIcon {
+            get {
+                object obj = ResourceManager.GetObject("GearsViewIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon NewspaperIcon {
+            get {
+                object obj = ResourceManager.GetObject("NewspaperIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string NotificationService_ShowError_Captition {
+            get {
+                return ResourceManager.GetString("NotificationService.ShowError.Captition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        internal static string NotificationService_ShowInformation_Captition {
+            get {
+                return ResourceManager.GetString("NotificationService.ShowInformation.Captition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question.
+        /// </summary>
+        internal static string NotificationService_ShowQuestion_Captition {
+            get {
+                return ResourceManager.GetString("NotificationService.ShowQuestion.Captition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retry.
+        /// </summary>
+        internal static string NotificationService_ShowRetry_Captition {
+            get {
+                return ResourceManager.GetString("NotificationService.ShowRetry.Captition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        internal static string NotificationService_ShowWarning_Captition {
+            get {
+                return ResourceManager.GetString("NotificationService.ShowWarning.Captition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon QuestionAndAnswerIcon {
+            get {
+                object obj = ResourceManager.GetObject("QuestionAndAnswerIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restart requested, trying to restart application ...
         /// </summary>
         internal static string RestartRequested {
             get {
                 return ResourceManager.GetString("RestartRequested", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        internal static string SettingsControl_GeneralGroupBox_Header {
+            get {
+                return ResourceManager.GetString("SettingsControl.GeneralGroupBox.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string SettingsControl_LanguageTextBlock_Text {
+            get {
+                return ResourceManager.GetString("SettingsControl.LanguageTextBlock.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon WindowNextIcon {
+            get {
+                object obj = ResourceManager.GetObject("WindowNextIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }
