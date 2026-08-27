@@ -17,6 +17,5 @@
     <Project Path="tests/DomainName.Application.Tests/DomainName.Application.Tests.csproj" />
     <Project Path="tests/DomainName.Domain.Tests/DomainName.Domain.Tests.csproj" />
     <Project Path="tests/DomainName.Infrastructure.Tests/DomainName.Infrastructure.Tests.csproj" />
-    <Project Path="tests/DomainName.Presentation.Tests/DomainName.Presentation.Tests.csproj" />
   </Folder>
 </Solution>
