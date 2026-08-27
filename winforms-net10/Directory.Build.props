@@ -26,7 +26,7 @@
 		<LangVersion>latest</LangVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<Nullable>enable</Nullable>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net10.0-windows</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -38,7 +38,7 @@
 		<Authors>BoBoBaSs84</Authors>
 		<Company>https://github.com/BoBoBaSs84</Company>
 		<Copyright>Copyright © $([System.DateTime]::UtcNow.Year) BoBoBaSs84</Copyright>
-		<Description>This is the template for the .Net8.0 WinForms application. Made with ❤.</Description>
+		<Description>This is the template for the .Net10.0 WinForms application. Made with ❤.</Description>
 		<Product>DomainName</Product>
 		<Title>$(AssemblyName)</Title>
 		<RepositoryType>git</RepositoryType>
