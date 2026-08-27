@@ -23,4 +23,7 @@
 	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Abstractions\Presentation\" />
+	</ItemGroup>
 </Project>

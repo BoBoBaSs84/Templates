@@ -8,11 +8,11 @@
 
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.Extensions.Hosting" />
+		<PackageReference Include="System.Drawing.Common" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\DomainName.Infrastructure\DomainName.Infrastructure.csproj" />
-		<ProjectReference Include="..\DomainName.Presentation\DomainName.Presentation.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

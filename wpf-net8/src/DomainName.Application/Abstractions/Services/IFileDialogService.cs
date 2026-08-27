@@ -1,4 +1,4 @@
-namespace DomainName.Application.Abstractions.Presentation.Services;
+namespace DomainName.Application.Abstractions.Services;
 
 /// <summary>
 /// The interface for the file and folder dialog service.
