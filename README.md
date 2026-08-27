@@ -123,13 +123,13 @@ graph TD;
 
 ---
 
-### 3. WinForms .NET 8 (`winforms-net8`)
+### 3. WinForms .NET 10 (`winforms-net10`)
 
-Modern Windows Forms application template targeting .NET 8 with enhanced features.
+Modern Windows Forms application template targeting .NET 10 with enhanced features.
 
 #### Features
 
-- .NET 8 runtime with latest C# features
+- .NET 10 runtime with latest C# features
 - Clean architecture with clear separation of concerns
 - Modern dependency injection patterns
 - IHostBuilder integration for WinForms
@@ -142,7 +142,7 @@ Modern Windows Forms application template targeting .NET 8 with enhanced feature
 
 ```mermaid
 graph TD;
-  A[winforms-net8-ef/] --> B[src/];
+  A[winforms-net10-ef/] --> B[src/];
   A --> Z[tests/];
   B --> C[DomainName/];
   C --> C1[Extensions/];
@@ -203,13 +203,13 @@ style F3 fill:#ffeb3b
 
 ---
 
-### 4. WinForms .NET 8 with Entity Framework (`winforms-net8-ef`)
+### 4. WinForms .NET 10 with Entity Framework (`winforms-net10-ef`)
 
 Extended WinForms template with Entity Framework Core integration for database operations.
 
 #### Features
 
-- All features from winforms-net8
+- All features from winforms-net10
 - Entity Framework Core with SQLite
 - Database context abstraction (IDatabaseContext)
 - Migration support
@@ -222,7 +222,7 @@ Extended WinForms template with Entity Framework Core integration for database o
 ```mermaid
 graph TD;
 
-A[winforms-net8/] --> B[src/];
+A[winforms-net10/] --> B[src/];
 A --> Z[tests/];
 B --> C[DomainName/];
 C --> C1[Extensions/];
@@ -282,13 +282,13 @@ style G fill:#f3e5f5
 
 ---
 
-### 5. WPF .NET 8 (`wpf-net8`)
+### 5. WPF .NET 10 (`wpf-net10`)
 
 Modern Windows Presentation Foundation application template with MVVM pattern support.
 
 #### Features
 
-- WPF with .NET 8
+- WPF with .NET 10
 - MVVM architecture support
 - Dependency injection for ViewModels and Windows
 - IHost integration with WPF Application lifecycle
@@ -299,7 +299,7 @@ Modern Windows Presentation Foundation application template with MVVM pattern su
 
 ```mermaid
 graph TD;
-  A[wpf-net8/] --> B[src/];
+  A[wpf-net10/] --> B[src/];
   A --> Z[tests/];
   B --> C[DomainName/];
   C --> C1[Extensions/];
@@ -352,13 +352,13 @@ style G fill:#f3e5f5
 
 ---
 
-### 6. WPF .NET 8 with Entity Framework (`wpf-net8-ef`)
+### 6. WPF .NET 10 with Entity Framework (`wpf-net10-ef`)
 
 WPF template with Entity Framework Core for data-driven applications.
 
 #### Features
 
-- All features from wpf-net8
+- All features from wpf-net10
 - Entity Framework Core integration
 - Database-first or code-first approaches
 - Repository pattern support
@@ -368,7 +368,7 @@ WPF template with Entity Framework Core for data-driven applications.
 
 ```mermaid
 graph TD;
-  A[wpf-net8-ef/] --> B[DomainName/];
+  A[wpf-net10-ef/] --> B[DomainName/];
   A --> C[DomainName.Domain/];
   A --> D[DomainName.Application/];
   A --> E[DomainName.Infrastructure/];
@@ -713,7 +713,7 @@ This project is licensed under the MIT License - see the repository for details.
 
 ## 🔄 Version History
 
-- **Latest**: Includes .NET 8 templates with modern features
+- **Latest**: Includes .NET 10 templates with modern features
 - **Legacy Support**: .NET Framework 4.8 templates maintained
 
 ---

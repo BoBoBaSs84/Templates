@@ -9,11 +9,11 @@ updates:
     directories:
     - "/CliApp"
     - "/GtaMod"
-    - "/winforms-net8"
-    - "/winforms-net8-ef"
+    - "/winforms-net10"
+    - "/winforms-net10-ef"
     - "/winforms-net48"
-    - "/wpf-net8"
-    - "/wpf-net8-ef"
+    - "/wpf-net10"
+    - "/wpf-net10-ef"
     schedule:
       interval: "weekly"
       day: "monday"
