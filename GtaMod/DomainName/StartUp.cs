@@ -4,7 +4,7 @@ using DomainName.Application.Installers;
 using DomainName.Domain.Events.System;
 using DomainName.Domain.Installers;
 using DomainName.Infrastructure.Installers;
-using DomainName.Presentation.Installers;
+using DomainName.Installers;
 
 using GTA;
 

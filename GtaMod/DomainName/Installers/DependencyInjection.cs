@@ -1,8 +1,8 @@
-﻿using DomainName.Presentation.Menus;
+﻿using DomainName.Menus;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DomainName.Presentation.Installers;
+namespace DomainName.Installers;
 
 /// <summary>
 /// The dependency injection installer for presentation services.

@@ -1,11 +1,11 @@
-﻿using DomainName.Presentation.Abstractions;
+﻿using DomainName.Common;
 
 using LemonUI;
 using LemonUI.Menus;
 
 using GTAFont = GTA.UI.Font;
 
-namespace DomainName.Presentation.Menus.Base;
+namespace DomainName.Menus.Base;
 
 /// <summary>
 /// The abstract base menu class.

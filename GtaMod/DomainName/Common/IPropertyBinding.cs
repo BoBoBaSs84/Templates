@@ -1,4 +1,4 @@
-﻿namespace DomainName.Presentation.Abstractions;
+﻿namespace DomainName.Common;
 
 /// <summary>
 /// Represents a binding between a property of a source object that implements <c>INotifyPropertyChanged</c>.

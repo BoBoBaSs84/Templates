@@ -1,9 +1,9 @@
 ﻿using DomainName.Domain.Abstractions.Settings;
-using DomainName.Presentation.Extensions;
-using DomainName.Presentation.Menus.Base;
-using DomainName.Presentation.Properties;
+using DomainName.Extensions;
+using DomainName.Menus.Base;
+using DomainName.Properties;
 
-namespace DomainName.Presentation.Menus;
+namespace DomainName.Menus;
 
 /// <summary>
 /// Represents the general settings menu for the modification, allowing users to configure

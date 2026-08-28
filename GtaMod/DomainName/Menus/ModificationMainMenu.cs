@@ -1,10 +1,10 @@
 ﻿using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Settings;
 using DomainName.Domain.Events.System;
-using DomainName.Presentation.Menus.Base;
-using DomainName.Presentation.Properties;
+using DomainName.Menus.Base;
+using DomainName.Properties;
 
-namespace DomainName.Presentation.Menus;
+namespace DomainName.Menus;
 
 /// <summary>
 /// Represents the main menu for the modification, providing access to various settings and options related to the mod.

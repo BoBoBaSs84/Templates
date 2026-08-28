@@ -20,9 +20,6 @@
     <Project Path="DomainName.Infrastructure/DomainName.Infrastructure.csproj">
       <Platform Project="x64" />
     </Project>
-    <Project Path="DomainName.Presentation/DomainName.Presentation.csproj">
-      <Platform Project="x64" />
-    </Project>
     <Project Path="DomainName/DomainName.csproj">
       <Platform Project="x64" />
     </Project>

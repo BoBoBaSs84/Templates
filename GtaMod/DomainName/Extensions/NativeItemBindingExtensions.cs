@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel;
 
-using DomainName.Presentation.Bindings;
+using DomainName.Common;
 
 using LemonUI.Menus;
 
-namespace DomainName.Presentation.Extensions;
+namespace DomainName.Extensions;
 
 /// <summary>
 /// Represents extension methods for menu item bindings.
