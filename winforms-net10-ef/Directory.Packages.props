@@ -8,7 +8,7 @@
     <PackageVersion Include="BB84.EntityFrameworkCore.Repositories.Abstractions" Version="5.0.818" />
     <PackageVersion Include="BB84.Extensions" Version="5.0.823" />
     <PackageVersion Include="BB84.Notifications" Version="5.0.726" />
-    <PackageVersion Include="BB84.SourceGenerators" Version="2.3.712" />
+    <PackageVersion Include="BB84.SourceGenerators" Version="2.3.830" />
     <PackageVersion Include="BB84.WinForms.Extensions" Version="5.0.823" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="[10.0.11, 11.0.0)" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.11" />
