@@ -61,14 +61,14 @@
 							Content="Load Settings"
 							Margin="4"
 							Padding="14,6"
-							Command="{Binding LoadCommand}"
-							IsEnabled="{Binding CanLoadSettings}" />
+							Command="{Binding LoadSettingsCommand}"
+							IsEnabled="{Binding CanLoadSettings, UpdateSourceTrigger=PropertyChanged}" />
 			<Button x:Name="SaveSettingsButton"
 							Content="Save Settings"
 							Margin="4"
 							Padding="14,6"
-							Command="{Binding SaveCommand}"
-							IsEnabled="{Binding CanSaveSettings}" />
+							Command="{Binding SaveSettingsCommand}"
+							IsEnabled="{Binding CanSaveSettings, UpdateSourceTrigger=PropertyChanged}" />
 		</StackPanel>
 	</Grid>
 </UserControl>

@@ -33,7 +33,7 @@
 				<MenuItem x:Name="QuitMenuItem"
 									Header="_Quit"
 									InputGestureText="Ctrl+Q"
-									Command="{Binding QuitApplicationCommand}"></MenuItem>
+									Command="{Binding ExitApplicationCommand}"></MenuItem>
 			</MenuItem>
 			<MenuItem Header="_Help">
 				<MenuItem x:Name="AboutMenuItem"

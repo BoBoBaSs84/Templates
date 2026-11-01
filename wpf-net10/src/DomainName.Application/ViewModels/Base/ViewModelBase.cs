@@ -1,9 +1,7 @@
-﻿using BB84.Notifications;
-
-namespace DomainName.Application.ViewModels.Base;
+﻿namespace DomainName.Application.ViewModels.Base;
 
 /// <summary>
 /// The view model base class.
 /// </summary>
-public abstract class ViewModelBase : NotifiableObject
+public abstract class ViewModelBase
 { }

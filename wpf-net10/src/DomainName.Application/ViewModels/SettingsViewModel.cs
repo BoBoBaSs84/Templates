@@ -1,5 +1,4 @@
-﻿using BB84.Notifications.Commands;
-using BB84.Notifications.Interfaces.Commands;
+﻿using BB84.SourceGenerators.Attributes;
 
 using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Application.ViewModels;
@@ -15,16 +14,13 @@ namespace DomainName.Application.ViewModels;
 /// <summary>
 /// Represents the view model responsible for managing application settings.
 /// </summary>
-public sealed class SettingsViewModel : ViewModelBase, INavigatable
+[GenerateNotifications]
+public sealed partial class SettingsViewModel : ViewModelBase, INavigatable
 {
-	private readonly IEventService _eventService;
-	private readonly ISettingsService _settingsService;
-	private readonly INotificationService _notificationService;
-	private readonly ApplicationSettings _applicationSettings;
-	private bool _canLoadSettings = true;
-	private bool _canSaveSettings = true;
-	private IAsyncActionCommand? _loadCommand;
-	private IAsyncActionCommand? _saveCommand;
+	[ExcludeFromNotification] private readonly IEventService _eventService;
+	[ExcludeFromNotification] private readonly ISettingsService _settingsService;
+	[ExcludeFromNotification] private readonly INotificationService _notificationService;
+	[ExcludeFromNotification] private readonly ApplicationSettings _applicationSettings;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
@@ -41,7 +37,9 @@ public sealed class SettingsViewModel : ViewModelBase, INavigatable
 		_applicationSettings = applicationSettings;
 
 		General = _applicationSettings.General;
+		General.PropertyChanged += (s, e) => CanSaveSettings = true;
 		SupportedLanguages = LanguageExtensions.GetValuesFast();
+		CanLoadSettings = true;
 	}
 
 	/// <summary>
@@ -57,42 +55,24 @@ public sealed class SettingsViewModel : ViewModelBase, INavigatable
 	/// <summary>
 	/// Indicates whether the application settings can be loaded.
 	/// </summary>
-	public bool CanLoadSettings
-	{
-		get => _canLoadSettings;
-		private set => SetProperty(ref _canLoadSettings, value);
-	}
+	[NotifyCanExecuteChanged(nameof(LoadSettingsCommand))]
+	public partial bool CanLoadSettings { get; private set; }
 
 	/// <summary>
 	/// Indicates whether the application settings can be saved.
 	/// </summary>
-	public bool CanSaveSettings
-	{
-		get => _canSaveSettings;
-		private set => SetProperty(ref _canSaveSettings, value);
-	}
+	[NotifyCanExecuteChanged(nameof(SaveSettingsCommand))]
+	public partial bool CanSaveSettings { get; private set; }
 
-	/// <summary>
-	/// Gets the command to load the application settings.
-	/// </summary>
-	public IAsyncActionCommand LoadCommand
-		=> _loadCommand ??= new AsyncActionCommand(LoadSettings, () => CanLoadSettings, OnError);
-
-	/// <summary>
-	/// Gets the command to save the application settings.
-	/// </summary>
-	public IAsyncActionCommand SaveCommand
-		=> _saveCommand ??= new AsyncActionCommand(SaveSettings, () => CanSaveSettings, OnError);
-
-	private async Task LoadSettings()
+	[ActionCommand(CanExecute = nameof(CanLoadSettings), ExceptionHandler = nameof(OnError))]
+	private async Task LoadSettings(CancellationToken cancellationToken)
 	{
 		try
 		{
 			CanLoadSettings = false;
 
 			await _settingsService
-				.LoadAsync()
-				.ConfigureAwait(false);
+				.LoadAsync(cancellationToken);
 		}
 		finally
 		{
@@ -100,15 +80,15 @@ public sealed class SettingsViewModel : ViewModelBase, INavigatable
 		}
 	}
 
-	private async Task SaveSettings()
+	[ActionCommand(CanExecute = nameof(CanSaveSettings), ExceptionHandler = nameof(OnError))]
+	private async Task SaveSettings(CancellationToken cancellationToken)
 	{
 		try
 		{
 			CanSaveSettings = false;
 
 			await _settingsService
-				.SaveAsync(_applicationSettings)
-				.ConfigureAwait(false);
+				.SaveAsync(_applicationSettings, cancellationToken);
 
 			NotificationResult result = _notificationService
 				.ShowQuestion("Settings saved successfully. Do you want to restart the application to apply the changes?");
