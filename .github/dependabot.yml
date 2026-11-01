@@ -7,37 +7,65 @@ version: 2
 updates:
   - package-ecosystem: "nuget"
     directories:
-    - "/CliApp"
-    - "/GtaMod"
-    - "/winforms-net10"
-    - "/winforms-net10-ef"
-    - "/winforms-net48"
-    - "/wpf-net10"
-    - "/wpf-net10-ef"
+      - "/CliApp"
+      - "/GtaMod"
+      - "/winforms-net10"
+      - "/winforms-net10-ef"
+      - "/winforms-net48"
+      - "/wpf-net10"
+      - "/wpf-net10-ef"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "02:00"
-    assignees:
-      - "BoBoBaSs84"
+      timezone: "Europe/Berlin"
+    assignees: ["BoBoBaSs84"]
+    labels: ["dependencies", "nuget"]
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    ignore:
+      - dependency-name: "Microsoft*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "System*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "dotnet-ef"
+        update-types: ["version-update:semver-major"]
     groups:
       bb84-dependencies:
-        patterns:
-          - "BB84*"    
-      mstest-dependencies:
-        patterns:
-          - "MSTest*"
+        patterns: ["BB84*"]
+        update-types: ["minor", "patch"]
+      test-dependencies:
+        patterns: ["MSTest*", "Moq*"]
+        update-types: ["minor", "patch"]
       microsoft-dependencies:
-        patterns:
-          - "Microsoft*"
+        patterns: ["Microsoft*"]
       system-dependencies:
-        patterns:
-          - "System*"          
+        patterns: ["System*"]
+      spectre-dependencies:
+        patterns: ["Spectre*"]
+        update-types: ["minor", "patch"]
+      nuget-other:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+      nuget-major:
+        patterns: ["*"]
+        update-types: ["major"]
+      security:
+        applies-to: "security-updates"
+        patterns: ["*"]
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "02:00"
-    assignees:
-      - "BoBoBaSs84"
+      timezone: "Europe/Berlin"
+    assignees: ["BoBoBaSs84"]
+    labels: ["dependencies", "github_actions"]
+    commit-message:
+      prefix: "ci(deps)"
+    groups:
+      actions:
+        patterns: ["*"]
