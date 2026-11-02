@@ -45,12 +45,6 @@ updates:
       spectre-dependencies:
         patterns: ["Spectre*"]
         update-types: ["minor", "patch"]
-      nuget-other:
-        patterns: ["*"]
-        update-types: ["minor", "patch"]
-      nuget-major:
-        patterns: ["*"]
-        update-types: ["major"]
       security:
         applies-to: "security-updates"
         patterns: ["*"]
