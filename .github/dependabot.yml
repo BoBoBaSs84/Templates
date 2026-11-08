@@ -22,8 +22,7 @@ updates:
     assignees: ["BoBoBaSs84"]
     labels: ["dependencies", "nuget"]
     commit-message:
-      prefix: "chore"
-      include: "scope"
+      prefix: "chore(deps)"
     ignore:
       - dependency-name: "Microsoft*"
         update-types: ["version-update:semver-major"]
@@ -57,9 +56,34 @@ updates:
       time: "02:00"
       timezone: "Europe/Berlin"
     assignees: ["BoBoBaSs84"]
-    labels: ["dependencies", "github_actions"]
+    labels: ["dependencies", "github-actions"]
     commit-message:
       prefix: "ci(deps)"
     groups:
       actions:
+        patterns: ["*"]
+
+  - package-ecosystem: "dotnet-sdk"
+    directories:
+      - "/"
+      - "/CliApp"
+      - "/winforms-net10"
+      - "/winforms-net10-ef"
+      - "/winforms-net48"
+      - "/wpf-net10"
+      - "/wpf-net10-ef"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "02:00"
+      timezone: "Europe/Berlin"
+    assignees: ["BoBoBaSs84"]
+    labels: ["dependencies", "dotnet-sdk"]
+    commit-message:
+      prefix: "chore(deps)"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+    groups:
+      dotnet-sdk:
         patterns: ["*"]

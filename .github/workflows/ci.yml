@@ -9,72 +9,76 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  CONFIGURATION: Release
+  TEST_RESULTS: ${{ github.workspace }}/test-results
+
 jobs:
   build:
     runs-on: windows-latest
+    timeout-minutes: 30
+
+    defaults:
+      run:
+        shell: pwsh
 
     steps:
     - name: Checkout
       uses: actions/checkout@v7
-      with:
-        fetch-depth: 0
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v6
       with:
-        dotnet-version: '10.0.x'
+        global-json-file: global.json
 
     - name: Find all solutions
-      id: find-solutions
       run: |
-        $solutions = Get-ChildItem -Path . -Filter "*.slnx" -Recurse | Select-Object -ExpandProperty FullName
-        $solutionsJson = ConvertTo-Json -InputObject @($solutions) -Compress
-        $solutionsJson | Out-File -FilePath solutions.json -Encoding utf8
-        Write-Host "Saved solutions to solutions.json"
+        $solutions = @(Get-ChildItem -Path . -Filter "*.slnx" -Recurse | Select-Object -ExpandProperty FullName)
         Write-Host "Found solutions: $($solutions.Count)"
         $solutions | ForEach-Object { Write-Host "  $_" }
-      shell: pwsh
+        "SOLUTIONS=$($solutions -join ';')" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
     - name: Restore all solutions
       run: |
-        if (-Not (Test-Path -Path solutions.json)) {
-          Write-Host "solutions.json not found; nothing to restore."
-          exit 0
-        }
-        $solutions = Get-Content -Raw -Path solutions.json | ConvertFrom-Json
-        if ($solutions -eq $null -or $solutions.Count -eq 0) {
-          Write-Host "No solutions found. Exiting."
-          exit 0
-        }
-        foreach ($solution in $solutions) {
+        foreach ($solution in $env:SOLUTIONS -split ';' | Where-Object { $_ }) {
           Write-Host "Restoring: $solution"
           dotnet restore $solution --verbosity minimal
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
         }
-      shell: pwsh
-    
+
     - name: Build all solutions
       run: |
-        $solutions = Get-Content -Raw -Path solutions.json | ConvertFrom-Json
-        foreach ($solution in $solutions) {
+        foreach ($solution in $env:SOLUTIONS -split ';' | Where-Object { $_ }) {
           Write-Host "Building: $solution"
-          dotnet build $solution --no-restore --configuration Release --verbosity minimal
+          dotnet build $solution --no-restore --configuration ${{ env.CONFIGURATION }} --verbosity minimal
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
         }
-      shell: pwsh
-    
+
     - name: Test all solutions
       run: |
-        $solutions = Get-Content -Raw -Path solutions.json | ConvertFrom-Json
-        foreach ($solution in $solutions) {
+        foreach ($solution in $env:SOLUTIONS -split ';' | Where-Object { $_ }) {
+          $solutionDirectory = Split-Path $solution -Parent
+          if (-Not (Get-ChildItem -Path $solutionDirectory -Filter "*Tests.csproj" -Recurse)) {
+            Write-Host "Skipping (no test projects): $solution"
+            continue
+          }
           Write-Host "Testing: $solution"
-          dotnet test $solution --no-build --configuration Release --verbosity minimal
+          $resultsDirectory = Join-Path $env:TEST_RESULTS (Split-Path $solutionDirectory -Leaf)
+          dotnet test --solution $solution --no-build --configuration ${{ env.CONFIGURATION }} --verbosity normal --report-trx --results-directory $resultsDirectory
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
         }
-      shell: pwsh
 
-    - name: Cleanup solutions file
+    - name: Upload test results
       if: always()
-      run: |
-        Remove-Item -Path solutions.json -ErrorAction SilentlyContinue
-      shell: pwsh
+      uses: actions/upload-artifact@v7
+      with:
+        name: test-results
+        path: ${{ env.TEST_RESULTS }}/**/*.trx
+        if-no-files-found: error
+        retention-days: 30
