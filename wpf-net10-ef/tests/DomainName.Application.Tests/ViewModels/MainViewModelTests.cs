@@ -1,4 +1,4 @@
-﻿using BB84.Notifications.Commands;
+﻿using BB84.SourceGenerators.Commands;
 
 using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Services;

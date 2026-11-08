@@ -1,9 +1,10 @@
-﻿using BB84.Notifications;
+﻿using BB84.SourceGenerators.Attributes;
 
 namespace DomainName.Application.ViewModels.Base;
 
 /// <summary>
 /// The view model base class.
 /// </summary>
-public abstract class ViewModelBase : NotifiableObject
+[GenerateNotifications]
+public abstract partial class ViewModelBase
 { }

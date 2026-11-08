@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<OutputType Condition="$(Configuration.Equals('Release'))">WinExe</OutputType>
 		<OutputType Condition="$(Configuration.Equals('Debug'))">Exe</OutputType>
+		<OutputType Condition="$(Configuration.Equals('Release'))">WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
 		<UseWPF>True</UseWPF>
 	</PropertyGroup>
 

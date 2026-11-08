@@ -1,68 +1,42 @@
-﻿using BB84.Notifications;
-using BB84.SourceGenerators.Attributes;
+﻿using BB84.SourceGenerators.Attributes;
 
 namespace DomainName.Application.Settings;
 
 /// <summary>
 /// Represents the database and connection settings for the application.
 /// </summary>
-public sealed partial class DatabaseSettings : NotifiableObject
+[GenerateNotifications]
+public sealed partial class DatabaseSettings
 {
-	private string _server = string.Empty;
-	private string _database = string.Empty;
-	private bool _useEncryption = true;
-	private bool _trustServerCertificate = true;
-	private bool _useIntegratedSecurity;
-
 	/// <summary>
 	/// Gets or sets the server name or address for the database connection.
 	/// </summary>
 	[GenerateIniFileValue]
-	public string Server
-	{
-		get => _server;
-		set => SetProperty(ref _server, value);
-	}
+	public partial string Server { get; set; }
 
 	/// <summary>
 	/// Gets or sets the database name for the database connection.
 	/// </summary>
 	[GenerateIniFileValue]
-	public string Database
-	{
-		get => _database;
-		set => SetProperty(ref _database, value);
-	}
+	public partial string Database { get; set; }
 
 	/// <summary>
 	/// Gets or sets a value indicating whether to use integrated security for the database connection.
 	/// </summary>
 	[GenerateIniFileValue]
-	public bool UseIntegratedSecurity
-	{
-		get => _useIntegratedSecurity;
-		set => SetProperty(ref _useIntegratedSecurity, value);
-	}
+	public partial bool UseIntegratedSecurity { get; set; }
 
 	/// <summary>
 	/// Gets or sets a value indicating whether to use encryption for the database connection.
 	/// </summary>
 	[GenerateIniFileValue]
-	public bool UseEncryption
-	{
-		get => _useEncryption;
-		set => SetProperty(ref _useEncryption, value);
-	}
+	public partial bool UseEncryption { get; set; }
 
 	/// <summary>
 	/// Gets or sets a value indicating whether to trust the server certificate for the database connection.
 	/// </summary>
 	[GenerateIniFileValue]
-	public bool TrustServerCertificate
-	{
-		get => _trustServerCertificate;
-		set => SetProperty(ref _trustServerCertificate, value);
-	}
+	public partial bool TrustServerCertificate { get; set; }
 
 	/// <summary>
 	/// Gets the authentication settings for the database connection.

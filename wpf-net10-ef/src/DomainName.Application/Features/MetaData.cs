@@ -1,7 +1,8 @@
-﻿namespace DomainName.Application.Features.Pagination;
+﻿namespace DomainName.Application.Features;
 
 /// <summary>
-/// The meta data class.
+/// Represents metadata information for a paged list, including current page, total pages,
+/// page size, and total item count.
 /// </summary>
 /// <param name="currentPage">The current page.</param>
 /// <param name="totalPages">The total pages.</param>
@@ -10,32 +11,32 @@
 public sealed class MetaData(int currentPage, int totalPages, int pageSize, int totalCount)
 {
 	/// <summary>
-	/// The current page property.
+	/// Gets the current page property.
 	/// </summary>
-	public int CurrentPage { get; private set; } = currentPage;
+	public int CurrentPage { get; } = currentPage;
 
 	/// <summary>
-	/// The total pages property.
+	/// Gets the total pages property.
 	/// </summary>
-	public int TotalPages { get; private set; } = totalPages;
+	public int TotalPages { get; } = totalPages;
 
 	/// <summary>
-	/// The page size property.
+	/// Gets the page size property.
 	/// </summary>
-	public int PageSize { get; private set; } = pageSize;
+	public int PageSize { get; } = pageSize;
 
 	/// <summary>
-	/// The total count property.
+	/// Gets the total count property.
 	/// </summary>
-	public int TotalCount { get; private set; } = totalCount;
+	public int TotalCount { get; } = totalCount;
 
 	/// <summary>
-	/// Is there a previous page available?
+	/// Indicates whether there is a previous page available.
 	/// </summary>
 	public bool HasPrevious => CurrentPage > 1;
 
 	/// <summary>
-	/// Is there a next page available?
+	/// Indicates whether there is a next page available.
 	/// </summary>
 	public bool HasNext => CurrentPage < TotalPages;
 }

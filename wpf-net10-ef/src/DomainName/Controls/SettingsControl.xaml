@@ -48,8 +48,19 @@
 				<ComboBox Grid.Row="0"
 									Grid.Column="1"
 									Margin="4"
-									ItemsSource="{Binding SupportedLanguages}"
+									ItemsSource="{Binding SelectableLanguages}"
 									SelectedItem="{Binding General.Language, UpdateSourceTrigger=PropertyChanged}" />
+				<TextBlock x:Name="LogLevelTextBlock"
+									 Grid.Row="1"
+									 Grid.Column="0"
+									 Text="LogLevel:"
+									 Margin="4"
+									 VerticalAlignment="Center" />
+				<ComboBox Grid.Row="1"
+									Grid.Column="1"
+									Margin="4"
+									ItemsSource="{Binding SelectableLogLevels}"
+									SelectedItem="{Binding General.LogLevel, UpdateSourceTrigger=PropertyChanged}" />
 			</Grid>
 		</GroupBox>
 		<StackPanel Grid.Row="1"
@@ -61,14 +72,14 @@
 							Content="Load Settings"
 							Margin="4"
 							Padding="14,6"
-							Command="{Binding LoadCommand}"
-							IsEnabled="{Binding CanLoadSettings}" />
+							Command="{Binding LoadSettingsCommand}"
+							IsEnabled="{Binding CanLoadSettings, UpdateSourceTrigger=PropertyChanged}" />
 			<Button x:Name="SaveSettingsButton"
 							Content="Save Settings"
 							Margin="4"
 							Padding="14,6"
-							Command="{Binding SaveCommand}"
-							IsEnabled="{Binding CanSaveSettings}" />
+							Command="{Binding SaveSettingsCommand}"
+							IsEnabled="{Binding CanSaveSettings, UpdateSourceTrigger=PropertyChanged}" />
 		</StackPanel>
 	</Grid>
 </UserControl>

@@ -1,33 +1,30 @@
-﻿using BB84.Notifications;
-using BB84.SourceGenerators.Attributes;
+﻿using BB84.SourceGenerators.Attributes;
 
 namespace DomainName.Application.Settings;
 
 /// <summary>
 /// Represents the database migration settings for the application.
 /// </summary>
-public sealed partial class MigrationSettings : NotifiableObject
+[GenerateNotifications]
+public sealed partial class MigrationSettings
 {
-	private string? _tableSchema;
-	private string _tableName = string.Empty;
+	/// <summary>
+	/// Initializes a new instance of the <see cref="MigrationSettings"/> class.
+	/// </summary>
+	public MigrationSettings()
+	{
+		TableName = "Migrations";
+	}
 
 	/// <summary>
 	/// Gets or sets the table schema for the migration table.
 	/// </summary>
 	[GenerateIniFileValue]
-	public string? TableSchema
-	{
-		get => _tableSchema;
-		set => SetProperty(ref _tableSchema, value);
-	}
+	public partial string? TableSchema { get; set; }
 
 	/// <summary>
 	/// Gets or sets the table name for the migration table.
 	/// </summary>
 	[GenerateIniFileValue]
-	public string TableName
-	{
-		get => _tableName;
-		set => SetProperty(ref _tableName, value);
-	}
+	public partial string TableName { get; set; }
 }

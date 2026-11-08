@@ -7,5 +7,4 @@ namespace DomainName.Application.Abstractions.Infrastructure.Persistence.Reposit
 /// <summary>
 /// The example model repository interface.
 /// </summary>
-public interface IExampleModelRepository : IIdentityRepository<ExampleEntity>
-{ }
+public interface IExampleModelRepository : IIdentityRepository<ExampleEntity>;

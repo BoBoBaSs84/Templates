@@ -1,4 +1,6 @@
-﻿using BB84.SourceGenerators.Attributes;
+﻿using System.ComponentModel;
+
+using BB84.SourceGenerators.Attributes;
 
 namespace DomainName.Application.Enumerators;
 
@@ -11,26 +13,26 @@ public enum Language
 	/// <summary>
 	/// Represents the English language.
 	/// </summary>
-	[System.ComponentModel.Description("en-US")]
+	[Description("en-US")]
 	English,
 	/// <summary>
 	/// Represents the Spanish language.
 	/// </summary>
-	[System.ComponentModel.Description("es-ES")]
+	[Description("es-ES")]
 	Spanish,
 	/// <summary>
 	/// Represents the French language.
 	/// </summary>
-	[System.ComponentModel.Description("fr-FR")]
+	[Description("fr-FR")]
 	French,
 	/// <summary>
 	/// Represents the German language.
 	/// </summary>
-	[System.ComponentModel.Description("de-DE")]
+	[Description("de-DE")]
 	German,
 	/// <summary>
 	/// Represents the Italian language.
 	/// </summary>
-	[System.ComponentModel.Description("it-IT")]
+	[Description("it-IT")]
 	Italian
 }

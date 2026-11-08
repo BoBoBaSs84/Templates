@@ -1,5 +1,4 @@
-﻿using BB84.Notifications.Commands;
-using BB84.Notifications.Interfaces.Commands;
+﻿using BB84.SourceGenerators.Attributes;
 
 using DomainName.Application.Abstractions.Application.Services;
 using DomainName.Application.Abstractions.Services;
@@ -16,20 +15,12 @@ namespace DomainName.Application.ViewModels;
 /// <summary>
 /// The main view model class.
 /// </summary>
-public sealed class MainViewModel : ViewModelBase
+[GenerateNotifications]
+public sealed partial class MainViewModel : ViewModelBase
 {
 	private readonly IEventService _eventService;
 	private readonly INotificationService _notificationService;
 	private readonly SynchronizationContext? _synchronizationContext;
-	private ActionCommand? _showAboutCommand;
-	private ActionCommand? _exitApplicationCommand;
-	private ActionCommand? _showSettingsCommand;
-	private string _applicationTitle;
-	private string _applicationStatus;
-	private int _progressBarValue;
-	private bool _progressBarVisible;
-	private int _progressBarMaximum = 100;
-	private int _progressBarMinimum;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="MainViewModel"/> class.
@@ -45,6 +36,7 @@ public sealed class MainViewModel : ViewModelBase
 		_synchronizationContext = SynchronizationContext.Current;
 		_applicationTitle = $"{hostEnvironment.ApplicationName} - {hostEnvironment.EnvironmentName}";
 		_applicationStatus = string.Empty;
+		_progressBarMaximum = 100;
 
 		NavigationService = navigationService;
 
@@ -55,86 +47,47 @@ public sealed class MainViewModel : ViewModelBase
 	/// <summary>
 	/// Gets or sets the title of the application.
 	/// </summary>
-	public string ApplicationTitle
-	{
-		get => _applicationTitle;
-		private set => SetProperty(ref _applicationTitle, value);
-	}
+	public partial string ApplicationTitle { get; private set; }
 
 	/// <summary>
 	/// Gets or sets the current status of the application.
 	/// </summary>
-	public string ApplicationStatus
-	{
-		get => _applicationStatus;
-		private set => SetProperty(ref _applicationStatus, value);
-	}
+	public partial string ApplicationStatus { get; private set; }
 
 	/// <summary>
 	/// Gets or sets the value of the progress bar.
 	/// </summary>
-	public int ProgressBarValue
-	{
-		get => _progressBarValue;
-		set => SetProperty(ref _progressBarValue, value);
-	}
+	public partial int ProgressBarValue { get; set; }
 
 	/// <summary>
 	/// Gets or sets a value indicating whether the progress bar is visible.
 	/// </summary>
-	public bool ProgressBarVisible
-	{
-		get => _progressBarVisible;
-		set => SetProperty(ref _progressBarVisible, value);
-	}
+	public partial bool ProgressBarVisible { get; set; }
 
 	/// <summary>
 	/// Gets or sets the maximum value of the progress bar.
 	/// </summary>
-	public int ProgressBarMaximum
-	{
-		get => _progressBarMaximum;
-		set => SetProperty(ref _progressBarMaximum, value);
-	}
+	public partial int ProgressBarMaximum { get; set; }
 
 	/// <summary>
 	/// Gets or sets the minimum value of the progress bar.
 	/// </summary>
-	public int ProgressBarMinimum
-	{
-		get => _progressBarMinimum;
-		set => SetProperty(ref _progressBarMinimum, value);
-	}
+	public partial int ProgressBarMinimum { get; set; }
 
 	/// <summary>
 	/// Gets the navigation service instance.
 	/// </summary>
 	public INavigationService NavigationService { get; }
 
-	/// <summary>
-	/// The command to show the about control.
-	/// </summary>
-	public IActionCommand ShowAboutCommand
-		=> _showAboutCommand ??= new ActionCommand(ShowAbout);
-
-	/// <summary>
-	/// The command to show the settings control.
-	/// </summary>
-	public IActionCommand ShowSettingsCommand
-		=> _showSettingsCommand ??= new ActionCommand(ShowSettings);
-
-	/// <summary>
-	/// The command to exit the application.
-	/// </summary>
-	public IActionCommand ExitApplicationCommand
-		=> _exitApplicationCommand ??= new ActionCommand(ExitApplication);
-
+	[ActionCommand]
 	private void ShowAbout()
 		=> NavigationService.NavigateTo<AboutViewModel>();
 
+	[ActionCommand]
 	private void ShowSettings()
 		=> NavigationService.NavigateTo<SettingsViewModel>();
 
+	[ActionCommand]
 	private void ExitApplication()
 	{
 		NotificationResult result = _notificationService

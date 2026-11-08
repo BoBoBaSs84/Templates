@@ -36,6 +36,7 @@ internal static class ServiceCollectionExtensions
 	internal static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
 	{
 		services.AddSingleton<IEventService, EventService>();
+		services.AddSingleton<IExampleService, ExampleService>();
 
 		services.AddSingleton<INavigationService, NavigationService>();
 		services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider
